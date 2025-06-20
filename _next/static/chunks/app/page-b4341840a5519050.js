@@ -168,7 +168,7 @@
                             "Home",
                           ],
                         }),
-                        (0, s.jsx)(c, { href: "seals.html", text: "Seals" }),
+                        (0, s.jsx)(c, { href: "seals.html", text: "Monks" }),
                         (0, s.jsx)(c, {
                           href: "seals/staking.html",
                           text: "Dashboard",
