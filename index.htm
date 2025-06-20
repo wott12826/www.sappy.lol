@@ -125,6 +125,7 @@
       <!-- Fallback Sappy Seals Character (shows if Spline fails) -->
       <div id="sappy-fallback" class="absolute inset-0 z-5 flex items-center justify-center pointer-events-none" style="display: none;">
         <img 
+          src="seals/_next/sappy-open-world-11.png" 
           alt="Sappy Seals Character" 
           class="max-w-[60%] max-h-[60%] object-contain opacity-80"
           style="filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));"
@@ -200,11 +201,12 @@
       // Check if Spline loads successfully, if not show fallback
       window.addEventListener('load', function() {
         setTimeout(function() {
-          // Check if Spline canvas is visible and has content
-          const splineCanvas = document.querySelector('canvas[style*="display: none"]');
+          // Check if Three.js canvas (3D character) is visible
+          const threeJsCanvas = document.querySelector('canvas[data-engine="three.js r149"]');
           const fallback = document.getElementById('sappy-fallback');
           
-          if (fallback && (!splineCanvas || splineCanvas.style.display === 'none')) {
+          if (fallback && !threeJsCanvas) {
+            // If Three.js canvas is not found, show fallback
             fallback.style.display = 'flex';
           }
         }, 3000); // Wait 3 seconds for Spline to load
