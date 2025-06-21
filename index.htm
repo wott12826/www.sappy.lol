@@ -272,7 +272,7 @@
   </head>
   <body class="__className_d65c78">
     <div id="page-loader">
-      <div>Page Loading...</div>
+      <div id="page-loader-text">Loading...</div>
     </div>
     <div id="cursor-line"></div>
     <main
@@ -287,7 +287,7 @@
       
       <!-- Interaction hint -->
       <div id="interaction-hint" class="absolute top-4 left-4 z-30 bg-black bg-opacity-50 text-white px-3 py-2 rounded-lg text-sm pointer-events-none opacity-75">
-        💡 Перетащите мышкой для вращения камеры вокруг персонажа
+        💡 Drag to rotate the character
       </div>
       <div
         class="absolute flex flex-col gap-3 bottom-0 bg-transparent h-fit justify-between w-full px-[5vw] md:px-[3vw] xl:px-[2vw] pb-3 z-20 "
@@ -587,29 +587,29 @@
           });
           window.Sappy3D.renderer.setSize(window.innerWidth, window.innerHeight);
           window.Sappy3D.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio
-          window.Sappy3D.renderer.shadowMap.enabled = false; // Отключаем тени для стабильности
-          window.Sappy3D.renderer.outputEncoding = THREE.sRGBEncoding; // Правильная настройка для GLB
+          window.Sappy3D.renderer.shadowMap.enabled = false; // Disable shadows for stability
+          window.Sappy3D.renderer.outputEncoding = THREE.sRGBEncoding; // Correct setting for GLB
           window.Sappy3D.renderer.toneMapping = THREE.ACESFilmicToneMapping;
           window.Sappy3D.renderer.toneMappingExposure = 1.0;
           container.appendChild(window.Sappy3D.renderer.domElement);
           
           // Add improved lights based on user feedback
-          const ambientLight = new THREE.AmbientLight(0xffffff, 0.6); // Увеличиваем интенсивность
+          const ambientLight = new THREE.AmbientLight(0xffffff, 0.6); // Increased intensity
           window.Sappy3D.scene.add(ambientLight);
           
-          const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2); // Увеличиваем интенсивность
-          directionalLight.position.set(5, 10, 5); // Правильная позиция
-          directionalLight.castShadow = false; // Отключаем тени
+          const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2); // Increased intensity
+          directionalLight.position.set(5, 10, 5); // Correct position
+          directionalLight.castShadow = false; // Disable shadows
           window.Sappy3D.scene.add(directionalLight);
 
           console.log('Lights added - Directional and Ambient with proper intensity');
           
-          // Add a simple cube for testing - без теней
+          // Add a simple cube for testing - without shadows
           const geometry = new THREE.BoxGeometry(1, 1, 1);
-          const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 }); // Используем Lambert вместо Phong
+          const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 }); // Use Lambert instead of Phong
           const cube = new THREE.Mesh(geometry, material);
-          cube.castShadow = false; // Отключаем тени
-          cube.receiveShadow = false; // Отключаем тени
+          cube.castShadow = false; // Disable shadows
+          cube.receiveShadow = false; // Disable shadows
           window.Sappy3D.scene.add(cube);
           console.log('Test cube added - no shadows');
           
@@ -620,7 +620,7 @@
               // Add orbit controls with room-like camera rotation
               window.Sappy3D.controls = new window.Sappy3D.THREE.OrbitControls(window.Sappy3D.camera, window.Sappy3D.renderer.domElement);
               window.Sappy3D.controls.enableDamping = true;
-              window.Sappy3D.controls.dampingFactor = 0.05; // Более отзывчивое управление
+              window.Sappy3D.controls.dampingFactor = 0.05; // More responsive controls
               window.Sappy3D.controls.enableZoom = false; // Disable zoom
               window.Sappy3D.controls.enablePan = false; // Disable pan
               window.Sappy3D.controls.autoRotate = false; // Disable auto rotation
@@ -636,10 +636,10 @@
               // Remove DragControls - we don't need it anymore
               window.Sappy3D.dragControls = null;
               
-              // Упрощенные обработчики событий
+              // Simplified event handlers
               window.Sappy3D.renderer.domElement.style.cursor = 'grab';
               
-              // Один обработчик для всех событий мыши
+              // Single handler for all mouse events
               window.Sappy3D.renderer.domElement.addEventListener('mousedown', function(event) {
                 window.Sappy3D.renderer.domElement.style.cursor = 'grabbing';
                 
@@ -702,7 +702,7 @@
                 }
               });
               
-              // Стабильный анимационный цикл с оптимизацией производительности
+              // Stable animation loop with performance optimization
               let lastTime = 0;
               const targetFPS = 60;
               const frameInterval = 1000 / targetFPS;
@@ -726,28 +726,28 @@
                   window.Sappy3D.mixer.update(window.Sappy3D.clock.getDelta());
                 }
 
-                // Обновляем контролы строго один раз
+                // Update controls strictly once
                 if (window.Sappy3D.controls && window.Sappy3D.controls.update) {
                   window.Sappy3D.controls.update();
                 }
 
-                // Принудительно обновляем матрицу камеры после контролов
+                // Force update camera matrix after controls
                 if (window.Sappy3D.camera) {
                   window.Sappy3D.camera.updateMatrixWorld();
                 }
                 
-                // Рендерим сцену
+                // Render the scene
                 if (window.Sappy3D.scene && window.Sappy3D.camera && window.Sappy3D.renderer) {
                   window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
                 }
               }
               
-              // Запускаем анимацию
+              // Start animation
               animate();
             } catch (e) {
               console.error('Error creating OrbitControls:', e);
               window.Sappy3D.showError('OrbitControls Error: ' + e.message);
-              // Fallback к простому рендеру
+              // Fallback to simple render
               console.log('Falling back to simple render only');
               
               function animate() {
@@ -789,28 +789,6 @@
           if (typeof window.Sappy3D.THREE.GLTFLoader !== 'undefined') {
             console.log('Loading 3D model...');
             
-            // Create loading indicator
-            const loadingDiv = document.createElement('div');
-            loadingDiv.id = 'model-loading';
-            loadingDiv.style.cssText = `
-              position: fixed;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              background: rgba(0, 0, 0, 0.8);
-              color: white;
-              padding: 20px;
-              border-radius: 10px;
-              font-family: Arial, sans-serif;
-              z-index: 1000;
-              text-align: center;
-            `;
-            loadingDiv.innerHTML = `
-              <div style="margin-bottom: 10px;">🔄 Загрузка 3D модели...</div>
-              <div id="loading-progress" style="font-size: 12px;">0%</div>
-            `;
-            document.body.appendChild(loadingDiv);
-            
             // Load GLB model
             const loader = new window.Sappy3D.THREE.GLTFLoader();
             loader.load(
@@ -821,18 +799,12 @@
                   
                   // Hide page loader
                   window.Sappy3D.hidePageLoader();
-
-                  // Remove loading indicator
-                  const loadingDiv = document.getElementById('model-loading');
-                  if (loadingDiv) {
-                    loadingDiv.remove();
-                  }
                   
                   window.Sappy3D.character = gltf.scene;
                   window.Sappy3D.character.scale.set(1, 1, 1);
                   window.Sappy3D.character.position.set(0, 0, 0);
                   
-                  // НЕ изменяем материалы - используем оригинальные из GLB
+                  // Do not change materials - use original from GLB
                   console.log('Using original materials from GLB file');
                   
                   window.Sappy3D.scene.add(window.Sappy3D.character);
@@ -859,13 +831,13 @@
                   const fov = window.Sappy3D.camera.fov * (Math.PI / 180);
                   let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
                   
-                  // Устанавливаем начальную позицию камеры только один раз
+                  // Set initial camera position only once
                   window.Sappy3D.camera.position.set(0, 1.5, cameraZ * 1.5);
                   
-                  // Настраиваем OrbitControls target
+                  // Configure OrbitControls target
                   if (typeof window.Sappy3D.THREE.OrbitControls !== 'undefined' && window.Sappy3D.controls) {
                     window.Sappy3D.controls.target.copy(center);
-                    // НЕ вызываем controls.update() здесь - это сделает анимационный цикл
+                    // DO NOT call controls.update() here - the animation loop will do it
                   }
                   
                   console.log('Character model setup complete');
@@ -878,23 +850,20 @@
                 }
               },
               function (xhr) {
-                const progress = Math.round((xhr.loaded / xhr.total * 100));
+                const progress = Math.round((xhr.loaded / xhr.total) * 100);
                 
-                // Update loading progress
-                const progressDiv = document.getElementById('loading-progress');
-                if (progressDiv) {
-                  progressDiv.textContent = progress + '%';
+                const loaderText = document.getElementById('page-loader-text');
+                if (loaderText) {
+                  if (progress < 100) {
+                    loaderText.textContent = `Loading 3D Model... ${progress}%`;
+                  } else {
+                    loaderText.textContent = 'Initializing Scene...';
+                  }
                 }
               },
               function (error) {
                 console.error('An error happened loading the model:', error);
                 window.Sappy3D.showError('Model Load Error: ' + error.message);
-                
-                // Remove loading indicator
-                const loadingDiv = document.getElementById('model-loading');
-                if (loadingDiv) {
-                  loadingDiv.remove();
-                }
                 
                 // Show fallback model
                 window.Sappy3D.showFallbackModel();
@@ -965,7 +934,7 @@
             const box = new THREE.Box3().setFromObject(window.Sappy3D.character);
             const center = box.getCenter(new THREE.Vector3());
             
-            // Настраиваем OrbitControls target
+            // Configure OrbitControls target
             if (typeof window.Sappy3D.THREE.OrbitControls !== 'undefined' && window.Sappy3D.controls) {
               window.Sappy3D.controls.target.copy(center);
             }
@@ -980,7 +949,7 @@
               window.Sappy3D.camera.aspect = window.innerWidth / window.innerHeight;
               window.Sappy3D.camera.updateProjectionMatrix();
               window.Sappy3D.renderer.setSize(window.innerWidth, window.innerHeight);
-              // НЕ вызываем controls.update() здесь - это сделает анимационный цикл
+              // DO NOT call controls.update() here - the animation loop will do it
             } catch (e) {
               console.error('Error in resize handler:', e);
               window.Sappy3D.showError('Resize Error: ' + e.message);
