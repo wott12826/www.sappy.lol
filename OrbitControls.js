@@ -16,6 +16,10 @@
 	waitForThree(function(THREE) {
 		console.log('OrbitControls: THREE is available, creating controls...');
 		
+		// Add missing constants
+		THREE.MOUSE = { ROTATE: 0, DOLLY: 1, PAN: 2 };
+		THREE.TOUCH = { ROTATE: 0, PAN: 1, DOLLY_PAN: 2, DOLLY_ROTATE: 3 };
+		
 		// Simple OrbitControls implementation
 		THREE.OrbitControls = function(object, domElement) {
 			this.object = object;
@@ -107,6 +111,32 @@
 			this.dollyEnd = new THREE.Vector2();
 			this.dollyDelta = new THREE.Vector2();
 			
+			// Constants
+			this.EPS = 0.000001;
+			
+			// Events
+			this.changeEvent = { type: 'change' };
+			this.startEvent = { type: 'start' };
+			this.endEvent = { type: 'end' };
+			
+			// States
+			this.STATE = {
+				NONE: - 1,
+				ROTATE: 0,
+				DOLLY: 1,
+				PAN: 2,
+				TOUCH_ROTATE: 3,
+				TOUCH_PAN: 4,
+				TOUCH_DOLLY_PAN: 5,
+				TOUCH_DOLLY_ROTATE: 6
+			};
+			
+			this.state = this.STATE.NONE;
+			
+			// Initialize last position and quaternion
+			this.lastPosition = new THREE.Vector3();
+			this.lastQuaternion = new THREE.Quaternion();
+			
 			this.update = function() {
 				var offset = new THREE.Vector3();
 				
@@ -122,7 +152,7 @@
 				// angle from z-axis around y-axis
 				this.spherical.setFromVector3(offset);
 				
-				if (this.autoRotate && this.state === THREE.OrbitControls.STATE.NONE) {
+				if (this.autoRotate && this.state === this.STATE.NONE) {
 					this.rotateLeft(this.getAutoRotationAngle());
 				}
 				
@@ -274,67 +304,6 @@
 				}
 			};
 			
-			this.update = function() {
-				var offset = new THREE.Vector3();
-				
-				// so camera.up is the orbit axis
-				var quat = new THREE.Quaternion().setFromUnitVectors(object.up, new THREE.Vector3(0, 1, 0));
-				var quatInverse = quat.clone().invert();
-				
-				offset.copy(this.target).sub(object.position);
-				
-				// rotate offset to "y-axis-is-up" space
-				offset.applyQuaternion(quat);
-				
-				// angle from z-axis around y-axis
-				this.spherical.setFromVector3(offset);
-				
-				if (this.autoRotate && this.state === THREE.OrbitControls.STATE.NONE) {
-					this.rotateLeft(this.getAutoRotationAngle());
-				}
-				
-				this.spherical.theta += this.sphericalDelta.theta;
-				this.spherical.phi += this.sphericalDelta.phi;
-				
-				// restrict theta to be between desired limits
-				this.spherical.theta = Math.max(this.minAzimuthAngle, Math.min(this.maxAzimuthAngle, this.spherical.theta));
-				
-				// restrict phi to be between desired limits
-				this.spherical.phi = Math.max(this.minPolarAngle, Math.min(this.maxPolarAngle, this.spherical.phi));
-				
-				this.spherical.makeSafe();
-				
-				this.spherical.radius *= this.scale;
-				
-				// restrict radius to be between desired limits
-				this.spherical.radius = Math.max(this.minDistance, Math.min(this.maxDistance, this.spherical.radius));
-				
-				// move target to panned location
-				this.target.add(this.panOffset);
-				
-				offset.setFromSpherical(this.spherical);
-				
-				// rotate offset back to "camera-up-vector-is-up" space
-				offset.applyQuaternion(quatInverse);
-				
-				object.position.copy(this.target).add(offset);
-				
-				object.lookAt(this.target);
-				
-				if (this.enableDamping === true) {
-					this.sphericalDelta.theta *= (1 - this.dampingFactor);
-					this.sphericalDelta.phi *= (1 - this.dampingFactor);
-					this.panOffset.multiplyScalar(1 - this.dampingFactor);
-				} else {
-					this.sphericalDelta.set(0, 0, 0);
-					this.panOffset.set(0, 0, 0);
-				}
-				
-				this.scale = 1;
-				
-				return true;
-			};
-			
 			this.reset = function() {
 				this.target.copy(this.target0);
 				this.object.position.copy(this.position0);
@@ -346,69 +315,7 @@
 				
 				this.update();
 				
-				this.state = THREE.OrbitControls.STATE.NONE;
-			};
-			
-			// this method is exposed, but perhaps it would be better if we can make it private...
-			this.update = function() {
-				var offset = new THREE.Vector3();
-				
-				// so camera.up is the orbit axis
-				var quat = new THREE.Quaternion().setFromUnitVectors(object.up, new THREE.Vector3(0, 1, 0));
-				var quatInverse = quat.clone().invert();
-				
-				offset.copy(this.target).sub(object.position);
-				
-				// rotate offset to "y-axis-is-up" space
-				offset.applyQuaternion(quat);
-				
-				// angle from z-axis around y-axis
-				this.spherical.setFromVector3(offset);
-				
-				if (this.autoRotate && this.state === THREE.OrbitControls.STATE.NONE) {
-					this.rotateLeft(this.getAutoRotationAngle());
-				}
-				
-				this.spherical.theta += this.sphericalDelta.theta;
-				this.spherical.phi += this.sphericalDelta.phi;
-				
-				// restrict theta to be between desired limits
-				this.spherical.theta = Math.max(this.minAzimuthAngle, Math.min(this.maxAzimuthAngle, this.spherical.theta));
-				
-				// restrict phi to be between desired limits
-				this.spherical.phi = Math.max(this.minPolarAngle, Math.min(this.maxPolarAngle, this.spherical.phi));
-				
-				this.spherical.makeSafe();
-				
-				this.spherical.radius *= this.scale;
-				
-				// restrict radius to be between desired limits
-				this.spherical.radius = Math.max(this.minDistance, Math.min(this.maxDistance, this.spherical.radius));
-				
-				// move target to panned location
-				this.target.add(this.panOffset);
-				
-				offset.setFromSpherical(this.spherical);
-				
-				// rotate offset back to "camera-up-vector-is-up" space
-				offset.applyQuaternion(quatInverse);
-				
-				object.position.copy(this.target).add(offset);
-				
-				object.lookAt(this.target);
-				
-				if (this.enableDamping === true) {
-					this.sphericalDelta.theta *= (1 - this.dampingFactor);
-					this.sphericalDelta.phi *= (1 - this.dampingFactor);
-					this.panOffset.multiplyScalar(1 - this.dampingFactor);
-				} else {
-					this.sphericalDelta.set(0, 0, 0);
-					this.panOffset.set(0, 0, 0);
-				}
-				
-				this.scale = 1;
-				
-				return true;
+				this.state = this.STATE.NONE;
 			};
 			
 			this.dispose = function() {
@@ -425,6 +332,12 @@
 				//this.dispatchEvent( { type: 'dispose' } ); // should this be added here?
 			};
 			
+			// Add dispatchEvent method
+			this.dispatchEvent = function(event) {
+				// Simple event dispatch - can be extended if needed
+				if (this.onChange) this.onChange(event);
+			};
+			
 			// Set up initial state
 			this.target.copy(this.target0);
 			this.object.position.copy(this.position0);
@@ -433,28 +346,6 @@
 			this.object.updateProjectionMatrix();
 			
 			this.update();
-			
-			this.state = THREE.OrbitControls.STATE.NONE;
-			
-			// Constants
-			this.EPS = 0.000001;
-			
-			// Events
-			this.changeEvent = { type: 'change' };
-			this.startEvent = { type: 'start' };
-			this.endEvent = { type: 'end' };
-			
-			// States
-			this.STATE = {
-				NONE: - 1,
-				ROTATE: 0,
-				DOLLY: 1,
-				PAN: 2,
-				TOUCH_ROTATE: 3,
-				TOUCH_PAN: 4,
-				TOUCH_DOLLY_PAN: 5,
-				TOUCH_DOLLY_ROTATE: 6
-			};
 			
 			this.state = this.STATE.NONE;
 			

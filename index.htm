@@ -473,28 +473,47 @@
           // Check if OrbitControls is available
           if (typeof THREE.OrbitControls !== 'undefined') {
             console.log('OrbitControls is available');
-            // Add orbit controls
-            window.Sappy3D.controls = new THREE.OrbitControls(window.Sappy3D.camera, window.Sappy3D.renderer.domElement);
-            window.Sappy3D.controls.enableDamping = true;
-            window.Sappy3D.controls.dampingFactor = 0.05;
-            window.Sappy3D.controls.enableZoom = true;
-            window.Sappy3D.controls.enablePan = false;
-            window.Sappy3D.controls.autoRotate = true;
-            window.Sappy3D.controls.autoRotateSpeed = 0.5;
-            console.log('OrbitControls created');
-            
-            // Animation loop with controls
-            function animate() {
-              try {
-                requestAnimationFrame(animate);
-                window.Sappy3D.controls.update();
-                window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
-              } catch (e) {
-                console.error('Error in animation loop:', e);
-                window.Sappy3D.showError('Animation Error: ' + e.message);
+            try {
+              // Add orbit controls
+              window.Sappy3D.controls = new THREE.OrbitControls(window.Sappy3D.camera, window.Sappy3D.renderer.domElement);
+              window.Sappy3D.controls.enableDamping = true;
+              window.Sappy3D.controls.dampingFactor = 0.05;
+              window.Sappy3D.controls.enableZoom = true;
+              window.Sappy3D.controls.enablePan = false;
+              window.Sappy3D.controls.autoRotate = true;
+              window.Sappy3D.controls.autoRotateSpeed = 0.5;
+              console.log('OrbitControls created');
+              
+              // Animation loop with controls
+              function animate() {
+                try {
+                  requestAnimationFrame(animate);
+                  if (window.Sappy3D.controls && window.Sappy3D.controls.update) {
+                    window.Sappy3D.controls.update();
+                  }
+                  window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
+                } catch (e) {
+                  console.error('Error in animation loop:', e);
+                  window.Sappy3D.showError('Animation Error: ' + e.message);
+                }
               }
+              animate();
+            } catch (e) {
+              console.error('Error creating OrbitControls:', e);
+              window.Sappy3D.showError('OrbitControls Error: ' + e.message);
+              // Fallback to simple animation
+              console.log('Falling back to simple animation');
+              function animate() {
+                try {
+                  requestAnimationFrame(animate);
+                  window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
+                } catch (e) {
+                  console.error('Error in simple animation loop:', e);
+                  window.Sappy3D.showError('Simple Animation Error: ' + e.message);
+                }
+              }
+              animate();
             }
-            animate();
           } else {
             console.log('OrbitControls not available, using simple animation');
             // Simple animation loop without controls
