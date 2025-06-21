@@ -1913,7 +1913,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/link.cdb16e77.png",
+          src: "seals/_next/media/link.cdb16e77.png",
           height: 107,
           width: 107,
           blurDataURL:
@@ -1926,7 +1926,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/magiceden.4c2a43b0.png",
+          src: "seals/_next/media/magiceden.4c2a43b0.png",
           height: 31,
           width: 42,
           blurDataURL:
@@ -1939,7 +1939,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/twitter.cc75847e.png",
+          src: "seals/_next/media/twitter.cc75847e.png",
           height: 31,
           width: 42,
           blurDataURL:
@@ -1952,7 +1952,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/chilling-bro.e8bf4fd4.png",
+          src: "seals/_next/media/chilling-bro.e8bf4fd4.png",
           height: 1120,
           width: 1552,
           blurDataURL:
@@ -1965,7 +1965,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/flywheel.fdb690af.png",
+          src: "seals/_next/media/flywheel.fdb690af.png",
           height: 1547,
           width: 1782,
           blurDataURL:
@@ -1978,7 +1978,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/gradient-overlays.e6e6b510.png",
+          src: "seals/_next/media/gradient-overlays.e6e6b510.png",
           height: 1256,
           width: 1920,
           blurDataURL:
@@ -1991,7 +1991,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/halftone-pattern.9a5f0cda.png",
+          src: "seals/_next/media/halftone-pattern.9a5f0cda.png",
           height: 1258,
           width: 1920,
           blurDataURL:
@@ -2004,7 +2004,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/seal-camping.8b9406af.png",
+          src: "seals/_next/media/seal-camping.8b9406af.png",
           height: 915,
           width: 1920,
           blurDataURL:
@@ -2017,7 +2017,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/happy-seals.daa2bf14.png",
+          src: "seals/_next/media/happy-seals.daa2bf14.png",
           height: 671,
           width: 948,
           blurDataURL:
@@ -2030,7 +2030,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/1.814a35b4.png",
+          src: "seals/_next/media/1.814a35b4.png",
           height: 936,
           width: 992,
           blurDataURL:
@@ -2043,7 +2043,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/2.8dc7777f.png",
+          src: "seals/_next/media/2.8dc7777f.png",
           height: 806,
           width: 906,
           blurDataURL:
@@ -2056,7 +2056,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/3.3007e54d.png",
+          src: "seals/_next/media/3.3007e54d.png",
           height: 1074,
           width: 966,
           blurDataURL:
@@ -2069,7 +2069,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/seal-camping.8759ac12.png",
+          src: "seals/_next/media/seal-camping.8759ac12.png",
           height: 2160,
           width: 3840,
           blurDataURL:
@@ -2082,7 +2082,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/seal-glow.8171f8fb.png",
+          src: "seals/_next/media/seal-glow.8171f8fb.png",
           height: 1542,
           width: 1455,
           blurDataURL:
@@ -2095,7 +2095,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/seal.47b5cc4a.png",
+          src: "seals/_next/media/seal.47b5cc4a.png",
           height: 1460,
           width: 1366,
           blurDataURL:
@@ -2108,7 +2108,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/snow-storm-glow.267f747a.png",
+          src: "seals/_next/media/snow-storm-glow.267f747a.png",
           height: 169,
           width: 169,
           blurDataURL:
@@ -2121,7 +2121,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/snow-storm.7a4b7a02.png",
+          src: "seals/_next/media/snow-storm.7a4b7a02.png",
           height: 133,
           width: 133,
           blurDataURL:
@@ -2134,7 +2134,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/logo.53a8da67.png",
+          src: "seals/_next/media/logo.53a8da67.png",
           height: 609,
           width: 824,
           blurDataURL:
@@ -2147,7 +2147,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/seal-crowd.8ea9c5ac.png",
+          src: "seals/_next/media/seal-crowd.8ea9c5ac.png",
           height: 3228,
           width: 2700,
           blurDataURL:
@@ -2160,7 +2160,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/seal-peaking.283dacf9.png",
+          src: "seals/_next/media/seal-peaking.283dacf9.png",
           height: 1194,
           width: 1184,
           blurDataURL:
@@ -2173,7 +2173,7 @@
       "use strict";
       e.r(v),
         (v.default = {
-          src: "/seals/_next/static/media/seal-questioning.5b573f03.png",
+          src: "seals/_next/media/seal-questioning.5b573f03.png",
           height: 395,
           width: 480,
           blurDataURL:
