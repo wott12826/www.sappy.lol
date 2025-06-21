@@ -459,8 +459,7 @@
           });
           window.Sappy3D.renderer.setSize(window.innerWidth, window.innerHeight);
           window.Sappy3D.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio
-          window.Sappy3D.renderer.shadowMap.enabled = true;
-          window.Sappy3D.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+          window.Sappy3D.renderer.shadowMap.enabled = false; // Отключаем тени для стабильности
           window.Sappy3D.renderer.outputEncoding = THREE.sRGBEncoding;
           window.Sappy3D.renderer.toneMapping = THREE.ACESFilmicToneMapping;
           window.Sappy3D.renderer.toneMappingExposure = 1.0;
@@ -471,34 +470,26 @@
           container.appendChild(window.Sappy3D.renderer.domElement);
           console.log('Renderer created and added to container');
           
-          // Add lights
-          const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-          ambientLight.intensity = 0.6;
+          // Add lights - только мягкое освещение без теней
+          const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+          ambientLight.intensity = 0.8;
           window.Sappy3D.scene.add(ambientLight);
           
-          const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-          directionalLight.position.set(5, 5, 5);
-          directionalLight.castShadow = true;
-          directionalLight.shadow.mapSize.width = 2048;
-          directionalLight.shadow.mapSize.height = 2048;
-          directionalLight.shadow.camera.near = 0.5;
-          directionalLight.shadow.camera.far = 50;
-          directionalLight.shadow.camera.left = -10;
-          directionalLight.shadow.camera.right = 10;
-          directionalLight.shadow.camera.top = 10;
-          directionalLight.shadow.camera.bottom = -10;
-          directionalLight.intensity = 0.8;
-          window.Sappy3D.scene.add(directionalLight);
-          console.log('Lights added');
+          // Добавляем дополнительное мягкое освещение сверху
+          const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
+          hemisphereLight.position.set(0, 10, 0);
+          window.Sappy3D.scene.add(hemisphereLight);
           
-          // Add a simple cube for testing
+          console.log('Lights added - soft lighting only');
+          
+          // Add a simple cube for testing - без теней
           const geometry = new THREE.BoxGeometry(1, 1, 1);
-          const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+          const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 }); // Используем Lambert вместо Phong
           const cube = new THREE.Mesh(geometry, material);
-          cube.castShadow = true;
-          cube.receiveShadow = true;
+          cube.castShadow = false; // Отключаем тени
+          cube.receiveShadow = false; // Отключаем тени
           window.Sappy3D.scene.add(cube);
-          console.log('Test cube added');
+          console.log('Test cube added - no shadows');
           
           // Check if OrbitControls is available
           if (typeof THREE.OrbitControls !== 'undefined') {
@@ -563,6 +554,15 @@
                   // Clear and render with stable settings
                   window.Sappy3D.renderer.clear();
                   window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
+                  
+                  // Принудительно обновляем материалы только при необходимости
+                  if (window.Sappy3D.character) {
+                    window.Sappy3D.character.traverse(function (child) {
+                      if (child.isMesh && child.material) {
+                        child.material.needsUpdate = false;
+                      }
+                    });
+                  }
                   
                 } catch (e) {
                   console.error('Error in animation loop:', e);
@@ -680,8 +680,14 @@
                   // Enable shadows for all meshes
                   window.Sappy3D.character.traverse(function (child) {
                     if (child.isMesh) {
-                      child.castShadow = true;
-                      child.receiveShadow = true;
+                      child.castShadow = false; // Отключаем тени
+                      child.receiveShadow = false; // Отключаем тени
+                      // Убеждаемся что материал стабилен
+                      if (child.material) {
+                        child.material.needsUpdate = false;
+                        child.material.transparent = false;
+                        child.material.opacity = 1.0;
+                      }
                     }
                   });
                   
