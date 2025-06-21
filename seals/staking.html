@@ -739,10 +739,11 @@
             ></div>
             <div
               class="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm transition-all duration-300 ease-in-out scale-0 opacity-0"
+              id="staking-modal"
             >
               <div class="relative flex flex-col justify-between overflow-hidden rounded-lg drop-shadow-lg w-[80vw] lg:w-[30vw] FHD:w-[22vw] p-6 text-white" style="background-color: #1c1c1e; border-radius: 20px; aspect-ratio: 9 / 18;">
                 <div class="flex items-center justify-between">
-                  <button class="text-white">
+                  <button class="text-white" id="close-staking-modal">
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
                   </button>
                   <h2 class="text-xl font-bold">Stake ETH</h2>
@@ -792,7 +793,7 @@
                   </ul>
                 </div>
 
-                <button class="w-full py-4 mt-6 font-bold text-lg text-black rounded-full" style="background-color: #34c759;">Continue</button>
+                <button class="w-full py-4 mt-6 font-bold text-lg text-black rounded-full" style="background-color: #34c759;" id="continue-staking-button">Continue</button>
               </div>
             </div>
             <div
@@ -811,8 +812,8 @@
                 </div>
                 <button
                   type="button"
+                  id="stake-selected-button"
                   class="flex w-[70%] flex-row items-center justify-evenly rounded-full bg-black text-[4.5vw] text-white md:text-[3vw] lg:text-[1.25vw] FHD:text-[1vw]"
-                  disabled=""
                 >
                   <svg
                     stroke="currentColor"
@@ -995,7 +996,7 @@
     <script>
       self.__next_f.push([
         1,
-        'ing)/page-caae78dd4c5933fc.js"],"SheetTrigger"]\n1e:I[60155,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","9734","static/chunks/9734-2197980714289f30.js","9193","static/chunks/9193-6054bf02668aaf7e.js","7770","static/chunks/7770-23724e428abdd010.js","818","static/chunks/app/(landing)/page-caae78dd4c5933fc.js"],"SheetContent"]\n1f:I[60155,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","9734","static/chunks/9734-2197980714289f30.js","9193","static/chunks/9193-6054bf02668aaf7e.js","7770","static/chunks/7770-23724e428abdd010.js","818","static/chunks/app/(landing)/page-caae78dd4c5933fc.js"],"SheetHeader"]\n20:I[60155,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","9734","static/chunks/9734-2197980714289f30.js","9193","static/chunks/9193-6054bf02668aaf7e.js","7770","static/chunks/7770-23724e428abdd010.js","818","static/chunks/app/(landing)/page-caae78dd4c5933fc.js"],"SheetTitle"]\n22:I[42818,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","9734","static/chunks/9734-2197980714289f30.js","9193","static/chunks/9193-6054bf02668aaf7e.js","7770","static/chunks/7770-23724e428abdd010.js","818","static/chunks/app/(landing)/page-caae78dd4c5933fc.js"],"MobileLink"]\n23:I[27054,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","9734","static/chunks/9734-2197980714289f30.js","9193","static/chunks/9193-6054bf02668aaf7e.js","7770","static/chunks/7770-23724e428abdd010.js","818","static/chunks/app/(landing)/page-caae78dd4c5933fc.js"],"WalletIconButton"]\n24:I[23926,["2565","static/chunks/f5848884-068f23b51fb186ef.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8024","static/chunks/8024-8b122e6e37154e8f.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","6128","static/chunks/6128-b59572ebb9e901b3.js","8748","static/chunks/8748-1151f2a3888c9690.js","7959","static/chunks/7959-6cd008b0bede0787.js","3185","static/chunks/app/layout-2dbfc3aeefcd55c9.js"],"ThemeProvider"]\n25:I[36711,["2565","static/chunks/f5848884-068f23b51fb186ef.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8024","static/chunks/8024-8b122e6e37154e8f.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","6128","static/chunks/6128-b59572ebb9e901b3.js","8748","static/chunks/8748-1151f2a3888c9690.js","7959","static/chunks/7959-6cd008b0bede0787.js","3185","static/chunks/app/layout-2dbfc3aeefcd55c9.js"],"QueryProvider"]\n2b:I[96160,[],""]\n21:{"src":"/seals/_next/static/media/logo.53a8da67.png","height":609,"width":824,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAAVFBMVEVYWFhzc3NqamqwsLBqamqFhYV/f3+oqKiSkpJ1dXWTk5OVlZV7e3tSUlJUVFRWVlZnZ2eDg4M9PT2UlJRgYGB+fn6vr6/ExMS7u7vPz8+AgICkpKSVEw1gAAAAF3RSTlP9/tf+4sWV/vTcr8/9qeKQsnr8f3ewxG7tNd4AAAAJcEhZcwAACxMAAAsTAQCanBgAAAA4SURBVHicBcEFAoAwDACxm3aCWzv4/z9JOJ+rtT1lulnQMDr+K5PjLdwC7pCNZDpUNDNHX5ca1x9CNAJSbdFYUgAAAABJRU5ErkJggg==","blurWidth":8,"blurHeight":6}\n26:{"fontFamily":"system-ui,\\"Segoe UI\\",Roboto,Helvetica,Arial,sans-serif,\\"Apple Color Emoji\\",\\"Segoe UI Emoji\\"","height":"100vh","textAlign":"center',
+        'ing)/page-caae78dd4c5933fc.js"],"SheetTrigger"]\n1e:I[60155,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","9734","static/chunks/9734-2197980714289f30.js","9193","static/chunks/9193-6054bf02668aaf7e.js","7770","static/chunks/7770-23724e428abdd010.js","818","static/chunks/app/(landing)/page-caae78dd4c5933fc.js"],"SheetContent"]\n1f:I[60155,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","9734","static/chunks/9734-2197980714289f30.js","9193","static/chunks/9193-6054bf02668aaf7e.js","7770","static/chunks/7770-23724e428abdd010.js","818","static/chunks/app/(landing)/page-caae78dd4c5933fc.js"],"SheetHeader"]\n20:I[60155,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","9734","static/chunks/9734-2197980714289f30.js","9193","static/chunks/9193-6054bf02668aaf7e.js","7770","static/chunks/7770-23724e428abdd010.js","818","static/chunks/app/(landing)/page-caae78dd4c5933fc.js"],"SheetTitle"]\n22:I[42818,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","9734","static/chunks/9734-2197980714289f30.js","9193","static/chunks/9193-6054bf02668aaf7e.js","7770","static/chunks/7770-23724e428abdd010.js","818","static/chunks/app/(landing)/page-caae78dd4c5933fc.js"],"MobileLink"]\n23:I[27054,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","9734","static/chunks/9734-2197980714289f30.js","9193","static/chunks/9193-6054bf02668aaf7e.js","7770","static/chunks/7770-23724e428abdd010.js","818","static/chunks/app/(landing)/page-caae78dd4c5933fc.js"],"WalletIconButton"]\n24:I[23926,["2565","static/chunks/f5848884-068f23b51fb186ef.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8024","static/chunks/8024-8b122e6e37154e8f.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","6128","static/chunks/6128-b59572ebb9e901b3.js","8748","static/chunks/8748-1151f2a3888c9690.js","7959","static/chunks/7959-6cd008b0bede0787.js","3185","static/chunks/app/layout-2dbfc3aeefcd55c9.js"],"ThemeProvider"]\n25:I[36711,["2565","static/chunks/f5848884-068f23b51fb186ef.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8024","static/chunks/8024-8b122e6e37154e8f.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","6128","static/chunks/6128-b59572ebb9e901b3.js","8748","static/chunks/8748-1151f2a3888c9690.js","7959","static/chunks/7959-6cd008b0bede0787.js","3185","static/chunks/app/layout-2dbfc3aeefcd55c9.js"],"QueryProvider"]\n2b:I[96160,[],""]\n21:{"src":"/seals/_next/static/media/logo.53a8da67.png","height":609,"width":824,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAAVFBMVEVYWFhzc3NqamqwsLBqamqFhYV/f3+oqKiSkpJ1dXWTk5OVlZV7e3tSUlJUVFRWVlZnZ2eDg4M9PT2UlJRgYGB+fn6vr6/ExMS7u7vPz8+AgICkpKSVEw1gAAAAF3RSTlP9/tf+4sWV/vTcr8/9qeKQsnr8f3ewxG7tNd4AAAAJcEhZcwAACxMAAAsTAQCanBgAAAA4SURBVHicBcEFAoAwDACxm3aCWzv4/z9JOJ+rtT1lulnQMDr+K5PjLdwC7pCNZDpUNDNHX5ca1x9CNAJSbdFYUgAAAABJRU5ErkJggg==","blurWidth":8,"blurHeight":6}\n26:{"fontFamily":"system-ui,\\"Segoe UI\\",Roboto,Helvetica,Arial,sans-serif,\\"Apple Color Emoji\\",\\"Segoe UI Emoji\\"","height":"100vh","textAlign":"center','
       ]);
     </script>
     <script>
@@ -1018,6 +1019,56 @@
     </script>
     <script>
       self.__next_f.push([1, "10:null\n"]);
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const stakingModal = document.getElementById('staking-modal');
+        const openModalButton = document.getElementById('stake-selected-button');
+        const closeModalButton = document.getElementById('close-staking-modal');
+        const continueButton = document.getElementById('continue-staking-button');
+
+        function openModal() {
+          if (stakingModal) {
+            stakingModal.classList.remove('scale-0', 'opacity-0');
+            stakingModal.classList.add('scale-100', 'opacity-100');
+          }
+        }
+
+        function closeModal() {
+          if (stakingModal) {
+            stakingModal.classList.add('scale-0', 'opacity-0');
+            stakingModal.classList.remove('scale-100', 'opacity-100');
+          }
+        }
+
+        if (openModalButton) {
+          openModalButton.addEventListener('click', openModal);
+        }
+
+        if(closeModalButton) {
+          closeModalButton.addEventListener('click', closeModal);
+        }
+
+        if(continueButton) {
+          continueButton.addEventListener('click', () => {
+            alert('Continue staking!');
+            closeModal();
+          });
+        }
+        
+        const testButton = document.createElement('button');
+        testButton.innerText = 'Test Stake Modal';
+        testButton.style.position = 'fixed';
+        testButton.style.bottom = '100px';
+        testButton.style.right = '20px';
+        testButton.style.padding = '10px';
+        testButton.style.backgroundColor = '#34c759';
+        testButton.style.color = 'black';
+        testButton.style.borderRadius = '10px';
+        testButton.style.zIndex = '100';
+        testButton.onclick = openModal;
+        document.body.appendChild(testButton);
+      });
     </script>
   </body>
 </html>
