@@ -525,10 +525,6 @@
           window.Sappy3D.renderer.outputEncoding = THREE.sRGBEncoding;
           window.Sappy3D.renderer.toneMapping = THREE.ACESFilmicToneMapping;
           window.Sappy3D.renderer.toneMappingExposure = 1.0;
-          window.Sappy3D.renderer.autoClear = true;
-          window.Sappy3D.renderer.autoClearColor = true;
-          window.Sappy3D.renderer.autoClearDepth = true;
-          window.Sappy3D.renderer.autoClearStencil = true;
           container.appendChild(window.Sappy3D.renderer.domElement);
           console.log('Renderer created and added to container');
           
@@ -645,148 +641,52 @@
                 }
               });
               
-              // Very smooth animation loop
-              let lastTime = performance.now();
-              let frameCount = 0;
-              let isAnimating = true;
+              console.log('OrbitControls event handlers set up');
               
+              // Стабильный анимационный цикл
               function animate() {
-                if (!isAnimating) return;
+                requestAnimationFrame(animate);
                 
-                try {
-                  requestAnimationFrame(animate);
-                  
-                  const currentTime = performance.now();
-                  const deltaTime = currentTime - lastTime;
-                  
-                  // Limit to 30 FPS for maximum stability
-                  if (deltaTime < 33) {
-                    return;
-                  }
-                  
-                  lastTime = currentTime;
-                  frameCount++;
-                  
-                  // Ensure scene and camera exist
-                  if (!window.Sappy3D.scene || !window.Sappy3D.camera || !window.Sappy3D.renderer) {
-                    console.warn('Scene, camera, or renderer not available');
-                    return;
-                  }
-                  
-                  // Update controls every frame for smooth interaction
-                  if (window.Sappy3D.controls && window.Sappy3D.controls.update) {
-                    window.Sappy3D.controls.update();
-                  }
-                  
-                  // Ensure camera is stable
-                  if (window.Sappy3D.camera) {
-                    window.Sappy3D.camera.updateMatrix();
-                    window.Sappy3D.camera.updateMatrixWorld();
-                  }
-                  
-                  // Clear and render with stable settings
-                  window.Sappy3D.renderer.clear();
+                // Обновляем контролы строго один раз
+                if (window.Sappy3D.controls && window.Sappy3D.controls.update) {
+                  window.Sappy3D.controls.update();
+                }
+                
+                // Рендерим сцену
+                if (window.Sappy3D.scene && window.Sappy3D.camera && window.Sappy3D.renderer) {
                   window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
-                  
-                  // Принудительно обновляем материалы только при необходимости
-                  if (window.Sappy3D.character) {
-                    window.Sappy3D.character.traverse(function (child) {
-                      if (child.isMesh && child.material) {
-                        child.material.needsUpdate = false;
-                      }
-                    });
-                  }
-                  
-                } catch (e) {
-                  console.error('Error in animation loop:', e);
-                  window.Sappy3D.showError('Animation Error: ' + e.message);
-                  isAnimating = false; // Stop animation on error
                 }
               }
+              
+              // Запускаем анимацию
               animate();
             } catch (e) {
               console.error('Error creating OrbitControls:', e);
               window.Sappy3D.showError('OrbitControls Error: ' + e.message);
-              // Fallback to very simple rotation only
-              console.log('Falling back to simple rotation only');
-              
-              let lastTime = performance.now();
-              let isAnimating = true;
+              // Fallback к простому рендеру
+              console.log('Falling back to simple render only');
               
               function animate() {
-                if (!isAnimating) return;
+                requestAnimationFrame(animate);
                 
-                try {
-                  requestAnimationFrame(animate);
-                  
-                  const currentTime = performance.now();
-                  const deltaTime = currentTime - lastTime;
-                  
-                  // Limit to 30 FPS for maximum stability
-                  if (deltaTime < 33) {
-                    return;
-                  }
-                  
-                  lastTime = currentTime;
-                  
-                  // Ensure scene and camera exist
-                  if (!window.Sappy3D.scene || !window.Sappy3D.camera || !window.Sappy3D.renderer) {
-                    console.warn('Scene, camera, or renderer not available');
-                    return;
-                  }
-                  
-                  // No automatic rotation - only manual control
-                  
-                  // Clear and render
-                  window.Sappy3D.renderer.clear();
+                if (window.Sappy3D.scene && window.Sappy3D.camera && window.Sappy3D.renderer) {
                   window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
-                } catch (e) {
-                  console.error('Error in simple animation loop:', e);
-                  window.Sappy3D.showError('Simple Animation Error: ' + e.message);
-                  isAnimating = false; // Stop animation on error
                 }
               }
+              
               animate();
             }
           } else {
-            console.log('OrbitControls not available, using simple rotation only');
-            // Very simple rotation only animation loop
-            let lastTime = performance.now();
-            let isAnimating = true;
+            console.log('OrbitControls not available, using simple render only');
             
             function animate() {
-              if (!isAnimating) return;
+              requestAnimationFrame(animate);
               
-              try {
-                requestAnimationFrame(animate);
-                
-                const currentTime = performance.now();
-                const deltaTime = currentTime - lastTime;
-                
-                // Limit to 30 FPS for maximum stability
-                if (deltaTime < 33) {
-                  return;
-                }
-                
-                lastTime = currentTime;
-                
-                // Ensure scene and camera exist
-                if (!window.Sappy3D.scene || !window.Sappy3D.camera || !window.Sappy3D.renderer) {
-                  console.warn('Scene, camera, or renderer not available');
-                  return;
-                }
-                
-                // No automatic rotation - only manual control
-                
-                // Clear and render
-                window.Sappy3D.renderer.clear();
+              if (window.Sappy3D.scene && window.Sappy3D.camera && window.Sappy3D.renderer) {
                 window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
-              } catch (e) {
-                console.error('Error in simple animation loop:', e);
-                window.Sappy3D.showError('Simple Animation Error: ' + e.message);
-                isAnimating = false; // Stop animation on error
               }
             }
+            
             animate();
           }
           
@@ -830,11 +730,14 @@
                   const maxDim = Math.max(size.x, size.y, size.z);
                   const fov = window.Sappy3D.camera.fov * (Math.PI / 180);
                   let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
-                  window.Sappy3D.camera.position.z = cameraZ * 1.5;
-                  window.Sappy3D.camera.lookAt(center);
+                  
+                  // Устанавливаем начальную позицию камеры только один раз
+                  window.Sappy3D.camera.position.set(0, 1.5, cameraZ * 1.5);
+                  
+                  // Настраиваем OrbitControls target
                   if (typeof THREE.OrbitControls !== 'undefined' && window.Sappy3D.controls) {
                     window.Sappy3D.controls.target.copy(center);
-                    window.Sappy3D.controls.update();
+                    // НЕ вызываем controls.update() здесь - это сделает анимационный цикл
                   }
                   
                   console.log('Character model setup complete');
@@ -863,6 +766,7 @@
               window.Sappy3D.camera.aspect = window.innerWidth / window.innerHeight;
               window.Sappy3D.camera.updateProjectionMatrix();
               window.Sappy3D.renderer.setSize(window.innerWidth, window.innerHeight);
+              // НЕ вызываем controls.update() здесь - это сделает анимационный цикл
             } catch (e) {
               console.error('Error in resize handler:', e);
               window.Sappy3D.showError('Resize Error: ' + e.message);
