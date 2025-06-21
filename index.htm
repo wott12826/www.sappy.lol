@@ -72,6 +72,21 @@
             // Remove global THREE to avoid conflicts
             delete window.THREE;
             console.log('Three.js moved to Sappy3D namespace');
+            
+            // Load GLTFLoader after Three.js
+            var gltfScript = document.createElement('script');
+            gltfScript.src = 'https://cdn.jsdelivr.net/npm/three@0.144.0/examples/js/loaders/GLTFLoader.js';
+            gltfScript.onload = function() {
+              console.log('GLTFLoader loaded successfully');
+              if (typeof THREE !== 'undefined' && THREE.GLTFLoader) {
+                window.Sappy3D.GLTFLoader = THREE.GLTFLoader;
+                console.log('GLTFLoader moved to Sappy3D namespace');
+              }
+            };
+            gltfScript.onerror = function() {
+              console.error('Failed to load GLTFLoader from CDN');
+            };
+            document.head.appendChild(gltfScript);
           }
         };
         script.onerror = function() {
@@ -85,6 +100,21 @@
               window.Sappy3D = window.Sappy3D || {};
               window.Sappy3D.THREE = THREE;
               delete window.THREE;
+              
+              // Load GLTFLoader after Three.js
+              var gltfScript = document.createElement('script');
+              gltfScript.src = 'https://unpkg.com/three@0.144.0/examples/js/loaders/GLTFLoader.js';
+              gltfScript.onload = function() {
+                console.log('GLTFLoader loaded successfully');
+                if (typeof THREE !== 'undefined' && THREE.GLTFLoader) {
+                  window.Sappy3D.GLTFLoader = THREE.GLTFLoader;
+                  console.log('GLTFLoader moved to Sappy3D namespace');
+                }
+              };
+              gltfScript.onerror = function() {
+                console.error('Failed to load GLTFLoader from alternative CDN');
+              };
+              document.head.appendChild(gltfScript);
             }
           };
           script2.onerror = function() {
@@ -95,8 +125,6 @@
         document.head.appendChild(script);
       })();
     </script>
-    <!-- GLTFLoader for 3D models -->
-    <script src="GLTFLoader.js"></script>
     <!-- OrbitControls for 3D interaction -->
     <script src="OrbitControls.js"></script>
     <title>Sappy</title>
@@ -327,6 +355,9 @@
           console.log('THREE.GLTFLoader available:', typeof window.Sappy3D.THREE.GLTFLoader !== 'undefined');
         }
         
+        // Check if our GLTFLoader is available
+        console.log('Sappy3D.GLTFLoader available:', typeof window.Sappy3D.GLTFLoader !== 'undefined');
+        
         // Check DOM elements
         console.log('=== DOM DIAGNOSTICS ===');
         console.log('Document body exists:', !!document.body);
@@ -386,12 +417,14 @@
       // Wait for all scripts to load
       window.Sappy3D.waitForThree = function() {
         try {
-          if (typeof window.Sappy3D.THREE !== 'undefined') {
-            console.log('THREE.js is available');
+          if (typeof window.Sappy3D.THREE !== 'undefined' && typeof window.Sappy3D.GLTFLoader !== 'undefined') {
+            console.log('THREE.js and GLTFLoader are available');
             window.Sappy3D.runDiagnostics();
             window.Sappy3D.waitForMainAndInit();
           } else {
-            console.log('Waiting for THREE.js...');
+            console.log('Waiting for THREE.js and GLTFLoader...');
+            console.log('THREE available:', typeof window.Sappy3D.THREE !== 'undefined');
+            console.log('GLTFLoader available:', typeof window.Sappy3D.GLTFLoader !== 'undefined');
             setTimeout(window.Sappy3D.waitForThree, 100);
           }
         } catch (e) {
@@ -520,21 +553,22 @@
           window.Sappy3D.renderer.setSize(window.innerWidth, window.innerHeight);
           window.Sappy3D.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio
           window.Sappy3D.renderer.shadowMap.enabled = false; // Отключаем тени для стабильности
-          window.Sappy3D.renderer.outputEncoding = THREE.sRGBEncoding;
+          window.Sappy3D.renderer.outputEncoding = THREE.sRGBEncoding; // Правильная настройка для GLB
           window.Sappy3D.renderer.toneMapping = THREE.ACESFilmicToneMapping;
           window.Sappy3D.renderer.toneMappingExposure = 1.0;
           container.appendChild(window.Sappy3D.renderer.domElement);
           console.log('Renderer created and added to container');
           
           // Add improved lights based on user feedback
-          const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+          const ambientLight = new THREE.AmbientLight(0xffffff, 0.6); // Увеличиваем интенсивность
           window.Sappy3D.scene.add(ambientLight);
           
-          const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-          directionalLight.position.set(5, 10, 5); // Correct position
+          const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2); // Увеличиваем интенсивность
+          directionalLight.position.set(5, 10, 5); // Правильная позиция
+          directionalLight.castShadow = false; // Отключаем тени
           window.Sappy3D.scene.add(directionalLight);
 
-          console.log('Lights added - Directional and Ambient');
+          console.log('Lights added - Directional and Ambient with proper intensity');
           
           // Add a simple cube for testing - без теней
           const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -697,10 +731,10 @@
           }
           
           // Check if GLTFLoader is available
-          if (typeof THREE.GLTFLoader !== 'undefined') {
+          if (typeof window.Sappy3D.GLTFLoader !== 'undefined') {
             console.log('GLTFLoader is available, loading model...');
             // Load GLB model
-            const loader = new THREE.GLTFLoader();
+            const loader = new window.Sappy3D.GLTFLoader();
             loader.load(
               'base_basic_shaded.glb',
               function (gltf) {
@@ -710,7 +744,8 @@
                   window.Sappy3D.character.scale.set(1, 1, 1);
                   window.Sappy3D.character.position.set(0, 0, 0);
                   
-                  // Do not traverse and modify materials, use original ones.
+                  // НЕ изменяем материалы - используем оригинальные из GLB
+                  console.log('Using original materials from GLB file');
                   
                   window.Sappy3D.scene.add(window.Sappy3D.character);
                   
@@ -745,7 +780,7 @@
                     // НЕ вызываем controls.update() здесь - это сделает анимационный цикл
                   }
                   
-                  console.log('Character model setup complete');
+                  console.log('Character model setup complete with original materials');
                 } catch (e) {
                   console.error('Error setting up character model:', e);
                   window.Sappy3D.showError('Character Setup Error: ' + e.message);
