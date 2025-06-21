@@ -452,6 +452,8 @@
       window.Sappy3D.renderer = null;
       window.Sappy3D.character = null;
       window.Sappy3D.controls = null;
+      window.Sappy3D.mixer = null; // For animations
+      window.Sappy3D.clock = null; // For animations
       
       window.Sappy3D.init = function() {
         try {
@@ -524,17 +526,15 @@
           container.appendChild(window.Sappy3D.renderer.domElement);
           console.log('Renderer created and added to container');
           
-          // Add lights - только мягкое освещение без теней
-          const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
-          ambientLight.intensity = 0.8;
+          // Add improved lights based on user feedback
+          const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
           window.Sappy3D.scene.add(ambientLight);
           
-          // Добавляем дополнительное мягкое освещение сверху
-          const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
-          hemisphereLight.position.set(0, 10, 0);
-          window.Sappy3D.scene.add(hemisphereLight);
-          
-          console.log('Lights added - soft lighting only');
+          const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+          directionalLight.position.set(5, 10, 7);
+          window.Sappy3D.scene.add(directionalLight);
+
+          console.log('Lights added - Directional and Ambient');
           
           // Add a simple cube for testing - без теней
           const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -643,6 +643,11 @@
               function animate() {
                 requestAnimationFrame(animate);
                 
+                // Update animation mixer
+                if (window.Sappy3D.mixer && window.Sappy3D.clock) {
+                  window.Sappy3D.mixer.update(window.Sappy3D.clock.getDelta());
+                }
+
                 // Обновляем контролы строго один раз
                 if (window.Sappy3D.controls && window.Sappy3D.controls.update) {
                   window.Sappy3D.controls.update();
@@ -723,6 +728,17 @@
                   
                   // Remove test cube
                   window.Sappy3D.scene.remove(cube);
+                  
+                  // Setup animation mixer
+                  if (gltf.animations && gltf.animations.length) {
+                    window.Sappy3D.clock = new THREE.Clock();
+                    window.Sappy3D.mixer = new THREE.AnimationMixer(window.Sappy3D.character);
+                    const action = window.Sappy3D.mixer.clipAction(gltf.animations[0]);
+                    action.play();
+                    console.log('AnimationMixer created and first animation started.');
+                  } else {
+                    console.log('No animations found in the model.');
+                  }
                   
                   // Center camera on character
                   const box = new THREE.Box3().setFromObject(window.Sappy3D.character);
