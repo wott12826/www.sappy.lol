@@ -170,7 +170,7 @@
       
       <!-- Interaction hint -->
       <div id="interaction-hint" class="absolute top-4 left-4 z-30 bg-black bg-opacity-50 text-white px-3 py-2 rounded-lg text-sm pointer-events-none opacity-75">
-        💡 Перетащите мышкой для вращения • Кликните для анимации
+        💡 Перетащите мышкой для вращения и перемещения • Кликните для анимации
       </div>
       <div
         class="absolute flex flex-col gap-3 bottom-0 bg-transparent h-fit justify-between w-full px-[5vw] md:px-[3vw] xl:px-[2vw] pb-3 z-20 "
@@ -506,8 +506,7 @@
               window.Sappy3D.controls.dampingFactor = 0.1;
               window.Sappy3D.controls.enableZoom = false; // Disable zoom
               window.Sappy3D.controls.enablePan = true; // Enable pan for dragging
-              window.Sappy3D.controls.autoRotate = true; // Keep auto rotation
-              window.Sappy3D.controls.autoRotateSpeed = 0.3;
+              window.Sappy3D.controls.autoRotate = false; // Disable auto rotation
               window.Sappy3D.controls.enableRotate = true; // Keep manual rotation
               window.Sappy3D.controls.rotateSpeed = 0.5; // Slightly faster rotation
               window.Sappy3D.controls.minDistance = 4; // Fixed distance
@@ -517,15 +516,10 @@
               window.Sappy3D.controls.zoomSpeed = 0; // Disable zoom speed
               window.Sappy3D.controls.panSpeed = 0.8; // Pan speed for dragging
               window.Sappy3D.controls.screenSpacePanning = true; // Better panning behavior
-              console.log('OrbitControls created with drag interaction enabled');
+              console.log('OrbitControls created with manual control only');
               
               // Add mouse event handlers for better interaction
               window.Sappy3D.renderer.domElement.addEventListener('mousedown', function(event) {
-                // Stop auto-rotation when user starts interacting
-                if (window.Sappy3D.controls) {
-                  window.Sappy3D.controls.autoRotate = false;
-                }
-                
                 // Hide interaction hint after first interaction
                 const hint = document.getElementById('interaction-hint');
                 if (hint) {
@@ -536,28 +530,16 @@
                 }
               });
               
-              window.Sappy3D.renderer.domElement.addEventListener('mouseup', function(event) {
-                // Resume auto-rotation after a delay when user stops interacting
-                setTimeout(function() {
-                  if (window.Sappy3D.controls) {
-                    window.Sappy3D.controls.autoRotate = true;
-                  }
-                }, 2000); // Resume after 2 seconds of no interaction
-              });
-              
               // Add touch support for mobile devices
               window.Sappy3D.renderer.domElement.addEventListener('touchstart', function(event) {
-                if (window.Sappy3D.controls) {
-                  window.Sappy3D.controls.autoRotate = false;
+                // Hide interaction hint after first interaction
+                const hint = document.getElementById('interaction-hint');
+                if (hint) {
+                  hint.style.opacity = '0';
+                  setTimeout(function() {
+                    hint.style.display = 'none';
+                  }, 500);
                 }
-              });
-              
-              window.Sappy3D.renderer.domElement.addEventListener('touchend', function(event) {
-                setTimeout(function() {
-                  if (window.Sappy3D.controls) {
-                    window.Sappy3D.controls.autoRotate = true;
-                  }
-                }, 2000);
               });
               
               // Add visual feedback for interaction
@@ -686,10 +668,7 @@
                     return;
                   }
                   
-                  // Only rotation, no other movement
-                  if (window.Sappy3D.scene) {
-                    window.Sappy3D.scene.rotation.y += 0.002; // Very slow rotation only
-                  }
+                  // No automatic rotation - only manual control
                   
                   // Clear and render
                   window.Sappy3D.renderer.clear();
@@ -730,10 +709,7 @@
                   return;
                 }
                 
-                // Only rotation, no other movement
-                if (window.Sappy3D.scene) {
-                  window.Sappy3D.scene.rotation.y += 0.002; // Very slow rotation only
-                }
+                // No automatic rotation - only manual control
                 
                 // Clear and render
                 window.Sappy3D.renderer.clear();
