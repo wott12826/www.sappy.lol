@@ -1000,5 +1000,14 @@
     <script>
       self.__next_f.push([1, "10:null\n"]);
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const newsSection = document.getElementById("news");
+          if (newsSection) {
+            newsSection.style.display = "none";
+          }
+        });
+      </script>
+      
   </body>
 </html>
