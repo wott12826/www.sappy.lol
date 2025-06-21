@@ -56,10 +56,10 @@
       src="_next/static/chunks/app/page-b4341840a5519050.js"
       async=""
     ></script>
-    <!-- Three.js library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <!-- GLTFLoader for 3D models -->
+    <script src="GLTFLoader.js"></script>
+    <!-- OrbitControls for 3D interaction -->
+    <script src="OrbitControls.js"></script>
     <title>Sappy</title>
     <meta name="description" content="Shaping the future of the internet." />
     <meta property="og:title" content="Sappy" />
@@ -193,10 +193,29 @@
     
     <!-- 3D Character Script -->
     <script>
+      // Wait for all scripts to load
+      function waitForThree() {
+        if (typeof THREE !== 'undefined') {
+          console.log('THREE.js is available');
+          init();
+        } else {
+          console.log('Waiting for THREE.js...');
+          setTimeout(waitForThree, 100);
+        }
+      }
+      
       // Initialize Three.js scene
-      let scene, camera, renderer, character;
+      let scene, camera, renderer, character, controls;
       
       function init() {
+        // Check if THREE is available
+        if (typeof THREE === 'undefined') {
+          console.error('THREE.js not available');
+          return;
+        }
+        
+        console.log('Initializing 3D scene...');
+        
         // Create scene
         scene = new THREE.Scene();
         scene.background = new THREE.Color(0xffffff);
@@ -225,61 +244,93 @@
         directionalLight.shadow.mapSize.height = 2048;
         scene.add(directionalLight);
         
-        // Add orbit controls
-        const controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.05;
-        controls.enableZoom = true;
-        controls.enablePan = false;
-        controls.autoRotate = true;
-        controls.autoRotateSpeed = 0.5;
+        // Add a simple cube for testing
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        cube.castShadow = true;
+        cube.receiveShadow = true;
+        scene.add(cube);
         
-        // Load GLB model
-        const loader = new THREE.GLTFLoader();
-        loader.load(
-          'base_basic_shaded.glb',
-          function (gltf) {
-            character = gltf.scene;
-            character.scale.set(1, 1, 1);
-            character.position.set(0, 0, 0);
-            
-            // Enable shadows for all meshes
-            character.traverse(function (child) {
-              if (child.isMesh) {
-                child.castShadow = true;
-                child.receiveShadow = true;
-              }
-            });
-            
-            scene.add(character);
-            
-            // Center camera on character
-            const box = new THREE.Box3().setFromObject(character);
-            const center = box.getCenter(new THREE.Vector3());
-            const size = box.getSize(new THREE.Vector3());
-            const maxDim = Math.max(size.x, size.y, size.z);
-            const fov = camera.fov * (Math.PI / 180);
-            let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
-            camera.position.z = cameraZ * 1.5;
-            camera.lookAt(center);
-            controls.target.copy(center);
+        // Check if OrbitControls is available
+        if (typeof THREE.OrbitControls !== 'undefined') {
+          console.log('OrbitControls is available');
+          // Add orbit controls
+          controls = new THREE.OrbitControls(camera, renderer.domElement);
+          controls.enableDamping = true;
+          controls.dampingFactor = 0.05;
+          controls.enableZoom = true;
+          controls.enablePan = false;
+          controls.autoRotate = true;
+          controls.autoRotateSpeed = 0.5;
+          
+          // Animation loop with controls
+          function animate() {
+            requestAnimationFrame(animate);
             controls.update();
-          },
-          function (xhr) {
-            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-          },
-          function (error) {
-            console.error('An error happened loading the model:', error);
+            renderer.render(scene, camera);
           }
-        );
-        
-        // Animation loop
-        function animate() {
-          requestAnimationFrame(animate);
-          controls.update();
-          renderer.render(scene, camera);
+          animate();
+        } else {
+          console.log('OrbitControls not available, using simple animation');
+          // Simple animation loop without controls
+          function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+          }
+          animate();
         }
-        animate();
+        
+        // Check if GLTFLoader is available
+        if (typeof THREE.GLTFLoader !== 'undefined') {
+          console.log('GLTFLoader is available, loading model...');
+          // Load GLB model
+          const loader = new THREE.GLTFLoader();
+          loader.load(
+            'base_basic_shaded.glb',
+            function (gltf) {
+              console.log('Model loaded successfully');
+              character = gltf.scene;
+              character.scale.set(1, 1, 1);
+              character.position.set(0, 0, 0);
+              
+              // Enable shadows for all meshes
+              character.traverse(function (child) {
+                if (child.isMesh) {
+                  child.castShadow = true;
+                  child.receiveShadow = true;
+                }
+              });
+              
+              scene.add(character);
+              
+              // Remove test cube
+              scene.remove(cube);
+              
+              // Center camera on character
+              const box = new THREE.Box3().setFromObject(character);
+              const center = box.getCenter(new THREE.Vector3());
+              const size = box.getSize(new THREE.Vector3());
+              const maxDim = Math.max(size.x, size.y, size.z);
+              const fov = camera.fov * (Math.PI / 180);
+              let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
+              camera.position.z = cameraZ * 1.5;
+              camera.lookAt(center);
+              if (typeof THREE.OrbitControls !== 'undefined' && controls) {
+                controls.target.copy(center);
+                controls.update();
+              }
+            },
+            function (xhr) {
+              console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+            },
+            function (error) {
+              console.error('An error happened loading the model:', error);
+            }
+          );
+        } else {
+          console.error('GLTFLoader not available');
+        }
         
         // Handle window resize
         window.addEventListener('resize', onWindowResize, false);
@@ -291,7 +342,11 @@
       }
       
       // Initialize when page loads
-      window.addEventListener('load', init);
+      window.addEventListener('load', function() {
+        console.log('Page loaded, waiting for scripts...');
+        // Wait a bit more for all scripts to load
+        setTimeout(waitForThree, 500);
+      });
     </script>
   </body>
 </html>
