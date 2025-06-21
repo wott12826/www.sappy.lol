@@ -470,13 +470,9 @@
           console.log('Scene created');
           
           // Create camera
-          window.Sappy3D.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+          window.Sappy3D.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100); // Tighter near/far planes
           window.Sappy3D.camera.position.set(0, 1.5, 4);
-          window.Sappy3D.camera.near = 0.1;
-          window.Sappy3D.camera.far = 1000;
           window.Sappy3D.camera.updateProjectionMatrix();
-          window.Sappy3D.camera.matrixAutoUpdate = true;
-          window.Sappy3D.camera.matrixWorldAutoUpdate = true;
           console.log('Camera created');
           
           // Find or create container
@@ -515,7 +511,7 @@
             powerPreference: "high-performance",
             stencil: false,
             depth: true,
-            logarithmicDepthBuffer: false,
+            logarithmicDepthBuffer: true, // Enable for better depth precision
             preserveDrawingBuffer: false,
             failIfMajorPerformanceCaveat: false
           });
@@ -650,6 +646,11 @@
                 // Обновляем контролы строго один раз
                 if (window.Sappy3D.controls && window.Sappy3D.controls.update) {
                   window.Sappy3D.controls.update();
+                }
+
+                // Принудительно обновляем матрицу камеры после контролов
+                if (window.Sappy3D.camera) {
+                  window.Sappy3D.camera.updateMatrixWorld();
                 }
                 
                 // Рендерим сцену
