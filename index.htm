@@ -405,6 +405,7 @@
           // Create scene
           window.Sappy3D.scene = new THREE.Scene();
           window.Sappy3D.scene.background = new THREE.Color(0xffffff);
+          window.Sappy3D.scene.fog = null; // Disable fog
           console.log('Scene created');
           
           // Create camera
@@ -413,6 +414,8 @@
           window.Sappy3D.camera.near = 0.1;
           window.Sappy3D.camera.far = 1000;
           window.Sappy3D.camera.updateProjectionMatrix();
+          window.Sappy3D.camera.matrixAutoUpdate = true;
+          window.Sappy3D.camera.matrixWorldAutoUpdate = true;
           console.log('Camera created');
           
           // Find or create container
@@ -450,7 +453,9 @@
             powerPreference: "high-performance",
             stencil: false,
             depth: true,
-            logarithmicDepthBuffer: false
+            logarithmicDepthBuffer: false,
+            preserveDrawingBuffer: false,
+            failIfMajorPerformanceCaveat: false
           });
           window.Sappy3D.renderer.setSize(window.innerWidth, window.innerHeight);
           window.Sappy3D.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio
@@ -459,11 +464,16 @@
           window.Sappy3D.renderer.outputEncoding = THREE.sRGBEncoding;
           window.Sappy3D.renderer.toneMapping = THREE.ACESFilmicToneMapping;
           window.Sappy3D.renderer.toneMappingExposure = 1.0;
+          window.Sappy3D.renderer.autoClear = true;
+          window.Sappy3D.renderer.autoClearColor = true;
+          window.Sappy3D.renderer.autoClearDepth = true;
+          window.Sappy3D.renderer.autoClearStencil = true;
           container.appendChild(window.Sappy3D.renderer.domElement);
           console.log('Renderer created and added to container');
           
           // Add lights
           const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+          ambientLight.intensity = 0.6;
           window.Sappy3D.scene.add(ambientLight);
           
           const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
@@ -471,6 +481,13 @@
           directionalLight.castShadow = true;
           directionalLight.shadow.mapSize.width = 2048;
           directionalLight.shadow.mapSize.height = 2048;
+          directionalLight.shadow.camera.near = 0.5;
+          directionalLight.shadow.camera.far = 50;
+          directionalLight.shadow.camera.left = -10;
+          directionalLight.shadow.camera.right = 10;
+          directionalLight.shadow.camera.top = 10;
+          directionalLight.shadow.camera.bottom = -10;
+          directionalLight.intensity = 0.8;
           window.Sappy3D.scene.add(directionalLight);
           console.log('Lights added');
           
@@ -507,8 +524,11 @@
               // Very smooth animation loop
               let lastTime = performance.now();
               let frameCount = 0;
+              let isAnimating = true;
               
               function animate() {
+                if (!isAnimating) return;
+                
                 try {
                   requestAnimationFrame(animate);
                   
@@ -523,6 +543,12 @@
                   lastTime = currentTime;
                   frameCount++;
                   
+                  // Ensure scene and camera exist
+                  if (!window.Sappy3D.scene || !window.Sappy3D.camera || !window.Sappy3D.renderer) {
+                    console.warn('Scene, camera, or renderer not available');
+                    return;
+                  }
+                  
                   // Update controls only every few frames for stability
                   if (frameCount % 2 === 0 && window.Sappy3D.controls && window.Sappy3D.controls.update) {
                     window.Sappy3D.controls.update();
@@ -534,14 +560,14 @@
                     window.Sappy3D.camera.updateMatrixWorld();
                   }
                   
-                  // Render with stable settings
-                  if (window.Sappy3D.renderer && window.Sappy3D.scene) {
-                    window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
-                  }
+                  // Clear and render with stable settings
+                  window.Sappy3D.renderer.clear();
+                  window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
                   
                 } catch (e) {
                   console.error('Error in animation loop:', e);
                   window.Sappy3D.showError('Animation Error: ' + e.message);
+                  isAnimating = false; // Stop animation on error
                 }
               }
               animate();
@@ -552,7 +578,11 @@
               console.log('Falling back to simple rotation only');
               
               let lastTime = performance.now();
+              let isAnimating = true;
+              
               function animate() {
+                if (!isAnimating) return;
+                
                 try {
                   requestAnimationFrame(animate);
                   
@@ -566,17 +596,24 @@
                   
                   lastTime = currentTime;
                   
+                  // Ensure scene and camera exist
+                  if (!window.Sappy3D.scene || !window.Sappy3D.camera || !window.Sappy3D.renderer) {
+                    console.warn('Scene, camera, or renderer not available');
+                    return;
+                  }
+                  
                   // Only rotation, no other movement
                   if (window.Sappy3D.scene) {
                     window.Sappy3D.scene.rotation.y += 0.002; // Very slow rotation only
                   }
                   
-                  if (window.Sappy3D.renderer && window.Sappy3D.scene) {
-                    window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
-                  }
+                  // Clear and render
+                  window.Sappy3D.renderer.clear();
+                  window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
                 } catch (e) {
                   console.error('Error in simple animation loop:', e);
                   window.Sappy3D.showError('Simple Animation Error: ' + e.message);
+                  isAnimating = false; // Stop animation on error
                 }
               }
               animate();
@@ -585,7 +622,11 @@
             console.log('OrbitControls not available, using simple rotation only');
             // Very simple rotation only animation loop
             let lastTime = performance.now();
+            let isAnimating = true;
+            
             function animate() {
+              if (!isAnimating) return;
+              
               try {
                 requestAnimationFrame(animate);
                 
@@ -599,17 +640,24 @@
                 
                 lastTime = currentTime;
                 
+                // Ensure scene and camera exist
+                if (!window.Sappy3D.scene || !window.Sappy3D.camera || !window.Sappy3D.renderer) {
+                  console.warn('Scene, camera, or renderer not available');
+                  return;
+                }
+                
                 // Only rotation, no other movement
                 if (window.Sappy3D.scene) {
                   window.Sappy3D.scene.rotation.y += 0.002; // Very slow rotation only
                 }
                 
-                if (window.Sappy3D.renderer && window.Sappy3D.scene) {
-                  window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
-                }
+                // Clear and render
+                window.Sappy3D.renderer.clear();
+                window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
               } catch (e) {
                 console.error('Error in simple animation loop:', e);
                 window.Sappy3D.showError('Simple Animation Error: ' + e.message);
+                isAnimating = false; // Stop animation on error
               }
             }
             animate();
