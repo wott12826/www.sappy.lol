@@ -160,10 +160,7 @@
       style="height: 100svh"
     >
       <!-- 3D Scene Container -->
-      <div id="three-container" class="absolute inset-0 z-5"></div>
-      <canvas
-        class="absolute inset-0 z-10 bg-transparent pointer-events-none"
-      ></canvas>
+      <div id="three-container" class="absolute inset-0 z-15"></div>
       <div style="width: 100%; height: 100%" class="absolute inset-0 z-0">
         <canvas style="display: none"></canvas>
       </div>
@@ -379,7 +376,7 @@
           if (typeof window.Sappy3D.THREE !== 'undefined') {
             console.log('THREE.js is available');
             window.Sappy3D.runDiagnostics();
-            window.Sappy3D.init();
+            window.Sappy3D.waitForMainAndInit();
           } else {
             console.log('Waiting for THREE.js...');
             setTimeout(window.Sappy3D.waitForThree, 100);
@@ -387,6 +384,23 @@
         } catch (e) {
           console.error('Error in waitForThree:', e);
           window.Sappy3D.showError('Error in waitForThree: ' + e.message);
+        }
+      };
+      
+      // Wait for main element to be available
+      window.Sappy3D.waitForMainAndInit = function() {
+        try {
+          const main = document.querySelector('main');
+          if (!main) {
+            console.log('Main element not found, waiting...');
+            setTimeout(window.Sappy3D.waitForMainAndInit, 100);
+            return;
+          }
+          console.log('Main element found, initializing 3D...');
+          window.Sappy3D.init();
+        } catch (e) {
+          console.error('Error in waitForMainAndInit:', e);
+          window.Sappy3D.showError('Error in waitForMainAndInit: ' + e.message);
         }
       };
       
@@ -435,17 +449,17 @@
               left: 0;
               width: 100%;
               height: 100%;
-              z-index: 5;
+              z-index: 15;
             `;
             
-            // Find main element and add container
+            // Always add to main element
             const main = document.querySelector('main');
             if (main) {
               main.insertBefore(container, main.firstChild);
               console.log('Container created and added to main');
             } else {
-              document.body.appendChild(container);
-              console.log('Container created and added to body');
+              console.error('Main element not found, cannot create container');
+              throw new Error('Main element not found');
             }
           } else {
             console.log('Container found:', container);
@@ -525,6 +539,7 @@
               
               // Один обработчик для всех событий мыши
               window.Sappy3D.renderer.domElement.addEventListener('mousedown', function(event) {
+                console.log('Mouse down on canvas!', event);
                 window.Sappy3D.renderer.domElement.style.cursor = 'grabbing';
                 
                 // Hide interaction hint after first interaction
@@ -538,7 +553,14 @@
               });
               
               window.Sappy3D.renderer.domElement.addEventListener('mouseup', function(event) {
+                console.log('Mouse up on canvas!', event);
                 window.Sappy3D.renderer.domElement.style.cursor = 'grab';
+              });
+              
+              window.Sappy3D.renderer.domElement.addEventListener('mousemove', function(event) {
+                if (event.buttons > 0) {
+                  console.log('Mouse move with button pressed!', event);
+                }
               });
               
               // Touch support
@@ -583,6 +605,12 @@
               // Update controls every frame for better responsiveness
               if (window.Sappy3D.controls && window.Sappy3D.controls.update) {
                 window.Sappy3D.controls.update();
+                
+                // Debug: check if controls are actually changing camera
+                if (frameCount % 60 === 0) { // Every 2 seconds at 30 FPS
+                  console.log('Camera position:', window.Sappy3D.camera.position);
+                  console.log('Camera rotation:', window.Sappy3D.camera.rotation);
+                }
               }
               
               // Very smooth animation loop
