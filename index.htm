@@ -1,1025 +1,325 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="preload"
-      href="_next/static/media/a34f9d1faa5f3315-s.p.woff2"
-      as="font"
-      crossorigin=""
-      type="font/woff2"
-    />
-    <link
-      rel="stylesheet"
-      href="_next/static/css/bde7ed16c3ff486a.css"
-      crossorigin=""
-      data-precedence="next"
-    />
-    <link
-      rel="preload"
-      as="script"
-      fetchpriority="low"
-      href="_next/static/chunks/webpack-bc04315c01c03d8c.js"
-      crossorigin=""
-    />
-    <script
-      src="_next/static/chunks/30b509c0-82089e7b3225ba1b.js"
-      async=""
-      crossorigin=""
-    ></script>
-    <style>
-        @media (min-width: 1280px) {
-    .xl\:px-\[2vw\] {
-        padding-left: 2vw;
-        padding-right: 2vw;
-        margin-bottom: 2% !important;
-    }
-}
-    </style>
-    <script
-      src="_next/static/chunks/184-23e8ca0fd8eb75aa.js"
-      async=""
-      crossorigin=""
-    ></script>
-    <script
-      src="_next/static/chunks/main-app-ee5ea468b114ac39.js"
-      async=""
-      crossorigin=""
-    ></script>
-    <script
-      src="_next/static/chunks/e64ca62e-9ddc06a344c16179.js"
-      async=""
-    ></script>
-    <script src="_next/static/chunks/349-8d6ad2a46252b064.js" async=""></script>
-    <script
-      src="_next/static/chunks/app/page-b4341840a5519050.js"
-      async=""
-    ></script>
-    <!-- Three.js library - load first, before other scripts -->
-    <script>
-      // Load Three.js and related scripts in correct order with global THREE
-      (function() {
-        console.log('Loading Three.js and related scripts...');
-        
-        // Load Three.js first (creates global THREE)
-        var threeScript = document.createElement('script');
-        threeScript.src = 'https://cdn.jsdelivr.net/npm/three@0.144.0/build/three.min.js';
-        threeScript.onload = function() {
-          console.log('Three.js loaded successfully, global THREE available');
-          
-          // Load GLTFLoader after Three.js (uses global THREE)
-          var gltfScript = document.createElement('script');
-          gltfScript.src = 'https://cdn.jsdelivr.net/npm/three@0.144.0/examples/js/loaders/GLTFLoader.js';
-          gltfScript.onload = function() {
-            console.log('GLTFLoader loaded successfully');
-            
-            // Load OrbitControls after GLTFLoader (uses global THREE)
-            var orbitScript = document.createElement('script');
-            orbitScript.src = 'https://cdn.jsdelivr.net/npm/three@0.144.0/examples/js/controls/OrbitControls.js';
-            orbitScript.onload = function() {
-              console.log('OrbitControls loaded successfully');
-              
-              // Now that all scripts are loaded, move everything to our namespace
-              if (typeof THREE !== 'undefined') {
-                window.Sappy3D = window.Sappy3D || {};
-                window.Sappy3D.THREE = THREE;
-                
-                // Check if GLTFLoader is available
-                if (typeof THREE.GLTFLoader !== 'undefined') {
-                  window.Sappy3D.THREE.GLTFLoader = THREE.GLTFLoader;
-                  console.log('GLTFLoader moved to Sappy3D namespace');
-                } else {
-                  console.error('GLTFLoader not found in THREE object');
-                }
-                
-                // Check if OrbitControls is available
-                if (typeof THREE.OrbitControls !== 'undefined') {
-                  window.Sappy3D.THREE.OrbitControls = THREE.OrbitControls;
-                  console.log('OrbitControls moved to Sappy3D namespace');
-                } else {
-                  console.error('OrbitControls not found in THREE object');
-                }
-                
-                // Keep global THREE available for compatibility
-                // Don't delete window.THREE - keep it for other scripts that might need it
-                console.log('All Three.js components moved to Sappy3D namespace, global THREE preserved');
-              }
-            };
-            orbitScript.onerror = function() {
-              console.error('Failed to load OrbitControls from CDN');
-            };
-            document.head.appendChild(orbitScript);
-          };
-          gltfScript.onerror = function() {
-            console.error('Failed to load GLTFLoader from CDN');
-          };
-          document.head.appendChild(gltfScript);
-        };
-        threeScript.onerror = function() {
-          console.error('Failed to load Three.js from CDN, trying alternative...');
-          
-          // Try alternative CDN
-          var threeScript2 = document.createElement('script');
-          threeScript2.src = 'https://unpkg.com/three@0.144.0/build/three.min.js';
-          threeScript2.onload = function() {
-            console.log('Three.js loaded from alternative CDN, global THREE available');
-            
-            // Load GLTFLoader after Three.js (uses global THREE)
-            var gltfScript2 = document.createElement('script');
-            gltfScript2.src = 'https://unpkg.com/three@0.144.0/examples/js/loaders/GLTFLoader.js';
-            gltfScript2.onload = function() {
-              console.log('GLTFLoader loaded from alternative CDN');
-              
-              // Load OrbitControls after GLTFLoader (uses global THREE)
-              var orbitScript2 = document.createElement('script');
-              orbitScript2.src = 'https://unpkg.com/three@0.144.0/examples/js/controls/OrbitControls.js';
-              orbitScript2.onload = function() {
-                console.log('OrbitControls loaded from alternative CDN');
-                
-                // Now that all scripts are loaded, move everything to our namespace
-                if (typeof THREE !== 'undefined') {
-                  window.Sappy3D = window.Sappy3D || {};
-                  window.Sappy3D.THREE = THREE;
-                  
-                  // Check if GLTFLoader is available
-                  if (typeof THREE.GLTFLoader !== 'undefined') {
-                    window.Sappy3D.THREE.GLTFLoader = THREE.GLTFLoader;
-                    console.log('GLTFLoader moved to Sappy3D namespace');
-                  } else {
-                    console.error('GLTFLoader not found in THREE object');
-                  }
-                  
-                  // Check if OrbitControls is available
-                  if (typeof THREE.OrbitControls !== 'undefined') {
-                    window.Sappy3D.THREE.OrbitControls = THREE.OrbitControls;
-                    console.log('OrbitControls moved to Sappy3D namespace');
-                  } else {
-                    console.error('OrbitControls not found in THREE object');
-                  }
-                  
-                  // Keep global THREE available for compatibility
-                  // Don't delete window.THREE - keep it for other scripts that might need it
-                  console.log('All Three.js components moved to Sappy3D namespace, global THREE preserved');
-                }
-              };
-              orbitScript2.onerror = function() {
-                console.error('Failed to load OrbitControls from alternative CDN');
-              };
-              document.head.appendChild(orbitScript2);
-            };
-            gltfScript2.onerror = function() {
-              console.error('Failed to load GLTFLoader from alternative CDN');
-            };
-            document.head.appendChild(gltfScript2);
-          };
-          threeScript2.onerror = function() {
-            console.error('All Three.js CDN attempts failed');
-          };
-          document.head.appendChild(threeScript2);
-        };
-        document.head.appendChild(threeScript);
-      })();
-    </script>
-    <!-- Remove local OrbitControls since we're loading from CDN -->
-    <!-- <script src="OrbitControls.js"></script> -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sappy</title>
-    <meta name="description" content="Shaping the future of the internet." />
-    <meta property="og:title" content="Sappy" />
-    <meta
-      property="og:description"
-      content="Shaping the future of the internet."
-    />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="596" />
-    <meta property="og:image:height" content="526" />
-    <meta
-      property="og:image:alt"
-      content="Iconic Sappy Seals face, featuring large round eyes, whiskers, and a cute, smiling mouth"
-    />
-    <meta
-      property="og:image"
-      content="https://sappy-55yojjbv1-sappyseals.vercel.app/opengraph-image.png?cbb77dec1be36bc9"
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Sappy" />
-    <meta
-      name="twitter:description"
-      content="Shaping the future of the internet."
-    />
-    <meta name="twitter:image:type" content="image/png" />
-    <meta name="twitter:image:width" content="596" />
-    <meta name="twitter:image:height" content="526" />
-    <meta
-      name="twitter:image:alt"
-      content="Iconic Sappy Seals face, featuring large round eyes, whiskers, and a cute, smiling mouth"
-    />
-    <meta
-      name="twitter:image"
-      content="https://sappy-55yojjbv1-sappyseals.vercel.app/twitter-image.png?cbb77dec1be36bc9"
-    />
-    <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="176x176" />
-    <link
-      rel="icon"
-      href="icon.png?b7595f33cbcd2108"
-      type="image/png"
-      sizes="176x176"
-    />
-    <link
-      rel="apple-touch-icon"
-      href="apple-icon.png?b7595f33cbcd2108"
-      type="image/png"
-      sizes="176x176"
-    />
-    <meta name="next-size-adjust" />
-    <script
-      src="_next/static/chunks/polyfills-c67a75d1b6f99dc8.js"
-      crossorigin=""
-      nomodule=""
-    ></script>
-  </head>
-  <body class="__className_d65c78">
-    <main
-      class="relative bg-white w-screen h-screen overflow-clip text-black"
-      style="height: 100svh"
-    >
-      <!-- 3D Scene Container -->
-      <div id="three-container" class="absolute inset-0 z-15"></div>
-
-      
-      <!-- Interaction hint -->
-
-      <div
-        class="absolute flex flex-col gap-3 bottom-0 bg-transparent h-fit justify-between w-full px-[5vw] md:px-[3vw] xl:px-[2vw] pb-3 z-20 "
-        style="
-    margin-bottom: 2% !important;">
-        <hr class="h-[1px] border-current w-full" />
-        <div class="flex flex-row items-center">
-          <p class="whitespace-nowrap text-[3vw] md:text-lg">Sappy</p>
-          <div
-            class="flex flex-row w-full gap-2 items-center justify-end text-[2.5vw] md:text-base md:gap-3"
-          >
-            <a class="relative" href="index.htm"
-              ><hr
-                class="h-[1px] absolute bottom-0 left-0 w-full border-current"
-              />
-              Home</a
-            ><a class="relative underline-animation" href="seals.html">Monks</a
-            ><a class="relative underline-animation" href="seals/staking.html"
-              >Dashboard</a
-            >
-          </div>
-        </div>
-      </div>
-    </main>
-    <script
-      src="_next/static/chunks/webpack-bc04315c01c03d8c.js"
-      crossorigin=""
-      async=""
-    ></script>
-    <script>
-      (self.__next_f = self.__next_f || []).push([0]);
-      self.__next_f.push([2, null]);
-    </script>
-    <script>
-      self.__next_f.push([
-        1,
-        '1:HL["/_next/static/media/a34f9d1faa5f3315-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]\n2:HL["/_next/static/css/bde7ed16c3ff486a.css","style",{"crossOrigin":""}]\n0:"$L3"\n',
-      ]);
-    </script>
-    <script>
-      self.__next_f.push([
-        1,
-        '4:I[9070,[],""]\n6:I[6993,[],""]\n7:I[2086,["959","static/chunks/e64ca62e-9ddc06a344c16179.js","349","static/chunks/349-8d6ad2a46252b064.js","931","static/chunks/app/page-b4341840a5519050.js"],""]\n8:I[2070,[],""]\n9:I[8932,[],""]\nb:I[4357,[],""]\nc:[]\n',
-      ]);
-    </script>
-    <script>
-      self.__next_f.push([
-        1,
-        '3:[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/bde7ed16c3ff486a.css","precedence":"next","crossOrigin":""}]],["$","$L4",null,{"buildId":"GxKkQzvljs9zXyE41YhKe","assetPrefix":"","initialCanonicalUrl":"/","initialTree":["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],"initialSeedData":["",{"children":["__PAGE__",{},["$L5",["$","$L6",null,{"propsForComponent":{"params":{}},"Component":"$7","isStaticGeneration":true}],null]]},[null,["$","html",null,{"lang":"en","children":["$","body",null,{"className":"__className_d65c78","children":["$","$L8",null,{"parallelRouterKey":"children","segmentPath":["children"],"loading":"$undefined","loadingStyles":"$undefined","loadingScripts":"$undefined","hasLoading":false,"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\\"Segoe UI\\",Roboto,Helvetica,Arial,sans-serif,\\"Apple Color Emoji\\",\\"Segoe UI Emoji\\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]],"notFoundStyles":[],"styles":null}]}]}],null]],"initialHead":[false,"$La"],"globalErrorComponent":"$b","missingSlots":"$Wc"}]]\n',
-      ]);
-    </script>
-    <script>
-      self.__next_f.push([
-        1,
-        'a:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","title","2",{"children":"Sappy"}],["$","meta","3",{"name":"description","content":"Shaping the future of the internet."}],["$","meta","4",{"property":"og:title","content":"Sappy"}],["$","meta","5",{"property":"og:description","content":"Shaping the future of the internet."}],["$","meta","6",{"property":"og:image:type","content":"image/png"}],["$","meta","7",{"property":"og:image:width","content":"596"}],["$","meta","8",{"property":"og:image:height","content":"526"}],["$","meta","9",{"property":"og:image:alt","content":"Iconic Sappy Seals face, featuring large round eyes, whiskers, and a cute, smiling mouth"}],["$","meta","10",{"property":"og:image","content":"https://sappy-55yojjbv1-sappyseals.vercel.app/opengraph-image.png?cbb77dec1be36bc9"}],["$","meta","11",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","12",{"name":"twitter:title","content":"Sappy"}],["$","meta","13",{"name":"twitter:description","content":"Shaping the future of the internet."}],["$","meta","14",{"name":"twitter:image:type","content":"image/png"}],["$","meta","15",{"name":"twitter:image:width","content":"596"}],["$","meta","16",{"name":"twitter:image:height","content":"526"}],["$","meta","17",{"name":"twitter:image:alt","content":"Iconic Sappy Seals face, featuring large round eyes, whiskers, and a cute, smiling mouth"}],["$","meta","18",{"name":"twitter:image","content":"https://sappy-55yojjbv1-sappyseals.vercel.app/twitter-image.png?cbb77dec1be36bc9"}],["$","link","19",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"176x176"}],["$","link","20",{"rel":"icon","href":"/icon.png?b7595f33cbcd2108","type":"image/png","sizes":"176x176"}],["$","link","21",{"rel":"apple-touch-icon","href":"/apple-icon.png?b7595f33cbcd2108","type":"image/png","sizes":"176x176"}],["$","meta","22",{"name":"next-size-adjust"}]]\n',
-      ]);
-    </script>
-    <script>
-      self.__next_f.push([1, "5:null\n"]);
-    </script>
-    <script>
-      self.__next_f.push([1, ""]);
-    </script>
-    
-    <!-- 3D Character Script -->
-    <script>
-      // Create isolated namespace for 3D functionality
-      window.Sappy3D = window.Sappy3D || {};
-      
-      // Global error handler - only for our 3D code
-      window.Sappy3D.errorHandler = function(e) {
-        // Only handle errors from our 3D code, not React
-        if (e.filename && e.filename.includes('three') || 
-            e.filename && e.filename.includes('GLTF') ||
-            e.filename && e.filename.includes('OrbitControls')) {
-          console.error('3D Error caught:', e.error);
-          console.error('Error message:', e.message);
-          console.error('Error filename:', e.filename);
-          console.error('Error line:', e.lineno);
-          console.error('Error column:', e.colno);
-          console.error('Error stack:', e.error ? e.error.stack : 'No stack trace');
-          
-          // Display error on screen
-          window.Sappy3D.showError('3D Error: ' + e.message + ' at ' + e.filename + ':' + e.lineno);
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-      };
-      
-      // Only add error handler if it doesn't conflict with React
-      if (!window.Sappy3D.errorHandlerAdded) {
-        window.addEventListener('error', window.Sappy3D.errorHandler);
-        window.Sappy3D.errorHandlerAdded = true;
-      }
-      
-      // Unhandled promise rejection handler - only for our 3D code
-      window.Sappy3D.promiseHandler = function(e) {
-        if (e.reason && typeof e.reason === 'string' && 
-            (e.reason.includes('three') || e.reason.includes('GLTF') || e.reason.includes('OrbitControls'))) {
-          console.error('3D Promise rejection:', e.reason);
-          window.Sappy3D.showError('3D Promise Error: ' + e.reason);
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            cursor: none;
         }
-      };
-      
-      if (!window.Sappy3D.promiseHandlerAdded) {
-        window.addEventListener('unhandledrejection', window.Sappy3D.promiseHandler);
-        window.Sappy3D.promiseHandlerAdded = true;
-      }
-      
-      // Function to show errors on screen
-      window.Sappy3D.showError = function(message) {
-        let errorDiv = document.getElementById('sappy-3d-error-display');
-        if (!errorDiv) {
-          errorDiv = document.createElement('div');
-          errorDiv.id = 'sappy-3d-error-display';
-          errorDiv.style.cssText = `
+
+        /* Black brush cursor effect */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            background: #000;
+            border-radius: 50%;
             position: fixed;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            background: #ff6600;
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
-            font-family: monospace;
-            font-size: 12px;
-            z-index: 10000;
-            max-height: 200px;
-            overflow-y: auto;
-            word-wrap: break-word;
-            border: 2px solid #cc4400;
-          `;
-          document.body.appendChild(errorDiv);
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease;
         }
-        errorDiv.innerHTML += '<div style="margin-bottom: 10px; border-bottom: 1px solid white; padding-bottom: 5px;">' + message + '</div>';
-      };
-      
-      // Diagnostic function
-      window.Sappy3D.runDiagnostics = function() {
-        console.log('=== SAPPY 3D DIAGNOSTICS START ===');
-        
-        // Check if THREE is available
-        console.log('THREE object available:', typeof window.Sappy3D.THREE !== 'undefined');
-        if (typeof window.Sappy3D.THREE !== 'undefined') {
-          const THREE = window.Sappy3D.THREE;
-          console.log('THREE version:', THREE.REVISION);
-          console.log('THREE.Scene available:', typeof THREE.Scene !== 'undefined');
-          console.log('THREE.WebGLRenderer available:', typeof THREE.WebGLRenderer !== 'undefined');
-          console.log('THREE.PerspectiveCamera available:', typeof THREE.PerspectiveCamera !== 'undefined');
+
+        .cursor-trail {
+            width: 8px;
+            height: 8px;
+            background: #000;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            mix-blend-mode: difference;
+            transition: all 0.15s ease;
         }
-        
-        // Check if OrbitControls is available
-        if (typeof window.Sappy3D.THREE !== 'undefined') {
-          console.log('THREE.OrbitControls available:', typeof window.Sappy3D.THREE.OrbitControls !== 'undefined');
+
+        /* Main content */
+        .main-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
-        
-        // Check if GLTFLoader is available
-        if (typeof window.Sappy3D.THREE !== 'undefined') {
-          console.log('THREE.GLTFLoader available:', typeof window.Sappy3D.THREE.GLTFLoader !== 'undefined');
+
+        .content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
         }
-        
-        // Check DOM elements
-        console.log('=== DOM DIAGNOSTICS ===');
-        console.log('Document body exists:', !!document.body);
-        console.log('Main element exists:', !!document.querySelector('main'));
-        console.log('All div elements:', document.querySelectorAll('div').length);
-        console.log('All elements with id:', document.querySelectorAll('[id]').length);
-        
-        // More detailed DOM inspection
-        console.log('All elements with class containing "main":', document.querySelectorAll('[class*="main"]').length);
-        console.log('All elements with class containing "bg-white":', document.querySelectorAll('[class*="bg-white"]').length);
-        console.log('All elements with class containing "relative":', document.querySelectorAll('[class*="relative"]').length);
-        
-        // List all elements with their classes
-        console.log('All elements and their classes:');
-        document.querySelectorAll('*').forEach((el, index) => {
-          if (index < 20) { // Limit to first 20 elements
-            console.log(`Element ${index}:`, el.tagName, 'classes:', el.className);
-          }
+
+        /* 3D Scene Container */
+        .scene-container {
+            width: 100%;
+            height: 70vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Spline scene */
+        #spline-container {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Bottom navigation */
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0 5vw;
+            padding-bottom: 1rem;
+            z-index: 20;
+        }
+
+        .nav-divider {
+            height: 1px;
+            background: currentColor;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 3vw;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+            font-size: 2.5vw;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-link:hover {
+            opacity: 0.7;
+        }
+
+        .nav-link.active {
+            text-decoration: underline;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: currentColor;
+        }
+
+        /* Responsive design */
+        @media (min-width: 768px) {
+            .brand {
+                font-size: 1.125rem;
+            }
+            
+            .nav-links {
+                gap: 1.5rem;
+            }
+            
+            .nav-link {
+                font-size: 1rem;
+            }
+            
+            .bottom-nav {
+                padding: 0 3vw;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .bottom-nav {
+                padding: 0 2vw;
+            }
+        }
+
+        /* Glitch effect styles */
+        .glitch-group:hover .glitch:after {
+            animation: noise-anim 2s linear infinite alternate-reverse;
+        }
+
+        .glitch-group:hover .glitch:before {
+            animation: noise-anim-2 2s linear infinite alternate-reverse;
+        }
+
+        .glitch {
+            display: inline-block;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        @keyframes noise-anim {
+            0% { clip: rect(4px, 9999px, 118px, 0); }
+            5% { clip: rect(26px, 9999px, 7px, 0); }
+            10% { clip: rect(34px, 9999px, 137px, 0); }
+            15% { clip: rect(2px, 9999px, 55px, 0); }
+            20% { clip: rect(2px, 9999px, 2px, 0); }
+            25% { clip: rect(1px, 9999px, 256px, 0); }
+            30% { clip: rect(37px, 9999px, 280px, 0); }
+            35% { clip: rect(13px, 9999px, 289px, 0); }
+            40% { clip: rect(40px, 9999px, 194px, 0); }
+            45% { clip: rect(36px, 9999px, 154px, 0); }
+            50% { clip: rect(29px, 9999px, 94px, 0); }
+            55% { clip: rect(28px, 9999px, 8px, 0); }
+            60% { clip: rect(19px, 9999px, 43px, 0); }
+            65% { clip: rect(24px, 9999px, 198px, 0); }
+            70% { clip: rect(1px, 9999px, 172px, 0); }
+            75% { clip: rect(23px, 9999px, 215px, 0); }
+            80% { clip: rect(17px, 9999px, 243px, 0); }
+            85% { clip: rect(19px, 9999px, 40px, 0); }
+            90% { clip: rect(24px, 9999px, 106px, 0); }
+            95% { clip: rect(36px, 9999px, 114px, 0); }
+            to { clip: rect(41px, 9999px, 21px, 0); }
+        }
+
+        @keyframes noise-anim-2 {
+            0% { clip: rect(21px, 9999px, 249px, 0); }
+            5% { clip: rect(18px, 9999px, 240px, 0); }
+            10% { clip: rect(1px, 9999px, 222px, 0); }
+            15% { clip: rect(17px, 9999px, 265px, 0); }
+            20% { clip: rect(47px, 9999px, 201px, 0); }
+            25% { clip: rect(9px, 9999px, 233px, 0); }
+            30% { clip: rect(45px, 9999px, 257px, 0); }
+            35% { clip: rect(18px, 9999px, 287px, 0); }
+            40% { clip: rect(14px, 9999px, 136px, 0); }
+            45% { clip: rect(20px, 9999px, 291px, 0); }
+            50% { clip: rect(3px, 9999px, 135px, 0); }
+            55% { clip: rect(9px, 9999px, 130px, 0); }
+            60% { clip: rect(42px, 9999px, 214px, 0); }
+            65% { clip: rect(38px, 9999px, 80px, 0); }
+            70% { clip: rect(16px, 9999px, 74px, 0); }
+            75% { clip: rect(3px, 9999px, 78px, 0); }
+            80% { clip: rect(39px, 9999px, 268px, 0); }
+            85% { clip: rect(23px, 9999px, 48px, 0); }
+            90% { clip: rect(11px, 9999px, 263px, 0); }
+            95% { clip: rect(32px, 9999px, 88px, 0); }
+            to { clip: rect(3px, 9999px, 6px, 0); }
+        }
+
+        .glitch:after {
+            left: 3px;
+            text-shadow: -1px 0 red;
+            clip: rect(0, 900px, 0, 0);
+        }
+
+        .glitch:after,
+        .glitch:before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .glitch:before {
+            left: -2px;
+            text-shadow: 1px 0 blue;
+            clip: rect(0, 200px, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom cursor elements -->
+    <div class="cursor"></div>
+    <div class="cursor-trail"></div>
+
+    <div class="main-container">
+        <div class="content">
+            <div class="scene-container">
+                <!-- Spline 3D Scene -->
+                <iframe 
+                    id="spline-container"
+                    src="https://prod.spline.design/svZku3dNHvOaMaZN/scene.splinecode"
+                    frameborder="0"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav" style="margin-bottom: 2% !important;">
+            <hr class="nav-divider" />
+            <div class="nav-content">
+                <p class="brand">Sappy</p>
+                <div class="nav-links">
+                    <a href="index.htm" class="nav-link active">Home</a>
+                    <a href="omnia.html" class="nav-link">Omnia</a>
+                    <a href="mememachine/index.html" class="nav-link">Meme Machine</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Custom cursor effect
+        const cursor = document.querySelector('.cursor');
+        const cursorTrail = document.querySelector('.cursor-trail');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorTrail.style.left = e.clientX + 'px';
+                cursorTrail.style.top = e.clientY + 'px';
+            }, 100);
         });
-        
-        // Check if container exists
-        const container = document.getElementById('three-container');
-        console.log('Container element exists:', !!container);
-        if (container) {
-          console.log('Container dimensions:', container.offsetWidth + 'x' + container.offsetHeight);
-          console.log('Container position:', container.offsetTop + ',' + container.offsetLeft);
-          console.log('Container style:', container.style.cssText);
-        } else {
-          console.log('Container not found, checking all elements with "three" in id:');
-          document.querySelectorAll('[id*="three"]').forEach(el => {
-            console.log('Found element with "three" in id:', el.id, el);
-          });
-        }
-        
-        // Check WebGL support
-        try {
-          const canvas = document.createElement('canvas');
-          const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-          console.log('WebGL supported:', !!gl);
-          if (gl) {
-            console.log('WebGL vendor:', gl.getParameter(gl.VENDOR));
-            console.log('WebGL renderer:', gl.getParameter(gl.RENDERER));
-          }
-        } catch (e) {
-          console.log('WebGL check failed:', e);
-        }
-        
-        // Check loaded scripts
-        console.log('All script tags:', document.querySelectorAll('script').length);
-        Array.from(document.querySelectorAll('script')).forEach((script, index) => {
-          console.log(`Script ${index}:`, script.src || 'inline script');
+
+        // Hide default cursor on interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(1.5)';
+                cursorTrail.style.transform = 'scale(1.2)';
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursorTrail.style.transform = 'scale(1)';
+            });
         });
-        
-        console.log('=== SAPPY 3D DIAGNOSTICS END ===');
-      };
-      
-      // Wait for all scripts to load
-      window.Sappy3D.waitForThree = function() {
-        try {
-          if (typeof window.Sappy3D.THREE !== 'undefined' && 
-              typeof window.Sappy3D.THREE.GLTFLoader !== 'undefined' && 
-              typeof window.Sappy3D.THREE.OrbitControls !== 'undefined') {
-            console.log('THREE.js, GLTFLoader and OrbitControls are available');
-            window.Sappy3D.runDiagnostics();
-            window.Sappy3D.waitForMainAndInit();
-          } else {
-            console.log('Waiting for THREE.js, GLTFLoader and OrbitControls...');
-            console.log('THREE available:', typeof window.Sappy3D.THREE !== 'undefined');
-            console.log('GLTFLoader available:', typeof window.Sappy3D.THREE !== 'undefined' && typeof window.Sappy3D.THREE.GLTFLoader !== 'undefined');
-            console.log('OrbitControls available:', typeof window.Sappy3D.THREE !== 'undefined' && typeof window.Sappy3D.THREE.OrbitControls !== 'undefined');
-            setTimeout(window.Sappy3D.waitForThree, 100);
-          }
-        } catch (e) {
-          console.error('Error in waitForThree:', e);
-          window.Sappy3D.showError('Error in waitForThree: ' + e.message);
-        }
-      };
-      
-      // Wait for main element to be available
-      window.Sappy3D.waitForMainAndInit = function() {
-        try {
-          // Try multiple selectors to find the main element
-          let main = document.querySelector('main');
-          if (!main) {
-            main = document.querySelector('[class*="main"]');
-          }
-          if (!main) {
-            main = document.querySelector('[class*="bg-white"]');
-          }
-          if (!main) {
-            main = document.querySelector('[class*="relative"]');
-          }
-          
-          if (!main) {
-            console.log('Main element not found, waiting...');
-            // Wait longer and try again, but with a timeout
-            if (!window.Sappy3D.waitCount) {
-              window.Sappy3D.waitCount = 0;
-            }
-            window.Sappy3D.waitCount++;
-            
-            // If we've waited too long, just initialize anyway
-            if (window.Sappy3D.waitCount > 20) { // 10 seconds
-              console.log('Main element not found after 10 seconds, initializing anyway...');
-              window.Sappy3D.init();
-              return;
-            }
-            
-            setTimeout(window.Sappy3D.waitForMainAndInit, 500);
-            return;
-          }
-          
-          console.log('Main element found:', main);
-          console.log('Main element classes:', main.className);
-          console.log('Main element children:', main.children.length);
-          
-          // Initialize 3D scene
-          window.Sappy3D.init();
-        } catch (e) {
-          console.error('Error in waitForMainAndInit:', e);
-          window.Sappy3D.showError('Error in waitForMainAndInit: ' + e.message);
-        }
-      };
-      
-      // Initialize Three.js scene
-      window.Sappy3D.scene = null;
-      window.Sappy3D.camera = null;
-      window.Sappy3D.renderer = null;
-      window.Sappy3D.character = null;
-      window.Sappy3D.controls = null;
-      window.Sappy3D.mixer = null; // For animations
-      window.Sappy3D.clock = null; // For animations
-      
-      window.Sappy3D.init = function() {
-        try {
-          // Check if THREE is available
-          if (typeof window.Sappy3D.THREE === 'undefined') {
-            throw new Error('THREE.js not available');
-          }
-          
-          const THREE = window.Sappy3D.THREE;
-          console.log('Initializing 3D scene...');
-          
-          // Create scene
-          window.Sappy3D.scene = new THREE.Scene();
-          window.Sappy3D.scene.background = new THREE.Color(0xffffff);
-          window.Sappy3D.scene.fog = null; // Disable fog
-          console.log('Scene created');
-          
-          // Create camera
-          window.Sappy3D.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100); // Tighter near/far planes
-          window.Sappy3D.camera.position.set(0, 1.5, 4);
-          window.Sappy3D.camera.updateProjectionMatrix();
-          console.log('Camera created');
-          
-          // Find or create container
-          let container = document.getElementById('three-container');
-          if (!container) {
-            console.log('Container not found, creating one...');
-            container = document.createElement('div');
-            container.id = 'three-container';
-            container.style.cssText = `
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              z-index: 15;
-            `;
-            
-            // Try to add to main element first, fallback to body
-            const main = document.querySelector('main');
-            if (main) {
-              main.insertBefore(container, main.firstChild);
-              console.log('Container created and added to main');
-            } else {
-              // Fallback to body if main doesn't exist
-              document.body.insertBefore(container, document.body.firstChild);
-              console.log('Container created and added to body (main not found)');
-            }
-          } else {
-            console.log('Container found:', container);
-          }
-          
-          // Create renderer
-          window.Sappy3D.renderer = new THREE.WebGLRenderer({ 
-            antialias: true, 
-            alpha: true,
-            powerPreference: "high-performance",
-            stencil: false,
-            depth: true,
-            logarithmicDepthBuffer: true, // Enable for better depth precision
-            preserveDrawingBuffer: false,
-            failIfMajorPerformanceCaveat: false
-          });
-          window.Sappy3D.renderer.setSize(window.innerWidth, window.innerHeight);
-          window.Sappy3D.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio
-          window.Sappy3D.renderer.shadowMap.enabled = false; // Отключаем тени для стабильности
-          window.Sappy3D.renderer.outputEncoding = THREE.sRGBEncoding; // Правильная настройка для GLB
-          window.Sappy3D.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-          window.Sappy3D.renderer.toneMappingExposure = 1.0;
-          container.appendChild(window.Sappy3D.renderer.domElement);
-          console.log('Renderer created and added to container');
-          
-          // Add improved lights based on user feedback
-          const ambientLight = new THREE.AmbientLight(0xffffff, 0.6); // Увеличиваем интенсивность
-          window.Sappy3D.scene.add(ambientLight);
-          
-          const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2); // Увеличиваем интенсивность
-          directionalLight.position.set(5, 10, 5); // Правильная позиция
-          directionalLight.castShadow = false; // Отключаем тени
-          window.Sappy3D.scene.add(directionalLight);
 
-          console.log('Lights added - Directional and Ambient with proper intensity');
-          
-          // Add a simple cube for testing - без теней
-          const geometry = new THREE.BoxGeometry(1, 1, 1);
-          const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 }); // Используем Lambert вместо Phong
-          const cube = new THREE.Mesh(geometry, material);
-          cube.castShadow = false; // Отключаем тени
-          cube.receiveShadow = false; // Отключаем тени
-          window.Sappy3D.scene.add(cube);
-          console.log('Test cube added - no shadows');
-          
-          // Check if OrbitControls is available
-          if (typeof window.Sappy3D.THREE.OrbitControls !== 'undefined') {
-            console.log('OrbitControls is available');
-            try {
-              // Add orbit controls with room-like camera rotation
-              window.Sappy3D.controls = new window.Sappy3D.THREE.OrbitControls(window.Sappy3D.camera, window.Sappy3D.renderer.domElement);
-              window.Sappy3D.controls.enableDamping = true;
-              window.Sappy3D.controls.dampingFactor = 0.05; // Более отзывчивое управление
-              window.Sappy3D.controls.enableZoom = false; // Disable zoom
-              window.Sappy3D.controls.enablePan = false; // Disable pan
-              window.Sappy3D.controls.autoRotate = false; // Disable auto rotation
-              window.Sappy3D.controls.enableRotate = true; // Enable manual rotation
-              window.Sappy3D.controls.rotateSpeed = 0.7; // More reasonable speed like in example
-              window.Sappy3D.controls.minDistance = 4; // Fixed distance
-              window.Sappy3D.controls.maxDistance = 4; // Fixed distance
-              window.Sappy3D.controls.minPolarAngle = Math.PI / 3; // 60 degrees up like in example
-              window.Sappy3D.controls.maxPolarAngle = Math.PI / 1.5; // 120 degrees down like in example
-              window.Sappy3D.controls.zoomSpeed = 0; // Disable zoom speed
-              window.Sappy3D.controls.screenSpacePanning = false; // Better for room-like rotation
-              console.log('OrbitControls created for room-like camera rotation');
-              
-              // Remove DragControls - we don't need it anymore
-              window.Sappy3D.dragControls = null;
-              
-              // Упрощенные обработчики событий
-              window.Sappy3D.renderer.domElement.style.cursor = 'grab';
-              
-              // Один обработчик для всех событий мыши
-              window.Sappy3D.renderer.domElement.addEventListener('mousedown', function(event) {
-                console.log('Mouse down on canvas!', event);
-                window.Sappy3D.renderer.domElement.style.cursor = 'grabbing';
-                
-                // Hide interaction hint after first interaction
-                const hint = document.getElementById('interaction-hint');
-                if (hint) {
-                  hint.style.opacity = '0';
-                  setTimeout(function() {
-                    hint.style.display = 'none';
-                  }, 500);
-                }
-              });
-              
-              window.Sappy3D.renderer.domElement.addEventListener('mouseup', function(event) {
-                console.log('Mouse up on canvas!', event);
-                window.Sappy3D.renderer.domElement.style.cursor = 'grab';
-              });
-              
-              window.Sappy3D.renderer.domElement.addEventListener('mousemove', function(event) {
-                if (event.buttons > 0) {
-                  console.log('Mouse move with button pressed!', event);
-                }
-              });
-              
-              // Touch support
-              window.Sappy3D.renderer.domElement.addEventListener('touchstart', function(event) {
-                // Hide interaction hint after first interaction
-                const hint = document.getElementById('interaction-hint');
-                if (hint) {
-                  hint.style.opacity = '0';
-                  setTimeout(function() {
-                    hint.style.display = 'none';
-                  }, 500);
-                }
-              });
-              
-              // Add click interaction with the model
-              window.Sappy3D.raycaster = new window.Sappy3D.THREE.Raycaster();
-              window.Sappy3D.mouse = new window.Sappy3D.THREE.Vector2();
-              
-              window.Sappy3D.renderer.domElement.addEventListener('click', function(event) {
-                // Calculate mouse position in normalized device coordinates
-                const rect = window.Sappy3D.renderer.domElement.getBoundingClientRect();
-                window.Sappy3D.mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-                window.Sappy3D.mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-                
-                // Check for intersections with the character model
-                if (window.Sappy3D.character) {
-                  window.Sappy3D.raycaster.setFromCamera(window.Sappy3D.mouse, window.Sappy3D.camera);
-                  const intersects = window.Sappy3D.raycaster.intersectObject(window.Sappy3D.character, true);
-                  
-                  if (intersects.length > 0) {
-                    console.log('Clicked on character!');
-                    // Add a small bounce effect when clicked
-                    const originalScale = window.Sappy3D.character.scale.clone();
-                    window.Sappy3D.character.scale.multiplyScalar(1.1);
-                    setTimeout(function() {
-                      window.Sappy3D.character.scale.copy(originalScale);
-                    }, 200);
-                  }
-                }
-              });
-              
-              console.log('OrbitControls event handlers set up');
-              
-              // Стабильный анимационный цикл с оптимизацией производительности
-              let lastTime = 0;
-              const targetFPS = 60;
-              const frameInterval = 1000 / targetFPS;
-              
-              function animate(currentTime) {
-                requestAnimationFrame(animate);
-                
-                // FPS limiting
-                if (currentTime - lastTime < frameInterval) {
-                  return;
-                }
-                lastTime = currentTime;
-                
-                // Skip rendering if tab is not visible
-                if (document.hidden) {
-                  return;
-                }
-                
-                // Update animation mixer
-                if (window.Sappy3D.mixer && window.Sappy3D.clock) {
-                  window.Sappy3D.mixer.update(window.Sappy3D.clock.getDelta());
-                }
+        // Hide cursor when leaving window
+        document.addEventListener('mouseleave', () => {
+            cursor.style.opacity = '0';
+            cursorTrail.style.opacity = '0';
+        });
 
-                // Обновляем контролы строго один раз
-                if (window.Sappy3D.controls && window.Sappy3D.controls.update) {
-                  window.Sappy3D.controls.update();
-                }
-
-                // Принудительно обновляем матрицу камеры после контролов
-                if (window.Sappy3D.camera) {
-                  window.Sappy3D.camera.updateMatrixWorld();
-                }
-                
-                // Рендерим сцену
-                if (window.Sappy3D.scene && window.Sappy3D.camera && window.Sappy3D.renderer) {
-                  window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
-                }
-              }
-              
-              // Запускаем анимацию
-              animate();
-            } catch (e) {
-              console.error('Error creating OrbitControls:', e);
-              window.Sappy3D.showError('OrbitControls Error: ' + e.message);
-              // Fallback к простому рендеру
-              console.log('Falling back to simple render only');
-              
-              function animate() {
-                requestAnimationFrame(animate);
-                
-                if (window.Sappy3D.scene && window.Sappy3D.camera && window.Sappy3D.renderer) {
-                  window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
-                }
-              }
-              
-              animate();
-            }
-          } else {
-            console.log('OrbitControls not available, using simple render only');
-            
-            function animate() {
-              requestAnimationFrame(animate);
-              
-              if (window.Sappy3D.scene && window.Sappy3D.camera && window.Sappy3D.renderer) {
-                window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
-              }
-            }
-            
-            animate();
-          }
-          
-          // Check if GLTFLoader is available
-          if (typeof window.Sappy3D.THREE.GLTFLoader !== 'undefined') {
-            console.log('GLTFLoader is available, loading model...');
-            
-            // Create loading indicator
-            const loadingDiv = document.createElement('div');
-            loadingDiv.id = 'model-loading';
-            loadingDiv.style.cssText = `
-              position: fixed;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              background: rgba(0, 0, 0, 0.8);
-              color: white;
-              padding: 20px;
-              border-radius: 10px;
-              font-family: Arial, sans-serif;
-              z-index: 1000;
-              text-align: center;
-            `;
-            loadingDiv.innerHTML = `
-              <div style="margin-bottom: 10px;">🔄 Загрузка 3D модели...</div>
-              <div id="loading-progress" style="font-size: 12px;">0%</div>
-            `;
-            document.body.appendChild(loadingDiv);
-            
-            // Load GLB model
-            const loader = new window.Sappy3D.THREE.GLTFLoader();
-            loader.load(
-              'base_basic_shaded.glb',
-              function (gltf) {
-                try {
-                  console.log('Model loaded successfully');
-                  
-                  // Remove loading indicator
-                  const loadingDiv = document.getElementById('model-loading');
-                  if (loadingDiv) {
-                    loadingDiv.remove();
-                  }
-                  
-                  window.Sappy3D.character = gltf.scene;
-                  window.Sappy3D.character.scale.set(1, 1, 1);
-                  window.Sappy3D.character.position.set(0, 0, 0);
-                  
-                  // НЕ изменяем материалы - используем оригинальные из GLB
-                  console.log('Using original materials from GLB file');
-                  
-                  window.Sappy3D.scene.add(window.Sappy3D.character);
-                  
-                  // Remove test cube
-                  window.Sappy3D.scene.remove(cube);
-                  
-                  // Setup animation mixer
-                  if (gltf.animations && gltf.animations.length) {
-                    window.Sappy3D.clock = new window.Sappy3D.THREE.Clock();
-                    window.Sappy3D.mixer = new window.Sappy3D.THREE.AnimationMixer(window.Sappy3D.character);
-                    const action = window.Sappy3D.mixer.clipAction(gltf.animations[0]);
-                    action.play();
-                    console.log('AnimationMixer created and first animation started.');
-                  } else {
-                    console.log('No animations found in the model.');
-                  }
-                  
-                  // Center camera on character
-                  const box = new THREE.Box3().setFromObject(window.Sappy3D.character);
-                  const center = box.getCenter(new THREE.Vector3());
-                  const size = box.getSize(new THREE.Vector3());
-                  const maxDim = Math.max(size.x, size.y, size.z);
-                  const fov = window.Sappy3D.camera.fov * (Math.PI / 180);
-                  let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
-                  
-                  // Устанавливаем начальную позицию камеры только один раз
-                  window.Sappy3D.camera.position.set(0, 1.5, cameraZ * 1.5);
-                  
-                  // Настраиваем OrbitControls target
-                  if (typeof window.Sappy3D.THREE.OrbitControls !== 'undefined' && window.Sappy3D.controls) {
-                    window.Sappy3D.controls.target.copy(center);
-                    // НЕ вызываем controls.update() здесь - это сделает анимационный цикл
-                  }
-                  
-                  console.log('Character model setup complete with original materials');
-                } catch (e) {
-                  console.error('Error setting up character model:', e);
-                  window.Sappy3D.showError('Character Setup Error: ' + e.message);
-                  window.Sappy3D.showFallbackModel();
-                }
-              },
-              function (xhr) {
-                const progress = Math.round((xhr.loaded / xhr.total * 100));
-                console.log(progress + '% loaded');
-                
-                // Update loading progress
-                const progressDiv = document.getElementById('loading-progress');
-                if (progressDiv) {
-                  progressDiv.textContent = progress + '%';
-                }
-              },
-              function (error) {
-                console.error('An error happened loading the model:', error);
-                window.Sappy3D.showError('Model Load Error: ' + error.message);
-                
-                // Remove loading indicator
-                const loadingDiv = document.getElementById('model-loading');
-                if (loadingDiv) {
-                  loadingDiv.remove();
-                }
-                
-                // Show fallback model
-                window.Sappy3D.showFallbackModel();
-              }
-            );
-          } else {
-            console.error('GLTFLoader not available');
-            window.Sappy3D.showError('GLTFLoader not available');
-            window.Sappy3D.showFallbackModel();
-          }
-          
-          // Fallback function for when model fails to load
-          window.Sappy3D.showFallbackModel = function() {
-            console.log('Showing fallback model');
-            
-            const THREE = window.Sappy3D.THREE;
-            
-            // Create a simple character-like fallback
-            const group = new THREE.Group();
-            
-            // Body (cylinder)
-            const bodyGeometry = new THREE.CylinderGeometry(0.5, 0.5, 1.5, 8);
-            const bodyMaterial = new THREE.MeshLambertMaterial({ color: 0x4a90e2 });
-            const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
-            body.position.y = 0.75;
-            group.add(body);
-            
-            // Head (sphere)
-            const headGeometry = new THREE.SphereGeometry(0.4, 8, 6);
-            const headMaterial = new THREE.MeshLambertMaterial({ color: 0xfdbcb4 });
-            const head = new THREE.Mesh(headGeometry, headMaterial);
-            head.position.y = 1.8;
-            group.add(head);
-            
-            // Eyes
-            const eyeGeometry = new THREE.SphereGeometry(0.05, 4, 4);
-            const eyeMaterial = new THREE.MeshLambertMaterial({ color: 0x000000 });
-            const leftEye = new THREE.Mesh(eyeGeometry, eyeMaterial);
-            const rightEye = new THREE.Mesh(eyeGeometry, eyeMaterial);
-            leftEye.position.set(-0.15, 1.9, 0.3);
-            rightEye.position.set(0.15, 1.9, 0.3);
-            group.add(leftEye);
-            group.add(rightEye);
-            
-            // Arms
-            const armGeometry = new THREE.CylinderGeometry(0.1, 0.1, 0.8, 6);
-            const armMaterial = new THREE.MeshLambertMaterial({ color: 0xfdbcb4 });
-            const leftArm = new THREE.Mesh(armGeometry, armMaterial);
-            const rightArm = new THREE.Mesh(armGeometry, armMaterial);
-            leftArm.position.set(-0.7, 0.8, 0);
-            rightArm.position.set(0.7, 0.8, 0);
-            leftArm.rotation.z = Math.PI / 4;
-            rightArm.rotation.z = -Math.PI / 4;
-            group.add(leftArm);
-            group.add(rightArm);
-            
-            window.Sappy3D.character = group;
-            window.Sappy3D.scene.add(window.Sappy3D.character);
-            
-            // Remove test cube
-            window.Sappy3D.scene.remove(cube);
-            
-            // Center camera on fallback model
-            const box = new THREE.Box3().setFromObject(window.Sappy3D.character);
-            const center = box.getCenter(new THREE.Vector3());
-            
-            // Настраиваем OrbitControls target
-            if (typeof window.Sappy3D.THREE.OrbitControls !== 'undefined' && window.Sappy3D.controls) {
-              window.Sappy3D.controls.target.copy(center);
-            }
-            
-            console.log('Fallback model created and added to scene');
-          };
-          
-          // Handle window resize
-          window.addEventListener('resize', window.Sappy3D.onWindowResize, false);
-          window.Sappy3D.onWindowResize = function() {
-            try {
-              window.Sappy3D.camera.aspect = window.innerWidth / window.innerHeight;
-              window.Sappy3D.camera.updateProjectionMatrix();
-              window.Sappy3D.renderer.setSize(window.innerWidth, window.innerHeight);
-              // НЕ вызываем controls.update() здесь - это сделает анимационный цикл
-            } catch (e) {
-              console.error('Error in resize handler:', e);
-              window.Sappy3D.showError('Resize Error: ' + e.message);
-            }
-          };
-          
-          console.log('3D scene initialization complete');
-          
-        } catch (e) {
-          console.error('Error in init function:', e);
-          window.Sappy3D.showError('Init Error: ' + e.message);
-        }
-      };
-      
-      // Initialize when page loads - with delay to avoid React conflicts
-      window.addEventListener('load', function() {
-        try {
-          console.log('Page loaded, waiting for React to settle...');
-          window.Sappy3D.showError('Page loaded, waiting for React to settle...');
-          // Wait shorter for React to initialize
-          setTimeout(function() {
-            window.Sappy3D.showError('Starting 3D initialization...');
-            setTimeout(window.Sappy3D.waitForThree, 500);
-          }, 1000);
-        } catch (e) {
-          console.error('Error in load handler:', e);
-          window.Sappy3D.showError('Load Error: ' + e.message);
-        }
-      });
-      
-      // Additional error checking
-      document.addEventListener('DOMContentLoaded', function() {
-        console.log('DOM loaded');
-        window.Sappy3D.showError('DOM loaded');
-      });
+        document.addEventListener('mouseenter', () => {
+            cursor.style.opacity = '1';
+            cursorTrail.style.opacity = '1';
+        });
     </script>
-  </body>
-</html>
+</body>
+</html> 
