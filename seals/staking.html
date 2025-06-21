@@ -1003,11 +1003,12 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
           const newsSection = document.getElementById("news");
-          if (newsSection) {
-            newsSection.style.display = "none";
+          if (newsSection && newsSection.parentNode) {
+            newsSection.parentNode.removeChild(newsSection);
           }
         });
       </script>
+      
       
   </body>
 </html>
