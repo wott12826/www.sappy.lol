@@ -2377,6 +2377,13 @@
   <script>
     self.__next_f.push([1, "11:null\n"]);
   </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const news = document.getElementById("news");
+      if (news) news.remove();
+    });
+  </script>
+  
 </body>
 
 </html>
