@@ -56,34 +56,49 @@
       src="_next/static/chunks/app/page-b4341840a5519050.js"
       async=""
     ></script>
-    <!-- GLTFLoader for 3D models -->
-    <script src="GLTFLoader.js"></script>
-    <!-- OrbitControls for 3D interaction -->
-    <script src="OrbitControls.js"></script>
-    <!-- Three.js library - isolated version -->
+    <!-- Three.js library - load first, before other scripts -->
     <script>
-      // Create isolated THREE namespace to avoid conflicts
+      // Load Three.js immediately, before any other scripts
       (function() {
-        // Load Three.js in isolated scope
+        console.log('Loading Three.js...');
         var script = document.createElement('script');
         script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r144/three.min.js';
         script.onload = function() {
-          // Move THREE to our namespace
+          console.log('Three.js loaded successfully');
+          // Move THREE to our namespace immediately
           if (typeof THREE !== 'undefined') {
+            window.Sappy3D = window.Sappy3D || {};
             window.Sappy3D.THREE = THREE;
             // Remove global THREE to avoid conflicts
             delete window.THREE;
-            console.log('Three.js loaded and isolated');
-            window.Sappy3D.showError('Three.js loaded and isolated');
+            console.log('Three.js moved to Sappy3D namespace');
           }
         };
         script.onerror = function() {
-          console.error('Failed to load Three.js');
-          window.Sappy3D.showError('Failed to load Three.js');
+          console.error('Failed to load Three.js from CDN, trying alternative...');
+          // Try alternative CDN
+          var script2 = document.createElement('script');
+          script2.src = 'https://unpkg.com/three@0.144.0/build/three.min.js';
+          script2.onload = function() {
+            console.log('Three.js loaded from alternative CDN');
+            if (typeof THREE !== 'undefined') {
+              window.Sappy3D = window.Sappy3D || {};
+              window.Sappy3D.THREE = THREE;
+              delete window.THREE;
+            }
+          };
+          script2.onerror = function() {
+            console.error('All Three.js CDN attempts failed');
+          };
+          document.head.appendChild(script2);
         };
         document.head.appendChild(script);
       })();
     </script>
+    <!-- GLTFLoader for 3D models -->
+    <script src="GLTFLoader.js"></script>
+    <!-- OrbitControls for 3D interaction -->
+    <script src="OrbitControls.js"></script>
     <title>Sappy</title>
     <meta name="description" content="Shaping the future of the internet." />
     <meta property="og:title" content="Sappy" />
