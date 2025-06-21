@@ -590,52 +590,58 @@
               class="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm transition-all duration-300 ease-in-out scale-0 opacity-0"
               id="staking-modal"
             >
-              <div class="relative flex flex-col justify-between overflow-hidden rounded-2xl drop-shadow-lg w-[90vw] max-w-md p-6 text-white" style="background-color: #1a1a1a; border: 1px solid #2a2a2a;">
+              <div class="relative flex flex-col overflow-hidden rounded-2xl shadow-lg w-[90vw] max-w-lg p-8 text-neutral-100" style="background-color: #1c1e22; border: 1px solid rgba(255, 255, 255, 0.1);">
+    
+                <!-- Header -->
+                <div class="flex items-center justify-between pb-6 mb-6 border-b border-neutral-800">
+                    <h2 class="text-2xl font-semibold">Stake SAPPY</h2>
+                    <button class="text-neutral-500 hover:text-white transition-colors" id="close-staking-modal">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+            
+                <!-- Amount Input -->
+                <div class="flex justify-between items-baseline mb-3">
+                    <label for="amount" class="text-base font-medium text-neutral-400">Amount</label>
+                    <span class="text-sm text-neutral-400">Balance: 0.42 SAPPY</span>
+                </div>
+                <div class="flex items-center bg-neutral-900/70 rounded-xl border border-neutral-700 focus-within:ring-2 focus-within:ring-purple-500 transition-all">
+                    <input type="text" id="amount" placeholder="0.0" class="w-full pl-5 pr-4 py-4 text-3xl font-mono bg-transparent focus:outline-none">
+                    <span class="pr-5 text-xl font-medium text-neutral-300">SAPPY</span>
+                </div>
+                <div class="flex justify-end mt-2">
+                    <button class="px-3 py-1 bg-purple-500/10 text-purple-400 hover:bg-purple-500/20 rounded-lg text-sm font-medium transition-colors">MAX</button>
+                </div>
+            
+                <!-- Spacer -->
+                <div class="my-6"></div>
+            
+                <!-- Details -->
+                <div class="space-y-4 text-base">
+                    <div class="flex justify-between text-neutral-400">
+                        <span>Est. APY</span>
+                        <span class="font-medium text-neutral-100">3.47%</span>
+                    </div>
+                    <div class="flex justify-between text-neutral-400">
+                        <span>Staking Fee</span>
+                        <span class="font-medium text-neutral-100">10%</span>
+                    </div>
+                    <div class="flex justify-between text-neutral-400">
+                        <span>You will receive</span>
+                        <span class="font-medium text-neutral-100">~ 0.0 stSAPPY</span>
+                    </div>
+                </div>
                 
-                <div class="flex items-center justify-between pb-4 border-b border-gray-700">
-                  <h2 class="text-xl font-bold text-center flex-grow">Stake SAPPY</h2>
-                  <button class="text-gray-400 hover:text-white" id="close-staking-modal">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                  </button>
+                <!-- Info Box -->
+                <div class="p-4 mt-8 text-sm text-neutral-400 bg-neutral-900/70 border border-neutral-800 rounded-xl">
+                    <p>Output is estimated. You will receive stSAPPY at a 1:1 ratio. Rewards are updated daily.</p>
                 </div>
-
-                <div class="py-6">
-                  <div class="flex justify-between items-center mb-2">
-                    <label for="amount" class="text-sm font-medium text-gray-400">Amount</label>
-                    <span class="text-sm text-gray-400">Balance: 0.42 SAPPY</span>
-                  </div>
-                  <div class="relative">
-                    <input type="text" id="amount" placeholder="0.0" class="w-full p-4 pr-20 text-2xl font-mono bg-[#2a2a2a] rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
-                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-lg font-medium text-gray-300">SAPPY</span>
-                  </div>
-                  <div class="flex justify-end mt-2">
-                    <button class="text-sm font-medium text-purple-400 hover:text-purple-300">Max</button>
-                  </div>
-                </div>
-
-                <div class="space-y-3 text-sm">
-                  <div class="flex justify-between text-gray-400">
-                    <span>Est. APY</span>
-                    <span class="font-medium text-white">3.47%</span>
-                  </div>
-                  <div class="flex justify-between text-gray-400">
-                    <span>Staking Fee</span>
-                    <span class="font-medium text-white">10%</span>
-                  </div>
-                  <div class="flex justify-between text-gray-400">
-                    <span>You will receive</span>
-                    <span class="font-medium text-white">~ 0.0 stSAPPY</span>
-                  </div>
-                </div>
-
-                <div class="p-4 mt-6 text-xs text-gray-400 bg-[#2a2a2a] rounded-lg">
-                  <p>Output is estimated. You will receive stSAPPY at a 1:1 ratio. Staking rewards are updated daily.</p>
-                </div>
-
-                <button class="w-full py-4 mt-6 font-bold text-lg text-white bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors" id="continue-staking-button">
-                  Stake Now
+            
+                <!-- Action Button -->
+                <button class="w-full py-4 mt-8 font-bold text-lg text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 rounded-xl transition-all shadow-lg hover:shadow-purple-500/20" id="continue-staking-button">
+                    Stake Now
                 </button>
-              </div>
+            </div>
             </div>
             <div
               class="pointer-events-none fixed bottom-[5vw] right-[5vw] flex flex-col items-end justify-end gap-[2.5vw] lg:bottom-[2vw] lg:right-[2vw] lg:gap-[1vw]"
