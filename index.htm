@@ -60,6 +60,30 @@
     <script src="GLTFLoader.js"></script>
     <!-- OrbitControls for 3D interaction -->
     <script src="OrbitControls.js"></script>
+    <!-- Three.js library - isolated version -->
+    <script>
+      // Create isolated THREE namespace to avoid conflicts
+      (function() {
+        // Load Three.js in isolated scope
+        var script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r144/three.min.js';
+        script.onload = function() {
+          // Move THREE to our namespace
+          if (typeof THREE !== 'undefined') {
+            window.Sappy3D.THREE = THREE;
+            // Remove global THREE to avoid conflicts
+            delete window.THREE;
+            console.log('Three.js loaded and isolated');
+            window.Sappy3D.showError('Three.js loaded and isolated');
+          }
+        };
+        script.onerror = function() {
+          console.error('Failed to load Three.js');
+          window.Sappy3D.showError('Failed to load Three.js');
+        };
+        document.head.appendChild(script);
+      })();
+    </script>
     <title>Sappy</title>
     <meta name="description" content="Shaping the future of the internet." />
     <meta property="og:title" content="Sappy" />
@@ -267,8 +291,9 @@
         console.log('=== SAPPY 3D DIAGNOSTICS START ===');
         
         // Check if THREE is available
-        console.log('THREE object available:', typeof THREE !== 'undefined');
-        if (typeof THREE !== 'undefined') {
+        console.log('THREE object available:', typeof window.Sappy3D.THREE !== 'undefined');
+        if (typeof window.Sappy3D.THREE !== 'undefined') {
+          const THREE = window.Sappy3D.THREE;
           console.log('THREE version:', THREE.REVISION);
           console.log('THREE.Scene available:', typeof THREE.Scene !== 'undefined');
           console.log('THREE.WebGLRenderer available:', typeof THREE.WebGLRenderer !== 'undefined');
@@ -276,10 +301,14 @@
         }
         
         // Check if OrbitControls is available
-        console.log('THREE.OrbitControls available:', typeof THREE.OrbitControls !== 'undefined');
+        if (typeof window.Sappy3D.THREE !== 'undefined') {
+          console.log('THREE.OrbitControls available:', typeof window.Sappy3D.THREE.OrbitControls !== 'undefined');
+        }
         
         // Check if GLTFLoader is available
-        console.log('THREE.GLTFLoader available:', typeof THREE.GLTFLoader !== 'undefined');
+        if (typeof window.Sappy3D.THREE !== 'undefined') {
+          console.log('THREE.GLTFLoader available:', typeof window.Sappy3D.THREE.GLTFLoader !== 'undefined');
+        }
         
         // Check if container exists
         const container = document.getElementById('three-container');
@@ -313,7 +342,7 @@
       // Wait for all scripts to load
       window.Sappy3D.waitForThree = function() {
         try {
-          if (typeof THREE !== 'undefined') {
+          if (typeof window.Sappy3D.THREE !== 'undefined') {
             console.log('THREE.js is available');
             window.Sappy3D.runDiagnostics();
             window.Sappy3D.init();
@@ -337,10 +366,11 @@
       window.Sappy3D.init = function() {
         try {
           // Check if THREE is available
-          if (typeof THREE === 'undefined') {
+          if (typeof window.Sappy3D.THREE === 'undefined') {
             throw new Error('THREE.js not available');
           }
           
+          const THREE = window.Sappy3D.THREE;
           console.log('Initializing 3D scene...');
           
           // Create scene
