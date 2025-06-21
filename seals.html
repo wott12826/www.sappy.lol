@@ -5127,6 +5127,9 @@
       #news {
         display: none !important;
       }
+      #sappy-seals{
+        display: none !important;
+      }
     </style>
     
     <script>
@@ -5144,7 +5147,21 @@
         subtree: true
       });
     </script>
+    <script>
+      const hideSappySealsSection = () => {
+        const els = document.getElementsByClassName("sappy-seals");
+        if (els) els.style.setProperty('display', 'none', 'important');
+      };
     
+      hideNewsSection(); // Попробовать сразу
+    
+      const observerz = new MutationObserver(() => hideSappySealsSection());
+    
+      observerz.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+    </script>
     
   </body>
 </html>
