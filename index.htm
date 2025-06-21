@@ -60,25 +60,21 @@
     <script>
       // Load Three.js and related scripts in correct order with global THREE
       (function() {
-        console.log('Loading Three.js and related scripts...');
         
         // Load Three.js first (creates global THREE)
         var threeScript = document.createElement('script');
         threeScript.src = 'https://cdn.jsdelivr.net/npm/three@0.144.0/build/three.min.js';
         threeScript.onload = function() {
-          console.log('Three.js loaded successfully, global THREE available');
           
           // Load GLTFLoader after Three.js (uses global THREE)
           var gltfScript = document.createElement('script');
           gltfScript.src = 'https://cdn.jsdelivr.net/npm/three@0.144.0/examples/js/loaders/GLTFLoader.js';
           gltfScript.onload = function() {
-            console.log('GLTFLoader loaded successfully');
             
             // Load OrbitControls after GLTFLoader (uses global THREE)
             var orbitScript = document.createElement('script');
             orbitScript.src = 'https://cdn.jsdelivr.net/npm/three@0.144.0/examples/js/controls/OrbitControls.js';
             orbitScript.onload = function() {
-              console.log('OrbitControls loaded successfully');
               
               // Now that all scripts are loaded, move everything to our namespace
               if (typeof THREE !== 'undefined') {
@@ -88,54 +84,43 @@
                 // Check if GLTFLoader is available
                 if (typeof THREE.GLTFLoader !== 'undefined') {
                   window.Sappy3D.THREE.GLTFLoader = THREE.GLTFLoader;
-                  console.log('GLTFLoader moved to Sappy3D namespace');
                 } else {
-                  console.error('GLTFLoader not found in THREE object');
                 }
                 
                 // Check if OrbitControls is available
                 if (typeof THREE.OrbitControls !== 'undefined') {
                   window.Sappy3D.THREE.OrbitControls = THREE.OrbitControls;
-                  console.log('OrbitControls moved to Sappy3D namespace');
                 } else {
-                  console.error('OrbitControls not found in THREE object');
                 }
                 
                 // Keep global THREE available for compatibility
                 // Don't delete window.THREE - keep it for other scripts that might need it
-                console.log('All Three.js components moved to Sappy3D namespace, global THREE preserved');
               }
             };
             orbitScript.onerror = function() {
-              console.error('Failed to load OrbitControls from CDN');
             };
             document.head.appendChild(orbitScript);
           };
           gltfScript.onerror = function() {
-            console.error('Failed to load GLTFLoader from CDN');
           };
           document.head.appendChild(gltfScript);
         };
         threeScript.onerror = function() {
-          console.error('Failed to load Three.js from CDN, trying alternative...');
           
           // Try alternative CDN
           var threeScript2 = document.createElement('script');
           threeScript2.src = 'https://unpkg.com/three@0.144.0/build/three.min.js';
           threeScript2.onload = function() {
-            console.log('Three.js loaded from alternative CDN, global THREE available');
             
             // Load GLTFLoader after Three.js (uses global THREE)
             var gltfScript2 = document.createElement('script');
             gltfScript2.src = 'https://unpkg.com/three@0.144.0/examples/js/loaders/GLTFLoader.js';
             gltfScript2.onload = function() {
-              console.log('GLTFLoader loaded from alternative CDN');
               
               // Load OrbitControls after GLTFLoader (uses global THREE)
               var orbitScript2 = document.createElement('script');
               orbitScript2.src = 'https://unpkg.com/three@0.144.0/examples/js/controls/OrbitControls.js';
               orbitScript2.onload = function() {
-                console.log('OrbitControls loaded from alternative CDN');
                 
                 // Now that all scripts are loaded, move everything to our namespace
                 if (typeof THREE !== 'undefined') {
@@ -145,36 +130,28 @@
                   // Check if GLTFLoader is available
                   if (typeof THREE.GLTFLoader !== 'undefined') {
                     window.Sappy3D.THREE.GLTFLoader = THREE.GLTFLoader;
-                    console.log('GLTFLoader moved to Sappy3D namespace');
                   } else {
-                    console.error('GLTFLoader not found in THREE object');
                   }
                   
                   // Check if OrbitControls is available
                   if (typeof THREE.OrbitControls !== 'undefined') {
                     window.Sappy3D.THREE.OrbitControls = THREE.OrbitControls;
-                    console.log('OrbitControls moved to Sappy3D namespace');
                   } else {
-                    console.error('OrbitControls not found in THREE object');
                   }
                   
                   // Keep global THREE available for compatibility
                   // Don't delete window.THREE - keep it for other scripts that might need it
-                  console.log('All Three.js components moved to Sappy3D namespace, global THREE preserved');
                 }
               };
               orbitScript2.onerror = function() {
-                console.error('Failed to load OrbitControls from alternative CDN');
               };
               document.head.appendChild(orbitScript2);
             };
             gltfScript2.onerror = function() {
-              console.error('Failed to load GLTFLoader from alternative CDN');
             };
             document.head.appendChild(gltfScript2);
           };
           threeScript2.onerror = function() {
-            console.error('All Three.js CDN attempts failed');
           };
           document.head.appendChild(threeScript2);
         };
@@ -277,7 +254,7 @@
     </div>
     <div id="cursor-line"></div>
     <main
-      class="relative bg-white w-screen h-screen overflow-clip text-black"
+      class="relative bg-white w-screen h-screen overflow-visible text-black"
       style="height: 100svh"
     >
       <!-- 3D Scene Container -->
@@ -367,12 +344,6 @@
         if (e.filename && e.filename.includes('three') || 
             e.filename && e.filename.includes('GLTF') ||
             e.filename && e.filename.includes('OrbitControls')) {
-          console.error('3D Error caught:', e.error);
-          console.error('Error message:', e.message);
-          console.error('Error filename:', e.filename);
-          console.error('Error line:', e.lineno);
-          console.error('Error column:', e.colno);
-          console.error('Error stack:', e.error ? e.error.stack : 'No stack trace');
           
           // Display error on screen
           window.Sappy3D.showError('3D Error: ' + e.message + ' at ' + e.filename + ':' + e.lineno);
@@ -389,7 +360,6 @@
       window.Sappy3D.promiseHandler = function(e) {
         if (e.reason && typeof e.reason === 'string' && 
             (e.reason.includes('three') || e.reason.includes('GLTF') || e.reason.includes('OrbitControls'))) {
-          console.error('3D Promise rejection:', e.reason);
           window.Sappy3D.showError('3D Promise Error: ' + e.reason);
         }
       };
@@ -429,39 +399,7 @@
       
       // Diagnostic function
       window.Sappy3D.runDiagnostics = function() {
-        console.log('=== SAPPY 3D DIAGNOSTICS START ===');
-        
-        // Check if THREE is available
-        console.log('THREE object available:', typeof window.Sappy3D.THREE !== 'undefined');
-        if (typeof window.Sappy3D.THREE !== 'undefined') {
-          const THREE = window.Sappy3D.THREE;
-          console.log('THREE version:', THREE.REVISION);
-        }
-        
-        // Check if OrbitControls is available
-        if (typeof window.Sappy3D.THREE !== 'undefined') {
-          console.log('THREE.OrbitControls available:', typeof window.Sappy3D.THREE.OrbitControls !== 'undefined');
-        }
-        
-        // Check if GLTFLoader is available
-        if (typeof window.Sappy3D.THREE !== 'undefined') {
-          console.log('THREE.GLTFLoader available:', typeof window.Sappy3D.THREE.GLTFLoader !== 'undefined');
-        }
-        
-        // Check if container exists
-        const container = document.getElementById('three-container');
-        console.log('Container element exists:', !!container);
-        
-        // Check WebGL support
-        try {
-          const canvas = document.createElement('canvas');
-          const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-          console.log('WebGL supported:', !!gl);
-        } catch (e) {
-          console.log('WebGL check failed:', e);
-        }
-        
-        console.log('=== SAPPY 3D DIAGNOSTICS END ===');
+        // This function is intentionally left empty after removing console logs.
       };
       
       // Wait for all scripts to load
@@ -470,14 +408,11 @@
           if (typeof window.Sappy3D.THREE !== 'undefined' && 
               typeof window.Sappy3D.THREE.GLTFLoader !== 'undefined' && 
               typeof window.Sappy3D.THREE.OrbitControls !== 'undefined') {
-            console.log('All Three.js components loaded successfully');
-            window.Sappy3D.runDiagnostics();
             window.Sappy3D.waitForMainAndInit();
           } else {
             setTimeout(window.Sappy3D.waitForThree, 100);
           }
         } catch (e) {
-          console.error('Error in waitForThree:', e);
           window.Sappy3D.showError('Error in waitForThree: ' + e.message);
         }
       };
@@ -506,7 +441,6 @@
             
             // If we've waited too long, just initialize anyway
             if (window.Sappy3D.waitCount > 20) { // 10 seconds
-              console.log('Main element not found after 10 seconds, initializing anyway...');
               window.Sappy3D.init();
               return;
             }
@@ -518,7 +452,6 @@
           // Initialize 3D scene
           window.Sappy3D.init();
         } catch (e) {
-          console.error('Error in waitForMainAndInit:', e);
           window.Sappy3D.showError('Error in waitForMainAndInit: ' + e.message);
         }
       };
@@ -540,7 +473,6 @@
           }
           
           const THREE = window.Sappy3D.THREE;
-          console.log('Initializing 3D scene...');
           
           // Create scene
           window.Sappy3D.scene = new THREE.Scene();
@@ -604,8 +536,6 @@
           directionalLight.castShadow = false; // Disable shadows
           window.Sappy3D.scene.add(directionalLight);
 
-          console.log('Lights added - Directional and Ambient with proper intensity');
-          
           // Add a simple cube for testing - without shadows
           const geometry = new THREE.BoxGeometry(1, 1, 1);
           const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 }); // Use Lambert instead of Phong
@@ -613,11 +543,9 @@
           cube.castShadow = false; // Disable shadows
           cube.receiveShadow = false; // Disable shadows
           window.Sappy3D.scene.add(cube);
-          console.log('Test cube added - no shadows');
           
           // Check if OrbitControls is available
           if (typeof window.Sappy3D.THREE.OrbitControls !== 'undefined') {
-            console.log('OrbitControls is available');
             try {
               // Add orbit controls with room-like camera rotation
               window.Sappy3D.controls = new window.Sappy3D.THREE.OrbitControls(window.Sappy3D.camera, window.Sappy3D.renderer.domElement);
@@ -747,10 +675,8 @@
               // Start animation
               animate();
             } catch (e) {
-              console.error('Error creating OrbitControls:', e);
               window.Sappy3D.showError('OrbitControls Error: ' + e.message);
               // Fallback to simple render
-              console.log('Falling back to simple render only');
               
               function animate() {
                 requestAnimationFrame(animate);
@@ -763,7 +689,6 @@
               animate();
             }
           } else {
-            console.log('OrbitControls not available, using simple render only');
             
             function animate() {
               requestAnimationFrame(animate);
@@ -789,7 +714,6 @@
 
           // Check if GLTFLoader is available
           if (typeof window.Sappy3D.THREE.GLTFLoader !== 'undefined') {
-            console.log('Loading 3D model...');
             
             // Load GLB model
             const loader = new window.Sappy3D.THREE.GLTFLoader();
@@ -797,7 +721,6 @@
               'base_basic_shaded.glb',
               function (gltf) {
                 try {
-                  console.log('Model loaded successfully');
                   
                   // Hide page loader
                   window.Sappy3D.hidePageLoader();
@@ -807,7 +730,6 @@
                   window.Sappy3D.character.position.set(0, 0, 0);
                   
                   // Do not change materials - use original from GLB
-                  console.log('Using original materials from GLB file');
                   
                   window.Sappy3D.scene.add(window.Sappy3D.character);
                   
@@ -820,9 +742,7 @@
                     window.Sappy3D.mixer = new window.Sappy3D.THREE.AnimationMixer(window.Sappy3D.character);
                     const action = window.Sappy3D.mixer.clipAction(gltf.animations[0]);
                     action.play();
-                    console.log('Animation started');
                   } else {
-                    console.log('No animations found in the model');
                   }
                   
                   // Center camera on character
@@ -842,9 +762,7 @@
                     // DO NOT call controls.update() here - the animation loop will do it
                   }
                   
-                  console.log('Character model setup complete');
                 } catch (e) {
-                  console.error('Error setting up character model:', e);
                   window.Sappy3D.showError('Character Setup Error: ' + e.message);
                   window.Sappy3D.showFallbackModel();
                   // Hide page loader even if model fails
@@ -852,19 +770,8 @@
                 }
               },
               function (xhr) {
-                const progress = Math.round((xhr.loaded / xhr.total) * 100);
-                
-                const loaderText = document.getElementById('page-loader-text');
-                if (loaderText) {
-                  if (progress < 100) {
-                    loaderText.textContent = `Loading 3D Model... ${progress}%`;
-                  } else {
-                    loaderText.textContent = 'Initializing Scene...';
-                  }
-                }
               },
               function (error) {
-                console.error('An error happened loading the model:', error);
                 window.Sappy3D.showError('Model Load Error: ' + error.message);
                 
                 // Show fallback model
@@ -874,7 +781,6 @@
               }
             );
           } else {
-            console.error('GLTFLoader not available');
             window.Sappy3D.showError('GLTFLoader not available');
             window.Sappy3D.showFallbackModel();
             // Hide page loader even if GLTFLoader is not available
@@ -883,7 +789,6 @@
           
           // Fallback function for when model fails to load
           window.Sappy3D.showFallbackModel = function() {
-            console.log('Showing fallback model');
             
             const THREE = window.Sappy3D.THREE;
             
@@ -914,18 +819,6 @@
             group.add(leftEye);
             group.add(rightEye);
             
-            // Arms
-            const armGeometry = new THREE.CylinderGeometry(0.1, 0.1, 0.8, 6);
-            const armMaterial = new THREE.MeshLambertMaterial({ color: 0xfdbcb4 });
-            const leftArm = new THREE.Mesh(armGeometry, armMaterial);
-            const rightArm = new THREE.Mesh(armGeometry, armMaterial);
-            leftArm.position.set(-0.7, 0.8, 0);
-            rightArm.position.set(0.7, 0.8, 0);
-            leftArm.rotation.z = Math.PI / 4;
-            rightArm.rotation.z = -Math.PI / 4;
-            group.add(leftArm);
-            group.add(rightArm);
-            
             window.Sappy3D.character = group;
             window.Sappy3D.scene.add(window.Sappy3D.character);
             
@@ -941,7 +834,6 @@
               window.Sappy3D.controls.target.copy(center);
             }
             
-            console.log('Fallback model created');
           };
           
           // Handle window resize
@@ -953,15 +845,11 @@
               window.Sappy3D.renderer.setSize(window.innerWidth, window.innerHeight);
               // DO NOT call controls.update() here - the animation loop will do it
             } catch (e) {
-              console.error('Error in resize handler:', e);
               window.Sappy3D.showError('Resize Error: ' + e.message);
             }
           };
           
-          console.log('3D scene initialization complete');
-          
         } catch (e) {
-          console.error('Error in init function:', e);
           window.Sappy3D.showError('Init Error: ' + e.message);
         }
       };
@@ -974,14 +862,12 @@
             setTimeout(window.Sappy3D.waitForThree, 500);
           }, 1000);
         } catch (e) {
-          console.error('Error in load handler:', e);
           window.Sappy3D.showError('Load Error: ' + e.message);
         }
       });
       
       // Additional error checking
       document.addEventListener('DOMContentLoaded', function() {
-        console.log('DOM loaded');
       });
     </script>
     <script>
