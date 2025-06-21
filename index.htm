@@ -563,8 +563,25 @@
               window.Sappy3D.controls.zoomSpeed = 0; // Disable zoom speed
               window.Sappy3D.controls.screenSpacePanning = false; // Better for room-like rotation
               
-              // Remove DragControls - we don't need it anymore
-              window.Sappy3D.dragControls = null;
+              // Limit OrbitControls interaction area to the model container only
+              const orbitContainer = document.getElementById('three-container');
+              if (orbitContainer) {
+                // Remove the original event listeners from the renderer
+                window.Sappy3D.renderer.domElement.removeEventListener('mousedown', window.Sappy3D.controls.onMouseDown);
+                window.Sappy3D.renderer.domElement.removeEventListener('mousemove', window.Sappy3D.controls.onMouseMove);
+                window.Sappy3D.renderer.domElement.removeEventListener('mouseup', window.Sappy3D.controls.onMouseUp);
+                window.Sappy3D.renderer.domElement.removeEventListener('touchstart', window.Sappy3D.controls.onTouchStart);
+                window.Sappy3D.renderer.domElement.removeEventListener('touchmove', window.Sappy3D.controls.onTouchMove);
+                window.Sappy3D.renderer.domElement.removeEventListener('touchend', window.Sappy3D.controls.onTouchEnd);
+                
+                // Add event listeners to the container instead
+                orbitContainer.addEventListener('mousedown', window.Sappy3D.controls.onMouseDown.bind(window.Sappy3D.controls));
+                orbitContainer.addEventListener('mousemove', window.Sappy3D.controls.onMouseMove.bind(window.Sappy3D.controls));
+                orbitContainer.addEventListener('mouseup', window.Sappy3D.controls.onMouseUp.bind(window.Sappy3D.controls));
+                orbitContainer.addEventListener('touchstart', window.Sappy3D.controls.onTouchStart.bind(window.Sappy3D.controls));
+                orbitContainer.addEventListener('touchmove', window.Sappy3D.controls.onTouchMove.bind(window.Sappy3D.controls));
+                orbitContainer.addEventListener('touchend', window.Sappy3D.controls.onTouchEnd.bind(window.Sappy3D.controls));
+              }
               
               // Simplified event handlers
               window.Sappy3D.renderer.domElement.style.cursor = 'grab';
@@ -609,28 +626,31 @@
               window.Sappy3D.raycaster = new window.Sappy3D.THREE.Raycaster();
               window.Sappy3D.mouse = new window.Sappy3D.THREE.Vector2();
               
-              window.Sappy3D.renderer.domElement.addEventListener('click', function(event) {
-                // Calculate mouse position in normalized device coordinates
-                const rect = window.Sappy3D.renderer.domElement.getBoundingClientRect();
-                window.Sappy3D.mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-                window.Sappy3D.mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-                
-                // Check for intersections with the character model
-                if (window.Sappy3D.character) {
-                  window.Sappy3D.raycaster.setFromCamera(window.Sappy3D.mouse, window.Sappy3D.camera);
-                  const intersects = window.Sappy3D.raycaster.intersectObject(window.Sappy3D.character, true);
+              // Limit interaction area to the model container only
+              const clickContainer = document.getElementById('three-container');
+              if (clickContainer) {
+                clickContainer.addEventListener('click', function(event) {
+                  // Calculate mouse position in normalized device coordinates
+                  const rect = window.Sappy3D.renderer.domElement.getBoundingClientRect();
+                  window.Sappy3D.mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+                  window.Sappy3D.mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
                   
-                  if (intersects.length > 0) {
-                    console.log('Clicked on character!');
-                    // Add a small bounce effect when clicked
-                    const originalScale = window.Sappy3D.character.scale.clone();
-                    window.Sappy3D.character.scale.multiplyScalar(1.1);
-                    setTimeout(function() {
-                      window.Sappy3D.character.scale.copy(originalScale);
-                    }, 200);
+                  // Check for intersections with the character model
+                  if (window.Sappy3D.character) {
+                    window.Sappy3D.raycaster.setFromCamera(window.Sappy3D.mouse, window.Sappy3D.camera);
+                    const intersects = window.Sappy3D.raycaster.intersectObject(window.Sappy3D.character, true);
+                    
+                    if (intersects.length > 0) {
+                      // Add a small bounce effect when clicked
+                      const originalScale = window.Sappy3D.character.scale.clone();
+                      window.Sappy3D.character.scale.multiplyScalar(1.1);
+                      setTimeout(function() {
+                        window.Sappy3D.character.scale.copy(originalScale);
+                      }, 200);
+                    }
                   }
-                }
-              });
+                });
+              }
               
               // Stable animation loop with performance optimization
               let lastTime = 0;
@@ -770,6 +790,16 @@
                 }
               },
               function (xhr) {
+                const progress = Math.round((xhr.loaded / xhr.total) * 100);
+                
+                const loaderText = document.getElementById('page-loader-text');
+                if (loaderText) {
+                  if (progress < 100) {
+                    loaderText.textContent = `Loading 3D Model... ${progress}%`;
+                  } else {
+                    loaderText.textContent = 'Initializing Scene...';
+                  }
+                }
               },
               function (error) {
                 window.Sappy3D.showError('Model Load Error: ' + error.message);
@@ -818,6 +848,18 @@
             rightEye.position.set(0.15, 1.9, 0.3);
             group.add(leftEye);
             group.add(rightEye);
+            
+            // Arms
+            const armGeometry = new THREE.CylinderGeometry(0.1, 0.1, 0.8, 6);
+            const armMaterial = new THREE.MeshLambertMaterial({ color: 0xfdbcb4 });
+            const leftArm = new THREE.Mesh(armGeometry, armMaterial);
+            const rightArm = new THREE.Mesh(armGeometry, armMaterial);
+            leftArm.position.set(-0.7, 0.8, 0);
+            rightArm.position.set(0.7, 0.8, 0);
+            leftArm.rotation.z = Math.PI / 4;
+            rightArm.rotation.z = -Math.PI / 4;
+            group.add(leftArm);
+            group.add(rightArm);
             
             window.Sappy3D.character = group;
             window.Sappy3D.scene.add(window.Sappy3D.character);
