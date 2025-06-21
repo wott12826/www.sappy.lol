@@ -338,7 +338,11 @@
                     className:
                       "flex flex-col gap-[2vh] text-[7vw] font-semibold uppercase",
                     children: [
-                      
+                      (0, t.jsx)(l.SmoothLink, {
+                        onClick: e,
+                        href: "#news",
+                        children: "NEWS",
+                      }),
                       (0, t.jsx)(l.SmoothLink, {
                         onClick: e,
                         href: "#sappy-seals",
