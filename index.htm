@@ -99,8 +99,6 @@
     <script src="GLTFLoader.js"></script>
     <!-- OrbitControls for 3D interaction -->
     <script src="OrbitControls.js"></script>
-    <!-- DragControls for dragging objects -->
-    <script src="DragControls.js"></script>
     <title>Sappy</title>
     <meta name="description" content="Shaping the future of the internet." />
     <meta property="og:title" content="Sappy" />
@@ -172,7 +170,7 @@
       
       <!-- Interaction hint -->
       <div id="interaction-hint" class="absolute top-4 left-4 z-30 bg-black bg-opacity-50 text-white px-3 py-2 rounded-lg text-sm pointer-events-none opacity-75">
-        💡 Зажмите левую кнопку мыши на персонаже для перетаскивания • Правой кнопкой вращайте камеру
+        💡 Перетащите мышкой для вращения камеры вокруг персонажа
       </div>
       <div
         class="absolute flex flex-col gap-3 bottom-0 bg-transparent h-fit justify-between w-full px-[5vw] md:px-[3vw] xl:px-[2vw] pb-3 z-20 "
@@ -502,24 +500,24 @@
           if (typeof THREE.OrbitControls !== 'undefined') {
             console.log('OrbitControls is available');
             try {
-              // Add orbit controls with drag interaction enabled
+              // Add orbit controls with room-like camera rotation
               window.Sappy3D.controls = new THREE.OrbitControls(window.Sappy3D.camera, window.Sappy3D.renderer.domElement);
               window.Sappy3D.controls.enableDamping = true;
               window.Sappy3D.controls.dampingFactor = 0.1;
               window.Sappy3D.controls.enableZoom = false; // Disable zoom
-              window.Sappy3D.controls.enablePan = false; // Disable pan - we'll use DragControls instead
+              window.Sappy3D.controls.enablePan = false; // Disable pan
               window.Sappy3D.controls.autoRotate = false; // Disable auto rotation
-              window.Sappy3D.controls.enableRotate = true; // Keep manual rotation
-              window.Sappy3D.controls.rotateSpeed = 0.5; // Slightly faster rotation
+              window.Sappy3D.controls.enableRotate = true; // Enable manual rotation
+              window.Sappy3D.controls.rotateSpeed = 0.8; // Faster rotation for room-like feel
               window.Sappy3D.controls.minDistance = 4; // Fixed distance
               window.Sappy3D.controls.maxDistance = 4; // Fixed distance
-              window.Sappy3D.controls.minPolarAngle = Math.PI / 3; // Limit vertical rotation
-              window.Sappy3D.controls.maxPolarAngle = Math.PI / 2.5; // Limit vertical rotation
+              window.Sappy3D.controls.minPolarAngle = Math.PI / 4; // Allow more vertical rotation
+              window.Sappy3D.controls.maxPolarAngle = Math.PI / 2.2; // Allow more vertical rotation
               window.Sappy3D.controls.zoomSpeed = 0; // Disable zoom speed
-              window.Sappy3D.controls.screenSpacePanning = true; // Better panning behavior
-              console.log('OrbitControls created with rotation only');
+              window.Sappy3D.controls.screenSpacePanning = false; // Better for room-like rotation
+              console.log('OrbitControls created for room-like camera rotation');
               
-              // Initialize DragControls (will be set up after character loads)
+              // Remove DragControls - we don't need it anymore
               window.Sappy3D.dragControls = null;
               
               // Add mouse event handlers for better interaction
@@ -549,21 +547,13 @@
               // Add visual feedback for interaction
               window.Sappy3D.renderer.domElement.style.cursor = 'grab';
               
-              // Handle right mouse button for camera rotation
-              window.Sappy3D.renderer.domElement.addEventListener('contextmenu', function(event) {
-                event.preventDefault(); // Prevent context menu
-              });
-              
+              // Handle mouse interaction for room-like rotation
               window.Sappy3D.renderer.domElement.addEventListener('mousedown', function(event) {
-                if (event.button === 2) { // Right mouse button
-                  window.Sappy3D.renderer.domElement.style.cursor = 'move';
-                }
+                window.Sappy3D.renderer.domElement.style.cursor = 'grabbing';
               });
               
               window.Sappy3D.renderer.domElement.addEventListener('mouseup', function(event) {
-                if (event.button === 2) { // Right mouse button
-                  window.Sappy3D.renderer.domElement.style.cursor = 'grab';
-                }
+                window.Sappy3D.renderer.domElement.style.cursor = 'grab';
               });
               
               // Add click interaction with the model
@@ -783,40 +773,6 @@
                   if (typeof THREE.OrbitControls !== 'undefined' && window.Sappy3D.controls) {
                     window.Sappy3D.controls.target.copy(center);
                     window.Sappy3D.controls.update();
-                  }
-                  
-                  // Set up DragControls for character dragging
-                  if (typeof THREE.DragControls !== 'undefined') {
-                    // Get all meshes from the character for dragging
-                    const draggableObjects = [];
-                    window.Sappy3D.character.traverse(function(child) {
-                      if (child.isMesh) {
-                        draggableObjects.push(child);
-                      }
-                    });
-                    
-                    if (draggableObjects.length > 0) {
-                      window.Sappy3D.dragControls = new THREE.DragControls(
-                        draggableObjects,
-                        window.Sappy3D.camera,
-                        window.Sappy3D.renderer.domElement
-                      );
-                      
-                      // Disable OrbitControls when dragging
-                      window.Sappy3D.dragControls.addEventListener('dragstart', function() {
-                        if (window.Sappy3D.controls) {
-                          window.Sappy3D.controls.enabled = false;
-                        }
-                      });
-                      
-                      window.Sappy3D.dragControls.addEventListener('dragend', function() {
-                        if (window.Sappy3D.controls) {
-                          window.Sappy3D.controls.enabled = true;
-                        }
-                      });
-                      
-                      console.log('DragControls set up for character');
-                    }
                   }
                   
                   console.log('Character model setup complete');
