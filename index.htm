@@ -408,8 +408,11 @@
           console.log('Scene created');
           
           // Create camera
-          window.Sappy3D.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-          window.Sappy3D.camera.position.set(0, 1.5, 3);
+          window.Sappy3D.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+          window.Sappy3D.camera.position.set(0, 1.5, 4);
+          window.Sappy3D.camera.near = 0.1;
+          window.Sappy3D.camera.far = 1000;
+          window.Sappy3D.camera.updateProjectionMatrix();
           console.log('Camera created');
           
           // Find or create container
@@ -441,11 +444,21 @@
           }
           
           // Create renderer
-          window.Sappy3D.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+          window.Sappy3D.renderer = new THREE.WebGLRenderer({ 
+            antialias: true, 
+            alpha: true,
+            powerPreference: "high-performance",
+            stencil: false,
+            depth: true,
+            logarithmicDepthBuffer: false
+          });
           window.Sappy3D.renderer.setSize(window.innerWidth, window.innerHeight);
-          window.Sappy3D.renderer.setPixelRatio(window.devicePixelRatio);
+          window.Sappy3D.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio
           window.Sappy3D.renderer.shadowMap.enabled = true;
           window.Sappy3D.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+          window.Sappy3D.renderer.outputEncoding = THREE.sRGBEncoding;
+          window.Sappy3D.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+          window.Sappy3D.renderer.toneMappingExposure = 1.0;
           container.appendChild(window.Sappy3D.renderer.domElement);
           console.log('Renderer created and added to container');
           
@@ -474,44 +487,58 @@
           if (typeof THREE.OrbitControls !== 'undefined') {
             console.log('OrbitControls is available');
             try {
-              // Add orbit controls
+              // Add orbit controls with very smooth settings
               window.Sappy3D.controls = new THREE.OrbitControls(window.Sappy3D.camera, window.Sappy3D.renderer.domElement);
               window.Sappy3D.controls.enableDamping = true;
-              window.Sappy3D.controls.dampingFactor = 0.05;
+              window.Sappy3D.controls.dampingFactor = 0.1; // Increased for smoother movement
               window.Sappy3D.controls.enableZoom = true;
               window.Sappy3D.controls.enablePan = false;
               window.Sappy3D.controls.autoRotate = true;
-              window.Sappy3D.controls.autoRotateSpeed = 0.5;
+              window.Sappy3D.controls.autoRotateSpeed = 0.3; // Slower rotation
               window.Sappy3D.controls.enableRotate = true;
-              window.Sappy3D.controls.rotateSpeed = 0.5;
+              window.Sappy3D.controls.rotateSpeed = 0.3; // Slower manual rotation
               window.Sappy3D.controls.minDistance = 2;
               window.Sappy3D.controls.maxDistance = 10;
               window.Sappy3D.controls.minPolarAngle = 0;
               window.Sappy3D.controls.maxPolarAngle = Math.PI;
+              window.Sappy3D.controls.zoomSpeed = 0.5; // Slower zoom
               console.log('OrbitControls created');
               
-              // Animation loop with controls
-              let lastTime = 0;
-              function animate(currentTime) {
+              // Very smooth animation loop
+              let lastTime = performance.now();
+              let frameCount = 0;
+              
+              function animate() {
                 try {
                   requestAnimationFrame(animate);
                   
-                  // Limit frame rate to reduce jitter
-                  if (currentTime - lastTime < 16) { // ~60 FPS
+                  const currentTime = performance.now();
+                  const deltaTime = currentTime - lastTime;
+                  
+                  // Limit to 30 FPS for maximum stability
+                  if (deltaTime < 33) {
                     return;
                   }
-                  lastTime = currentTime;
                   
-                  if (window.Sappy3D.controls && window.Sappy3D.controls.update) {
+                  lastTime = currentTime;
+                  frameCount++;
+                  
+                  // Update controls only every few frames for stability
+                  if (frameCount % 2 === 0 && window.Sappy3D.controls && window.Sappy3D.controls.update) {
                     window.Sappy3D.controls.update();
                   }
                   
-                  // Smooth camera movement
+                  // Ensure camera is stable
                   if (window.Sappy3D.camera) {
+                    window.Sappy3D.camera.updateMatrix();
                     window.Sappy3D.camera.updateMatrixWorld();
                   }
                   
-                  window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
+                  // Render with stable settings
+                  if (window.Sappy3D.renderer && window.Sappy3D.scene) {
+                    window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
+                  }
+                  
                 } catch (e) {
                   console.error('Error in animation loop:', e);
                   window.Sappy3D.showError('Animation Error: ' + e.message);
@@ -521,25 +548,32 @@
             } catch (e) {
               console.error('Error creating OrbitControls:', e);
               window.Sappy3D.showError('OrbitControls Error: ' + e.message);
-              // Fallback to simple animation
+              // Fallback to very simple animation
               console.log('Falling back to simple animation');
-              let lastTime = 0;
-              function animate(currentTime) {
+              
+              let lastTime = performance.now();
+              function animate() {
                 try {
                   requestAnimationFrame(animate);
                   
-                  // Limit frame rate to reduce jitter
-                  if (currentTime - lastTime < 16) { // ~60 FPS
+                  const currentTime = performance.now();
+                  const deltaTime = currentTime - lastTime;
+                  
+                  // Limit to 30 FPS for maximum stability
+                  if (deltaTime < 33) {
                     return;
                   }
+                  
                   lastTime = currentTime;
                   
-                  // Simple rotation without controls
+                  // Very slow and smooth rotation
                   if (window.Sappy3D.scene) {
-                    window.Sappy3D.scene.rotation.y += 0.005;
+                    window.Sappy3D.scene.rotation.y += 0.002; // Much slower rotation
                   }
                   
-                  window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
+                  if (window.Sappy3D.renderer && window.Sappy3D.scene) {
+                    window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
+                  }
                 } catch (e) {
                   console.error('Error in simple animation loop:', e);
                   window.Sappy3D.showError('Simple Animation Error: ' + e.message);
@@ -549,24 +583,30 @@
             }
           } else {
             console.log('OrbitControls not available, using simple animation');
-            // Simple animation loop without controls
-            let lastTime = 0;
-            function animate(currentTime) {
+            // Very simple and stable animation loop
+            let lastTime = performance.now();
+            function animate() {
               try {
                 requestAnimationFrame(animate);
                 
-                // Limit frame rate to reduce jitter
-                if (currentTime - lastTime < 16) { // ~60 FPS
+                const currentTime = performance.now();
+                const deltaTime = currentTime - lastTime;
+                
+                // Limit to 30 FPS for maximum stability
+                if (deltaTime < 33) {
                   return;
                 }
+                
                 lastTime = currentTime;
                 
-                // Simple rotation without controls
+                // Very slow and smooth rotation
                 if (window.Sappy3D.scene) {
-                  window.Sappy3D.scene.rotation.y += 0.005;
+                  window.Sappy3D.scene.rotation.y += 0.002; // Much slower rotation
                 }
                 
-                window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
+                if (window.Sappy3D.renderer && window.Sappy3D.scene) {
+                  window.Sappy3D.renderer.render(window.Sappy3D.scene, window.Sappy3D.camera);
+                }
               } catch (e) {
                 console.error('Error in simple animation loop:', e);
                 window.Sappy3D.showError('Simple Animation Error: ' + e.message);
