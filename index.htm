@@ -487,22 +487,22 @@
           if (typeof THREE.OrbitControls !== 'undefined') {
             console.log('OrbitControls is available');
             try {
-              // Add orbit controls with very smooth settings
+              // Add orbit controls with only rotation enabled
               window.Sappy3D.controls = new THREE.OrbitControls(window.Sappy3D.camera, window.Sappy3D.renderer.domElement);
               window.Sappy3D.controls.enableDamping = true;
-              window.Sappy3D.controls.dampingFactor = 0.1; // Increased for smoother movement
-              window.Sappy3D.controls.enableZoom = true;
-              window.Sappy3D.controls.enablePan = false;
-              window.Sappy3D.controls.autoRotate = true;
-              window.Sappy3D.controls.autoRotateSpeed = 0.3; // Slower rotation
-              window.Sappy3D.controls.enableRotate = true;
-              window.Sappy3D.controls.rotateSpeed = 0.3; // Slower manual rotation
-              window.Sappy3D.controls.minDistance = 2;
-              window.Sappy3D.controls.maxDistance = 10;
-              window.Sappy3D.controls.minPolarAngle = 0;
-              window.Sappy3D.controls.maxPolarAngle = Math.PI;
-              window.Sappy3D.controls.zoomSpeed = 0.5; // Slower zoom
-              console.log('OrbitControls created');
+              window.Sappy3D.controls.dampingFactor = 0.1;
+              window.Sappy3D.controls.enableZoom = false; // Disable zoom
+              window.Sappy3D.controls.enablePan = false; // Disable pan
+              window.Sappy3D.controls.autoRotate = true; // Keep auto rotation
+              window.Sappy3D.controls.autoRotateSpeed = 0.3;
+              window.Sappy3D.controls.enableRotate = true; // Keep manual rotation
+              window.Sappy3D.controls.rotateSpeed = 0.3;
+              window.Sappy3D.controls.minDistance = 4; // Fixed distance
+              window.Sappy3D.controls.maxDistance = 4; // Fixed distance
+              window.Sappy3D.controls.minPolarAngle = Math.PI / 3; // Limit vertical rotation
+              window.Sappy3D.controls.maxPolarAngle = Math.PI / 2.5; // Limit vertical rotation
+              window.Sappy3D.controls.zoomSpeed = 0; // Disable zoom speed
+              console.log('OrbitControls created with rotation only');
               
               // Very smooth animation loop
               let lastTime = performance.now();
@@ -548,8 +548,8 @@
             } catch (e) {
               console.error('Error creating OrbitControls:', e);
               window.Sappy3D.showError('OrbitControls Error: ' + e.message);
-              // Fallback to very simple animation
-              console.log('Falling back to simple animation');
+              // Fallback to very simple rotation only
+              console.log('Falling back to simple rotation only');
               
               let lastTime = performance.now();
               function animate() {
@@ -566,9 +566,9 @@
                   
                   lastTime = currentTime;
                   
-                  // Very slow and smooth rotation
+                  // Only rotation, no other movement
                   if (window.Sappy3D.scene) {
-                    window.Sappy3D.scene.rotation.y += 0.002; // Much slower rotation
+                    window.Sappy3D.scene.rotation.y += 0.002; // Very slow rotation only
                   }
                   
                   if (window.Sappy3D.renderer && window.Sappy3D.scene) {
@@ -582,8 +582,8 @@
               animate();
             }
           } else {
-            console.log('OrbitControls not available, using simple animation');
-            // Very simple and stable animation loop
+            console.log('OrbitControls not available, using simple rotation only');
+            // Very simple rotation only animation loop
             let lastTime = performance.now();
             function animate() {
               try {
@@ -599,9 +599,9 @@
                 
                 lastTime = currentTime;
                 
-                // Very slow and smooth rotation
+                // Only rotation, no other movement
                 if (window.Sappy3D.scene) {
-                  window.Sappy3D.scene.rotation.y += 0.002; // Much slower rotation
+                  window.Sappy3D.scene.rotation.y += 0.002; // Very slow rotation only
                 }
                 
                 if (window.Sappy3D.renderer && window.Sappy3D.scene) {
