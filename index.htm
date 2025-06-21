@@ -227,6 +227,17 @@
         opacity: 0.5;
         transition: left 0.05s linear;
       }
+      #three-container {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 340px;
+        height: 420px;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        pointer-events: auto;
+        background: transparent;
+      }
     </style>
     <style>
       #page-loader {
@@ -490,7 +501,7 @@
             preserveDrawingBuffer: false,
             failIfMajorPerformanceCaveat: false
           });
-          window.Sappy3D.renderer.setSize(window.innerWidth, window.innerHeight);
+          window.Sappy3D.renderer.setSize(340, 420);
           window.Sappy3D.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio
           window.Sappy3D.renderer.shadowMap.enabled = false; // Disable shadows for stability
           window.Sappy3D.renderer.outputEncoding = THREE.sRGBEncoding; // Correct setting for GLB
@@ -832,7 +843,7 @@
           window.addEventListener('resize', window.Sappy3D.onWindowResize, false);
           window.Sappy3D.onWindowResize = function() {
             try {
-              window.Sappy3D.camera.aspect = window.innerWidth / window.innerHeight;
+              window.Sappy3D.camera.aspect = 340 / 420;
               window.Sappy3D.camera.updateProjectionMatrix();
               window.Sappy3D.renderer.setSize(window.innerWidth, window.innerHeight);
               // DO NOT call controls.update() here - the animation loop will do it
