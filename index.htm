@@ -565,11 +565,11 @@
               window.Sappy3D.controls.enablePan = false; // Disable pan
               window.Sappy3D.controls.autoRotate = false; // Disable auto rotation
               window.Sappy3D.controls.enableRotate = true; // Enable manual rotation
-              window.Sappy3D.controls.rotateSpeed = 1.0; // Быстрое вращение
+              window.Sappy3D.controls.rotateSpeed = 0.7; // More reasonable speed like in example
               window.Sappy3D.controls.minDistance = 4; // Fixed distance
               window.Sappy3D.controls.maxDistance = 4; // Fixed distance
-              window.Sappy3D.controls.minPolarAngle = Math.PI / 6; // Больше вертикального вращения
-              window.Sappy3D.controls.maxPolarAngle = Math.PI / 2.1; // Больше вертикального вращения
+              window.Sappy3D.controls.minPolarAngle = Math.PI / 3; // 60 degrees up like in example
+              window.Sappy3D.controls.maxPolarAngle = Math.PI / 1.5; // 120 degrees down like in example
               window.Sappy3D.controls.zoomSpeed = 0; // Disable zoom speed
               window.Sappy3D.controls.screenSpacePanning = false; // Better for room-like rotation
               console.log('OrbitControls created for room-like camera rotation');
@@ -645,17 +645,6 @@
                 }
               });
               
-              // Update controls every frame for better responsiveness
-              if (window.Sappy3D.controls && window.Sappy3D.controls.update) {
-                window.Sappy3D.controls.update();
-                
-                // Debug: check if controls are actually changing camera
-                if (frameCount % 60 === 0) { // Every 2 seconds at 30 FPS
-                  console.log('Camera position:', window.Sappy3D.camera.position);
-                  console.log('Camera rotation:', window.Sappy3D.camera.rotation);
-                }
-              }
-              
               // Very smooth animation loop
               let lastTime = performance.now();
               let frameCount = 0;
@@ -684,8 +673,8 @@
                     return;
                   }
                   
-                  // Update controls only every few frames for stability
-                  if (frameCount % 2 === 0 && window.Sappy3D.controls && window.Sappy3D.controls.update) {
+                  // Update controls every frame for smooth interaction
+                  if (window.Sappy3D.controls && window.Sappy3D.controls.update) {
                     window.Sappy3D.controls.update();
                   }
                   
