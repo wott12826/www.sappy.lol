@@ -58,29 +58,29 @@
     ></script>
     <!-- Three.js library - load first, before other scripts -->
     <script>
-      // Load Three.js and related scripts in correct order
+      // Load Three.js and related scripts in correct order with global THREE
       (function() {
         console.log('Loading Three.js and related scripts...');
         
-        // Load Three.js first
+        // Load Three.js first (creates global THREE)
         var threeScript = document.createElement('script');
         threeScript.src = 'https://cdn.jsdelivr.net/npm/three@0.144.0/build/three.min.js';
         threeScript.onload = function() {
-          console.log('Three.js loaded successfully');
+          console.log('Three.js loaded successfully, global THREE available');
           
-          // Load GLTFLoader after Three.js
+          // Load GLTFLoader after Three.js (uses global THREE)
           var gltfScript = document.createElement('script');
           gltfScript.src = 'https://cdn.jsdelivr.net/npm/three@0.144.0/examples/js/loaders/GLTFLoader.js';
           gltfScript.onload = function() {
             console.log('GLTFLoader loaded successfully');
             
-            // Load OrbitControls after GLTFLoader
+            // Load OrbitControls after GLTFLoader (uses global THREE)
             var orbitScript = document.createElement('script');
             orbitScript.src = 'https://cdn.jsdelivr.net/npm/three@0.144.0/examples/js/controls/OrbitControls.js';
             orbitScript.onload = function() {
               console.log('OrbitControls loaded successfully');
               
-              // Now move everything to our namespace
+              // Now that all scripts are loaded, move everything to our namespace
               if (typeof THREE !== 'undefined') {
                 window.Sappy3D = window.Sappy3D || {};
                 window.Sappy3D.THREE = THREE;
@@ -101,9 +101,9 @@
                   console.error('OrbitControls not found in THREE object');
                 }
                 
-                // Remove global THREE to avoid conflicts
-                delete window.THREE;
-                console.log('All Three.js components moved to Sappy3D namespace');
+                // Keep global THREE available for compatibility
+                // Don't delete window.THREE - keep it for other scripts that might need it
+                console.log('All Three.js components moved to Sappy3D namespace, global THREE preserved');
               }
             };
             orbitScript.onerror = function() {
@@ -123,21 +123,21 @@
           var threeScript2 = document.createElement('script');
           threeScript2.src = 'https://unpkg.com/three@0.144.0/build/three.min.js';
           threeScript2.onload = function() {
-            console.log('Three.js loaded from alternative CDN');
+            console.log('Three.js loaded from alternative CDN, global THREE available');
             
-            // Load GLTFLoader after Three.js
+            // Load GLTFLoader after Three.js (uses global THREE)
             var gltfScript2 = document.createElement('script');
             gltfScript2.src = 'https://unpkg.com/three@0.144.0/examples/js/loaders/GLTFLoader.js';
             gltfScript2.onload = function() {
               console.log('GLTFLoader loaded from alternative CDN');
               
-              // Load OrbitControls after GLTFLoader
+              // Load OrbitControls after GLTFLoader (uses global THREE)
               var orbitScript2 = document.createElement('script');
               orbitScript2.src = 'https://unpkg.com/three@0.144.0/examples/js/controls/OrbitControls.js';
               orbitScript2.onload = function() {
                 console.log('OrbitControls loaded from alternative CDN');
                 
-                // Now move everything to our namespace
+                // Now that all scripts are loaded, move everything to our namespace
                 if (typeof THREE !== 'undefined') {
                   window.Sappy3D = window.Sappy3D || {};
                   window.Sappy3D.THREE = THREE;
@@ -158,9 +158,9 @@
                     console.error('OrbitControls not found in THREE object');
                   }
                   
-                  // Remove global THREE to avoid conflicts
-                  delete window.THREE;
-                  console.log('All Three.js components moved to Sappy3D namespace');
+                  // Keep global THREE available for compatibility
+                  // Don't delete window.THREE - keep it for other scripts that might need it
+                  console.log('All Three.js components moved to Sappy3D namespace, global THREE preserved');
                 }
               };
               orbitScript2.onerror = function() {
@@ -701,8 +701,8 @@
               });
               
               // Add click interaction with the model
-              window.Sappy3D.raycaster = new THREE.Raycaster();
-              window.Sappy3D.mouse = new THREE.Vector2();
+              window.Sappy3D.raycaster = new window.Sappy3D.THREE.Raycaster();
+              window.Sappy3D.mouse = new window.Sappy3D.THREE.Vector2();
               
               window.Sappy3D.renderer.domElement.addEventListener('click', function(event) {
                 // Calculate mouse position in normalized device coordinates
@@ -828,7 +828,7 @@
             document.body.appendChild(loadingDiv);
             
             // Load GLB model
-            const loader = new THREE.GLTFLoader();
+            const loader = new window.Sappy3D.THREE.GLTFLoader();
             loader.load(
               'base_basic_shaded.glb',
               function (gltf) {
@@ -855,8 +855,8 @@
                   
                   // Setup animation mixer
                   if (gltf.animations && gltf.animations.length) {
-                    window.Sappy3D.clock = new THREE.Clock();
-                    window.Sappy3D.mixer = new THREE.AnimationMixer(window.Sappy3D.character);
+                    window.Sappy3D.clock = new window.Sappy3D.THREE.Clock();
+                    window.Sappy3D.mixer = new window.Sappy3D.THREE.AnimationMixer(window.Sappy3D.character);
                     const action = window.Sappy3D.mixer.clipAction(gltf.animations[0]);
                     action.play();
                     console.log('AnimationMixer created and first animation started.');
@@ -921,6 +921,8 @@
           // Fallback function for when model fails to load
           window.Sappy3D.showFallbackModel = function() {
             console.log('Showing fallback model');
+            
+            const THREE = window.Sappy3D.THREE;
             
             // Create a simple character-like fallback
             const group = new THREE.Group();
