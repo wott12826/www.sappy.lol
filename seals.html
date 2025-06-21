@@ -2378,11 +2378,20 @@
     self.__next_f.push([1, "11:null\n"]);
   </script>
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    const observer = new MutationObserver((mutations, obs) => {
       const news = document.getElementById("news");
-      if (news) news.remove();
+      if (news) {
+        news.style.display = "none"; // или news.remove();
+        obs.disconnect();
+      }
+    });
+  
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
     });
   </script>
+  
   
 </body>
 
