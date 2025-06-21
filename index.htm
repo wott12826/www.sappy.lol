@@ -193,14 +193,114 @@
     
     <!-- 3D Character Script -->
     <script>
+      // Global error handler
+      window.addEventListener('error', function(e) {
+        console.error('Global error caught:', e.error);
+        console.error('Error message:', e.message);
+        console.error('Error filename:', e.filename);
+        console.error('Error line:', e.lineno);
+        console.error('Error column:', e.colno);
+        console.error('Error stack:', e.error ? e.error.stack : 'No stack trace');
+        
+        // Display error on screen
+        showError('Global Error: ' + e.message + ' at ' + e.filename + ':' + e.lineno);
+      });
+      
+      // Unhandled promise rejection handler
+      window.addEventListener('unhandledrejection', function(e) {
+        console.error('Unhandled promise rejection:', e.reason);
+        showError('Promise Error: ' + e.reason);
+      });
+      
+      // Function to show errors on screen
+      function showError(message) {
+        let errorDiv = document.getElementById('error-display');
+        if (!errorDiv) {
+          errorDiv = document.createElement('div');
+          errorDiv.id = 'error-display';
+          errorDiv.style.cssText = `
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            background: #ff0000;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 10000;
+            max-height: 200px;
+            overflow-y: auto;
+            word-wrap: break-word;
+          `;
+          document.body.appendChild(errorDiv);
+        }
+        errorDiv.innerHTML += '<div style="margin-bottom: 10px; border-bottom: 1px solid white; padding-bottom: 5px;">' + message + '</div>';
+      }
+      
+      // Diagnostic function
+      function runDiagnostics() {
+        console.log('=== DIAGNOSTICS START ===');
+        
+        // Check if THREE is available
+        console.log('THREE object available:', typeof THREE !== 'undefined');
+        if (typeof THREE !== 'undefined') {
+          console.log('THREE version:', THREE.REVISION);
+          console.log('THREE.Scene available:', typeof THREE.Scene !== 'undefined');
+          console.log('THREE.WebGLRenderer available:', typeof THREE.WebGLRenderer !== 'undefined');
+          console.log('THREE.PerspectiveCamera available:', typeof THREE.PerspectiveCamera !== 'undefined');
+        }
+        
+        // Check if OrbitControls is available
+        console.log('THREE.OrbitControls available:', typeof THREE.OrbitControls !== 'undefined');
+        
+        // Check if GLTFLoader is available
+        console.log('THREE.GLTFLoader available:', typeof THREE.GLTFLoader !== 'undefined');
+        
+        // Check if container exists
+        const container = document.getElementById('three-container');
+        console.log('Container element exists:', !!container);
+        if (container) {
+          console.log('Container dimensions:', container.offsetWidth + 'x' + container.offsetHeight);
+        }
+        
+        // Check WebGL support
+        try {
+          const canvas = document.createElement('canvas');
+          const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+          console.log('WebGL supported:', !!gl);
+          if (gl) {
+            console.log('WebGL vendor:', gl.getParameter(gl.VENDOR));
+            console.log('WebGL renderer:', gl.getParameter(gl.RENDERER));
+          }
+        } catch (e) {
+          console.log('WebGL check failed:', e);
+        }
+        
+        // Check loaded scripts
+        console.log('All script tags:', document.querySelectorAll('script').length);
+        Array.from(document.querySelectorAll('script')).forEach((script, index) => {
+          console.log(`Script ${index}:`, script.src || 'inline script');
+        });
+        
+        console.log('=== DIAGNOSTICS END ===');
+      }
+      
       // Wait for all scripts to load
       function waitForThree() {
-        if (typeof THREE !== 'undefined') {
-          console.log('THREE.js is available');
-          init();
-        } else {
-          console.log('Waiting for THREE.js...');
-          setTimeout(waitForThree, 100);
+        try {
+          if (typeof THREE !== 'undefined') {
+            console.log('THREE.js is available');
+            runDiagnostics();
+            init();
+          } else {
+            console.log('Waiting for THREE.js...');
+            setTimeout(waitForThree, 100);
+          }
+        } catch (e) {
+          console.error('Error in waitForThree:', e);
+          showError('Error in waitForThree: ' + e.message);
         }
       }
       
@@ -208,144 +308,196 @@
       let scene, camera, renderer, character, controls;
       
       function init() {
-        // Check if THREE is available
-        if (typeof THREE === 'undefined') {
-          console.error('THREE.js not available');
-          return;
-        }
-        
-        console.log('Initializing 3D scene...');
-        
-        // Create scene
-        scene = new THREE.Scene();
-        scene.background = new THREE.Color(0xffffff);
-        
-        // Create camera
-        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.set(0, 1.5, 3);
-        
-        // Create renderer
-        const container = document.getElementById('three-container');
-        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.shadowMap.enabled = true;
-        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-        container.appendChild(renderer.domElement);
-        
-        // Add lights
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-        scene.add(ambientLight);
-        
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-        directionalLight.position.set(5, 5, 5);
-        directionalLight.castShadow = true;
-        directionalLight.shadow.mapSize.width = 2048;
-        directionalLight.shadow.mapSize.height = 2048;
-        scene.add(directionalLight);
-        
-        // Add a simple cube for testing
-        const geometry = new THREE.BoxGeometry(1, 1, 1);
-        const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
-        const cube = new THREE.Mesh(geometry, material);
-        cube.castShadow = true;
-        cube.receiveShadow = true;
-        scene.add(cube);
-        
-        // Check if OrbitControls is available
-        if (typeof THREE.OrbitControls !== 'undefined') {
-          console.log('OrbitControls is available');
-          // Add orbit controls
-          controls = new THREE.OrbitControls(camera, renderer.domElement);
-          controls.enableDamping = true;
-          controls.dampingFactor = 0.05;
-          controls.enableZoom = true;
-          controls.enablePan = false;
-          controls.autoRotate = true;
-          controls.autoRotateSpeed = 0.5;
+        try {
+          // Check if THREE is available
+          if (typeof THREE === 'undefined') {
+            throw new Error('THREE.js not available');
+          }
           
-          // Animation loop with controls
-          function animate() {
-            requestAnimationFrame(animate);
-            controls.update();
-            renderer.render(scene, camera);
+          console.log('Initializing 3D scene...');
+          
+          // Create scene
+          scene = new THREE.Scene();
+          scene.background = new THREE.Color(0xffffff);
+          console.log('Scene created');
+          
+          // Create camera
+          camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+          camera.position.set(0, 1.5, 3);
+          console.log('Camera created');
+          
+          // Create renderer
+          const container = document.getElementById('three-container');
+          if (!container) {
+            throw new Error('Container element not found');
           }
-          animate();
-        } else {
-          console.log('OrbitControls not available, using simple animation');
-          // Simple animation loop without controls
-          function animate() {
-            requestAnimationFrame(animate);
-            renderer.render(scene, camera);
-          }
-          animate();
-        }
-        
-        // Check if GLTFLoader is available
-        if (typeof THREE.GLTFLoader !== 'undefined') {
-          console.log('GLTFLoader is available, loading model...');
-          // Load GLB model
-          const loader = new THREE.GLTFLoader();
-          loader.load(
-            'base_basic_shaded.glb',
-            function (gltf) {
-              console.log('Model loaded successfully');
-              character = gltf.scene;
-              character.scale.set(1, 1, 1);
-              character.position.set(0, 0, 0);
-              
-              // Enable shadows for all meshes
-              character.traverse(function (child) {
-                if (child.isMesh) {
-                  child.castShadow = true;
-                  child.receiveShadow = true;
-                }
-              });
-              
-              scene.add(character);
-              
-              // Remove test cube
-              scene.remove(cube);
-              
-              // Center camera on character
-              const box = new THREE.Box3().setFromObject(character);
-              const center = box.getCenter(new THREE.Vector3());
-              const size = box.getSize(new THREE.Vector3());
-              const maxDim = Math.max(size.x, size.y, size.z);
-              const fov = camera.fov * (Math.PI / 180);
-              let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
-              camera.position.z = cameraZ * 1.5;
-              camera.lookAt(center);
-              if (typeof THREE.OrbitControls !== 'undefined' && controls) {
-                controls.target.copy(center);
-                controls.update();
-              }
-            },
-            function (xhr) {
-              console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-            },
-            function (error) {
-              console.error('An error happened loading the model:', error);
-            }
-          );
-        } else {
-          console.error('GLTFLoader not available');
-        }
-        
-        // Handle window resize
-        window.addEventListener('resize', onWindowResize, false);
-        function onWindowResize() {
-          camera.aspect = window.innerWidth / window.innerHeight;
-          camera.updateProjectionMatrix();
+          
+          renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
           renderer.setSize(window.innerWidth, window.innerHeight);
+          renderer.setPixelRatio(window.devicePixelRatio);
+          renderer.shadowMap.enabled = true;
+          renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+          container.appendChild(renderer.domElement);
+          console.log('Renderer created and added to container');
+          
+          // Add lights
+          const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+          scene.add(ambientLight);
+          
+          const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+          directionalLight.position.set(5, 5, 5);
+          directionalLight.castShadow = true;
+          directionalLight.shadow.mapSize.width = 2048;
+          directionalLight.shadow.mapSize.height = 2048;
+          scene.add(directionalLight);
+          console.log('Lights added');
+          
+          // Add a simple cube for testing
+          const geometry = new THREE.BoxGeometry(1, 1, 1);
+          const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+          const cube = new THREE.Mesh(geometry, material);
+          cube.castShadow = true;
+          cube.receiveShadow = true;
+          scene.add(cube);
+          console.log('Test cube added');
+          
+          // Check if OrbitControls is available
+          if (typeof THREE.OrbitControls !== 'undefined') {
+            console.log('OrbitControls is available');
+            // Add orbit controls
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.enableZoom = true;
+            controls.enablePan = false;
+            controls.autoRotate = true;
+            controls.autoRotateSpeed = 0.5;
+            console.log('OrbitControls created');
+            
+            // Animation loop with controls
+            function animate() {
+              try {
+                requestAnimationFrame(animate);
+                controls.update();
+                renderer.render(scene, camera);
+              } catch (e) {
+                console.error('Error in animation loop:', e);
+                showError('Animation Error: ' + e.message);
+              }
+            }
+            animate();
+          } else {
+            console.log('OrbitControls not available, using simple animation');
+            // Simple animation loop without controls
+            function animate() {
+              try {
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
+              } catch (e) {
+                console.error('Error in simple animation loop:', e);
+                showError('Simple Animation Error: ' + e.message);
+              }
+            }
+            animate();
+          }
+          
+          // Check if GLTFLoader is available
+          if (typeof THREE.GLTFLoader !== 'undefined') {
+            console.log('GLTFLoader is available, loading model...');
+            // Load GLB model
+            const loader = new THREE.GLTFLoader();
+            loader.load(
+              'base_basic_shaded.glb',
+              function (gltf) {
+                try {
+                  console.log('Model loaded successfully');
+                  character = gltf.scene;
+                  character.scale.set(1, 1, 1);
+                  character.position.set(0, 0, 0);
+                  
+                  // Enable shadows for all meshes
+                  character.traverse(function (child) {
+                    if (child.isMesh) {
+                      child.castShadow = true;
+                      child.receiveShadow = true;
+                    }
+                  });
+                  
+                  scene.add(character);
+                  
+                  // Remove test cube
+                  scene.remove(cube);
+                  
+                  // Center camera on character
+                  const box = new THREE.Box3().setFromObject(character);
+                  const center = box.getCenter(new THREE.Vector3());
+                  const size = box.getSize(new THREE.Vector3());
+                  const maxDim = Math.max(size.x, size.y, size.z);
+                  const fov = camera.fov * (Math.PI / 180);
+                  let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
+                  camera.position.z = cameraZ * 1.5;
+                  camera.lookAt(center);
+                  if (typeof THREE.OrbitControls !== 'undefined' && controls) {
+                    controls.target.copy(center);
+                    controls.update();
+                  }
+                  console.log('Character model setup complete');
+                } catch (e) {
+                  console.error('Error setting up character model:', e);
+                  showError('Character Setup Error: ' + e.message);
+                }
+              },
+              function (xhr) {
+                console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+              },
+              function (error) {
+                console.error('An error happened loading the model:', error);
+                showError('Model Load Error: ' + error.message);
+              }
+            );
+          } else {
+            console.error('GLTFLoader not available');
+            showError('GLTFLoader not available');
+          }
+          
+          // Handle window resize
+          window.addEventListener('resize', onWindowResize, false);
+          function onWindowResize() {
+            try {
+              camera.aspect = window.innerWidth / window.innerHeight;
+              camera.updateProjectionMatrix();
+              renderer.setSize(window.innerWidth, window.innerHeight);
+            } catch (e) {
+              console.error('Error in resize handler:', e);
+              showError('Resize Error: ' + e.message);
+            }
+          }
+          
+          console.log('3D scene initialization complete');
+          
+        } catch (e) {
+          console.error('Error in init function:', e);
+          showError('Init Error: ' + e.message);
         }
       }
       
       // Initialize when page loads
       window.addEventListener('load', function() {
-        console.log('Page loaded, waiting for scripts...');
-        // Wait a bit more for all scripts to load
-        setTimeout(waitForThree, 500);
+        try {
+          console.log('Page loaded, waiting for scripts...');
+          showError('Page loaded, starting diagnostics...');
+          // Wait a bit more for all scripts to load
+          setTimeout(waitForThree, 500);
+        } catch (e) {
+          console.error('Error in load handler:', e);
+          showError('Load Error: ' + e.message);
+        }
+      });
+      
+      // Additional error checking
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM loaded');
+        showError('DOM loaded');
       });
     </script>
   </body>
