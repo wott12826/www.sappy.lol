@@ -334,6 +334,19 @@
         console.log('All div elements:', document.querySelectorAll('div').length);
         console.log('All elements with id:', document.querySelectorAll('[id]').length);
         
+        // More detailed DOM inspection
+        console.log('All elements with class containing "main":', document.querySelectorAll('[class*="main"]').length);
+        console.log('All elements with class containing "bg-white":', document.querySelectorAll('[class*="bg-white"]').length);
+        console.log('All elements with class containing "relative":', document.querySelectorAll('[class*="relative"]').length);
+        
+        // List all elements with their classes
+        console.log('All elements and their classes:');
+        document.querySelectorAll('*').forEach((el, index) => {
+          if (index < 20) { // Limit to first 20 elements
+            console.log(`Element ${index}:`, el.tagName, 'classes:', el.className);
+          }
+        });
+        
         // Check if container exists
         const container = document.getElementById('three-container');
         console.log('Container element exists:', !!container);
@@ -390,13 +403,42 @@
       // Wait for main element to be available
       window.Sappy3D.waitForMainAndInit = function() {
         try {
-          const main = document.querySelector('main');
+          // Try multiple selectors to find the main element
+          let main = document.querySelector('main');
+          if (!main) {
+            main = document.querySelector('[class*="main"]');
+          }
+          if (!main) {
+            main = document.querySelector('[class*="bg-white"]');
+          }
+          if (!main) {
+            main = document.querySelector('[class*="relative"]');
+          }
+          
           if (!main) {
             console.log('Main element not found, waiting...');
-            setTimeout(window.Sappy3D.waitForMainAndInit, 100);
+            // Wait longer and try again, but with a timeout
+            if (!window.Sappy3D.waitCount) {
+              window.Sappy3D.waitCount = 0;
+            }
+            window.Sappy3D.waitCount++;
+            
+            // If we've waited too long, just initialize anyway
+            if (window.Sappy3D.waitCount > 20) { // 10 seconds
+              console.log('Main element not found after 10 seconds, initializing anyway...');
+              window.Sappy3D.init();
+              return;
+            }
+            
+            setTimeout(window.Sappy3D.waitForMainAndInit, 500);
             return;
           }
-          console.log('Main element found, initializing 3D...');
+          
+          console.log('Main element found:', main);
+          console.log('Main element classes:', main.className);
+          console.log('Main element children:', main.children.length);
+          
+          // Initialize 3D scene
           window.Sappy3D.init();
         } catch (e) {
           console.error('Error in waitForMainAndInit:', e);
@@ -452,14 +494,15 @@
               z-index: 15;
             `;
             
-            // Always add to main element
+            // Try to add to main element first, fallback to body
             const main = document.querySelector('main');
             if (main) {
               main.insertBefore(container, main.firstChild);
               console.log('Container created and added to main');
             } else {
-              console.error('Main element not found, cannot create container');
-              throw new Error('Main element not found');
+              // Fallback to body if main doesn't exist
+              document.body.insertBefore(container, document.body.firstChild);
+              console.log('Container created and added to body (main not found)');
             }
           } else {
             console.log('Container found:', container);
@@ -850,11 +893,11 @@
         try {
           console.log('Page loaded, waiting for React to settle...');
           window.Sappy3D.showError('Page loaded, waiting for React to settle...');
-          // Wait longer for React to fully initialize
+          // Wait shorter for React to initialize
           setTimeout(function() {
             window.Sappy3D.showError('Starting 3D initialization...');
-            setTimeout(window.Sappy3D.waitForThree, 1000);
-          }, 2000);
+            setTimeout(window.Sappy3D.waitForThree, 500);
+          }, 1000);
         } catch (e) {
           console.error('Error in load handler:', e);
           window.Sappy3D.showError('Load Error: ' + e.message);
