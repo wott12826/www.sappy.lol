@@ -214,7 +214,6 @@
   </head>
   <body class="__className_d65c78">
     <div id="page-loader">
-      <div id="page-loader-text">Loading...</div>
     </div>
     <div id="cursor-line"></div>
     <main
@@ -706,15 +705,6 @@
               },
               function (xhr) {
                 const progress = Math.round((xhr.loaded / xhr.total) * 100);
-                
-                const loaderText = document.getElementById('page-loader-text');
-                if (loaderText) {
-                  if (progress < 100) {
-                    loaderText.textContent = `Loading 3D Model... ${progress}%`;
-                  } else {
-                    loaderText.textContent = 'Initializing Scene...';
-                  }
-                }
               },
               function (error) {
                 // Error handling removed
