@@ -689,6 +689,7 @@
               pageLoader.style.opacity = '0';
               setTimeout(() => {
                 pageLoader.style.display = 'none';
+                pageLoader.remove(); // Remove from DOM completely
               }, 500); // Match transition duration
             }
           };
@@ -860,6 +861,18 @@
       // Initialize when page loads - with delay to avoid React conflicts
       window.addEventListener('load', function() {
         try {
+          // Hide page loader after page load (fallback)
+          setTimeout(() => {
+            const pageLoader = document.getElementById('page-loader');
+            if (pageLoader) {
+              pageLoader.style.opacity = '0';
+              setTimeout(() => {
+                pageLoader.style.display = 'none';
+                pageLoader.remove();
+              }, 500);
+            }
+          }, 3000); // Hide after 3 seconds if 3D doesn't load
+          
           // Wait for React to initialize, then start 3D
           setTimeout(function() {
             setTimeout(window.Sappy3D.waitForThree, 500);
