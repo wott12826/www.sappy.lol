@@ -531,7 +531,7 @@
           window.Sappy3D.scene.add(ambientLight);
           
           const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-          directionalLight.position.set(5, 10, 7);
+          directionalLight.position.set(5, 10, 5); // Correct position
           window.Sappy3D.scene.add(directionalLight);
 
           console.log('Lights added - Directional and Ambient');
@@ -710,19 +710,7 @@
                   window.Sappy3D.character.scale.set(1, 1, 1);
                   window.Sappy3D.character.position.set(0, 0, 0);
                   
-                  // Enable shadows for all meshes
-                  window.Sappy3D.character.traverse(function (child) {
-                    if (child.isMesh) {
-                      child.castShadow = false; // Отключаем тени
-                      child.receiveShadow = false; // Отключаем тени
-                      // Убеждаемся что материал стабилен
-                      if (child.material) {
-                        child.material.needsUpdate = false;
-                        child.material.transparent = false;
-                        child.material.opacity = 1.0;
-                      }
-                    }
-                  });
+                  // Do not traverse and modify materials, use original ones.
                   
                   window.Sappy3D.scene.add(window.Sappy3D.character);
                   
