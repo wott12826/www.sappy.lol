@@ -345,8 +345,7 @@
             e.filename && e.filename.includes('GLTF') ||
             e.filename && e.filename.includes('OrbitControls')) {
           
-          // Display error on screen
-          window.Sappy3D.showError('3D Error: ' + e.message + ' at ' + e.filename + ':' + e.lineno);
+          // Error handling removed
         }
       };
       
@@ -360,7 +359,7 @@
       window.Sappy3D.promiseHandler = function(e) {
         if (e.reason && typeof e.reason === 'string' && 
             (e.reason.includes('three') || e.reason.includes('GLTF') || e.reason.includes('OrbitControls'))) {
-          window.Sappy3D.showError('3D Promise Error: ' + e.reason);
+          // Error handling removed
         }
       };
       
@@ -368,34 +367,6 @@
         window.addEventListener('unhandledrejection', window.Sappy3D.promiseHandler);
         window.Sappy3D.promiseHandlerAdded = true;
       }
-      
-      // Function to show errors on screen
-      window.Sappy3D.showError = function(message) {
-        let errorDiv = document.getElementById('sappy-3d-error-display');
-        if (!errorDiv) {
-          errorDiv = document.createElement('div');
-          errorDiv.id = 'sappy-3d-error-display';
-          errorDiv.style.cssText = `
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            background: #ff6600;
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
-            font-family: monospace;
-            font-size: 12px;
-            z-index: 10000;
-            max-height: 200px;
-            overflow-y: auto;
-            word-wrap: break-word;
-            border: 2px solid #cc4400;
-          `;
-          document.body.appendChild(errorDiv);
-        }
-        errorDiv.innerHTML += '<div style="margin-bottom: 10px; border-bottom: 1px solid white; padding-bottom: 5px;">' + message + '</div>';
-      };
       
       // Diagnostic function
       window.Sappy3D.runDiagnostics = function() {
@@ -413,7 +384,7 @@
             setTimeout(window.Sappy3D.waitForThree, 100);
           }
         } catch (e) {
-          window.Sappy3D.showError('Error in waitForThree: ' + e.message);
+          // Error handling removed
         }
       };
       
@@ -452,7 +423,7 @@
           // Initialize 3D scene
           window.Sappy3D.init();
         } catch (e) {
-          window.Sappy3D.showError('Error in waitForMainAndInit: ' + e.message);
+          // Error handling removed
         }
       };
       
@@ -562,26 +533,6 @@
               window.Sappy3D.controls.maxPolarAngle = Math.PI / 1.5; // 120 degrees down like in example
               window.Sappy3D.controls.zoomSpeed = 0; // Disable zoom speed
               window.Sappy3D.controls.screenSpacePanning = false; // Better for room-like rotation
-              
-              // Limit OrbitControls interaction area to the model container only
-              const orbitContainer = document.getElementById('three-container');
-              if (orbitContainer) {
-                // Remove the original event listeners from the renderer
-                window.Sappy3D.renderer.domElement.removeEventListener('mousedown', window.Sappy3D.controls.onMouseDown);
-                window.Sappy3D.renderer.domElement.removeEventListener('mousemove', window.Sappy3D.controls.onMouseMove);
-                window.Sappy3D.renderer.domElement.removeEventListener('mouseup', window.Sappy3D.controls.onMouseUp);
-                window.Sappy3D.renderer.domElement.removeEventListener('touchstart', window.Sappy3D.controls.onTouchStart);
-                window.Sappy3D.renderer.domElement.removeEventListener('touchmove', window.Sappy3D.controls.onTouchMove);
-                window.Sappy3D.renderer.domElement.removeEventListener('touchend', window.Sappy3D.controls.onTouchEnd);
-                
-                // Add event listeners to the container instead
-                orbitContainer.addEventListener('mousedown', window.Sappy3D.controls.onMouseDown.bind(window.Sappy3D.controls));
-                orbitContainer.addEventListener('mousemove', window.Sappy3D.controls.onMouseMove.bind(window.Sappy3D.controls));
-                orbitContainer.addEventListener('mouseup', window.Sappy3D.controls.onMouseUp.bind(window.Sappy3D.controls));
-                orbitContainer.addEventListener('touchstart', window.Sappy3D.controls.onTouchStart.bind(window.Sappy3D.controls));
-                orbitContainer.addEventListener('touchmove', window.Sappy3D.controls.onTouchMove.bind(window.Sappy3D.controls));
-                orbitContainer.addEventListener('touchend', window.Sappy3D.controls.onTouchEnd.bind(window.Sappy3D.controls));
-              }
               
               // Simplified event handlers
               window.Sappy3D.renderer.domElement.style.cursor = 'grab';
@@ -695,9 +646,8 @@
               // Start animation
               animate();
             } catch (e) {
-              window.Sappy3D.showError('OrbitControls Error: ' + e.message);
+              // Error handling removed
               // Fallback to simple render
-              
               function animate() {
                 requestAnimationFrame(animate);
                 
@@ -783,7 +733,7 @@
                   }
                   
                 } catch (e) {
-                  window.Sappy3D.showError('Character Setup Error: ' + e.message);
+                  // Error handling removed
                   window.Sappy3D.showFallbackModel();
                   // Hide page loader even if model fails
                   window.Sappy3D.hidePageLoader();
@@ -802,7 +752,7 @@
                 }
               },
               function (error) {
-                window.Sappy3D.showError('Model Load Error: ' + error.message);
+                // Error handling removed
                 
                 // Show fallback model
                 window.Sappy3D.showFallbackModel();
@@ -811,7 +761,7 @@
               }
             );
           } else {
-            window.Sappy3D.showError('GLTFLoader not available');
+            // Error handling removed
             window.Sappy3D.showFallbackModel();
             // Hide page loader even if GLTFLoader is not available
             window.Sappy3D.hidePageLoader();
@@ -892,7 +842,7 @@
           };
           
         } catch (e) {
-          window.Sappy3D.showError('Init Error: ' + e.message);
+          // Error handling removed
         }
       };
       
@@ -904,7 +854,7 @@
             setTimeout(window.Sappy3D.waitForThree, 500);
           }, 1000);
         } catch (e) {
-          window.Sappy3D.showError('Load Error: ' + e.message);
+          // Error handling removed
         }
       });
       
