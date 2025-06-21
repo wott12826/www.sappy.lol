@@ -1709,3 +1709,4 @@ Content Type: font/woff2
 Uri: https://www.sappy.lol/_next/static/media/df0a9ae256c0569c-s.woff2
 File Name: C:\Downloaded Web Sites\www.sappy.lol\_next\static\media\df0a9ae256c0569c-s.woff2
 Content Type: font/woff2
+
