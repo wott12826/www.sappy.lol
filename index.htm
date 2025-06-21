@@ -462,8 +462,8 @@
           window.Sappy3D.scene.fog = null; // Disable fog
           
           // Create camera
-          window.Sappy3D.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100); // Tighter near/far planes
-          window.Sappy3D.camera.position.set(0, 1.5, 4);
+          window.Sappy3D.camera = new THREE.PerspectiveCamera(60, 340 / 420, 0.1, 100); // Tighter near/far planes
+          window.Sappy3D.camera.position.set(0, 1.5, 3); // Closer to model
           window.Sappy3D.camera.updateProjectionMatrix();
           
           // Find or create container
@@ -538,8 +538,8 @@
               window.Sappy3D.controls.autoRotate = false; // Disable auto rotation
               window.Sappy3D.controls.enableRotate = true; // Enable manual rotation
               window.Sappy3D.controls.rotateSpeed = 0.7; // More reasonable speed like in example
-              window.Sappy3D.controls.minDistance = 4; // Fixed distance
-              window.Sappy3D.controls.maxDistance = 4; // Fixed distance
+              window.Sappy3D.controls.minDistance = 2.5; // Closer distance for smaller container
+              window.Sappy3D.controls.maxDistance = 3.5; // Closer distance for smaller container
               window.Sappy3D.controls.minPolarAngle = Math.PI / 3; // 60 degrees up like in example
               window.Sappy3D.controls.maxPolarAngle = Math.PI / 1.5; // 120 degrees down like in example
               window.Sappy3D.controls.zoomSpeed = 0; // Disable zoom speed
@@ -735,7 +735,7 @@
                   let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
                   
                   // Set initial camera position only once
-                  window.Sappy3D.camera.position.set(0, 1.5, cameraZ * 1.5);
+                  window.Sappy3D.camera.position.set(0, 1.5, cameraZ * 1.2); // Closer for smaller container
                   
                   // Configure OrbitControls target
                   if (typeof window.Sappy3D.THREE.OrbitControls !== 'undefined' && window.Sappy3D.controls) {
