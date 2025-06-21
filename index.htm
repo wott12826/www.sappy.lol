@@ -503,16 +503,16 @@
               // Add orbit controls with room-like camera rotation
               window.Sappy3D.controls = new THREE.OrbitControls(window.Sappy3D.camera, window.Sappy3D.renderer.domElement);
               window.Sappy3D.controls.enableDamping = true;
-              window.Sappy3D.controls.dampingFactor = 0.1;
+              window.Sappy3D.controls.dampingFactor = 0.05; // Более отзывчивое управление
               window.Sappy3D.controls.enableZoom = false; // Disable zoom
               window.Sappy3D.controls.enablePan = false; // Disable pan
               window.Sappy3D.controls.autoRotate = false; // Disable auto rotation
               window.Sappy3D.controls.enableRotate = true; // Enable manual rotation
-              window.Sappy3D.controls.rotateSpeed = 0.8; // Faster rotation for room-like feel
+              window.Sappy3D.controls.rotateSpeed = 1.0; // Быстрое вращение
               window.Sappy3D.controls.minDistance = 4; // Fixed distance
               window.Sappy3D.controls.maxDistance = 4; // Fixed distance
-              window.Sappy3D.controls.minPolarAngle = Math.PI / 4; // Allow more vertical rotation
-              window.Sappy3D.controls.maxPolarAngle = Math.PI / 2.2; // Allow more vertical rotation
+              window.Sappy3D.controls.minPolarAngle = Math.PI / 6; // Больше вертикального вращения
+              window.Sappy3D.controls.maxPolarAngle = Math.PI / 2.1; // Больше вертикального вращения
               window.Sappy3D.controls.zoomSpeed = 0; // Disable zoom speed
               window.Sappy3D.controls.screenSpacePanning = false; // Better for room-like rotation
               console.log('OrbitControls created for room-like camera rotation');
@@ -520,8 +520,13 @@
               // Remove DragControls - we don't need it anymore
               window.Sappy3D.dragControls = null;
               
-              // Add mouse event handlers for better interaction
+              // Упрощенные обработчики событий
+              window.Sappy3D.renderer.domElement.style.cursor = 'grab';
+              
+              // Один обработчик для всех событий мыши
               window.Sappy3D.renderer.domElement.addEventListener('mousedown', function(event) {
+                window.Sappy3D.renderer.domElement.style.cursor = 'grabbing';
+                
                 // Hide interaction hint after first interaction
                 const hint = document.getElementById('interaction-hint');
                 if (hint) {
@@ -532,7 +537,11 @@
                 }
               });
               
-              // Add touch support for mobile devices
+              window.Sappy3D.renderer.domElement.addEventListener('mouseup', function(event) {
+                window.Sappy3D.renderer.domElement.style.cursor = 'grab';
+              });
+              
+              // Touch support
               window.Sappy3D.renderer.domElement.addEventListener('touchstart', function(event) {
                 // Hide interaction hint after first interaction
                 const hint = document.getElementById('interaction-hint');
@@ -542,18 +551,6 @@
                     hint.style.display = 'none';
                   }, 500);
                 }
-              });
-              
-              // Add visual feedback for interaction
-              window.Sappy3D.renderer.domElement.style.cursor = 'grab';
-              
-              // Handle mouse interaction for room-like rotation
-              window.Sappy3D.renderer.domElement.addEventListener('mousedown', function(event) {
-                window.Sappy3D.renderer.domElement.style.cursor = 'grabbing';
-              });
-              
-              window.Sappy3D.renderer.domElement.addEventListener('mouseup', function(event) {
-                window.Sappy3D.renderer.domElement.style.cursor = 'grab';
               });
               
               // Add click interaction with the model
@@ -582,6 +579,11 @@
                   }
                 }
               });
+              
+              // Update controls every frame for better responsiveness
+              if (window.Sappy3D.controls && window.Sappy3D.controls.update) {
+                window.Sappy3D.controls.update();
+              }
               
               // Very smooth animation loop
               let lastTime = performance.now();
