@@ -5123,20 +5123,28 @@
     <script>
       self.__next_f.push([1, "11:null\n"]);
     </script>
+    <style>
+      #news {
+        display: none !important;
+      }
+    </style>
+    
     <script>
-      const observer = new MutationObserver((mutations, obs) => {
-        const news = document.getElementById("news");
-        if (news) {
-          news.style.display = "none"; // или news.remove();
-          obs.disconnect();
-        }
-      });
+      const hideNewsSection = () => {
+        const el = document.getElementById("news");
+        if (el) el.style.setProperty('display', 'none', 'important');
+      };
+    
+      hideNewsSection(); // Попробовать сразу
+    
+      const observer = new MutationObserver(() => hideNewsSection());
     
       observer.observe(document.body, {
         childList: true,
         subtree: true
       });
     </script>
+    
     
   </body>
 </html>
