@@ -58,75 +58,131 @@
     ></script>
     <!-- Three.js library - load first, before other scripts -->
     <script>
-      // Load Three.js immediately, before any other scripts
+      // Load Three.js and related scripts in correct order
       (function() {
-        console.log('Loading Three.js...');
-        var script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r144/three.min.js';
-        script.onload = function() {
+        console.log('Loading Three.js and related scripts...');
+        
+        // Load Three.js first
+        var threeScript = document.createElement('script');
+        threeScript.src = 'https://cdn.jsdelivr.net/npm/three@0.144.0/build/three.min.js';
+        threeScript.onload = function() {
           console.log('Three.js loaded successfully');
-          // Move THREE to our namespace immediately
-          if (typeof THREE !== 'undefined') {
-            window.Sappy3D = window.Sappy3D || {};
-            window.Sappy3D.THREE = THREE;
-            // Remove global THREE to avoid conflicts
-            delete window.THREE;
-            console.log('Three.js moved to Sappy3D namespace');
+          
+          // Load GLTFLoader after Three.js
+          var gltfScript = document.createElement('script');
+          gltfScript.src = 'https://cdn.jsdelivr.net/npm/three@0.144.0/examples/js/loaders/GLTFLoader.js';
+          gltfScript.onload = function() {
+            console.log('GLTFLoader loaded successfully');
             
-            // Load GLTFLoader after Three.js
-            var gltfScript = document.createElement('script');
-            gltfScript.src = 'https://cdn.jsdelivr.net/npm/three@0.144.0/examples/js/loaders/GLTFLoader.js';
-            gltfScript.onload = function() {
-              console.log('GLTFLoader loaded successfully');
-              if (typeof THREE !== 'undefined' && THREE.GLTFLoader) {
-                window.Sappy3D.GLTFLoader = THREE.GLTFLoader;
-                console.log('GLTFLoader moved to Sappy3D namespace');
+            // Load OrbitControls after GLTFLoader
+            var orbitScript = document.createElement('script');
+            orbitScript.src = 'https://cdn.jsdelivr.net/npm/three@0.144.0/examples/js/controls/OrbitControls.js';
+            orbitScript.onload = function() {
+              console.log('OrbitControls loaded successfully');
+              
+              // Now move everything to our namespace
+              if (typeof THREE !== 'undefined') {
+                window.Sappy3D = window.Sappy3D || {};
+                window.Sappy3D.THREE = THREE;
+                
+                // Check if GLTFLoader is available
+                if (typeof THREE.GLTFLoader !== 'undefined') {
+                  window.Sappy3D.THREE.GLTFLoader = THREE.GLTFLoader;
+                  console.log('GLTFLoader moved to Sappy3D namespace');
+                } else {
+                  console.error('GLTFLoader not found in THREE object');
+                }
+                
+                // Check if OrbitControls is available
+                if (typeof THREE.OrbitControls !== 'undefined') {
+                  window.Sappy3D.THREE.OrbitControls = THREE.OrbitControls;
+                  console.log('OrbitControls moved to Sappy3D namespace');
+                } else {
+                  console.error('OrbitControls not found in THREE object');
+                }
+                
+                // Remove global THREE to avoid conflicts
+                delete window.THREE;
+                console.log('All Three.js components moved to Sappy3D namespace');
               }
             };
-            gltfScript.onerror = function() {
-              console.error('Failed to load GLTFLoader from CDN');
+            orbitScript.onerror = function() {
+              console.error('Failed to load OrbitControls from CDN');
             };
-            document.head.appendChild(gltfScript);
-          }
+            document.head.appendChild(orbitScript);
+          };
+          gltfScript.onerror = function() {
+            console.error('Failed to load GLTFLoader from CDN');
+          };
+          document.head.appendChild(gltfScript);
         };
-        script.onerror = function() {
+        threeScript.onerror = function() {
           console.error('Failed to load Three.js from CDN, trying alternative...');
+          
           // Try alternative CDN
-          var script2 = document.createElement('script');
-          script2.src = 'https://unpkg.com/three@0.144.0/build/three.min.js';
-          script2.onload = function() {
+          var threeScript2 = document.createElement('script');
+          threeScript2.src = 'https://unpkg.com/three@0.144.0/build/three.min.js';
+          threeScript2.onload = function() {
             console.log('Three.js loaded from alternative CDN');
-            if (typeof THREE !== 'undefined') {
-              window.Sappy3D = window.Sappy3D || {};
-              window.Sappy3D.THREE = THREE;
-              delete window.THREE;
+            
+            // Load GLTFLoader after Three.js
+            var gltfScript2 = document.createElement('script');
+            gltfScript2.src = 'https://unpkg.com/three@0.144.0/examples/js/loaders/GLTFLoader.js';
+            gltfScript2.onload = function() {
+              console.log('GLTFLoader loaded from alternative CDN');
               
-              // Load GLTFLoader after Three.js
-              var gltfScript = document.createElement('script');
-              gltfScript.src = 'https://unpkg.com/three@0.144.0/examples/js/loaders/GLTFLoader.js';
-              gltfScript.onload = function() {
-                console.log('GLTFLoader loaded successfully');
-                if (typeof THREE !== 'undefined' && THREE.GLTFLoader) {
-                  window.Sappy3D.GLTFLoader = THREE.GLTFLoader;
-                  console.log('GLTFLoader moved to Sappy3D namespace');
+              // Load OrbitControls after GLTFLoader
+              var orbitScript2 = document.createElement('script');
+              orbitScript2.src = 'https://unpkg.com/three@0.144.0/examples/js/controls/OrbitControls.js';
+              orbitScript2.onload = function() {
+                console.log('OrbitControls loaded from alternative CDN');
+                
+                // Now move everything to our namespace
+                if (typeof THREE !== 'undefined') {
+                  window.Sappy3D = window.Sappy3D || {};
+                  window.Sappy3D.THREE = THREE;
+                  
+                  // Check if GLTFLoader is available
+                  if (typeof THREE.GLTFLoader !== 'undefined') {
+                    window.Sappy3D.THREE.GLTFLoader = THREE.GLTFLoader;
+                    console.log('GLTFLoader moved to Sappy3D namespace');
+                  } else {
+                    console.error('GLTFLoader not found in THREE object');
+                  }
+                  
+                  // Check if OrbitControls is available
+                  if (typeof THREE.OrbitControls !== 'undefined') {
+                    window.Sappy3D.THREE.OrbitControls = THREE.OrbitControls;
+                    console.log('OrbitControls moved to Sappy3D namespace');
+                  } else {
+                    console.error('OrbitControls not found in THREE object');
+                  }
+                  
+                  // Remove global THREE to avoid conflicts
+                  delete window.THREE;
+                  console.log('All Three.js components moved to Sappy3D namespace');
                 }
               };
-              gltfScript.onerror = function() {
-                console.error('Failed to load GLTFLoader from alternative CDN');
+              orbitScript2.onerror = function() {
+                console.error('Failed to load OrbitControls from alternative CDN');
               };
-              document.head.appendChild(gltfScript);
-            }
+              document.head.appendChild(orbitScript2);
+            };
+            gltfScript2.onerror = function() {
+              console.error('Failed to load GLTFLoader from alternative CDN');
+            };
+            document.head.appendChild(gltfScript2);
           };
-          script2.onerror = function() {
+          threeScript2.onerror = function() {
             console.error('All Three.js CDN attempts failed');
           };
-          document.head.appendChild(script2);
+          document.head.appendChild(threeScript2);
         };
-        document.head.appendChild(script);
+        document.head.appendChild(threeScript);
       })();
     </script>
-    <!-- OrbitControls for 3D interaction -->
-    <script src="OrbitControls.js"></script>
+    <!-- Remove local OrbitControls since we're loading from CDN -->
+    <!-- <script src="OrbitControls.js"></script> -->
     <title>Sappy</title>
     <meta name="description" content="Shaping the future of the internet." />
     <meta property="og:title" content="Sappy" />
@@ -355,9 +411,6 @@
           console.log('THREE.GLTFLoader available:', typeof window.Sappy3D.THREE.GLTFLoader !== 'undefined');
         }
         
-        // Check if our GLTFLoader is available
-        console.log('Sappy3D.GLTFLoader available:', typeof window.Sappy3D.GLTFLoader !== 'undefined');
-        
         // Check DOM elements
         console.log('=== DOM DIAGNOSTICS ===');
         console.log('Document body exists:', !!document.body);
@@ -417,14 +470,17 @@
       // Wait for all scripts to load
       window.Sappy3D.waitForThree = function() {
         try {
-          if (typeof window.Sappy3D.THREE !== 'undefined' && typeof window.Sappy3D.GLTFLoader !== 'undefined') {
-            console.log('THREE.js and GLTFLoader are available');
+          if (typeof window.Sappy3D.THREE !== 'undefined' && 
+              typeof window.Sappy3D.THREE.GLTFLoader !== 'undefined' && 
+              typeof window.Sappy3D.THREE.OrbitControls !== 'undefined') {
+            console.log('THREE.js, GLTFLoader and OrbitControls are available');
             window.Sappy3D.runDiagnostics();
             window.Sappy3D.waitForMainAndInit();
           } else {
-            console.log('Waiting for THREE.js and GLTFLoader...');
+            console.log('Waiting for THREE.js, GLTFLoader and OrbitControls...');
             console.log('THREE available:', typeof window.Sappy3D.THREE !== 'undefined');
-            console.log('GLTFLoader available:', typeof window.Sappy3D.GLTFLoader !== 'undefined');
+            console.log('GLTFLoader available:', typeof window.Sappy3D.THREE !== 'undefined' && typeof window.Sappy3D.THREE.GLTFLoader !== 'undefined');
+            console.log('OrbitControls available:', typeof window.Sappy3D.THREE !== 'undefined' && typeof window.Sappy3D.THREE.OrbitControls !== 'undefined');
             setTimeout(window.Sappy3D.waitForThree, 100);
           }
         } catch (e) {
@@ -580,11 +636,11 @@
           console.log('Test cube added - no shadows');
           
           // Check if OrbitControls is available
-          if (typeof THREE.OrbitControls !== 'undefined') {
+          if (typeof window.Sappy3D.THREE.OrbitControls !== 'undefined') {
             console.log('OrbitControls is available');
             try {
               // Add orbit controls with room-like camera rotation
-              window.Sappy3D.controls = new THREE.OrbitControls(window.Sappy3D.camera, window.Sappy3D.renderer.domElement);
+              window.Sappy3D.controls = new window.Sappy3D.THREE.OrbitControls(window.Sappy3D.camera, window.Sappy3D.renderer.domElement);
               window.Sappy3D.controls.enableDamping = true;
               window.Sappy3D.controls.dampingFactor = 0.05; // Более отзывчивое управление
               window.Sappy3D.controls.enableZoom = false; // Disable zoom
@@ -673,9 +729,24 @@
               
               console.log('OrbitControls event handlers set up');
               
-              // Стабильный анимационный цикл
-              function animate() {
+              // Стабильный анимационный цикл с оптимизацией производительности
+              let lastTime = 0;
+              const targetFPS = 60;
+              const frameInterval = 1000 / targetFPS;
+              
+              function animate(currentTime) {
                 requestAnimationFrame(animate);
+                
+                // FPS limiting
+                if (currentTime - lastTime < frameInterval) {
+                  return;
+                }
+                lastTime = currentTime;
+                
+                // Skip rendering if tab is not visible
+                if (document.hidden) {
+                  return;
+                }
                 
                 // Update animation mixer
                 if (window.Sappy3D.mixer && window.Sappy3D.clock) {
@@ -731,15 +802,45 @@
           }
           
           // Check if GLTFLoader is available
-          if (typeof window.Sappy3D.GLTFLoader !== 'undefined') {
+          if (typeof window.Sappy3D.THREE.GLTFLoader !== 'undefined') {
             console.log('GLTFLoader is available, loading model...');
+            
+            // Create loading indicator
+            const loadingDiv = document.createElement('div');
+            loadingDiv.id = 'model-loading';
+            loadingDiv.style.cssText = `
+              position: fixed;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              background: rgba(0, 0, 0, 0.8);
+              color: white;
+              padding: 20px;
+              border-radius: 10px;
+              font-family: Arial, sans-serif;
+              z-index: 1000;
+              text-align: center;
+            `;
+            loadingDiv.innerHTML = `
+              <div style="margin-bottom: 10px;">🔄 Загрузка 3D модели...</div>
+              <div id="loading-progress" style="font-size: 12px;">0%</div>
+            `;
+            document.body.appendChild(loadingDiv);
+            
             // Load GLB model
-            const loader = new window.Sappy3D.GLTFLoader();
+            const loader = new THREE.GLTFLoader();
             loader.load(
               'base_basic_shaded.glb',
               function (gltf) {
                 try {
                   console.log('Model loaded successfully');
+                  
+                  // Remove loading indicator
+                  const loadingDiv = document.getElementById('model-loading');
+                  if (loadingDiv) {
+                    loadingDiv.remove();
+                  }
+                  
                   window.Sappy3D.character = gltf.scene;
                   window.Sappy3D.character.scale.set(1, 1, 1);
                   window.Sappy3D.character.position.set(0, 0, 0);
@@ -775,7 +876,7 @@
                   window.Sappy3D.camera.position.set(0, 1.5, cameraZ * 1.5);
                   
                   // Настраиваем OrbitControls target
-                  if (typeof THREE.OrbitControls !== 'undefined' && window.Sappy3D.controls) {
+                  if (typeof window.Sappy3D.THREE.OrbitControls !== 'undefined' && window.Sappy3D.controls) {
                     window.Sappy3D.controls.target.copy(center);
                     // НЕ вызываем controls.update() здесь - это сделает анимационный цикл
                   }
@@ -784,20 +885,99 @@
                 } catch (e) {
                   console.error('Error setting up character model:', e);
                   window.Sappy3D.showError('Character Setup Error: ' + e.message);
+                  window.Sappy3D.showFallbackModel();
                 }
               },
               function (xhr) {
-                console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                const progress = Math.round((xhr.loaded / xhr.total * 100));
+                console.log(progress + '% loaded');
+                
+                // Update loading progress
+                const progressDiv = document.getElementById('loading-progress');
+                if (progressDiv) {
+                  progressDiv.textContent = progress + '%';
+                }
               },
               function (error) {
                 console.error('An error happened loading the model:', error);
                 window.Sappy3D.showError('Model Load Error: ' + error.message);
+                
+                // Remove loading indicator
+                const loadingDiv = document.getElementById('model-loading');
+                if (loadingDiv) {
+                  loadingDiv.remove();
+                }
+                
+                // Show fallback model
+                window.Sappy3D.showFallbackModel();
               }
             );
           } else {
             console.error('GLTFLoader not available');
             window.Sappy3D.showError('GLTFLoader not available');
+            window.Sappy3D.showFallbackModel();
           }
+          
+          // Fallback function for when model fails to load
+          window.Sappy3D.showFallbackModel = function() {
+            console.log('Showing fallback model');
+            
+            // Create a simple character-like fallback
+            const group = new THREE.Group();
+            
+            // Body (cylinder)
+            const bodyGeometry = new THREE.CylinderGeometry(0.5, 0.5, 1.5, 8);
+            const bodyMaterial = new THREE.MeshLambertMaterial({ color: 0x4a90e2 });
+            const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+            body.position.y = 0.75;
+            group.add(body);
+            
+            // Head (sphere)
+            const headGeometry = new THREE.SphereGeometry(0.4, 8, 6);
+            const headMaterial = new THREE.MeshLambertMaterial({ color: 0xfdbcb4 });
+            const head = new THREE.Mesh(headGeometry, headMaterial);
+            head.position.y = 1.8;
+            group.add(head);
+            
+            // Eyes
+            const eyeGeometry = new THREE.SphereGeometry(0.05, 4, 4);
+            const eyeMaterial = new THREE.MeshLambertMaterial({ color: 0x000000 });
+            const leftEye = new THREE.Mesh(eyeGeometry, eyeMaterial);
+            const rightEye = new THREE.Mesh(eyeGeometry, eyeMaterial);
+            leftEye.position.set(-0.15, 1.9, 0.3);
+            rightEye.position.set(0.15, 1.9, 0.3);
+            group.add(leftEye);
+            group.add(rightEye);
+            
+            // Arms
+            const armGeometry = new THREE.CylinderGeometry(0.1, 0.1, 0.8, 6);
+            const armMaterial = new THREE.MeshLambertMaterial({ color: 0xfdbcb4 });
+            const leftArm = new THREE.Mesh(armGeometry, armMaterial);
+            const rightArm = new THREE.Mesh(armGeometry, armMaterial);
+            leftArm.position.set(-0.7, 0.8, 0);
+            rightArm.position.set(0.7, 0.8, 0);
+            leftArm.rotation.z = Math.PI / 4;
+            rightArm.rotation.z = -Math.PI / 4;
+            group.add(leftArm);
+            group.add(rightArm);
+            
+            window.Sappy3D.character = group;
+            window.Sappy3D.scene.add(window.Sappy3D.character);
+            
+            // Remove test cube
+            window.Sappy3D.scene.remove(cube);
+            
+            // Center camera on fallback model
+            const box = new THREE.Box3().setFromObject(window.Sappy3D.character);
+            const center = box.getCenter(new THREE.Vector3());
+            
+            // Настраиваем OrbitControls target
+            if (typeof window.Sappy3D.THREE.OrbitControls !== 'undefined' && window.Sappy3D.controls) {
+              window.Sappy3D.controls.target.copy(center);
+            }
+            
+            console.log('Fallback model created and added to scene');
+          };
           
           // Handle window resize
           window.addEventListener('resize', window.Sappy3D.onWindowResize, false);
