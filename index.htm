@@ -973,7 +973,6 @@
               window.Sappy3D.controls.target.copy(center);
             }
             
-            console.log('Fallback model created and added to scene');
           };
           
           // Handle window resize
@@ -989,36 +988,15 @@
               window.Sappy3D.showError('Resize Error: ' + e.message);
             }
           };
-          
-          console.log('3D scene initialization complete');
-          
         } catch (e) {
           console.error('Error in init function:', e);
           window.Sappy3D.showError('Init Error: ' + e.message);
         }
       };
       
-      // Initialize when page loads - with delay to avoid React conflicts
-      window.addEventListener('load', function() {
-        try {
-          console.log('Page loaded, waiting for React to settle...');
-          window.Sappy3D.showError('Page loaded, waiting for React to settle...');
-          // Wait shorter for React to initialize
-          setTimeout(function() {
-            window.Sappy3D.showError('Starting 3D initialization...');
-            setTimeout(window.Sappy3D.waitForThree, 500);
-          }, 1000);
-        } catch (e) {
-          console.error('Error in load handler:', e);
-          window.Sappy3D.showError('Load Error: ' + e.message);
-        }
-      });
+
       
-      // Additional error checking
-      document.addEventListener('DOMContentLoaded', function() {
-        console.log('DOM loaded');
-        window.Sappy3D.showError('DOM loaded');
-      });
+
     </script>
   </body>
 </html>
