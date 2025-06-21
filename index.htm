@@ -106,54 +106,7 @@
           document.head.appendChild(gltfScript);
         };
         threeScript.onerror = function() {
-          
-          // Try alternative CDN
-          var threeScript2 = document.createElement('script');
-          threeScript2.src = 'https://unpkg.com/three@0.144.0/build/three.min.js';
-          threeScript2.onload = function() {
-            
-            // Load GLTFLoader after Three.js (uses global THREE)
-            var gltfScript2 = document.createElement('script');
-            gltfScript2.src = 'https://unpkg.com/three@0.144.0/examples/js/loaders/GLTFLoader.js';
-            gltfScript2.onload = function() {
-              
-              // Load OrbitControls after GLTFLoader (uses global THREE)
-              var orbitScript2 = document.createElement('script');
-              orbitScript2.src = 'https://unpkg.com/three@0.144.0/examples/js/controls/OrbitControls.js';
-              orbitScript2.onload = function() {
-                
-                // Now that all scripts are loaded, move everything to our namespace
-                if (typeof THREE !== 'undefined') {
-                  window.Sappy3D = window.Sappy3D || {};
-                  window.Sappy3D.THREE = THREE;
-                  
-                  // Check if GLTFLoader is available
-                  if (typeof THREE.GLTFLoader !== 'undefined') {
-                    window.Sappy3D.THREE.GLTFLoader = THREE.GLTFLoader;
-                  } else {
-                  }
-                  
-                  // Check if OrbitControls is available
-                  if (typeof THREE.OrbitControls !== 'undefined') {
-                    window.Sappy3D.THREE.OrbitControls = THREE.OrbitControls;
-                  } else {
-                  }
-                  
-                  // Keep global THREE available for compatibility
-                  // Don't delete window.THREE - keep it for other scripts that might need it
-                }
-              };
-              orbitScript2.onerror = function() {
-              };
-              document.head.appendChild(orbitScript2);
-            };
-            gltfScript2.onerror = function() {
-            };
-            document.head.appendChild(gltfScript2);
-          };
-          threeScript2.onerror = function() {
-          };
-          document.head.appendChild(threeScript2);
+          // Simple error handling - no fallback to avoid multiple instances
         };
         document.head.appendChild(threeScript);
       })();
