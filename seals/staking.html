@@ -1,7 +1,1023 @@
-﻿<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preload" href="_next/static/media/8888a3826f4a3af4-s.p.woff2" as="font" crossorigin="" type="font/woff2"><link rel="preload" href="_next/static/media/92f44bb82993d879-s.p.woff2" as="font" crossorigin="" type="font/woff2"><link rel="preload" href="_next/static/media/9e82d62334b205f4-s.p.woff2" as="font" crossorigin="" type="font/woff2"><link rel="preload" href="_next/static/media/a34f9d1faa5f3315-s.p.woff2" as="font" crossorigin="" type="font/woff2"><link rel="preload" href="_next/static/media/b957ea75a84b6ea7-s.p.woff2" as="font" crossorigin="" type="font/woff2"><link rel="preload" href="_next/static/media/eafabf029ad39a43-s.p.woff2" as="font" crossorigin="" type="font/woff2"><link rel="stylesheet" href="_next/static/css/50b438f597c29cd3.css" data-precedence="next"><link rel="stylesheet" href="_next/static/css/37408475577816dd.css" data-precedence="next"><link rel="stylesheet" href="_next/static/css/3ed508e200eccdbc.css" data-precedence="next"><link rel="preload" as="script" fetchpriority="low" href="_next/static/chunks/webpack-b47b6c890afc3561.js"><script src="_next/static/chunks/b4878fcf-7a5caef541900a75.js" async=""></script><script src="_next/static/chunks/2047-0ea4a8d0f2dde6e3.js" async=""></script><script src="_next/static/chunks/main-app-6063c6ecbbd0ed4d.js" async=""></script><script src="_next/static/chunks/12514cef-7d0bf660024b80ce.js" async=""></script><script src="_next/static/chunks/842892ce-b074199fde49cc2c.js" async=""></script><script src="_next/static/chunks/1b7bc3a5-6a370eca87822a43.js" async=""></script><script src="_next/static/chunks/7671-92f93ed8a5530b1c.js" async=""></script><script src="_next/static/chunks/4274-75188fa94265dabe.js" async=""></script><script src="_next/static/chunks/856-0fba04acacbf72dd.js" async=""></script><script src="_next/static/chunks/3663-7ae9c0e8cb73881f.js" async=""></script><script src="_next/static/chunks/9408-308ae6769eee7230.js" async=""></script><script src="_next/static/chunks/8024-8b122e6e37154e8f.js" async=""></script><script src="_next/static/chunks/8860-8b601df68e5fb309.js" async=""></script><script src="_next/static/chunks/3826-f165703d81b47a67.js" async=""></script><script src="_next/static/chunks/7770-23724e428abdd010.js" async=""></script><script src="_next/static/chunks/app/(dashboard)/staking/page-a163b1da3612b202.js" async=""></script><script src="_next/static/chunks/f5848884-068f23b51fb186ef.js" async=""></script><script src="_next/static/chunks/59453ef0-fae70cee648e4419.js" async=""></script><script src="_next/static/chunks/eb396988-d11b4395b1f1b7fb.js" async=""></script><script src="_next/static/chunks/4957-0f7eb40aedbf4f8f.js" async=""></script><script src="_next/static/chunks/3798-c7406be70f946818.js" async=""></script><script src="_next/static/chunks/6128-b59572ebb9e901b3.js" async=""></script><script src="_next/static/chunks/app/(dashboard)/layout-985c40fd1fd9aca6.js" async=""></script><script src="_next/static/chunks/9734-2197980714289f30.js" async=""></script><script src="_next/static/chunks/app/(landing)/layout-b657b6deb26dc48e.js" async=""></script><script src="_next/static/chunks/9193-6054bf02668aaf7e.js" async=""></script><script src="_next/static/chunks/app/(landing)/page-caae78dd4c5933fc.js" async=""></script><script src="_next/static/chunks/8748-1151f2a3888c9690.js" async=""></script><script src="_next/static/chunks/7959-6cd008b0bede0787.js" async=""></script><script src="_next/static/chunks/app/layout-2dbfc3aeefcd55c9.js" async=""></script><title>Staking – Sappy Seals</title><meta name="description" content="Join us as we create amazing experiences with and alongside our community through gaming, irl events, memetics, lore, and everything that we find fun. 
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="preload"
+      href="_next/static/media/8888a3826f4a3af4-s.p.woff2"
+      as="font"
+      crossorigin=""
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="_next/static/media/92f44bb82993d879-s.p.woff2"
+      as="font"
+      crossorigin=""
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="_next/static/media/9e82d62334b205f4-s.p.woff2"
+      as="font"
+      crossorigin=""
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="_next/static/media/a34f9d1faa5f3315-s.p.woff2"
+      as="font"
+      crossorigin=""
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="_next/static/media/b957ea75a84b6ea7-s.p.woff2"
+      as="font"
+      crossorigin=""
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="_next/static/media/eafabf029ad39a43-s.p.woff2"
+      as="font"
+      crossorigin=""
+      type="font/woff2"
+    />
+    <link
+      rel="stylesheet"
+      href="_next/static/css/50b438f597c29cd3.css"
+      data-precedence="next"
+    />
+    <link
+      rel="stylesheet"
+      href="_next/static/css/37408475577816dd.css"
+      data-precedence="next"
+    />
+    <link
+      rel="stylesheet"
+      href="_next/static/css/3ed508e200eccdbc.css"
+      data-precedence="next"
+    />
+    <link
+      rel="preload"
+      as="script"
+      fetchpriority="low"
+      href="_next/static/chunks/webpack-b47b6c890afc3561.js"
+    />
+    <script
+      src="_next/static/chunks/b4878fcf-7a5caef541900a75.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/2047-0ea4a8d0f2dde6e3.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/main-app-6063c6ecbbd0ed4d.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/12514cef-7d0bf660024b80ce.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/842892ce-b074199fde49cc2c.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/1b7bc3a5-6a370eca87822a43.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/7671-92f93ed8a5530b1c.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/4274-75188fa94265dabe.js"
+      async=""
+    ></script>
+    <script src="_next/static/chunks/856-0fba04acacbf72dd.js" async=""></script>
+    <script
+      src="_next/static/chunks/3663-7ae9c0e8cb73881f.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/9408-308ae6769eee7230.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/8024-8b122e6e37154e8f.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/8860-8b601df68e5fb309.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/3826-f165703d81b47a67.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/7770-23724e428abdd010.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/app/(dashboard)/staking/page-a163b1da3612b202.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/f5848884-068f23b51fb186ef.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/59453ef0-fae70cee648e4419.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/eb396988-d11b4395b1f1b7fb.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/4957-0f7eb40aedbf4f8f.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/3798-c7406be70f946818.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/6128-b59572ebb9e901b3.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/app/(dashboard)/layout-985c40fd1fd9aca6.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/9734-2197980714289f30.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/app/(landing)/layout-b657b6deb26dc48e.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/9193-6054bf02668aaf7e.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/app/(landing)/page-caae78dd4c5933fc.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/8748-1151f2a3888c9690.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/7959-6cd008b0bede0787.js"
+      async=""
+    ></script>
+    <script
+      src="_next/static/chunks/app/layout-2dbfc3aeefcd55c9.js"
+      async=""
+    ></script>
+    <title>Staking – Sappy Seals</title>
+    <meta
+      name="description"
+      content="Join us as we create amazing experiences with and alongside our community through gaming, irl events, memetics, lore, and everything that we find fun. 
  
- Building universes, games, animations, using cutting-edge tech, with Sappy as the common identity between all of those worlds -- amplified under one decentralized banner."><meta property="og:title" content="Staking – Sappy Seals"><meta property="og:description" content="Join us as we create amazing experiences with and alongside our community through gaming, irl events, memetics, lore, and everything that we find fun. 
+ Building universes, games, animations, using cutting-edge tech, with Sappy as the common identity between all of those worlds -- amplified under one decentralized banner."
+    />
+    <meta property="og:title" content="Staking – Sappy Seals" />
+    <meta
+      property="og:description"
+      content="Join us as we create amazing experiences with and alongside our community through gaming, irl events, memetics, lore, and everything that we find fun. 
  
- Building universes, games, animations, using cutting-edge tech, with Sappy as the common identity between all of those worlds -- amplified under one decentralized banner."><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="596"><meta property="og:image:height" content="526"><meta property="og:image:alt" content="Iconic Sappy Seals face, featuring large round eyes, whiskers, and a cute, smiling mouth"><meta property="og:image" content="https://seals-staking.vercel.app/seals/opengraph-image.png?cbb77dec1be36bc9"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Staking – Sappy Seals"><meta name="twitter:description" content="Join us as we create amazing experiences with and alongside our community through gaming, irl events, memetics, lore, and everything that we find fun. 
+ Building universes, games, animations, using cutting-edge tech, with Sappy as the common identity between all of those worlds -- amplified under one decentralized banner."
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="596" />
+    <meta property="og:image:height" content="526" />
+    <meta
+      property="og:image:alt"
+      content="Iconic Sappy Seals face, featuring large round eyes, whiskers, and a cute, smiling mouth"
+    />
+    <meta
+      property="og:image"
+      content="https://seals-staking.vercel.app/seals/opengraph-image.png?cbb77dec1be36bc9"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Staking – Sappy Seals" />
+    <meta
+      name="twitter:description"
+      content="Join us as we create amazing experiences with and alongside our community through gaming, irl events, memetics, lore, and everything that we find fun. 
  
- Building universes, games, animations, using cutting-edge tech, with Sappy as the common identity between all of those worlds -- amplified under one decentralized banner."><meta name="twitter:image:type" content="image/png"><meta name="twitter:image:width" content="596"><meta name="twitter:image:height" content="526"><meta name="twitter:image:alt" content="Iconic Sappy Seals face, featuring large round eyes, whiskers, and a cute, smiling mouth"><meta name="twitter:image" content="https://seals-staking.vercel.app/seals/twitter-image.png?cbb77dec1be36bc9"><link rel="icon" href="favicon.ico" type="image/x-icon" sizes="176x176"><link rel="icon" href="icon.png?b7595f33cbcd2108" type="image/png" sizes="176x176"><link rel="apple-touch-icon" href="apple-icon.png?b7595f33cbcd2108" type="image/png" sizes="176x176"><meta name="next-size-adjust"><script src="_next/static/chunks/polyfills-42372ed130431b0a.js" nomodule=""></script></head><body class="overflow-x-hidden"><script>((e,t,r,i,a,o,s,l)=>{let c=document.documentElement,d=["light","dark"];function p(t){(Array.isArray(e)?e:[e]).forEach(e=>{let r="class"===e,i=r&&o?a.map(e=>o[e]||e):a;r?(c.classList.remove(...i),c.classList.add(t)):c.setAttribute(e,t)}),l&&d.includes(t)&&(c.style.colorScheme=t)}if(i)p(i);else try{let e=localStorage.getItem(t)||r,i=s&&"system"===e?window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light":e;p(i)}catch(e){}})("class","theme","dark",null,["light","dark"],null,true,true)</script><div id="mouse-parallax-container" style="overflow:hidden;position:relative"><div id="mouse-parallax-container" style="overflow:hidden;position:relative"><div class="__variable_16ecf2 __variable_45d025 __variable_edd6a5 flex min-h-screen w-screen flex-col py-[5vh] font-poppins" style="min-height:100dvh"><header class="mb-12 flex h-[10vh] w-full px-[5vw] lg:mb-4"><div class="hidden grow flex-row items-center justify-between font-semibold lg:flex"><div class="flex flex-row items-center gap-[5vw]"><a href="../seals.html"><img alt="Logo" loading="lazy" width="824" height="609" decoding="async" data-nimg="1" class="aspect-[824/609] w-min object-contain h-[8vh]" style="color:transparent" srcset="_next/logo-1.png 1x?url=%2Fseals%2F_next%2Fstatic%2Fmedia%2Flogo.53a8da67.png&amp;w=828&amp;q=75 1x, _next/logo.png 2xe?url=%2Fseals%2F_next%2Fstatic%2Fmedia%2Flogo.53a8da67.png&amp;w=1920&amp;q=75 2x" src="_next/logo.png?url=%2Fseals%2F_next%2Fstatic%2Fmedia%2Flogo.53a8da67.png&amp;w=1920&amp;q=75"></a><nav class="flex grow flex-row gap-[4vw] font-semibold uppercase lg:text-[1.5vw]/[1.5vw] FHD:text-[1vw]/[1vw]"><div class="relative flex items-center gap-[4vw]"><a href="seals/staking.html">staking</a><a href="bits.html">bits</a><a href="the-archives.html">the archives</a><div class="absolute -bottom-1 h-1 rounded-full bg-foreground transition-all duration-300" style="left:0px;width:0px"></div></div><span class="cursor-not-allowed opacity-40">license</span></nav></div><div class="flex flex-row items-center gap-[1vw]"></div></div><div class="flex grow flex-row items-center justify-between lg:hidden"><button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:R6cvkq:" data-state="closed" class="lg:hidden"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewbox="0 0 1024 1024" class="text-[5vh] lg:text-[2vw] FHD:text-[1.5vw]" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0 624H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0-312H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z"></path></svg></button><a href="../seals.html"><img alt="Logo" loading="lazy" width="824" height="609" decoding="async" data-nimg="1" class="aspect-[824/609] w-min object-contain h-[10vh]" style="color:transparent" srcset="_next/logo-1.png 1x?url=%2Fseals%2F_next%2Fstatic%2Fmedia%2Flogo.53a8da67.png&amp;w=828&amp;q=75 1x, _next/logo.png 2xe?url=%2Fseals%2F_next%2Fstatic%2Fmedia%2Flogo.53a8da67.png&amp;w=1920&amp;q=75 2x" src="_next/logo.png?url=%2Fseals%2F_next%2Fstatic%2Fmedia%2Flogo.53a8da67.png&amp;w=1920&amp;q=75"></a></div></header><main class="flex w-screen grow flex-col overflow-hidden"><div class="flex flex-col justify-center gap-3 px-[5vw] pb-[5vw] lg:gap-6 lg:px-[10vw] lg:pb-[1vw]"><div class="mx-auto w-[90%] max-w-md rounded-full bg-foreground font-mono text-background @container"><div class="flex w-full items-center justify-between px-[8cqw] py-[3cqw]"><div class="flex flex-col items-center gap-[1cqw]"><p class="whitespace-nowrap font-mono text-[2.5cqw]/[2.5cqw] uppercase text-muted-foreground">total bits</p><span class="flex items-center gap-[1cqw]"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 51 59" class="h-[0.8em] flex-none dark:invert"><path fill="#E6E6E6" d="m25.398 0 25.358 14.64-25.358 14.641L.038 14.641z"></path><path fill="silver" d="m.04 14.64 25.358 14.641v29.281L.04 43.922z"></path><path fill="#9A9A9A" d="m25.398 29.281 25.358-14.64v29.28L25.398 58.563z"></path><path fill="#4D4D4D" d="m25.502 13.644 13.494 7.79L25.5 29.227l-13.494-7.791z"></path><path fill="#262626" d="m12.006 21.435 13.495 7.791v15.582l-13.495-7.791z"></path><path fill="#000" d="m25.502 29.226 13.494-7.791v15.582L25.5 44.808z"></path></svg><div class="font-mono text-[4cqw]/[4cqw]"><div class="relative flex h-[4cqw] overflow-hidden" style="-webkit-mask-image:linear-gradient(to top, rgb(0 0 0 / 0) 0%, black 30%, black 70%, rgb(0 0 0 / 0) 100%);mask-image:ar-gradient(to top, rgb(0 0 0 / 0) 0%, black 30%, black 70%, rgb(0 0 0 / 0) 100%)"><div class="pointer-events-none relative flex h-full select-none items-start"><div class="flex flex-col" style="transform:translateY(0%)"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div></div><div class="pointer-events-none relative flex h-full select-none items-start"><div class="flex flex-col" style="transform:translateY(0%)"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div></div><div class="pointer-events-none relative flex h-full select-none items-end"><div class="flex flex-col" style="transform:translateY(45%)"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div></div><div class="pointer-events-none relative flex h-full select-none items-end"><div class="flex flex-col" style="transform:translateY(45%)"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div></div><div class="pointer-events-none relative flex h-full select-none items-start"><div class="flex flex-col" style="transform:translateY(0%)"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div></div><div class="pointer-events-none relative flex h-full select-none items-start"><div class="flex flex-col" style="transform:translateY(0%)"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div></div></div></div></span></div><div class="h-[6cqw] w-px bg-background"></div><div class="flex flex-col items-center gap-[1cqw]"><p class="whitespace-nowrap font-mono text-[2.5cqw]/[2.5cqw] uppercase text-muted-foreground">LOYALTY MULTIPLIER</p><span class="flex items-center gap-[1cqw]"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 51 59" class="h-[0.8em] flex-none dark:invert"><path fill="#E6E6E6" d="m25.398 0 25.358 14.64-25.358 14.641L.038 14.641z"></path><path fill="silver" d="m.04 14.64 25.358 14.641v29.281L.04 43.922z"></path><path fill="#9A9A9A" d="m25.398 29.281 25.358-14.64v29.28L25.398 58.563z"></path><path fill="#4D4D4D" d="m25.502 13.644 13.494 7.79L25.5 29.227l-13.494-7.791z"></path><path fill="#262626" d="m12.006 21.435 13.495 7.791v15.582l-13.495-7.791z"></path><path fill="#000" d="m25.502 29.226 13.494-7.791v15.582L25.5 44.808z"></path></svg><div class="font-mono text-[4cqw]/[4cqw]">TBA</div></span></div><div class="h-[6cqw] w-px bg-background"></div><div class="flex flex-col items-center gap-[1cqw]"><p class="whitespace-nowrap font-mono text-[2.5cqw]/[2.5cqw] uppercase text-muted-foreground">current rate</p><span class="flex items-center gap-[1cqw]"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 51 59" class="h-[0.8em] flex-none dark:invert"><path fill="#E6E6E6" d="m25.398 0 25.358 14.64-25.358 14.641L.038 14.641z"></path><path fill="silver" d="m.04 14.64 25.358 14.641v29.281L.04 43.922z"></path><path fill="#9A9A9A" d="m25.398 29.281 25.358-14.64v29.28L25.398 58.563z"></path><path fill="#4D4D4D" d="m25.502 13.644 13.494 7.79L25.5 29.227l-13.494-7.791z"></path><path fill="#262626" d="m12.006 21.435 13.495 7.791v15.582l-13.495-7.791z"></path><path fill="#000" d="m25.502 29.226 13.494-7.791v15.582L25.5 44.808z"></path></svg><div class="font-mono text-[4cqw]/[4cqw]">TBA</div></span></div></div></div><div class="flex w-full flex-wrap items-center gap-3 lg:gap-6"><div class="relative flex w-fit flex-col gap-1 text-[4vw] md:text-[3.5vw] lg:text-[1.5vw] FHD:text-[1vw]"><div class="flex flex-row gap-[min(1.5vw,14px)] text-sm font-medium"><button type="button" class="flex items-center gap-[0.7em] rounded-full px-[1.2em] py-[0.5em] font-poppins bg-foreground text-background"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="12" fill="none" viewbox="0 0 19 12" class="h-[1em]"><path fill="currentColor" stroke="currentColor" stroke-width="0.031" d="M6.645 5.782c-1.61-.45-4.071-4.264-4.324-3.401-.08.59.821 1.817.528 1.75S1 3.731 1 4.106s.325.537 1.801 1.45c4.14 5.9 8.191 6.228 10.4 4.602 2.21-1.625 3.384-5.622 3.508-6.052.123-.43.672-.35 1.2-.95.529-.6-1.369-2.576-2.81-2.076-1.44.5-3.819 4.027-4.948 4.527s-1.897.625-3.506.175Z"></path></svg>ALL</button><button type="button" class="flex items-center gap-[0.7em] rounded-full px-[1.2em] py-[0.5em] font-poppins bg-gradient-to-t from-accent to-background to-[150%] text-[#878787] dark:from-[#3f3f3f] dark:text-white">STAKED</button><button type="button" class="flex items-center gap-[0.7em] rounded-full px-[1.2em] py-[0.5em] font-poppins bg-gradient-to-t from-accent to-background to-[150%] text-[#878787] dark:from-[#3f3f3f] dark:text-white">UNSTAKED</button></div></div><label class="cursor-pointer items-center gap-2 font-inter uppercase text-[#878787] dark:text-white hidden"><div class="flex h-4 w-4 flex-none items-center justify-center rounded-full border-[1px] border-current"><input class="peer hidden" type="checkbox" disabled="" name="subscribe"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" fill="none" viewbox="0 0 8 6" class="hidden h-2 w-2 select-none peer-checked:block"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m1 3.158 1.5 1.619a.67.67 0 0 0 1 0L7 1"></path></svg></div>Select All</label><div class="ml-auto flex h-6 items-center justify-end gap-2 text-muted-foreground lg:h-8"><select class="h-full cursor-pointer rounded-lg border-r-4 border-transparent bg-muted pl-2 font-inter text-xs"><option value="default" selected="">DEFAULT</option><option value="id">ID</option><option value="unclaimedPixl">EARNED</option><option value="dailyRate">RATE</option></select><button type="button" class="flex aspect-square h-full items-stretch justify-stretch active:text-muted disabled:text-muted" disabled=""><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewbox="0 0 16 16" class="h-full w-full" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"></path></svg></button><button type="button" class="flex aspect-square h-full items-stretch justify-stretch active:text-muted disabled:text-muted"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewbox="0 0 16 16" class="h-full w-full" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M4 2v2H2V2zm1 12v-2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m5 10v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1M9 2v2H7V2zm5 0v2h-2V2zM4 7v2H2V7zm5 0v2H7V7zm5 0h-2v2h2zM4 12v2H2v-2zm5 0v2H7v-2zm5 0v2h-2v-2zM12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm-1 6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z"></path></svg></button></div></div></div><div class="grid gap-x-[2.5vw] gap-y-[8vw] overflow-x-clip overflow-y-scroll px-[5vw] py-6 md:gap-y-[6vw] lg:gap-x-[1vw] lg:gap-y-[3vw] lg:px-[10vw] FHD:gap-x-[0.8vw] FHD:gap-y-[2vw] grid-cols-2 md:grid-cols-3 lg:grid-cols-5 FHD:grid-cols-7"></div><div class="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm transition-all duration-300 ease-in-out scale-0 opacity-0"><div class="relative flex aspect-[16/9] flex-col justify-center overflow-hidden rounded-lg bg-background drop-shadow-lg w-[80vw] lg:w-[40vw] FHD:w-[30vw] px-[10vw] lg:px-[5vw] FHD:px-[4vw] text-[3vw] lg:text-[1.5vw] FHD:text-[1vw] __className_edd6a5"><p class="flex items-center font-bold gap-[2vw] lg:gap-[1vw] FHD:gap-[0.5vw] text-[4.5vw] lg:text-[2vw] FHD:text-[1.5vw] __className_16ecf2">Migration underway!<span class="inline-block -rotate-12"><svg stroke="currentColor" fill="none" stroke-width="2" viewbox="0 0 24 24" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></span></p><p class="flex items-center gap-[5vw] lg:gap-[2vw]"><span class="inline-block"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewbox="0 0 1024 1024" class="text-muted-foreground" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M696 480H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"></path><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path></svg></span>Unstaked V1</p><p class="flex items-center gap-[5vw] lg:gap-[2vw]"><span class="inline-block"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewbox="0 0 1024 1024" class="text-muted-foreground" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M696 480H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"></path><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path></svg></span>Approved V2</p><p class="flex items-center gap-[5vw] lg:gap-[2vw]"><span class="inline-block"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewbox="0 0 1024 1024" class="text-muted-foreground" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M696 480H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"></path><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path></svg></span>Staked V2</p><button type="button" class="absolute right-[2.25%] top-[4.5%] flex aspect-square w-[5%] text-muted-foreground"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewbox="0 0 1024 1024" fill-rule="evenodd" class="h-full w-full" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M799.855 166.312c.023.007.043.018.084.059l57.69 57.69c.041.041.052.06.059.084a.118.118 0 0 1 0 .069c-.007.023-.018.042-.059.083L569.926 512l287.703 287.703c.041.04.052.06.059.083a.118.118 0 0 1 0 .07c-.007.022-.018.042-.059.083l-57.69 57.69c-.041.041-.06.052-.084.059a.118.118 0 0 1-.069 0c-.023-.007-.042-.018-.083-.059L512 569.926 224.297 857.629c-.04.041-.06.052-.083.059a.118.118 0 0 1-.07 0c-.022-.007-.042-.018-.083-.059l-57.69-57.69c-.041-.041-.052-.06-.059-.084a.118.118 0 0 1 0-.069c.007-.023.018-.042.059-.083L454.073 512 166.371 224.297c-.041-.04-.052-.06-.059-.083a.118.118 0 0 1 0-.07c.007-.022.018-.042.059-.083l57.69-57.69c.041-.041.06-.052.084-.059a.118.118 0 0 1 .069 0c.023.007.042.018.083.059L512 454.073l287.703-287.702c.04-.041.06-.052.083-.059a.118.118 0 0 1 .07 0Z"></path></svg></button><svg xmlns="http://www.w3.org/2000/svg" fill="none" class="absolute left-[2.25%] top-[4.5%] w-[5%] text-muted-foreground" viewbox="0 0 39 45"><path stroke="currentColor" d="m8.768 38.122 1.55-35.528m25.894 6.3H6.017" stroke-linecap="round" stroke-width="5"></path></svg><svg xmlns="http://www.w3.org/2000/svg" fill="none" class="absolute bottom-[4.5%] right-[2.25%] w-[5%] text-muted-foreground" viewbox="0 0 41 49"><path stroke="currentColor" d="m2.923 39.51 30.094 2.904m0-35.575v35.575" stroke-linecap="round" stroke-width="5"></path></svg><img alt="seal on motorbike" loading="lazy" width="3000" height="3000" decoding="async" data-nimg="1" class="absolute -bottom-[35%] -right-[17.5%] -z-10 aspect-square h-[150%] w-min object-contain opacity-10" style="color:transparent" srcset="_next/where-bro-going.png 1x?url=%2Fseals%2F_next%2Fstatic%2Fmedia%2Fwhere-bro-going.4a65a6ca.png&amp;w=3840&amp;q=75 1x" src="_next/where-bro-going.png?url=%2Fseals%2F_next%2Fstatic%2Fmedia%2Fwhere-bro-going.4a65a6ca.png&amp;w=3840&amp;q=75"></div></div><div class="pointer-events-none fixed bottom-[5vw] right-[5vw] flex flex-col items-end justify-end gap-[2.5vw] lg:bottom-[2vw] lg:right-[2vw] lg:gap-[1vw]"><div class="pointer-events-auto flex aspect-[5/1] w-[90vw] flex-row rounded-full p-[2vw] drop-shadow-2xl transition-all duration-300 ease-in-out dark:bg-muted-foreground md:w-[55vw] md:p-[1vw] lg:w-[25vw] lg:p-[0.5vw] FHD:w-[20vw] absolute translate-x-[200%] opacity-0 cursor-default items-stretch justify-between bg-background pl-[5%] pr-[2vw] text-foreground __className_edd6a5"><div class="flex w-[30%] justify-center"><p class="flex items-center text-center text-[3vw] font-semibold text-muted-foreground dark:text-background md:text-[2vw] lg:text-[0.8vw] FHD:text-[0.6vw]">0<!-- --> SEALS<br>SELECTED</p></div><button type="button" class="flex w-[70%] flex-row items-center justify-evenly rounded-full bg-black text-[4.5vw] text-white md:text-[3vw] lg:text-[1.25vw] FHD:text-[1vw]" disabled=""><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewbox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M912 190h-69.9c-9.8 0-19.1 4.5-25.1 12.2L404.7 724.5 207 474a32 32 0 0 0-25.1-12.2H112c-6.7 0-10.4 7.7-6.3 12.9l273.9 347c12.8 16.2 37.4 16.2 50.3 0l488.4-618.9c4.1-5.1.4-12.8-6.3-12.8z"></path></svg><p>Stake<!-- --> Selected</p></button></div><div class="pointer-events-auto flex aspect-[5/1] w-[90vw] flex-row items-center rounded-full p-[2vw] drop-shadow-2xl transition-all duration-300 ease-in-out dark:bg-muted-foreground md:w-[55vw] md:p-[1vw] lg:w-[25vw] lg:p-[0.5vw] FHD:w-[20vw] absolute translate-x-[200%] opacity-0 cursor-pointer justify-evenly bg-foreground text-background"><svg class="aspect-square animate-spin w-[8vw] md:w-[5vw] lg:w-[2vw] FHD:w-[1.5vw]" viewbox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" class="animate-dash text-background" stroke-linecap="round" stroke-width="5"></circle></svg><div class="flex flex-col __className_edd6a5"><p class="text-[4.5vw] font-bold md:text-[3vw] lg:text-[1.25vw] FHD:text-[1vw]">Migration Underway!</p><p class="text-[3vw] font-medium md:text-[2vw] lg:text-[0.8vw] FHD:text-[0.6vw]">Click me to view progress</p></div><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewbox="0 0 1024 1024" class="text-[8vw] md:text-[5vw] lg:text-[2vw] FHD:text-[1.5vw]" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M696 480H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"></path><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path></svg></div><div class="pointer-events-auto flex aspect-[5/1] w-[90vw] flex-row items-center rounded-full p-[2vw] drop-shadow-2xl transition-all duration-300 ease-in-out dark:bg-muted-foreground md:w-[55vw] md:p-[1vw] lg:w-[25vw] lg:p-[0.5vw] FHD:w-[20vw] absolute translate-x-[200%] opacity-0 cursor-default justify-evenly bg-foreground text-background"><svg class="aspect-square animate-spin w-[8vw] md:w-[5vw] lg:w-[2vw] FHD:w-[1.5vw]" viewbox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" class="animate-dash text-background" stroke-linecap="round" stroke-width="5"></circle></svg><div class="flex flex-col __className_edd6a5"><p class="text-[4.5vw] font-bold md:text-[3vw] lg:text-[1.25vw] FHD:text-[1vw]">Transaction Underway!</p><p class="text-[3vw] font-medium md:text-[2vw] lg:text-[0.8vw] FHD:text-[0.6vw]">More deets here 👉<!-- --> <button type="button" class="cursor-pointer underline">etherscan.io</button></p></div><div class="aspect-square w-[5vw] rounded-full bg-green-500 md:w-[3vw] lg:w-[1vw] FHD:w-[0.8vw]"><div class="h-full w-full rounded-full bg-green-500 blur-sm"></div></div></div></div><div class="text-[15.625vw] font-black text-[#F4F4F4] dark:text-[#323232] fixed -bottom-[2vw] -left-[1vw] -z-10 h-fit leading-none" style="transform:none"><div class="inline-flex items-end overflow-hidden"><div class="flex items-end"><span class="inline-flex items-center justify-center transition-all duration-700 ease-in-out translate-y-[300%] opacity-50 will-change-transform" style="transition-delay:250ms"><div class="">S</div></span><span class="inline-flex items-center justify-center transition-all duration-700 ease-in-out translate-y-[300%] opacity-50 will-change-transform" style="transition-delay:300ms"><div class="">T</div></span><span class="inline-flex items-center justify-center transition-all duration-700 ease-in-out translate-y-[300%] opacity-50 will-change-transform" style="transition-delay:350ms"><div class="">A</div></span><span class="inline-flex items-center justify-center transition-all duration-700 ease-in-out translate-y-[300%] opacity-50 will-change-transform" style="transition-delay:400ms"><div class="">K</div></span><span class="inline-flex items-center justify-center transition-all duration-700 ease-in-out translate-y-[300%] opacity-50 will-change-transform" style="transition-delay:450ms"><div class="">I</div></span><span class="inline-flex items-center justify-center transition-all duration-700 ease-in-out translate-y-[300%] opacity-50 will-change-transform" style="transition-delay:500ms"><div class="">N</div></span><span class="inline-flex items-center justify-center transition-all duration-700 ease-in-out translate-y-[300%] opacity-50 will-change-transform" style="transition-delay:550ms"><div class="">G</div></span></div></div><span class="absolute top-0" style="z-index:-1"></span></div></main></div></div></div><script src="_next/static/chunks/webpack-b47b6c890afc3561.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/seals/_next/static/css/50b438f597c29cd3.css\",\"style\"]\n2:HL[\"/seals/_next/static/media/0484562807a97172-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n3:HL[\"/seals/_next/static/media/4c285fdca692ea22-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n4:HL[\"/seals/_next/static/media/6245472ced48d3be-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n5:HL[\"/seals/_next/static/media/7108afb8b1381ad1-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n6:HL[\"/seals/_next/static/media/7db6c35d839a711c-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n7:HL[\"/seals/_next/static/media/8888a3826f4a3af4-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n8:HL[\"/seals/_next/static/media/92f44bb82993d879-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n9:HL[\"/seals/_next/static/media/9e82d62334b205f4-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\na:HL[\"/seals/_next/static/media/a34f9d1faa5f3315-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\nb:HL[\"/seals/_next/static/media/b957ea75a84b6ea7-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\nc:HL[\"/seals/_next/static/media/eafabf029ad39a43-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\nd:HL[\"/seals/_next/static/css/37408475577816dd.css\",\"style\"]\ne:HL[\"/seals/_next/static/css/3ed508e200eccdbc.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"f:I[92693,[],\"\"]\n11:I[72466,[\"5560\",\"static/chunks/12514cef-7d0bf660024b80ce.js\",\"6367\",\"static/chunks/842892ce-b074199fde49cc2c.js\",\"9679\",\"static/chunks/1b7bc3a5-6a370eca87822a43.js\",\"7671\",\"static/chunks/7671-92f93ed8a5530b1c.js\",\"4274\",\"static/chunks/4274-75188fa94265dabe.js\",\"856\",\"static/chunks/856-0fba04acacbf72dd.js\",\"3663\",\"static/chunks/3663-7ae9c0e8cb73881f.js\",\"9408\",\"static/chunks/9408-308ae6769eee7230.js\",\"8024\",\"static/chunks/8024-8b122e6e37154e8f.js\",\"8860\",\"static/chunks/8860-8b601df68e5fb309.js\",\"3826\",\"static/chunks/3826-f165703d81b47a67.js\",\"7770\",\"static/chunks/7770-23724e428abdd010.js\",\"3474\",\"static/chunks/app/(dashboard)/staking/page-a163b1da3612b202.js\"],\"default\"]\n12:I[10732,[\"5560\",\"static/chunks/12514cef-7d0bf660024b80ce.js\",\"6367\",\"static/chunks/842892ce-b074199fde49cc2c.js\",\"9679\",\"static/chunks/1b7bc3a5-6a370eca87822a43.js\",\"7671\",\"static/chunks/7671-92f93ed8a5530b1c.js\",\"4274\",\"static/chunks/4274-75188fa94265dabe.js\",\"856\",\"static/chunks/856-0fba04acacbf72dd.js\",\"3663\",\"static/chunks/3663-7ae9c0e8cb73881f.js\",\"9408\",\"static/chunks/9408-308ae6769eee7230.js\",\"8024\",\"static/chunks/8024-8b122e6e37154e8f.js\",\"8860\",\"static/chunks/8860-8b601df68e5fb309.js\",\"3826\",\"static/chunks/3826-f165703d81b47a67.js\",\"7770\",\"static/chunks/7770-23724e428abdd010.js\",\"3474\",\"static/chunks/app/(dashboard)/staking/page-a163b1da3612b202.js\"],\"ParallaxText\"]\n13:I[25910,[],\"\"]\n14:I[22354,[],\"\"]\n15:I[57329,[\"5560\",\"static/chunks/12514cef-7d0bf660024b80ce.js\",\"6367\",\"static/chunks/842892ce-b074199fde49cc2c.js\",\"2565\",\"static/chunks/f5848884-068f23b51fb186ef.js\",\"6582\",\"static/chunks/59453ef0-fae70cee648e4419.js\",\"6343\",\"static/chunks/eb396988-d11b4395b1f1b7fb.js\",\"7671\",\"static/chunks/7671-92f93ed8a5530b1c.js\",\"4274\",\"static/chunks/4274-75188fa94265dabe.js\",\"856\",\"static/chunks/856-0fba04acacbf72dd.js\",\"3663\",\"static/chunks/3663-7ae9c0e8cb73881f.js\",\"9408\",\"static/chunks/9408-308ae6769eee7230.js\",\"8024\",\"static/chunks/8024-8b122e6e37154e8f.js\",\"8860\",\"static/chunks/8860-8b601df68e5fb309.js\",\"4957\",\"static/chunk"])</script><script>self.__next_f.push([1,"s/4957-0f7eb40aedbf4f8f.js\",\"3798\",\"static/chunks/3798-c7406be70f946818.js\",\"6128\",\"static/chunks/6128-b59572ebb9e901b3.js\",\"7770\",\"static/chunks/7770-23724e428abdd010.js\",\"5642\",\"static/chunks/app/(dashboard)/layout-985c40fd1fd9aca6.js\"],\"WalletProvider\"]\n16:I[23526,[\"5560\",\"static/chunks/12514cef-7d0bf660024b80ce.js\",\"6367\",\"static/chunks/842892ce-b074199fde49cc2c.js\",\"2565\",\"static/chunks/f5848884-068f23b51fb186ef.js\",\"6582\",\"static/chunks/59453ef0-fae70cee648e4419.js\",\"6343\",\"static/chunks/eb396988-d11b4395b1f1b7fb.js\",\"7671\",\"static/chunks/7671-92f93ed8a5530b1c.js\",\"4274\",\"static/chunks/4274-75188fa94265dabe.js\",\"856\",\"static/chunks/856-0fba04acacbf72dd.js\",\"3663\",\"static/chunks/3663-7ae9c0e8cb73881f.js\",\"9408\",\"static/chunks/9408-308ae6769eee7230.js\",\"8024\",\"static/chunks/8024-8b122e6e37154e8f.js\",\"8860\",\"static/chunks/8860-8b601df68e5fb309.js\",\"4957\",\"static/chunks/4957-0f7eb40aedbf4f8f.js\",\"3798\",\"static/chunks/3798-c7406be70f946818.js\",\"6128\",\"static/chunks/6128-b59572ebb9e901b3.js\",\"7770\",\"static/chunks/7770-23724e428abdd010.js\",\"5642\",\"static/chunks/app/(dashboard)/layout-985c40fd1fd9aca6.js\"],\"ParallaxProvider\"]\n17:I[20856,[\"5560\",\"static/chunks/12514cef-7d0bf660024b80ce.js\",\"7671\",\"static/chunks/7671-92f93ed8a5530b1c.js\",\"4274\",\"static/chunks/4274-75188fa94265dabe.js\",\"856\",\"static/chunks/856-0fba04acacbf72dd.js\",\"3663\",\"static/chunks/3663-7ae9c0e8cb73881f.js\",\"9408\",\"static/chunks/9408-308ae6769eee7230.js\",\"8860\",\"static/chunks/8860-8b601df68e5fb309.js\",\"9734\",\"static/chunks/9734-2197980714289f30.js\",\"7770\",\"static/chunks/7770-23724e428abdd010.js\",\"262\",\"static/chunks/app/(landing)/layout-b657b6deb26dc48e.js\"],\"\"]\n18:I[66181,[\"5560\",\"static/chunks/12514cef-7d0bf660024b80ce.js\",\"7671\",\"static/chunks/7671-92f93ed8a5530b1c.js\",\"4274\",\"static/chunks/4274-75188fa94265dabe.js\",\"856\",\"static/chunks/856-0fba04acacbf72dd.js\",\"3663\",\"static/chunks/3663-7ae9c0e8cb73881f.js\",\"9408\",\"static/chunks/9408-308ae6769eee7230.js\",\"8860\",\"static/chunks/8860-8b601df68e5fb309.js\",\"9734\",\"static/chunks/9734-2197980714289f3"])</script><script>self.__next_f.push([1,"0.js\",\"7770\",\"static/chunks/7770-23724e428abdd010.js\",\"262\",\"static/chunks/app/(landing)/layout-b657b6deb26dc48e.js\"],\"Image\"]\n19:I[55796,[\"5560\",\"static/chunks/12514cef-7d0bf660024b80ce.js\",\"6367\",\"static/chunks/842892ce-b074199fde49cc2c.js\",\"2565\",\"static/chunks/f5848884-068f23b51fb186ef.js\",\"6582\",\"static/chunks/59453ef0-fae70cee648e4419.js\",\"6343\",\"static/chunks/eb396988-d11b4395b1f1b7fb.js\",\"7671\",\"static/chunks/7671-92f93ed8a5530b1c.js\",\"4274\",\"static/chunks/4274-75188fa94265dabe.js\",\"856\",\"static/chunks/856-0fba04acacbf72dd.js\",\"3663\",\"static/chunks/3663-7ae9c0e8cb73881f.js\",\"9408\",\"static/chunks/9408-308ae6769eee7230.js\",\"8860\",\"static/chunks/8860-8b601df68e5fb309.js\",\"4957\",\"static/chunks/4957-0f7eb40aedbf4f8f.js\",\"3798\",\"static/chunks/3798-c7406be70f946818.js\",\"9734\",\"static/chunks/9734-2197980714289f30.js\",\"9193\",\"static/chunks/9193-6054bf02668aaf7e.js\",\"7770\",\"static/chunks/7770-23724e428abdd010.js\",\"818\",\"static/chunks/app/(landing)/page-caae78dd4c5933fc.js\"],\"NavLine\"]\n1a:I[69868,[\"5560\",\"static/chunks/12514cef-7d0bf660024b80ce.js\",\"7671\",\"static/chunks/7671-92f93ed8a5530b1c.js\",\"4274\",\"static/chunks/4274-75188fa94265dabe.js\",\"856\",\"static/chunks/856-0fba04acacbf72dd.js\",\"3663\",\"static/chunks/3663-7ae9c0e8cb73881f.js\",\"9408\",\"static/chunks/9408-308ae6769eee7230.js\",\"8860\",\"static/chunks/8860-8b601df68e5fb309.js\",\"9734\",\"static/chunks/9734-2197980714289f30.js\",\"7770\",\"static/chunks/7770-23724e428abdd010.js\",\"262\",\"static/chunks/app/(landing)/layout-b657b6deb26dc48e.js\"],\"ThemeSwitch\"]\n1b:I[27054,[\"5560\",\"static/chunks/12514cef-7d0bf660024b80ce.js\",\"6367\",\"static/chunks/842892ce-b074199fde49cc2c.js\",\"2565\",\"static/chunks/f5848884-068f23b51fb186ef.js\",\"6582\",\"static/chunks/59453ef0-fae70cee648e4419.js\",\"6343\",\"static/chunks/eb396988-d11b4395b1f1b7fb.js\",\"7671\",\"static/chunks/7671-92f93ed8a5530b1c.js\",\"4274\",\"static/chunks/4274-75188fa94265dabe.js\",\"856\",\"static/chunks/856-0fba04acacbf72dd.js\",\"3663\",\"static/chunks/3663-7ae9c0e8cb73881f.js\",\"9408\",\"static/chunks/9408-308ae6769eee7230.js\",\"8860\",\"static/"])</script><script>self.__next_f.push([1,"chunks/8860-8b601df68e5fb309.js\",\"4957\",\"static/chunks/4957-0f7eb40aedbf4f8f.js\",\"3798\",\"static/chunks/3798-c7406be70f946818.js\",\"9734\",\"static/chunks/9734-2197980714289f30.js\",\"9193\",\"static/chunks/9193-6054bf02668aaf7e.js\",\"7770\",\"static/chunks/7770-23724e428abdd010.js\",\"818\",\"static/chunks/app/(landing)/page-caae78dd4c5933fc.js\"],\"WalletButton\"]\n1c:I[60155,[\"5560\",\"static/chunks/12514cef-7d0bf660024b80ce.js\",\"6367\",\"static/chunks/842892ce-b074199fde49cc2c.js\",\"2565\",\"static/chunks/f5848884-068f23b51fb186ef.js\",\"6582\",\"static/chunks/59453ef0-fae70cee648e4419.js\",\"6343\",\"static/chunks/eb396988-d11b4395b1f1b7fb.js\",\"7671\",\"static/chunks/7671-92f93ed8a5530b1c.js\",\"4274\",\"static/chunks/4274-75188fa94265dabe.js\",\"856\",\"static/chunks/856-0fba04acacbf72dd.js\",\"3663\",\"static/chunks/3663-7ae9c0e8cb73881f.js\",\"9408\",\"static/chunks/9408-308ae6769eee7230.js\",\"8860\",\"static/chunks/8860-8b601df68e5fb309.js\",\"4957\",\"static/chunks/4957-0f7eb40aedbf4f8f.js\",\"3798\",\"static/chunks/3798-c7406be70f946818.js\",\"9734\",\"static/chunks/9734-2197980714289f30.js\",\"9193\",\"static/chunks/9193-6054bf02668aaf7e.js\",\"7770\",\"static/chunks/7770-23724e428abdd010.js\",\"818\",\"static/chunks/app/(landing)/page-caae78dd4c5933fc.js\"],\"Sheet\"]\n1d:I[60155,[\"5560\",\"static/chunks/12514cef-7d0bf660024b80ce.js\",\"6367\",\"static/chunks/842892ce-b074199fde49cc2c.js\",\"2565\",\"static/chunks/f5848884-068f23b51fb186ef.js\",\"6582\",\"static/chunks/59453ef0-fae70cee648e4419.js\",\"6343\",\"static/chunks/eb396988-d11b4395b1f1b7fb.js\",\"7671\",\"static/chunks/7671-92f93ed8a5530b1c.js\",\"4274\",\"static/chunks/4274-75188fa94265dabe.js\",\"856\",\"static/chunks/856-0fba04acacbf72dd.js\",\"3663\",\"static/chunks/3663-7ae9c0e8cb73881f.js\",\"9408\",\"static/chunks/9408-308ae6769eee7230.js\",\"8860\",\"static/chunks/8860-8b601df68e5fb309.js\",\"4957\",\"static/chunks/4957-0f7eb40aedbf4f8f.js\",\"3798\",\"static/chunks/3798-c7406be70f946818.js\",\"9734\",\"static/chunks/9734-2197980714289f30.js\",\"9193\",\"static/chunks/9193-6054bf02668aaf7e.js\",\"7770\",\"static/chunks/7770-23724e428abdd010.js\",\"818\",\"static/chunks/app/(land"])</script><script>self.__next_f.push([1,"ing)/page-caae78dd4c5933fc.js\"],\"SheetTrigger\"]\n1e:I[60155,[\"5560\",\"static/chunks/12514cef-7d0bf660024b80ce.js\",\"6367\",\"static/chunks/842892ce-b074199fde49cc2c.js\",\"2565\",\"static/chunks/f5848884-068f23b51fb186ef.js\",\"6582\",\"static/chunks/59453ef0-fae70cee648e4419.js\",\"6343\",\"static/chunks/eb396988-d11b4395b1f1b7fb.js\",\"7671\",\"static/chunks/7671-92f93ed8a5530b1c.js\",\"4274\",\"static/chunks/4274-75188fa94265dabe.js\",\"856\",\"static/chunks/856-0fba04acacbf72dd.js\",\"3663\",\"static/chunks/3663-7ae9c0e8cb73881f.js\",\"9408\",\"static/chunks/9408-308ae6769eee7230.js\",\"8860\",\"static/chunks/8860-8b601df68e5fb309.js\",\"4957\",\"static/chunks/4957-0f7eb40aedbf4f8f.js\",\"3798\",\"static/chunks/3798-c7406be70f946818.js\",\"9734\",\"static/chunks/9734-2197980714289f30.js\",\"9193\",\"static/chunks/9193-6054bf02668aaf7e.js\",\"7770\",\"static/chunks/7770-23724e428abdd010.js\",\"818\",\"static/chunks/app/(landing)/page-caae78dd4c5933fc.js\"],\"SheetContent\"]\n1f:I[60155,[\"5560\",\"static/chunks/12514cef-7d0bf660024b80ce.js\",\"6367\",\"static/chunks/842892ce-b074199fde49cc2c.js\",\"2565\",\"static/chunks/f5848884-068f23b51fb186ef.js\",\"6582\",\"static/chunks/59453ef0-fae70cee648e4419.js\",\"6343\",\"static/chunks/eb396988-d11b4395b1f1b7fb.js\",\"7671\",\"static/chunks/7671-92f93ed8a5530b1c.js\",\"4274\",\"static/chunks/4274-75188fa94265dabe.js\",\"856\",\"static/chunks/856-0fba04acacbf72dd.js\",\"3663\",\"static/chunks/3663-7ae9c0e8cb73881f.js\",\"9408\",\"static/chunks/9408-308ae6769eee7230.js\",\"8860\",\"static/chunks/8860-8b601df68e5fb309.js\",\"4957\",\"static/chunks/4957-0f7eb40aedbf4f8f.js\",\"3798\",\"static/chunks/3798-c7406be70f946818.js\",\"9734\",\"static/chunks/9734-2197980714289f30.js\",\"9193\",\"static/chunks/9193-6054bf02668aaf7e.js\",\"7770\",\"static/chunks/7770-23724e428abdd010.js\",\"818\",\"static/chunks/app/(landing)/page-caae78dd4c5933fc.js\"],\"SheetHeader\"]\n20:I[60155,[\"5560\",\"static/chunks/12514cef-7d0bf660024b80ce.js\",\"6367\",\"static/chunks/842892ce-b074199fde49cc2c.js\",\"2565\",\"static/chunks/f5848884-068f23b51fb186ef.js\",\"6582\",\"static/chunks/59453ef0-fae70cee648e4419.js\",\"6343\",\"static/chunks/eb39698"])</script><script>self.__next_f.push([1,"8-d11b4395b1f1b7fb.js\",\"7671\",\"static/chunks/7671-92f93ed8a5530b1c.js\",\"4274\",\"static/chunks/4274-75188fa94265dabe.js\",\"856\",\"static/chunks/856-0fba04acacbf72dd.js\",\"3663\",\"static/chunks/3663-7ae9c0e8cb73881f.js\",\"9408\",\"static/chunks/9408-308ae6769eee7230.js\",\"8860\",\"static/chunks/8860-8b601df68e5fb309.js\",\"4957\",\"static/chunks/4957-0f7eb40aedbf4f8f.js\",\"3798\",\"static/chunks/3798-c7406be70f946818.js\",\"9734\",\"static/chunks/9734-2197980714289f30.js\",\"9193\",\"static/chunks/9193-6054bf02668aaf7e.js\",\"7770\",\"static/chunks/7770-23724e428abdd010.js\",\"818\",\"static/chunks/app/(landing)/page-caae78dd4c5933fc.js\"],\"SheetTitle\"]\n22:I[42818,[\"5560\",\"static/chunks/12514cef-7d0bf660024b80ce.js\",\"6367\",\"static/chunks/842892ce-b074199fde49cc2c.js\",\"2565\",\"static/chunks/f5848884-068f23b51fb186ef.js\",\"6582\",\"static/chunks/59453ef0-fae70cee648e4419.js\",\"6343\",\"static/chunks/eb396988-d11b4395b1f1b7fb.js\",\"7671\",\"static/chunks/7671-92f93ed8a5530b1c.js\",\"4274\",\"static/chunks/4274-75188fa94265dabe.js\",\"856\",\"static/chunks/856-0fba04acacbf72dd.js\",\"3663\",\"static/chunks/3663-7ae9c0e8cb73881f.js\",\"9408\",\"static/chunks/9408-308ae6769eee7230.js\",\"8860\",\"static/chunks/8860-8b601df68e5fb309.js\",\"4957\",\"static/chunks/4957-0f7eb40aedbf4f8f.js\",\"3798\",\"static/chunks/3798-c7406be70f946818.js\",\"9734\",\"static/chunks/9734-2197980714289f30.js\",\"9193\",\"static/chunks/9193-6054bf02668aaf7e.js\",\"7770\",\"static/chunks/7770-23724e428abdd010.js\",\"818\",\"static/chunks/app/(landing)/page-caae78dd4c5933fc.js\"],\"MobileLink\"]\n23:I[27054,[\"5560\",\"static/chunks/12514cef-7d0bf660024b80ce.js\",\"6367\",\"static/chunks/842892ce-b074199fde49cc2c.js\",\"2565\",\"static/chunks/f5848884-068f23b51fb186ef.js\",\"6582\",\"static/chunks/59453ef0-fae70cee648e4419.js\",\"6343\",\"static/chunks/eb396988-d11b4395b1f1b7fb.js\",\"7671\",\"static/chunks/7671-92f93ed8a5530b1c.js\",\"4274\",\"static/chunks/4274-75188fa94265dabe.js\",\"856\",\"static/chunks/856-0fba04acacbf72dd.js\",\"3663\",\"static/chunks/3663-7ae9c0e8cb73881f.js\",\"9408\",\"static/chunks/9408-308ae6769eee7230.js\",\"8860\",\"static/chunks/8860-8b601df68e5f"])</script><script>self.__next_f.push([1,"b309.js\",\"4957\",\"static/chunks/4957-0f7eb40aedbf4f8f.js\",\"3798\",\"static/chunks/3798-c7406be70f946818.js\",\"9734\",\"static/chunks/9734-2197980714289f30.js\",\"9193\",\"static/chunks/9193-6054bf02668aaf7e.js\",\"7770\",\"static/chunks/7770-23724e428abdd010.js\",\"818\",\"static/chunks/app/(landing)/page-caae78dd4c5933fc.js\"],\"WalletIconButton\"]\n24:I[23926,[\"2565\",\"static/chunks/f5848884-068f23b51fb186ef.js\",\"7671\",\"static/chunks/7671-92f93ed8a5530b1c.js\",\"3663\",\"static/chunks/3663-7ae9c0e8cb73881f.js\",\"9408\",\"static/chunks/9408-308ae6769eee7230.js\",\"8024\",\"static/chunks/8024-8b122e6e37154e8f.js\",\"4957\",\"static/chunks/4957-0f7eb40aedbf4f8f.js\",\"6128\",\"static/chunks/6128-b59572ebb9e901b3.js\",\"8748\",\"static/chunks/8748-1151f2a3888c9690.js\",\"7959\",\"static/chunks/7959-6cd008b0bede0787.js\",\"3185\",\"static/chunks/app/layout-2dbfc3aeefcd55c9.js\"],\"ThemeProvider\"]\n25:I[36711,[\"2565\",\"static/chunks/f5848884-068f23b51fb186ef.js\",\"7671\",\"static/chunks/7671-92f93ed8a5530b1c.js\",\"3663\",\"static/chunks/3663-7ae9c0e8cb73881f.js\",\"9408\",\"static/chunks/9408-308ae6769eee7230.js\",\"8024\",\"static/chunks/8024-8b122e6e37154e8f.js\",\"4957\",\"static/chunks/4957-0f7eb40aedbf4f8f.js\",\"6128\",\"static/chunks/6128-b59572ebb9e901b3.js\",\"8748\",\"static/chunks/8748-1151f2a3888c9690.js\",\"7959\",\"static/chunks/7959-6cd008b0bede0787.js\",\"3185\",\"static/chunks/app/layout-2dbfc3aeefcd55c9.js\"],\"QueryProvider\"]\n2b:I[96160,[],\"\"]\n21:{\"src\":\"/seals/_next/static/media/logo.53a8da67.png\",\"height\":609,\"width\":824,\"blurDataURL\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAAVFBMVEVYWFhzc3NqamqwsLBqamqFhYV/f3+oqKiSkpJ1dXWTk5OVlZV7e3tSUlJUVFRWVlZnZ2eDg4M9PT2UlJRgYGB+fn6vr6/ExMS7u7vPz8+AgICkpKSVEw1gAAAAF3RSTlP9/tf+4sWV/vTcr8/9qeKQsnr8f3ewxG7tNd4AAAAJcEhZcwAACxMAAAsTAQCanBgAAAA4SURBVHicBcEFAoAwDACxm3aCWzv4/z9JOJ+rtT1lulnQMDr+K5PjLdwC7pCNZDpUNDNHX5ca1x9CNAJSbdFYUgAAAABJRU5ErkJggg==\",\"blurWidth\":8,\"blurHeight\":6}\n26:{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center"])</script><script>self.__next_f.push([1,"\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"}\n27:{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"}\n28:{\"display\":\"inline-block\"}\n29:{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0}\n2c:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$Lf\",null,{\"buildId\":\"vOj91vRfh4xsfZHr44jxd\",\"assetPrefix\":\"/seals\",\"urlParts\":[\"\",\"staking\"],\"initialTree\":[\"\",{\"children\":[\"(dashboard)\",{\"children\":[\"staking\",{\"children\":[\"__PAGE__\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"(dashboard)\",{\"children\":[\"staking\",{\"children\":[\"__PAGE__\",{},[[\"$L10\",[\"$\",\"main\",null,{\"className\":\"flex w-screen grow flex-col overflow-hidden\",\"children\":[[\"$\",\"$L11\",null,{}],[\"$\",\"$L12\",null,{\"className\":\"fixed -bottom-[2vw] -left-[1vw] -z-10 h-fit leading-none\",\"animateAfter\":250,\"children\":\"STAKING\"}]]}],null],null],null]},[null,[\"$\",\"$L13\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"(dashboard)\",\"children\",\"staking\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L14\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/seals/_next/static/css/37408475577816dd.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}],[\"$\",\"link\",\"1\",{\"rel\":\"stylesheet\",\"href\":\"/seals/_next/static/css/3ed508e200eccdbc.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$L15\",null,{\"children\":[\"$\",\"$L16\",null,{\"children\":[\"$\",\"div\",null,{\"className\":\"__variable_16ecf2 __variable_45d025 __variable_edd6a5 flex min-h-screen w-screen flex-col py-[5vh] font-poppins\",\"style\":{\"minHeight\":\"100dvh\"},\"children\":[[\"$\",\"header\",null,{\"className\":\"mb-12 flex h-[10vh] w-full px-[5vw] lg:mb-4\",\"children\":[[\"$\",\"div\",null,{\"className\":\"hidden grow flex-row items-center justify-between font-semibold lg:flex\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex flex-row items-center gap-[5vw]\",\"children\":[[\"$\",\"$L17\",null,{\"href\":\"/\",\"children\":[\"$\",\"$L18\",null,{\"className\":\"aspect-[824/609] w-min object-contain h-[8vh]\",\"src\":{\"src\":\"/seals/_next/static/media/logo.53a8da67.png\",\"height\":609,\"width\":824,\"blurDataURL\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAAVFBMVEVYWFhzc3NqamqwsLBqamqFhYV/f3+oqKiSkpJ1dXWTk5OVlZV7e3tSUlJUVFRWVlZnZ2eDg4M9PT2UlJRgYGB+fn6vr6/ExMS7u7vPz8+AgICkpKSVEw1gAAAAF3RSTlP9/tf+4sWV/vTcr8/9qeKQsnr8f3ewxG7tNd4AAAAJcEhZcwAACxMAAAsTAQCanBgAAAA4SURBVHicBcEFAoAwDACxm3aCWzv4/z9JOJ+rtT1lulnQMDr+K5PjLdwC7pCNZDpUNDNHX5ca1x9CNAJSbdFYUgAAAABJRU5ErkJggg==\",\"blurWidth\":8,\"blurHeight\":6},\"alt\":\"Logo\"}]}],[\"$\",\"nav\",null,{\"className\":\"flex grow flex-row gap-[4vw] font-semibold uppercase lg:text-[1.5vw]/[1.5vw] FHD:text-[1vw]/[1vw]\",\"children\":[[\"$\",\"div\",null,{\"className\":\"relative flex items-center gap-[4vw]\",\"children\":[[\"$\",\"$L17\",null,{\"href\":\"/staking\",\"children\":\"staking\"}],[\"$\",\"$L17\",null,{\"href\":\"/bits\",\"children\":\"bits\"}],[\"$\",\"$L17\",null,{\"href\":\"/the-archives\",\"children\":\"the archives\"}],[\"$\",\"$L19\",null,{}]]}],[\"$\",\"span\",null,{\"className\":\"cursor-not-allowed opacity-40\",\"children\":\"license\"}]]}]]}],[\"$\",\"div\",null,{\"className\":\"flex flex-row items-center gap-[1vw]\",\"children\":[[\"$\",\"$L1a\",null,{}],[\"$\",\"$L1b\",null,{}]]}]]}],[\"$\",\"div\",null,{\"className\":\"flex grow flex-row items-center justify-between lg:hidden\",\"children\":[[\"$\",\"$L1c\",null,{\"children\":[[\"$\",\"$L1d\",null,{\"className\":\"lg:hidden\",\"children\":[\"$\",\"svg\",null,{\"stroke\":\"currentColor\",\"fill\":\"currentColor\",\"strokeWidth\":\"0\",\"viewBox\":\"0 0 1024 1024\",\"className\":\"text-[5vh] lg:text-[2vw] FHD:text-[1.5vw]\",\"children\":[\"$undefined\",[[\"$\",\"path\",\"0\",{\"d\":\"M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0 624H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0-312H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z\",\"children\":[]}]]],\"style\":{\"color\":\"$undefined\"},\"height\":\"1em\",\"width\":\"1em\",\"xmlns\":\"http://www.w3.org/2000/svg\"}]}],[\"$\",\"$L1e\",null,{\"side\":\"left\",\"className\":\"w-[70%] px-[5vw] py-[5vh]\",\"children\":[[\"$\",\"$L1f\",null,{\"children\":[\"$\",\"$L20\",null,{\"className\":\"flex h-[10vh] flex-row items-center justify-between\",\"children\":[[\"$\",\"$L1d\",null,{\"className\":\"lg:hidden\",\"children\":[\"$\",\"svg\",null,{\"stroke\":\"currentColor\",\"fill\":\"currentColor\",\"strokeWidth\":\"0\",\"viewBox\":\"0 0 1024 1024\",\"className\":\"text-[5vh] lg:text-[2vw] FHD:text-[1.5vw]\",\"children\":[\"$undefined\",[[\"$\",\"path\",\"0\",{\"d\":\"M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0 624H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0-312H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z\",\"children\":[]}]]],\"style\":{\"color\":\"$undefined\"},\"height\":\"1em\",\"width\":\"1em\",\"xmlns\":\"http://www.w3.org/2000/svg\"}]}],[\"$\",\"$L17\",null,{\"href\":\"/\",\"children\":[\"$\",\"$L18\",null,{\"className\":\"aspect-[824/609] w-min object-contain h-[8.5vh]\",\"src\":\"$21\",\"alt\":\"Logo\"}]}],[\"$\",\"$L1a\",null,{}]]}]}],[\"$\",\"nav\",null,{\"className\":\"flex grow flex-col gap-[2vh] pt-[10vh] text-[7vw] font-semibold uppercase\",\"children\":[[\"$\",\"$L22\",null,{\"href\":\"/staking\",\"children\":\"staking\"}],[\"$\",\"$L22\",null,{\"href\":\"/bits\",\"children\":\"bits\"}],[\"$\",\"$L22\",null,{\"href\":\"/the-archives\",\"children\":\"the archives\"}],[\"$\",\"span\",null,{\"className\":\"cursor-not-allowed opacity-40\",\"children\":\"license\"}]]}]]}]]}],[\"$\",\"$L17\",null,{\"href\":\"/\",\"children\":[\"$\",\"$L18\",null,{\"className\":\"aspect-[824/609] w-min object-contain h-[10vh]\",\"src\":\"$21\",\"alt\":\"Logo\"}]}],[\"$\",\"$L23\",null,{}]]}]]}],[\"$\",\"$L13\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"(dashboard)\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L14\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}]]}]}]}]],null],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/seals/_next/static/css/50b438f597c29cd3.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"suppressHydrationWarning\":true,\"children\":[\"$\",\"body\",null,{\"className\":\"overflow-x-hidden\",\"children\":[\"$\",\"$L24\",null,{\"attribute\":\"class\",\"defaultTheme\":\"dark\",\"enableSystem\":true,\"children\":[\"$\",\"$L16\",null,{\"children\":[\"$\",\"$L15\",null,{\"initialState\":\"$undefined\",\"children\":[\"$\",\"$L25\",null,{\"children\":[\"$\",\"$L13\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L14\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":\"$26\",\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":\"$27\",\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":\"$28\",\"children\":[\"$\",\"h2\",null,{\"style\":\"$29\",\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}]}]}]}]}]}]}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$L2a\"],\"globalErrorComponent\":\"$2b\",\"missingSlots\":\"$W2c\"}]\n"])</script><script>self.__next_f.push([1,"2a:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Staking – Sappy Seals\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\"Join us as we create amazing experiences with and alongside our community through gaming, irl events, memetics, lore, and everything that we find fun. \\n \\n Building universes, games, animations, using cutting-edge tech, with Sappy as the common identity between all of those worlds -- amplified under one decentralized banner.\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"Staking – Sappy Seals\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\"Join us as we create amazing experiences with and alongside our community through gaming, irl events, memetics, lore, and everything that we find fun. \\n \\n Building universes, games, animations, using cutting-edge tech, with Sappy as the common identity between all of those worlds -- amplified under one decentralized banner.\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:image:type\",\"content\":\"image/png\"}],[\"$\",\"meta\",\"7\",{\"property\":\"og:image:width\",\"content\":\"596\"}],[\"$\",\"meta\",\"8\",{\"property\":\"og:image:height\",\"content\":\"526\"}],[\"$\",\"meta\",\"9\",{\"property\":\"og:image:alt\",\"content\":\"Iconic Sappy Seals face, featuring large round eyes, whiskers, and a cute, smiling mouth\"}],[\"$\",\"meta\",\"10\",{\"property\":\"og:image\",\"content\":\"https://seals-staking.vercel.app/seals/opengraph-image.png?cbb77dec1be36bc9\"}],[\"$\",\"meta\",\"11\",{\"name\":\"twitter:card\",\"content\":\"summary_large_image\"}],[\"$\",\"meta\",\"12\",{\"name\":\"twitter:title\",\"content\":\"Staking – Sappy Seals\"}],[\"$\",\"meta\",\"13\",{\"name\":\"twitter:description\",\"content\":\"Join us as we create amazing experiences with and alongside our community through gaming, irl events, memetics, lore, and everything that we find fun. \\n \\n Building universes, games, animations, using cutting-edge tech, with Sappy as the common identity between all of those worlds -- amplified under one decentralized banner.\"}],[\"$\",\"meta\",\"14\",{\"name\":\"twitter:image:type\",\"content\":\"image/png\"}],[\"$\",\"meta\",\"15\",{\"name\":\"twitter:image:width\",\"content\":\"596\"}],[\"$\",\"meta\",\"16\",{\"name\":\"twitter:image:height\",\"content\":\"526\"}],[\"$\",\"meta\",\"17\",{\"name\":\"twitter:image:alt\",\"content\":\"Iconic Sappy Seals face, featuring large round eyes, whiskers, and a cute, smiling mouth\"}],[\"$\",\"meta\",\"18\",{\"name\":\"twitter:image\",\"content\":\"https://seals-staking.vercel.app/seals/twitter-image.png?cbb77dec1be36bc9\"}],[\"$\",\"link\",\"19\",{\"rel\":\"icon\",\"href\":\"/seals/favicon.ico\",\"type\":\"image/x-icon\",\"sizes\":\"176x176\"}],[\"$\",\"link\",\"20\",{\"rel\":\"icon\",\"href\":\"/seals/icon.png?b7595f33cbcd2108\",\"type\":\"image/png\",\"sizes\":\"176x176\"}],[\"$\",\"link\",\"21\",{\"rel\":\"apple-touch-icon\",\"href\":\"/seals/apple-icon.png?b7595f33cbcd2108\",\"type\":\"image/png\",\"sizes\":\"176x176\"}],[\"$\",\"meta\",\"22\",{\"name\":\"next-size-adjust\"}]]\n"])</script><script>self.__next_f.push([1,"10:null\n"])</script></body></html>
+ Building universes, games, animations, using cutting-edge tech, with Sappy as the common identity between all of those worlds -- amplified under one decentralized banner."
+    />
+    <meta name="twitter:image:type" content="image/png" />
+    <meta name="twitter:image:width" content="596" />
+    <meta name="twitter:image:height" content="526" />
+    <meta
+      name="twitter:image:alt"
+      content="Iconic Sappy Seals face, featuring large round eyes, whiskers, and a cute, smiling mouth"
+    />
+    <meta
+      name="twitter:image"
+      content="https://seals-staking.vercel.app/seals/twitter-image.png?cbb77dec1be36bc9"
+    />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="176x176" />
+    <link
+      rel="icon"
+      href="icon.png?b7595f33cbcd2108"
+      type="image/png"
+      sizes="176x176"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="apple-icon.png?b7595f33cbcd2108"
+      type="image/png"
+      sizes="176x176"
+    />
+    <meta name="next-size-adjust" />
+    <script
+      src="_next/static/chunks/polyfills-42372ed130431b0a.js"
+      nomodule=""
+    ></script>
+  </head>
+  <body class="overflow-x-hidden">
+    <script>
+      ((e, t, r, i, a, o, s, l) => {
+        let c = document.documentElement,
+          d = ["light", "dark"];
+        function p(t) {
+          (Array.isArray(e) ? e : [e]).forEach((e) => {
+            let r = "class" === e,
+              i = r && o ? a.map((e) => o[e] || e) : a;
+            r
+              ? (c.classList.remove(...i), c.classList.add(t))
+              : c.setAttribute(e, t);
+          }),
+            l && d.includes(t) && (c.style.colorScheme = t);
+        }
+        if (i) p(i);
+        else
+          try {
+            let e = localStorage.getItem(t) || r,
+              i =
+                s && "system" === e
+                  ? window.matchMedia("(prefers-color-scheme: dark)").matches
+                    ? "dark"
+                    : "light"
+                  : e;
+            p(i);
+          } catch (e) {}
+      })("class", "theme", "dark", null, ["light", "dark"], null, true, true);
+    </script>
+    <div
+      id="mouse-parallax-container"
+      style="overflow: hidden; position: relative"
+    >
+      <div
+        id="mouse-parallax-container"
+        style="overflow: hidden; position: relative"
+      >
+        <div
+          class="__variable_16ecf2 __variable_45d025 __variable_edd6a5 flex min-h-screen w-screen flex-col py-[5vh] font-poppins"
+          style="min-height: 100dvh"
+        >
+          <header class="mb-12 flex h-[10vh] w-full px-[5vw] lg:mb-4">
+            <div
+              class="hidden grow flex-row items-center justify-between font-semibold lg:flex"
+            >
+              <div class="flex flex-row items-center gap-[5vw]">
+                <a href="../seals.html"
+                  ><img
+                    alt="Logo"
+                    loading="lazy"
+                    width="824"
+                    height="609"
+                    decoding="async"
+                    data-nimg="1"
+                    class="aspect-[824/609] w-min object-contain h-[8vh]"
+                    style="color: transparent"
+                    srcset="_next/logo-1.png 1x?url=%2Fseals%2F_next%2Fstatic%2Fmedia%2Flogo.53a8da67.png&amp;w=828&amp;q=75 1x, _next/logo.png 2xe?url=%2Fseals%2F_next%2Fstatic%2Fmedia%2Flogo.53a8da67.png&amp;w=1920&amp;q=75 2x"
+                    src="_next/logo.png?url=%2Fseals%2F_next%2Fstatic%2Fmedia%2Flogo.53a8da67.png&amp;w=1920&amp;q=75"
+                /></a>
+                <nav
+                  class="flex grow flex-row gap-[4vw] font-semibold uppercase lg:text-[1.5vw]/[1.5vw] FHD:text-[1vw]/[1vw]"
+                >
+                  <div class="relative flex items-center gap-[4vw]">
+                    <a href="seals/staking.html">staking</a
+                    ><a href="bits.html">bits</a
+                    ><a href="the-archives.html">the archives</a>
+                    <div
+                      class="absolute -bottom-1 h-1 rounded-full bg-foreground transition-all duration-300"
+                      style="left: 0px; width: 0px"
+                    ></div>
+                  </div>
+                  <span class="cursor-not-allowed opacity-40">license</span>
+                </nav>
+              </div>
+              <div class="flex flex-row items-center gap-[1vw]"></div>
+            </div>
+            <div
+              class="flex grow flex-row items-center justify-between lg:hidden"
+            >
+              <button
+                type="button"
+                aria-haspopup="dialog"
+                aria-expanded="false"
+                aria-controls="radix-:R6cvkq:"
+                data-state="closed"
+                class="lg:hidden"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  stroke-width="0"
+                  viewbox="0 0 1024 1024"
+                  class="text-[5vh] lg:text-[2vw] FHD:text-[1.5vw]"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0 624H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0-312H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z"
+                  ></path>
+                </svg></button
+              ><a href="../seals.html"
+                ><img
+                  alt="Logo"
+                  loading="lazy"
+                  width="824"
+                  height="609"
+                  decoding="async"
+                  data-nimg="1"
+                  class="aspect-[824/609] w-min object-contain h-[10vh]"
+                  style="color: transparent"
+                  srcset="_next/logo-1.png 1x?url=%2Fseals%2F_next%2Fstatic%2Fmedia%2Flogo.53a8da67.png&amp;w=828&amp;q=75 1x, _next/logo.png 2xe?url=%2Fseals%2F_next%2Fstatic%2Fmedia%2Flogo.53a8da67.png&amp;w=1920&amp;q=75 2x"
+                  src="_next/logo.png?url=%2Fseals%2F_next%2Fstatic%2Fmedia%2Flogo.53a8da67.png&amp;w=1920&amp;q=75"
+              /></a>
+            </div>
+          </header>
+          <main class="flex w-screen grow flex-col overflow-hidden">
+            <div
+              class="flex flex-col justify-center gap-3 px-[5vw] pb-[5vw] lg:gap-6 lg:px-[10vw] lg:pb-[1vw]"
+            >
+              <div
+                class="mx-auto w-[90%] max-w-md rounded-full bg-foreground font-mono text-background @container"
+              >
+                <div
+                  class="flex w-full items-center justify-between px-[8cqw] py-[3cqw]"
+                >
+                  <div class="flex flex-col items-center gap-[1cqw]">
+                    <p
+                      class="whitespace-nowrap font-mono text-[2.5cqw]/[2.5cqw] uppercase text-muted-foreground"
+                    >
+                      total bits
+                    </p>
+                    <span class="flex items-center gap-[1cqw]"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewbox="0 0 51 59"
+                        class="h-[0.8em] flex-none dark:invert"
+                      >
+                        <path
+                          fill="#E6E6E6"
+                          d="m25.398 0 25.358 14.64-25.358 14.641L.038 14.641z"
+                        ></path>
+                        <path
+                          fill="silver"
+                          d="m.04 14.64 25.358 14.641v29.281L.04 43.922z"
+                        ></path>
+                        <path
+                          fill="#9A9A9A"
+                          d="m25.398 29.281 25.358-14.64v29.28L25.398 58.563z"
+                        ></path>
+                        <path
+                          fill="#4D4D4D"
+                          d="m25.502 13.644 13.494 7.79L25.5 29.227l-13.494-7.791z"
+                        ></path>
+                        <path
+                          fill="#262626"
+                          d="m12.006 21.435 13.495 7.791v15.582l-13.495-7.791z"
+                        ></path>
+                        <path
+                          fill="#000"
+                          d="m25.502 29.226 13.494-7.791v15.582L25.5 44.808z"
+                        ></path>
+                      </svg>
+                      <div class="font-mono text-[4cqw]/[4cqw]">
+                        <div
+                          class="relative flex h-[4cqw] overflow-hidden"
+                          style="
+                            -webkit-mask-image: linear-gradient(
+                              to top,
+                              rgb(0 0 0 / 0) 0%,
+                              black 30%,
+                              black 70%,
+                              rgb(0 0 0 / 0) 100%
+                            );
+                            mask-image: ar-gradient(
+                              to top,
+                              rgb(0 0 0 / 0) 0%,
+                              black 30%,
+                              black 70%,
+                              rgb(0 0 0 / 0) 100%
+                            );
+                          "
+                        >
+                          <div
+                            class="pointer-events-none relative flex h-full select-none items-start"
+                          >
+                            <div
+                              class="flex flex-col"
+                              style="transform: translateY(0%)"
+                            >
+                              <span>0</span><span>1</span><span>2</span
+                              ><span>3</span><span>4</span><span>5</span
+                              ><span>6</span><span>7</span><span>8</span
+                              ><span>9</span><span>0</span><span>1</span
+                              ><span>2</span><span>3</span><span>4</span
+                              ><span>5</span><span>6</span><span>7</span
+                              ><span>8</span><span>9</span>
+                            </div>
+                          </div>
+                          <div
+                            class="pointer-events-none relative flex h-full select-none items-start"
+                          >
+                            <div
+                              class="flex flex-col"
+                              style="transform: translateY(0%)"
+                            >
+                              <span>0</span><span>1</span><span>2</span
+                              ><span>3</span><span>4</span><span>5</span
+                              ><span>6</span><span>7</span><span>8</span
+                              ><span>9</span><span>0</span><span>1</span
+                              ><span>2</span><span>3</span><span>4</span
+                              ><span>5</span><span>6</span><span>7</span
+                              ><span>8</span><span>9</span>
+                            </div>
+                          </div>
+                          <div
+                            class="pointer-events-none relative flex h-full select-none items-end"
+                          >
+                            <div
+                              class="flex flex-col"
+                              style="transform: translateY(45%)"
+                            >
+                              <span>0</span><span>1</span><span>2</span
+                              ><span>3</span><span>4</span><span>5</span
+                              ><span>6</span><span>7</span><span>8</span
+                              ><span>9</span><span>0</span><span>1</span
+                              ><span>2</span><span>3</span><span>4</span
+                              ><span>5</span><span>6</span><span>7</span
+                              ><span>8</span><span>9</span>
+                            </div>
+                          </div>
+                          <div
+                            class="pointer-events-none relative flex h-full select-none items-end"
+                          >
+                            <div
+                              class="flex flex-col"
+                              style="transform: translateY(45%)"
+                            >
+                              <span>0</span><span>1</span><span>2</span
+                              ><span>3</span><span>4</span><span>5</span
+                              ><span>6</span><span>7</span><span>8</span
+                              ><span>9</span><span>0</span><span>1</span
+                              ><span>2</span><span>3</span><span>4</span
+                              ><span>5</span><span>6</span><span>7</span
+                              ><span>8</span><span>9</span>
+                            </div>
+                          </div>
+                          <div
+                            class="pointer-events-none relative flex h-full select-none items-start"
+                          >
+                            <div
+                              class="flex flex-col"
+                              style="transform: translateY(0%)"
+                            >
+                              <span>0</span><span>1</span><span>2</span
+                              ><span>3</span><span>4</span><span>5</span
+                              ><span>6</span><span>7</span><span>8</span
+                              ><span>9</span><span>0</span><span>1</span
+                              ><span>2</span><span>3</span><span>4</span
+                              ><span>5</span><span>6</span><span>7</span
+                              ><span>8</span><span>9</span>
+                            </div>
+                          </div>
+                          <div
+                            class="pointer-events-none relative flex h-full select-none items-start"
+                          >
+                            <div
+                              class="flex flex-col"
+                              style="transform: translateY(0%)"
+                            >
+                              <span>0</span><span>1</span><span>2</span
+                              ><span>3</span><span>4</span><span>5</span
+                              ><span>6</span><span>7</span><span>8</span
+                              ><span>9</span><span>0</span><span>1</span
+                              ><span>2</span><span>3</span><span>4</span
+                              ><span>5</span><span>6</span><span>7</span
+                              ><span>8</span><span>9</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div></span
+                    >
+                  </div>
+                  <div class="h-[6cqw] w-px bg-background"></div>
+                  <div class="flex flex-col items-center gap-[1cqw]">
+                    <p
+                      class="whitespace-nowrap font-mono text-[2.5cqw]/[2.5cqw] uppercase text-muted-foreground"
+                    >
+                      LOYALTY MULTIPLIER
+                    </p>
+                    <span class="flex items-center gap-[1cqw]"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewbox="0 0 51 59"
+                        class="h-[0.8em] flex-none dark:invert"
+                      >
+                        <path
+                          fill="#E6E6E6"
+                          d="m25.398 0 25.358 14.64-25.358 14.641L.038 14.641z"
+                        ></path>
+                        <path
+                          fill="silver"
+                          d="m.04 14.64 25.358 14.641v29.281L.04 43.922z"
+                        ></path>
+                        <path
+                          fill="#9A9A9A"
+                          d="m25.398 29.281 25.358-14.64v29.28L25.398 58.563z"
+                        ></path>
+                        <path
+                          fill="#4D4D4D"
+                          d="m25.502 13.644 13.494 7.79L25.5 29.227l-13.494-7.791z"
+                        ></path>
+                        <path
+                          fill="#262626"
+                          d="m12.006 21.435 13.495 7.791v15.582l-13.495-7.791z"
+                        ></path>
+                        <path
+                          fill="#000"
+                          d="m25.502 29.226 13.494-7.791v15.582L25.5 44.808z"
+                        ></path>
+                      </svg>
+                      <div class="font-mono text-[4cqw]/[4cqw]">TBA</div></span
+                    >
+                  </div>
+                  <div class="h-[6cqw] w-px bg-background"></div>
+                  <div class="flex flex-col items-center gap-[1cqw]">
+                    <p
+                      class="whitespace-nowrap font-mono text-[2.5cqw]/[2.5cqw] uppercase text-muted-foreground"
+                    >
+                      current rate
+                    </p>
+                    <span class="flex items-center gap-[1cqw]"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewbox="0 0 51 59"
+                        class="h-[0.8em] flex-none dark:invert"
+                      >
+                        <path
+                          fill="#E6E6E6"
+                          d="m25.398 0 25.358 14.64-25.358 14.641L.038 14.641z"
+                        ></path>
+                        <path
+                          fill="silver"
+                          d="m.04 14.64 25.358 14.641v29.281L.04 43.922z"
+                        ></path>
+                        <path
+                          fill="#9A9A9A"
+                          d="m25.398 29.281 25.358-14.64v29.28L25.398 58.563z"
+                        ></path>
+                        <path
+                          fill="#4D4D4D"
+                          d="m25.502 13.644 13.494 7.79L25.5 29.227l-13.494-7.791z"
+                        ></path>
+                        <path
+                          fill="#262626"
+                          d="m12.006 21.435 13.495 7.791v15.582l-13.495-7.791z"
+                        ></path>
+                        <path
+                          fill="#000"
+                          d="m25.502 29.226 13.494-7.791v15.582L25.5 44.808z"
+                        ></path>
+                      </svg>
+                      <div class="font-mono text-[4cqw]/[4cqw]">TBA</div></span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="flex w-full flex-wrap items-center gap-3 lg:gap-6">
+                <div
+                  class="relative flex w-fit flex-col gap-1 text-[4vw] md:text-[3.5vw] lg:text-[1.5vw] FHD:text-[1vw]"
+                >
+                  <div
+                    class="flex flex-row gap-[min(1.5vw,14px)] text-sm font-medium"
+                  >
+                    <button
+                      type="button"
+                      class="flex items-center gap-[0.7em] rounded-full px-[1.2em] py-[0.5em] font-poppins bg-foreground text-background"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="19"
+                        height="12"
+                        fill="none"
+                        viewbox="0 0 19 12"
+                        class="h-[1em]"
+                      >
+                        <path
+                          fill="currentColor"
+                          stroke="currentColor"
+                          stroke-width="0.031"
+                          d="M6.645 5.782c-1.61-.45-4.071-4.264-4.324-3.401-.08.59.821 1.817.528 1.75S1 3.731 1 4.106s.325.537 1.801 1.45c4.14 5.9 8.191 6.228 10.4 4.602 2.21-1.625 3.384-5.622 3.508-6.052.123-.43.672-.35 1.2-.95.529-.6-1.369-2.576-2.81-2.076-1.44.5-3.819 4.027-4.948 4.527s-1.897.625-3.506.175Z"
+                        ></path></svg
+                      >ALL</button
+                    ><button
+                      type="button"
+                      class="flex items-center gap-[0.7em] rounded-full px-[1.2em] py-[0.5em] font-poppins bg-gradient-to-t from-accent to-background to-[150%] text-[#878787] dark:from-[#3f3f3f] dark:text-white"
+                    >
+                      STAKED</button
+                    ><button
+                      type="button"
+                      class="flex items-center gap-[0.7em] rounded-full px-[1.2em] py-[0.5em] font-poppins bg-gradient-to-t from-accent to-background to-[150%] text-[#878787] dark:from-[#3f3f3f] dark:text-white"
+                    >
+                      UNSTAKED
+                    </button>
+                  </div>
+                </div>
+                <label
+                  class="cursor-pointer items-center gap-2 font-inter uppercase text-[#878787] dark:text-white hidden"
+                  ><div
+                    class="flex h-4 w-4 flex-none items-center justify-center rounded-full border-[1px] border-current"
+                  >
+                    <input
+                      class="peer hidden"
+                      type="checkbox"
+                      disabled=""
+                      name="subscribe"
+                    /><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="8"
+                      height="6"
+                      fill="none"
+                      viewbox="0 0 8 6"
+                      class="hidden h-2 w-2 select-none peer-checked:block"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="m1 3.158 1.5 1.619a.67.67 0 0 0 1 0L7 1"
+                      ></path>
+                    </svg>
+                  </div>
+                  Select All</label
+                >
+                <div
+                  class="ml-auto flex h-6 items-center justify-end gap-2 text-muted-foreground lg:h-8"
+                >
+                  <select
+                    class="h-full cursor-pointer rounded-lg border-r-4 border-transparent bg-muted pl-2 font-inter text-xs"
+                  >
+                    <option value="default" selected="">DEFAULT</option>
+                    <option value="id">ID</option>
+                    <option value="unclaimedPixl">EARNED</option>
+                    <option value="dailyRate">RATE</option></select
+                  ><button
+                    type="button"
+                    class="flex aspect-square h-full items-stretch justify-stretch active:text-muted disabled:text-muted"
+                    disabled=""
+                  >
+                    <svg
+                      stroke="currentColor"
+                      fill="currentColor"
+                      stroke-width="0"
+                      viewbox="0 0 16 16"
+                      class="h-full w-full"
+                      height="1em"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"
+                      ></path>
+                    </svg></button
+                  ><button
+                    type="button"
+                    class="flex aspect-square h-full items-stretch justify-stretch active:text-muted disabled:text-muted"
+                  >
+                    <svg
+                      stroke="currentColor"
+                      fill="currentColor"
+                      stroke-width="0"
+                      viewbox="0 0 16 16"
+                      class="h-full w-full"
+                      height="1em"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 2v2H2V2zm1 12v-2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m5 10v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1M9 2v2H7V2zm5 0v2h-2V2zM4 7v2H2V7zm5 0v2H7V7zm5 0h-2v2h2zM4 12v2H2v-2zm5 0v2H7v-2zm5 0v2h-2v-2zM12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm-1 6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="grid gap-x-[2.5vw] gap-y-[8vw] overflow-x-clip overflow-y-scroll px-[5vw] py-6 md:gap-y-[6vw] lg:gap-x-[1vw] lg:gap-y-[3vw] lg:px-[10vw] FHD:gap-x-[0.8vw] FHD:gap-y-[2vw] grid-cols-2 md:grid-cols-3 lg:grid-cols-5 FHD:grid-cols-7"
+            ></div>
+            <div
+              class="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm transition-all duration-300 ease-in-out scale-0 opacity-0"
+            >
+              <div class="relative flex flex-col justify-between overflow-hidden rounded-lg drop-shadow-lg w-[80vw] lg:w-[30vw] FHD:w-[22vw] p-6 text-white" style="background-color: #1c1c1e; border-radius: 20px; aspect-ratio: 9 / 18;">
+                <div class="flex items-center justify-between">
+                  <button class="text-white">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+                  </button>
+                  <h2 class="text-xl font-bold">Stake ETH</h2>
+                  <button class="text-white">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg>
+                  </button>
+                </div>
+
+                <div class="my-4">
+                  <label for="amount" class="text-sm" style="color: #8e8e93">Amount to stake *</label>
+                  <div class="flex items-center justify-between p-3 mt-2" style="background-color: #2c2c2e; border-radius: 10px;">
+                    <input type="text" id="amount" placeholder="Enter amount" class="w-full text-white bg-transparent focus:outline-none">
+                    <span class="mx-2" style="color: #8e8e93">ETH</span>
+                    <button class="font-bold" style="color: #34c759">Max</button>
+                  </div>
+                  <p class="mt-2 text-sm" style="color: #8e8e93">Available: 0.42 ETH</p>
+                </div>
+
+                <div>
+                  <p class="text-sm" style="color: #8e8e93">Validator</p>
+                  <div class="flex items-center justify-between p-3 mt-2" style="background-color: #2c2c2e; border-radius: 10px;">
+                    <div class="flex items-center">
+                      <div class="w-8 h-8 mr-3 bg-blue-500 rounded-full" style="background-color: #007aff"></div>
+                      <span class="font-bold">Trust Nodes</span>
+                    </div>
+                    <div class="flex items-center">
+                      <span class="mr-2 font-bold" style="color: #34c759">3.47% APY</span>
+                      <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path></svg>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="mt-4 space-y-2 text-sm" style="color: #8e8e93">
+                  <div class="flex justify-between"><span>Daily est.</span><span>-</span></div>
+                  <div class="flex justify-between"><span>3-month est.</span><span>-</span></div>
+                  <div class="flex justify-between"><span>6-month est.</span><span>-</span></div>
+                </div>
+
+                <div class="p-4 mt-4 text-xs" style="background-color: rgba(4, 186, 104, 0.1); border-radius: 10px; color: #a3a3a3;">
+                  <ul class="space-y-2 list-disc list-inside">
+                    <li>Earning starts one day after staking.</li>
+                    <li>Staked funds are accessible ~4 days after unstaking.</li>
+                    <li>You can unstake any time.</li>
+                    <li>Normal network fees apply.</li>
+                    <li>ETH pooled staking is provided by Kiln.</li>
+                    <li>APR is an estimate and may fluctuate.</li>
+                  </ul>
+                </div>
+
+                <button class="w-full py-4 mt-6 font-bold text-lg text-black rounded-full" style="background-color: #34c759;">Continue</button>
+              </div>
+            </div>
+            <div
+              class="pointer-events-none fixed bottom-[5vw] right-[5vw] flex flex-col items-end justify-end gap-[2.5vw] lg:bottom-[2vw] lg:right-[2vw] lg:gap-[1vw]"
+            >
+              <div
+                class="pointer-events-auto flex aspect-[5/1] w-[90vw] flex-row rounded-full p-[2vw] drop-shadow-2xl transition-all duration-300 ease-in-out dark:bg-muted-foreground md:w-[55vw] md:p-[1vw] lg:w-[25vw] lg:p-[0.5vw] FHD:w-[20vw] absolute translate-x-[200%] opacity-0 cursor-default items-stretch justify-between bg-background pl-[5%] pr-[2vw] text-foreground __className_edd6a5"
+              >
+                <div class="flex w-[30%] justify-center">
+                  <p
+                    class="flex items-center text-center text-[3vw] font-semibold text-muted-foreground dark:text-background md:text-[2vw] lg:text-[0.8vw] FHD:text-[0.6vw]"
+                  >
+                    0<!-- -->
+                    SEALS<br />SELECTED
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  class="flex w-[70%] flex-row items-center justify-evenly rounded-full bg-black text-[4.5vw] text-white md:text-[3vw] lg:text-[1.25vw] FHD:text-[1vw]"
+                  disabled=""
+                >
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewbox="0 0 1024 1024"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M912 190h-69.9c-9.8 0-19.1 4.5-25.1 12.2L404.7 724.5 207 474a32 32 0 0 0-25.1-12.2H112c-6.7 0-10.4 7.7-6.3 12.9l273.9 347c12.8 16.2 37.4 16.2 50.3 0l488.4-618.9c4.1-5.1.4-12.8-6.3-12.8z"
+                    ></path>
+                  </svg>
+                  <p>
+                    Stake<!-- -->
+                    Selected
+                  </p>
+                </button>
+              </div>
+              <div
+                class="pointer-events-auto flex aspect-[5/1] w-[90vw] flex-row items-center rounded-full p-[2vw] drop-shadow-2xl transition-all duration-300 ease-in-out dark:bg-muted-foreground md:w-[55vw] md:p-[1vw] lg:w-[25vw] lg:p-[0.5vw] FHD:w-[20vw] absolute translate-x-[200%] opacity-0 cursor-pointer justify-evenly bg-foreground text-background"
+              >
+                <svg
+                  class="aspect-square animate-spin w-[8vw] md:w-[5vw] lg:w-[2vw] FHD:w-[1.5vw]"
+                  viewbox="0 0 50 50"
+                >
+                  <circle
+                    cx="25"
+                    cy="25"
+                    r="20"
+                    fill="none"
+                    stroke="currentColor"
+                    class="animate-dash text-background"
+                    stroke-linecap="round"
+                    stroke-width="5"
+                  ></circle>
+                </svg>
+                <div class="flex flex-col __className_edd6a5">
+                  <p
+                    class="text-[4.5vw] font-bold md:text-[3vw] lg:text-[1.25vw] FHD:text-[1vw]"
+                  >
+                    Migration Underway!
+                  </p>
+                  <p
+                    class="text-[3vw] font-medium md:text-[2vw] lg:text-[0.8vw] FHD:text-[0.6vw]"
+                  >
+                    Click me to view progress
+                  </p>
+                </div>
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  stroke-width="0"
+                  viewbox="0 0 1024 1024"
+                  class="text-[8vw] md:text-[5vw] lg:text-[2vw] FHD:text-[1.5vw]"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M696 480H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"
+                  ></path>
+                  <path
+                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                  ></path>
+                </svg>
+              </div>
+              <div
+                class="pointer-events-auto flex aspect-[5/1] w-[90vw] flex-row items-center rounded-full p-[2vw] drop-shadow-2xl transition-all duration-300 ease-in-out dark:bg-muted-foreground md:w-[55vw] md:p-[1vw] lg:w-[25vw] lg:p-[0.5vw] FHD:w-[20vw] absolute translate-x-[200%] opacity-0 cursor-default justify-evenly bg-foreground text-background"
+              >
+                <svg
+                  class="aspect-square animate-spin w-[8vw] md:w-[5vw] lg:w-[2vw] FHD:w-[1.5vw]"
+                  viewbox="0 0 50 50"
+                >
+                  <circle
+                    cx="25"
+                    cy="25"
+                    r="20"
+                    fill="none"
+                    stroke="currentColor"
+                    class="animate-dash text-background"
+                    stroke-linecap="round"
+                    stroke-width="5"
+                  ></circle>
+                </svg>
+                <div class="flex flex-col __className_edd6a5">
+                  <p
+                    class="text-[4.5vw] font-bold md:text-[3vw] lg:text-[1.25vw] FHD:text-[1vw]"
+                  >
+                    Transaction Underway!
+                  </p>
+                  <p
+                    class="text-[3vw] font-medium md:text-[2vw] lg:text-[0.8vw] FHD:text-[0.6vw]"
+                  >
+                    More deets here 👉<!-- -->
+                    <button type="button" class="cursor-pointer underline">
+                      etherscan.io
+                    </button>
+                  </p>
+                </div>
+                <div
+                  class="aspect-square w-[5vw] rounded-full bg-green-500 md:w-[3vw] lg:w-[1vw] FHD:w-[0.8vw]"
+                >
+                  <div
+                    class="h-full w-full rounded-full bg-green-500 blur-sm"
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="text-[15.625vw] font-black text-[#F4F4F4] dark:text-[#323232] fixed -bottom-[2vw] -left-[1vw] -z-10 h-fit leading-none"
+              style="transform: none"
+            >
+              <div class="inline-flex items-end overflow-hidden">
+                <div class="flex items-end">
+                  <span
+                    class="inline-flex items-center justify-center transition-all duration-700 ease-in-out translate-y-[300%] opacity-50 will-change-transform"
+                    style="transition-delay: 250ms"
+                    ><div class="">S</div></span
+                  ><span
+                    class="inline-flex items-center justify-center transition-all duration-700 ease-in-out translate-y-[300%] opacity-50 will-change-transform"
+                    style="transition-delay: 300ms"
+                    ><div class="">T</div></span
+                  ><span
+                    class="inline-flex items-center justify-center transition-all duration-700 ease-in-out translate-y-[300%] opacity-50 will-change-transform"
+                    style="transition-delay: 350ms"
+                    ><div class="">A</div></span
+                  ><span
+                    class="inline-flex items-center justify-center transition-all duration-700 ease-in-out translate-y-[300%] opacity-50 will-change-transform"
+                    style="transition-delay: 400ms"
+                    ><div class="">K</div></span
+                  ><span
+                    class="inline-flex items-center justify-center transition-all duration-700 ease-in-out translate-y-[300%] opacity-50 will-change-transform"
+                    style="transition-delay: 450ms"
+                    ><div class="">I</div></span
+                  ><span
+                    class="inline-flex items-center justify-center transition-all duration-700 ease-in-out translate-y-[300%] opacity-50 will-change-transform"
+                    style="transition-delay: 500ms"
+                    ><div class="">N</div></span
+                  ><span
+                    class="inline-flex items-center justify-center transition-all duration-700 ease-in-out translate-y-[300%] opacity-50 will-change-transform"
+                    style="transition-delay: 550ms"
+                    ><div class="">G</div></span
+                  >
+                </div>
+              </div>
+              <span class="absolute top-0" style="z-index: -1"></span>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+    <script
+      src="_next/static/chunks/webpack-b47b6c890afc3561.js"
+      async=""
+    ></script>
+    <script>
+      (self.__next_f = self.__next_f || []).push([0]);
+      self.__next_f.push([2, null]);
+    </script>
+    <script>
+      self.__next_f.push([
+        1,
+        '1:HL["/seals/_next/static/css/50b438f597c29cd3.css","style"]\n2:HL["/seals/_next/static/media/0484562807a97172-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]\n3:HL["/seals/_next/static/media/4c285fdca692ea22-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]\n4:HL["/seals/_next/static/media/6245472ced48d3be-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]\n5:HL["/seals/_next/static/media/7108afb8b1381ad1-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]\n6:HL["/seals/_next/static/media/7db6c35d839a711c-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]\n7:HL["/seals/_next/static/media/8888a3826f4a3af4-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]\n8:HL["/seals/_next/static/media/92f44bb82993d879-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]\n9:HL["/seals/_next/static/media/9e82d62334b205f4-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]\na:HL["/seals/_next/static/media/a34f9d1faa5f3315-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]\nb:HL["/seals/_next/static/media/b957ea75a84b6ea7-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]\nc:HL["/seals/_next/static/media/eafabf029ad39a43-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]\nd:HL["/seals/_next/static/css/37408475577816dd.css","style"]\ne:HL["/seals/_next/static/css/3ed508e200eccdbc.css","style"]\n',
+      ]);
+    </script>
+    <script>
+      self.__next_f.push([
+        1,
+        'f:I[92693,[],""]\n11:I[72466,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","9679","static/chunks/1b7bc3a5-6a370eca87822a43.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8024","static/chunks/8024-8b122e6e37154e8f.js","8860","static/chunks/8860-8b601df68e5fb309.js","3826","static/chunks/3826-f165703d81b47a67.js","7770","static/chunks/7770-23724e428abdd010.js","3474","static/chunks/app/(dashboard)/staking/page-a163b1da3612b202.js"],"default"]\n12:I[10732,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","9679","static/chunks/1b7bc3a5-6a370eca87822a43.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8024","static/chunks/8024-8b122e6e37154e8f.js","8860","static/chunks/8860-8b601df68e5fb309.js","3826","static/chunks/3826-f165703d81b47a67.js","7770","static/chunks/7770-23724e428abdd010.js","3474","static/chunks/app/(dashboard)/staking/page-a163b1da3612b202.js"],"ParallaxText"]\n13:I[25910,[],""]\n14:I[22354,[],""]\n15:I[57329,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8024","static/chunks/8024-8b122e6e37154e8f.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunk',
+      ]);
+    </script>
+    <script>
+      self.__next_f.push([
+        1,
+        's/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","6128","static/chunks/6128-b59572ebb9e901b3.js","7770","static/chunks/7770-23724e428abdd010.js","5642","static/chunks/app/(dashboard)/layout-985c40fd1fd9aca6.js"],"WalletProvider"]\n16:I[23526,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8024","static/chunks/8024-8b122e6e37154e8f.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","6128","static/chunks/6128-b59572ebb9e901b3.js","7770","static/chunks/7770-23724e428abdd010.js","5642","static/chunks/app/(dashboard)/layout-985c40fd1fd9aca6.js"],"ParallaxProvider"]\n17:I[20856,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","9734","static/chunks/9734-2197980714289f30.js","7770","static/chunks/7770-23724e428abdd010.js","262","static/chunks/app/(landing)/layout-b657b6deb26dc48e.js"],""]\n18:I[66181,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","9734","static/chunks/9734-2197980714289f30.js","7770","static/chunks/7770-23724e428abdd010.js","262","static/chunks/app/(landing)/layout-b657b6deb26dc48e.js"],"Image"]\n19:I[55796,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","9734","static/chunks/9734-2197980714289f30.js","9193","static/chunks/9193-6054bf02668aaf7e.js","7770","static/chunks/7770-23724e428abdd010.js","818","static/chunks/app/(landing)/page-caae78dd4c5933fc.js"],"NavLine"]\n1a:I[69868,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","9734","static/chunks/9734-2197980714289f30.js","7770","static/chunks/7770-23724e428abdd010.js","262","static/chunks/app/(landing)/layout-b657b6deb26dc48e.js"],"ThemeSwitch"]\n1b:I[27054,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","9734","static/chunks/9734-2197980714289f30.js","9193","static/chunks/9193-6054bf02668aaf7e.js","7770","static/chunks/7770-23724e428abdd010.js","818","static/chunks/app/(landing)/page-caae78dd4c5933fc.js"],"WalletButton"]\n1c:I[60155,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","9734","static/chunks/9734-2197980714289f30.js","9193","static/chunks/9193-6054bf02668aaf7e.js","7770","static/chunks/7770-23724e428abdd010.js","818","static/chunks/app/(landing)/page-caae78dd4c5933fc.js"],"Sheet"]\n1d:I[60155,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","9734","static/chunks/9734-2197980714289f30.js","9193","static/chunks/9193-6054bf02668aaf7e.js","7770","static/chunks/7770-23724e428abdd010.js","818","static/chunks/app/(land',
+      ]);
+    </script>
+    <script>
+      self.__next_f.push([
+        1,
+        'ing)/page-caae78dd4c5933fc.js"],"SheetTrigger"]\n1e:I[60155,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","9734","static/chunks/9734-2197980714289f30.js","9193","static/chunks/9193-6054bf02668aaf7e.js","7770","static/chunks/7770-23724e428abdd010.js","818","static/chunks/app/(landing)/page-caae78dd4c5933fc.js"],"SheetContent"]\n1f:I[60155,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","9734","static/chunks/9734-2197980714289f30.js","9193","static/chunks/9193-6054bf02668aaf7e.js","7770","static/chunks/7770-23724e428abdd010.js","818","static/chunks/app/(landing)/page-caae78dd4c5933fc.js"],"SheetHeader"]\n20:I[60155,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","9734","static/chunks/9734-2197980714289f30.js","9193","static/chunks/9193-6054bf02668aaf7e.js","7770","static/chunks/7770-23724e428abdd010.js","818","static/chunks/app/(landing)/page-caae78dd4c5933fc.js"],"SheetTitle"]\n22:I[42818,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","9734","static/chunks/9734-2197980714289f30.js","9193","static/chunks/9193-6054bf02668aaf7e.js","7770","static/chunks/7770-23724e428abdd010.js","818","static/chunks/app/(landing)/page-caae78dd4c5933fc.js"],"MobileLink"]\n23:I[27054,["5560","static/chunks/12514cef-7d0bf660024b80ce.js","6367","static/chunks/842892ce-b074199fde49cc2c.js","2565","static/chunks/f5848884-068f23b51fb186ef.js","6582","static/chunks/59453ef0-fae70cee648e4419.js","6343","static/chunks/eb396988-d11b4395b1f1b7fb.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","4274","static/chunks/4274-75188fa94265dabe.js","856","static/chunks/856-0fba04acacbf72dd.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8860","static/chunks/8860-8b601df68e5fb309.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","3798","static/chunks/3798-c7406be70f946818.js","9734","static/chunks/9734-2197980714289f30.js","9193","static/chunks/9193-6054bf02668aaf7e.js","7770","static/chunks/7770-23724e428abdd010.js","818","static/chunks/app/(landing)/page-caae78dd4c5933fc.js"],"WalletIconButton"]\n24:I[23926,["2565","static/chunks/f5848884-068f23b51fb186ef.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8024","static/chunks/8024-8b122e6e37154e8f.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","6128","static/chunks/6128-b59572ebb9e901b3.js","8748","static/chunks/8748-1151f2a3888c9690.js","7959","static/chunks/7959-6cd008b0bede0787.js","3185","static/chunks/app/layout-2dbfc3aeefcd55c9.js"],"ThemeProvider"]\n25:I[36711,["2565","static/chunks/f5848884-068f23b51fb186ef.js","7671","static/chunks/7671-92f93ed8a5530b1c.js","3663","static/chunks/3663-7ae9c0e8cb73881f.js","9408","static/chunks/9408-308ae6769eee7230.js","8024","static/chunks/8024-8b122e6e37154e8f.js","4957","static/chunks/4957-0f7eb40aedbf4f8f.js","6128","static/chunks/6128-b59572ebb9e901b3.js","8748","static/chunks/8748-1151f2a3888c9690.js","7959","static/chunks/7959-6cd008b0bede0787.js","3185","static/chunks/app/layout-2dbfc3aeefcd55c9.js"],"QueryProvider"]\n2b:I[96160,[],""]\n21:{"src":"/seals/_next/static/media/logo.53a8da67.png","height":609,"width":824,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAAVFBMVEVYWFhzc3NqamqwsLBqamqFhYV/f3+oqKiSkpJ1dXWTk5OVlZV7e3tSUlJUVFRWVlZnZ2eDg4M9PT2UlJRgYGB+fn6vr6/ExMS7u7vPz8+AgICkpKSVEw1gAAAAF3RSTlP9/tf+4sWV/vTcr8/9qeKQsnr8f3ewxG7tNd4AAAAJcEhZcwAACxMAAAsTAQCanBgAAAA4SURBVHicBcEFAoAwDACxm3aCWzv4/z9JOJ+rtT1lulnQMDr+K5PjLdwC7pCNZDpUNDNHX5ca1x9CNAJSbdFYUgAAAABJRU5ErkJggg==","blurWidth":8,"blurHeight":6}\n26:{"fontFamily":"system-ui,\\"Segoe UI\\",Roboto,Helvetica,Arial,sans-serif,\\"Apple Color Emoji\\",\\"Segoe UI Emoji\\"","height":"100vh","textAlign":"center',
+      ]);
+    </script>
+    <script>
+      self.__next_f.push([
+        1,
+        '","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"}\n27:{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"}\n28:{"display":"inline-block"}\n29:{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0}\n2c:[]\n',
+      ]);
+    </script>
+    <script>
+      self.__next_f.push([
+        1,
+        '0:["$","$Lf",null,{"buildId":"vOj91vRfh4xsfZHr44jxd","assetPrefix":"/seals","urlParts":["","staking"],"initialTree":["",{"children":["(dashboard)",{"children":["staking",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],"initialSeedData":["",{"children":["(dashboard)",{"children":["staking",{"children":["__PAGE__",{},[["$L10",["$","main",null,{"className":"flex w-screen grow flex-col overflow-hidden","children":[["$","$L11",null,{}],["$","$L12",null,{"className":"fixed -bottom-[2vw] -left-[1vw] -z-10 h-fit leading-none","animateAfter":250,"children":"STAKING"}]]}],null],null],null]},[null,["$","$L13",null,{"parallelRouterKey":"children","segmentPath":["children","(dashboard)","children","staking","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L14",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/seals/_next/static/css/37408475577816dd.css","precedence":"next","crossOrigin":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/seals/_next/static/css/3ed508e200eccdbc.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L15",null,{"children":["$","$L16",null,{"children":["$","div",null,{"className":"__variable_16ecf2 __variable_45d025 __variable_edd6a5 flex min-h-screen w-screen flex-col py-[5vh] font-poppins","style":{"minHeight":"100dvh"},"children":[["$","header",null,{"className":"mb-12 flex h-[10vh] w-full px-[5vw] lg:mb-4","children":[["$","div",null,{"className":"hidden grow flex-row items-center justify-between font-semibold lg:flex","children":[["$","div",null,{"className":"flex flex-row items-center gap-[5vw]","children":[["$","$L17",null,{"href":"/","children":["$","$L18",null,{"className":"aspect-[824/609] w-min object-contain h-[8vh]","src":{"src":"/seals/_next/static/media/logo.53a8da67.png","height":609,"width":824,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAAVFBMVEVYWFhzc3NqamqwsLBqamqFhYV/f3+oqKiSkpJ1dXWTk5OVlZV7e3tSUlJUVFRWVlZnZ2eDg4M9PT2UlJRgYGB+fn6vr6/ExMS7u7vPz8+AgICkpKSVEw1gAAAAF3RSTlP9/tf+4sWV/vTcr8/9qeKQsnr8f3ewxG7tNd4AAAAJcEhZcwAACxMAAAsTAQCanBgAAAA4SURBVHicBcEFAoAwDACxm3aCWzv4/z9JOJ+rtT1lulnQMDr+K5PjLdwC7pCNZDpUNDNHX5ca1x9CNAJSbdFYUgAAAABJRU5ErkJggg==","blurWidth":8,"blurHeight":6},"alt":"Logo"}]}],["$","nav",null,{"className":"flex grow flex-row gap-[4vw] font-semibold uppercase lg:text-[1.5vw]/[1.5vw] FHD:text-[1vw]/[1vw]","children":[["$","div",null,{"className":"relative flex items-center gap-[4vw]","children":[["$","$L17",null,{"href":"/staking","children":"staking"}],["$","$L17",null,{"href":"/bits","children":"bits"}],["$","$L17",null,{"href":"/the-archives","children":"the archives"}],["$","$L19",null,{}]]}],["$","span",null,{"className":"cursor-not-allowed opacity-40","children":"license"}]]}]]}],["$","div",null,{"className":"flex flex-row items-center gap-[1vw]","children":[["$","$L1a",null,{}],["$","$L1b",null,{}]]}]]}],["$","div",null,{"className":"flex grow flex-row items-center justify-between lg:hidden","children":[["$","$L1c",null,{"children":[["$","$L1d",null,{"className":"lg:hidden","children":["$","svg",null,{"stroke":"currentColor","fill":"currentColor","strokeWidth":"0","viewBox":"0 0 1024 1024","className":"text-[5vh] lg:text-[2vw] FHD:text-[1.5vw]","children":["$undefined",[["$","path","0",{"d":"M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0 624H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0-312H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}]}],["$","$L1e",null,{"side":"left","className":"w-[70%] px-[5vw] py-[5vh]","children":[["$","$L1f",null,{"children":["$","$L20",null,{"className":"flex h-[10vh] flex-row items-center justify-between","children":[["$","$L1d",null,{"className":"lg:hidden","children":["$","svg",null,{"stroke":"currentColor","fill":"currentColor","strokeWidth":"0","viewBox":"0 0 1024 1024","className":"text-[5vh] lg:text-[2vw] FHD:text-[1.5vw]","children":["$undefined",[["$","path","0",{"d":"M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0 624H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0-312H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z","children":[]}]]],"style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}]}],["$","$L17",null,{"href":"/","children":["$","$L18",null,{"className":"aspect-[824/609] w-min object-contain h-[8.5vh]","src":"$21","alt":"Logo"}]}],["$","$L1a",null,{}]]}]}],["$","nav",null,{"className":"flex grow flex-col gap-[2vh] pt-[10vh] text-[7vw] font-semibold uppercase","children":[["$","$L22",null,{"href":"/staking","children":"staking"}],["$","$L22",null,{"href":"/bits","children":"bits"}],["$","$L22",null,{"href":"/the-archives","children":"the archives"}],["$","span",null,{"className":"cursor-not-allowed opacity-40","children":"license"}]]}]]}]]}],["$","$L17",null,{"href":"/","children":["$","$L18",null,{"className":"aspect-[824/609] w-min object-contain h-[10vh]","src":"$21","alt":"Logo"}]}],["$","$L23",null,{}]]}]]}],["$","$L13",null,{"parallelRouterKey":"children","segmentPath":["children","(dashboard)","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L14",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\\"Segoe UI\\",Roboto,Helvetica,Arial,sans-serif,\\"Apple Color Emoji\\",\\"Segoe UI Emoji\\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]]}]}]}]],null],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/seals/_next/static/css/50b438f597c29cd3.css","precedence":"next","crossOrigin":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":["$","body",null,{"className":"overflow-x-hidden","children":["$","$L24",null,{"attribute":"class","defaultTheme":"dark","enableSystem":true,"children":["$","$L16",null,{"children":["$","$L15",null,{"initialState":"$undefined","children":["$","$L25",null,{"children":["$","$L13",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L14",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$26","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$27","children":"404"}],["$","div",null,{"style":"$28","children":["$","h2",null,{"style":"$29","children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]}]}]}]}]}]}]],null],null],"couldBeIntercepted":false,"initialHead":[null,"$L2a"],"globalErrorComponent":"$2b","missingSlots":"$W2c"}]\n',
+      ]);
+    </script>
+    <script>
+      self.__next_f.push([
+        1,
+        '2a:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","title","2",{"children":"Staking – Sappy Seals"}],["$","meta","3",{"name":"description","content":"Join us as we create amazing experiences with and alongside our community through gaming, irl events, memetics, lore, and everything that we find fun. \\n \\n Building universes, games, animations, using cutting-edge tech, with Sappy as the common identity between all of those worlds -- amplified under one decentralized banner."}],["$","meta","4",{"property":"og:title","content":"Staking – Sappy Seals"}],["$","meta","5",{"property":"og:description","content":"Join us as we create amazing experiences with and alongside our community through gaming, irl events, memetics, lore, and everything that we find fun. \\n \\n Building universes, games, animations, using cutting-edge tech, with Sappy as the common identity between all of those worlds -- amplified under one decentralized banner."}],["$","meta","6",{"property":"og:image:type","content":"image/png"}],["$","meta","7",{"property":"og:image:width","content":"596"}],["$","meta","8",{"property":"og:image:height","content":"526"}],["$","meta","9",{"property":"og:image:alt","content":"Iconic Sappy Seals face, featuring large round eyes, whiskers, and a cute, smiling mouth"}],["$","meta","10",{"property":"og:image","content":"https://seals-staking.vercel.app/seals/opengraph-image.png?cbb77dec1be36bc9"}],["$","meta","11",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","12",{"name":"twitter:title","content":"Staking – Sappy Seals"}],["$","meta","13",{"name":"twitter:description","content":"Join us as we create amazing experiences with and alongside our community through gaming, irl events, memetics, lore, and everything that we find fun. \\n \\n Building universes, games, animations, using cutting-edge tech, with Sappy as the common identity between all of those worlds -- amplified under one decentralized banner."}],["$","meta","14",{"name":"twitter:image:type","content":"image/png"}],["$","meta","15",{"name":"twitter:image:width","content":"596"}],["$","meta","16",{"name":"twitter:image:height","content":"526"}],["$","meta","17",{"name":"twitter:image:alt","content":"Iconic Sappy Seals face, featuring large round eyes, whiskers, and a cute, smiling mouth"}],["$","meta","18",{"name":"twitter:image","content":"https://seals-staking.vercel.app/seals/twitter-image.png?cbb77dec1be36bc9"}],["$","link","19",{"rel":"icon","href":"/seals/favicon.ico","type":"image/x-icon","sizes":"176x176"}],["$","link","20",{"rel":"icon","href":"/seals/icon.png?b7595f33cbcd2108","type":"image/png","sizes":"176x176"}],["$","link","21",{"rel":"apple-touch-icon","href":"/seals/apple-icon.png?b7595f33cbcd2108","type":"image/png","sizes":"176x176"}],["$","meta","22",{"name":"next-size-adjust"}]]\n',
+      ]);
+    </script>
+    <script>
+      self.__next_f.push([1, "10:null\n"]);
+    </script>
+  </body>
+</html>
