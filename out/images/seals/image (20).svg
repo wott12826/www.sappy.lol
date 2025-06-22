@@ -1,0 +1,11 @@
+<svg class="CircularProgressbar " viewBox="0 0 100 100" data-test-id="CircularProgressbar" xmlns="http://www.w3.org/2000/svg"><path class="CircularProgressbar-trail" style="stroke:rgba(255, 255, 255, 0.1);stroke-dasharray:289.02652413026095px 289.02652413026095px;stroke-dashoffset:0px" d="
+      M 50,50
+      m 0,-46
+      a 46,46 0 1 1 0,92
+      a 46,46 0 1 1 0,-92
+    " stroke-width="8" fill-opacity="0"></path><path class="CircularProgressbar-path" style="stroke: rgb(255, 255, 255); transition: stroke-dashoffset 10ms; stroke-dasharray: 289.027px, 289.027px; stroke-dashoffset: 190.646px;" d="
+      M 50,50
+      m 0,-46
+      a 46,46 0 1 1 0,92
+      a 46,46 0 1 1 0,-92
+    " stroke-width="8" fill-opacity="0"></path></svg>
