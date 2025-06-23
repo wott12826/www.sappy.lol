@@ -52,7 +52,7 @@ const CursorTrail = () => {
   }, []);
 
   return (
-    <svg ref={svgRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{zIndex: 999}}>
+    <svg ref={svgRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{zIndex: 1}}>
       <path d="" stroke="black" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
@@ -110,6 +110,7 @@ export default function Home() {
   const { pos, onMouseDown: onDragMouseDown } = useDraggable(center);
   const [angle, setAngle] = useState({ x: 0, y: 0 });
   const [rotating, setRotating] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const last = useRef({ x: 0, y: 0 });
 
   // Отключаем контекстное меню
@@ -195,6 +196,40 @@ export default function Home() {
       <div className="min-h-screen bg-[#f5f5f5] text-black overflow-hidden">
         <CursorTrail />
         
+        {/* Мобильная навигация */}
+        <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-[#f5f5f5]/95 backdrop-blur-sm">
+          <div className="flex items-center justify-between px-4 py-3">
+            <img src="/images/seals/mokz_logo.png" alt="Mokz Logo" className="h-8 w-auto" />
+            <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="text-black p-2"
+            >
+              <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 1024 1024" className="h-6 w-6" xmlns="http://www.w3.org/2000/svg">
+                <path d="M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0 624H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0-312H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+            </button>
+          </div>
+          
+          {/* Мобильное меню */}
+          {mobileMenuOpen && (
+            <div className="bg-[#f5f5f5]/95 backdrop-blur-sm border-t border-black/20">
+              <nav className="px-4 py-3">
+                <ul className="flex flex-col space-y-3">
+                  <li>
+                    <Link href="/" className="block text-lg font-semibold hover:underline underline">Home</Link>
+                  </li>
+                  <li>
+                    <Link href="/seals" className="block text-lg font-semibold hover:underline">About</Link>
+                  </li>
+                  <li>
+                    <Link href="/seals/staking/" className="block text-lg font-semibold hover:underline">Dashboard</Link>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          )}
+        </div>
+        
         <div className="relative w-full h-screen flex items-center justify-center">
           {/* <img src="/seal.png" alt="Sappy Seal" className="w-48 h-auto" /> удалено по запросу */}
           {/* 3D модель с drag-and-drop */}
@@ -227,8 +262,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Fixed Footer Navigation */}
-        <footer className="fixed bottom-0 left-0 right-0 bg-[#f5f5f5] px-4 py-3">
+        {/* Fixed Footer Navigation - только для десктопа */}
+        <footer className="hidden lg:block fixed bottom-0 left-0 right-0 bg-[#f5f5f5] px-4 py-3 z-40">
           <div className="border-t border-black w-full"></div>
           <div className="max-w-screen-xl mx-auto flex justify-between items-center pt-3">
             <img src="/images/seals/mokz_logo.png" alt="Mokz Logo" className="h-6 w-auto" />
