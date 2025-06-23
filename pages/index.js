@@ -190,7 +190,7 @@ export default function Home() {
       <Head>
         <title>Sappy</title>
         <meta name="description" content="Shaping the future of the internet." />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/images/seals/Monkz_logo.png" />
       </Head>
       
       <div className="min-h-screen bg-[#f5f5f5] text-black overflow-hidden">

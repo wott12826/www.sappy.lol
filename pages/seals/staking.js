@@ -275,7 +275,7 @@ export default function StakingPage() {
         <>
             <Head>
                 <title>Staking – Sappy Seals</title>
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/images/seals/Monkz_logo.png" />
             </Head>
             <div className="dark bg-[#111] text-white font-poppins" style={{colorScheme: 'dark'}}>
                 <div className="flex min-h-screen w-screen flex-col py-[3vh] lg:py-[5vh]" style={{minHeight: '100dvh'}}>

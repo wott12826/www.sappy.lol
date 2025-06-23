@@ -62,7 +62,7 @@ export default function MonkzRedesign() {
       <Head>
         <title>Sappy Monkz</title>
         <meta name="description" content="The coolest thing on the internet." />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/images/seals/Monkz_logo.png" />
       </Head>
 
       {/* Боковые социальные иконки - только для десктопа */}
