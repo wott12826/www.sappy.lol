@@ -231,7 +231,7 @@ export default function Home() {
         <footer className="fixed bottom-0 left-0 right-0 bg-[#f5f5f5] px-4 py-3">
           <div className="border-t border-black w-full"></div>
           <div className="max-w-screen-xl mx-auto flex justify-between items-center pt-3">
-            <img src="/mokz_logo.png" alt="Mokz Logo" className="h-6 w-auto" />
+            <img src="/images/seals/mokz_logo.png" alt="Mokz Logo" className="h-6 w-auto" />
             <nav>
               <ul className="flex space-x-6 text-lg">
                 <li>
