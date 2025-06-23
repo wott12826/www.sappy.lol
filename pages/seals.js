@@ -79,7 +79,7 @@ export default function MonkzRedesign() {
                   <a href="/" className="w-min relative mt-[0.5vw] hover:text-gray-300">MONKZ</a>
                   <a href="/seals/staking" className="w-min relative mt-[0.5vw] hover:text-gray-300">DASHBOARD</a>
                   <a href="#innovations" className="w-min relative mt-[0.5vw] hover:text-gray-300">INNOVATIONS</a>
-                  <a href="#flywheel" className="w-min relative mt-[0.5vw] hover:text-gray-300">THE FLYWHEEL</a>
+                  <a href="#flywheel" className="w-min relative mt-[0.5vw] hover:text-gray-300">FLYWHEEL</a>
                 </nav>
                 <a href="/seals">
                   <img alt="Logo" loading="lazy" width="824" height="609" decoding="async" data-nimg="1" 
@@ -123,7 +123,7 @@ export default function MonkzRedesign() {
             <div className="absolute inset-0">
               <img alt="placeholder" loading="lazy" width="3840" height="2160" decoding="async" data-nimg="1" 
                    className="h-full w-full mix-blend-soft-light object-cover" 
-                   src="public/images/seals/seals_bg.png" />
+                   src="images/seals/seals_bg.png" />
               <div className="absolute bottom-[-2%] left-[5%] z-20 aspect-[1366/1460] w-[31.2%]">
                 <img alt="placeholder" loading="lazy" decoding="async" data-nimg="fill" 
                      className="scale-105 animate-pulse" 
