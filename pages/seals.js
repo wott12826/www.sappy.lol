@@ -118,7 +118,7 @@ export default function MonkzRedesign() {
                 <a href="/seals">
                   <img alt="Logo" loading="lazy" width="824" height="609" decoding="async" data-nimg="1" 
                        className="aspect-[824/609] w-min object-contain absolute inset-1/2 h-[8.5vh] -translate-x-1/2 -translate-y-1/2" 
-                       src="/images/seals/logo.png" />
+                       src="/images/seals/mokz_logo.png" />
                 </a>
               </div>
             </header>
