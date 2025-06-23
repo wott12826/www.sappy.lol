@@ -29,14 +29,7 @@ const StakingHeader = () => {
                 <Link href="/seals" legacyBehavior>
                     <a><img alt="Logo" loading="lazy" width="824" height="609" decoding="async" className="aspect-[824/609] w-min object-contain h-[6vh]" style={{color: "transparent"}} src="/images/seals/mokz_logo.png" /></a>
                 </Link>
-                <button 
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    className="text-white p-2"
-                >
-                    <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 1024 1024" className="h-6 w-6" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0 624H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0-312H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z"></path>
-                    </svg>
-                </button>
+
                 
                 {/* Мобильное меню */}
                 {mobileMenuOpen && (
