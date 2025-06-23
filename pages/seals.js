@@ -124,13 +124,7 @@ export default function MonkzRedesign() {
               <img alt="placeholder" loading="lazy" width="3840" height="2160" decoding="async" data-nimg="1" 
                    className="h-full w-full mix-blend-soft-light object-cover" 
                    src="/images/seals/seals_bg.png" />
-              <div className="absolute bottom-[-2%] left-[5%] z-20 aspect-[1366/1460] w-[31.2%]">
 
-                <img alt="placeholder" loading="lazy" decoding="async" data-nimg="fill" 
-                     style={{position: "absolute", height: "100%", width: "100%", inset: "0px"}} 
-                     sizes="35%" 
-                     src="/images/seals/monkz.png" />
-              </div>
             </div>
             
             <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-[#031534] from-35% via-[#08277bcc] via-70% to-[#0e29fb00] sm:from-25% sm:via-55%"></div>
