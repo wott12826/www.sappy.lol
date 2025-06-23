@@ -77,7 +77,7 @@ export default function MonkzRedesign() {
               <div className="absolute inset-x-0 top-[5vh] z-50 hidden w-full items-center justify-between px-[5vw] text-[1vw] font-semibold tracking-[0.1vw] text-white lg:flex">
                 <nav className="flex w-[40%] justify-between">
                   <a href="/" className="w-min relative mt-[0.5vw] hover:text-gray-300">MONKZ</a>
-                  <a href="/dashboard" className="w-min relative mt-[0.5vw] hover:text-gray-300">DASHBOARD</a>
+                  <a href="/seals/staking" className="w-min relative mt-[0.5vw] hover:text-gray-300">DASHBOARD</a>
                 </nav>
                 <a href="/seals">
                   <img alt="Logo" loading="lazy" width="824" height="609" decoding="async" data-nimg="1" 
