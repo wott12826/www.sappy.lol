@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Script from 'next/script'
-import { FaTwitter, FaMediumM } from 'react-icons/fa';
+import { FaXTwitter, FaTelegram } from 'react-icons/fa6';
 import { useState } from 'react';
 
 const scoopItems = [
@@ -65,8 +65,8 @@ export default function MonkzRedesign() {
 
       {/* Боковые социальные иконки */}
       <div className="fixed right-4 top-1/2 -translate-y-1/2 z-50 flex flex-col space-y-4">
-        <a href="#" className="text-white p-2 rounded-full bg-black/50 hover:bg-white hover:text-black transition-colors"><FaTwitter /></a>
-        <a href="#" className="text-white p-2 rounded-full bg-black/50 hover:bg-white hover:text-black transition-colors"><FaMediumM /></a>
+        <a href="https://twitter.com/mokz" target="_blank" rel="noopener noreferrer" className="text-white p-2 rounded-full bg-black/50 hover:bg-white hover:text-black transition-colors"><FaXTwitter /></a>
+        <a href="https://t.me/mokz" target="_blank" rel="noopener noreferrer" className="text-white p-2 rounded-full bg-black/50 hover:bg-white hover:text-black transition-colors"><FaTelegram /></a>
       </div>
 
       <div className="bg-white text-black">
