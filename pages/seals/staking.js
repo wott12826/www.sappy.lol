@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 // Recreating the page based on the screenshot and original HTML structure.
 // Using Tailwind CSS classes and the newly configured plugins and theme colors.
@@ -145,6 +145,45 @@ const StakingWidget = () => {
     const [apy, setApy] = useState(12); // годовая доходность, %
     const [status, setStatus] = useState('');
     const [isBlurred, setIsBlurred] = useState(false);
+    const [timeLeft, setTimeLeft] = useState('');
+
+    // Целевая дата: 25.06.2025 UTC
+    const targetDate = new Date('2025-06-25T00:00:00.000Z');
+
+    // Функция для расчета оставшегося времени
+    const calculateTimeLeft = () => {
+        const now = new Date();
+        const difference = targetDate - now;
+
+        if (difference > 0) {
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+        return '0d 0h 0m 0s';
+    };
+
+    // Обновление времени каждую секунду
+    useEffect(() => {
+        if (isBlurred) {
+            const timer = setInterval(() => {
+                setTimeLeft(calculateTimeLeft());
+            }, 1000);
+
+            // Автоматическое исчезновение через 10 секунд
+            const hideTimer = setTimeout(() => {
+                setIsBlurred(false);
+            }, 10000);
+
+            return () => {
+                clearInterval(timer);
+                clearTimeout(hideTimer);
+            };
+        }
+    }, [isBlurred]);
 
     // Расчеты доходности
     const amt = Number(amount) > 0 ? Number(amount) : 0;
@@ -155,7 +194,7 @@ const StakingWidget = () => {
 
     const handleStake = () => {
         setIsBlurred(true);
-        setStatus('Staking will be available on 25.06.2025 UTC');
+        setTimeLeft(calculateTimeLeft());
     };
 
     return (
@@ -164,7 +203,9 @@ const StakingWidget = () => {
                 <div className="absolute inset-0 bg-black/80 backdrop-blur-sm rounded-2xl z-10 flex items-center justify-center">
                     <div className="text-center text-white p-6">
                         <div className="text-2xl lg:text-3xl font-bold mb-2">Coming Soon</div>
-                        <div className="text-lg lg:text-xl text-blue-400">25.06.2025 UTC</div>
+                        <div className="text-lg lg:text-xl text-blue-400 mb-2">25.06.2025 UTC</div>
+                        <div className="text-sm lg:text-base text-gray-300">Time remaining:</div>
+                        <div className="text-lg lg:text-xl font-mono text-yellow-400">{timeLeft}</div>
                     </div>
                 </div>
             )}
