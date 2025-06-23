@@ -84,7 +84,7 @@ export default function MonkzRedesign() {
                 <a href="/seals">
                   <img alt="Logo" loading="lazy" width="824" height="609" decoding="async" data-nimg="1" 
                        className="aspect-[824/609] w-min object-contain absolute left-1/2 top-1/2 h-[8vh] -translate-x-1/2 -translate-y-1/2" 
-                       src="/images/seals/logo.png" />
+                       src="/images/seals/mokz_logo.png" />
                 </a>
                 <a className="flex w-min items-center justify-start rounded-[18px] bg-white px-6 py-2.5 shadow-lg hover:bg-gray-300 text-[1.2vw]" 
                    href="/seals/staking">
@@ -125,11 +125,7 @@ export default function MonkzRedesign() {
                    className="h-full w-full mix-blend-soft-light object-cover" 
                    src="/images/seals/seals_bg.png" />
               <div className="absolute bottom-[-2%] left-[5%] z-20 aspect-[1366/1460] w-[31.2%]">
-                <img alt="placeholder" loading="lazy" decoding="async" data-nimg="fill" 
-                     className="scale-105 animate-pulse" 
-                     style={{position: "absolute", height: "100%", width: "100%", inset: "0px"}} 
-                     sizes="35%" 
-                     src="/images/seals/seal-glow.png" />
+
                 <img alt="placeholder" loading="lazy" decoding="async" data-nimg="fill" 
                      style={{position: "absolute", height: "100%", width: "100%", inset: "0px"}} 
                      sizes="35%" 
