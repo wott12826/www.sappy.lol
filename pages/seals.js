@@ -133,7 +133,7 @@ export default function MonkzRedesign() {
                 <img alt="placeholder" loading="lazy" decoding="async" data-nimg="fill" 
                      style={{position: "absolute", height: "100%", width: "100%", inset: "0px"}} 
                      sizes="35%" 
-                     src="/images/seals/seal.png" />
+                     src="/images/seals/monkz.png" />
               </div>
             </div>
             
