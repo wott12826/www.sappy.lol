@@ -117,9 +117,9 @@ export default function Home() {
     e.preventDefault();
   };
 
-  // Начало вращения по правой кнопке
+  // Начало вращения по левой кнопке
   const handleMouseDown = (e) => {
-    if (e.button === 2) { // правая кнопка
+    if (e.button === 0) { // левая кнопка
       setRotating(true);
       last.current = { x: e.clientX, y: e.clientY };
     } else {
@@ -142,17 +142,45 @@ export default function Home() {
     if (rotating) setRotating(false);
   };
 
+  // Touch события для мобильных устройств
+  const handleTouchStart = (e) => {
+    if (e.touches.length === 1) { // только один палец
+      setRotating(true);
+      last.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }
+  };
+
+  const handleTouchMove = (e) => {
+    if (rotating && e.touches.length === 1) {
+      e.preventDefault(); // предотвращаем скролл страницы
+      const dx = e.touches[0].clientX - last.current.x;
+      const dy = e.touches[0].clientY - last.current.y;
+      setAngle(a => ({ x: a.x + dy * 0.01, y: a.y + dx * 0.01 }));
+      last.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }
+  };
+
+  const handleTouchEnd = (e) => {
+    if (rotating) setRotating(false);
+  };
+
   useEffect(() => {
     if (rotating) {
       window.addEventListener('mousemove', handleMouseMove);
       window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener('touchmove', handleTouchMove, { passive: false });
+      window.addEventListener('touchend', handleTouchEnd);
     } else {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
     }
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
     };
   }, [rotating]);
 
@@ -173,6 +201,7 @@ export default function Home() {
           <div
             onContextMenu={handleContextMenu}
             onMouseDown={handleMouseDown}
+            onTouchStart={handleTouchStart}
             style={{
               zIndex: 10,
               display: 'flex',
@@ -202,7 +231,7 @@ export default function Home() {
         <footer className="fixed bottom-0 left-0 right-0 bg-[#f5f5f5] px-4 py-3">
           <div className="border-t border-black w-full"></div>
           <div className="max-w-screen-xl mx-auto flex justify-between items-center pt-3">
-            <p className="text-lg font-medium">Sappy</p>
+            <img src="/mokz_logo.png" alt="Mokz Logo" className="h-6 w-auto" />
             <nav>
               <ul className="flex space-x-6 text-lg">
                 <li>
