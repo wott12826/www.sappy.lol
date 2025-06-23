@@ -238,7 +238,7 @@ export default function Home() {
                   <Link href="/" className="hover:underline underline">Home</Link>
                 </li>
                 <li>
-                  <Link href="/seals" className="hover:underline">Monkz</Link>
+                  <Link href="/seals" className="hover:underline">About</Link>
                 </li>
                 <li>
                   <Link href="/seals/staking/" className="hover:underline">Dashboard</Link>
