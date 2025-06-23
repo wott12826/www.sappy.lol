@@ -10,7 +10,7 @@ const StakingHeader = () => (
         <div className="hidden grow flex-row items-center justify-between font-semibold lg:flex">
             <div className="flex flex-row items-center gap-[5vw]">
                 <Link href="/seals" legacyBehavior>
-                    <a><img alt="Logo" loading="lazy" width="824" height="609" decoding="async" className="aspect-[824/609] w-min object-contain h-[8vh]" style={{color: "transparent"}} src="/images/seals/logo-white.png" /></a>
+                    <a><img alt="Logo" loading="lazy" width="824" height="609" decoding="async" className="aspect-[824/609] w-min object-contain h-[8vh]" style={{color: "transparent"}} src="/images/seals/mokz_logo.png" /></a>
                 </Link>
                 <nav className="flex grow flex-row gap-[4vw] font-semibold uppercase lg:text-[1.5vw]/[1.5vw] FHD:text-[1vw]/[1vw]">
                     <div className="relative flex items-center gap-[4vw]">
