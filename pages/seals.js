@@ -123,7 +123,7 @@ export default function MonkzRedesign() {
             <div className="absolute inset-0">
               <img alt="placeholder" loading="lazy" width="3840" height="2160" decoding="async" data-nimg="1" 
                    className="h-full w-full mix-blend-soft-light object-cover" 
-                   src="images/seals/seals_bg.png" />
+                   src="/images/seals/seals_bg.png" />
               <div className="absolute bottom-[-2%] left-[5%] z-20 aspect-[1366/1460] w-[31.2%]">
                 <img alt="placeholder" loading="lazy" decoding="async" data-nimg="fill" 
                      className="scale-105 animate-pulse" 
