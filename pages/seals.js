@@ -78,6 +78,8 @@ export default function MonkzRedesign() {
                 <nav className="flex w-[40%] justify-between">
                   <a href="/" className="w-min relative mt-[0.5vw] hover:text-gray-300">MONKZ</a>
                   <a href="/seals/staking" className="w-min relative mt-[0.5vw] hover:text-gray-300">DASHBOARD</a>
+                  <a href="#innovations" className="w-min relative mt-[0.5vw] hover:text-gray-300">INNOVATIONS</a>
+                  <a href="#flywheel" className="w-min relative mt-[0.5vw] hover:text-gray-300">THE FLYWHEEL</a>
                 </nav>
                 <a href="/seals">
                   <img alt="Logo" loading="lazy" width="824" height="609" decoding="async" data-nimg="1" 
