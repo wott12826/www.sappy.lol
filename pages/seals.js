@@ -298,7 +298,7 @@ export default function MonkzRedesign() {
                       <img src="/images/seals/flywheel.png" alt="Flywheel Diagram" className="w-full h-auto" />
                   </div>
                   <div className="relative order-1 md:order-2">
-                      <span className="text-black/10 absolute -left-8 lg:-left-16 -top-4 lg:-top-8 text-6xl lg:text-9xl font-black">04</span>
+
                       <h2 className="text-3xl lg:text-4xl font-black uppercase mb-4 lg:mb-6">THE FLYWHEEL</h2>
                       <div className="space-y-3 lg:space-y-4 text-gray-700 text-sm lg:text-base">
                           <p>Our mission is simple: grow MONKZ — the community, the vibe, the culture.</p>
