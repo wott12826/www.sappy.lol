@@ -206,7 +206,10 @@ export default function Home() {
         {/* Мобильная навигация */}
         <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-[#f5f5f5]/95 backdrop-blur-sm">
           <div className="flex items-center justify-between px-4 py-3">
-            <img src="/images/seals/mokz_logo.png" alt="Mokz Logo" className="h-8 w-auto" />
+            <div className="text-center">
+              <div className="text-2xl font-bold text-black">MOKZ</div>
+              <div className="text-sm text-black">ART STUDIO</div>
+            </div>
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="text-black p-2"
@@ -273,7 +276,10 @@ export default function Home() {
         <footer className="hidden lg:block fixed bottom-0 left-0 right-0 bg-[#f5f5f5] px-4 py-3 z-40">
           <div className="border-t border-black w-full"></div>
           <div className="max-w-screen-xl mx-auto flex justify-between items-center pt-3">
-            <img src="/images/seals/mokz_logo.png" alt="Mokz Logo" className="h-6 w-auto" />
+            <div className="text-center">
+              <div className="text-xl font-bold text-black">MOKZ</div>
+              <div className="text-xs text-black">ART STUDIO</div>
+            </div>
             <nav>
               <ul className="flex space-x-6 text-lg">
                 <li>
