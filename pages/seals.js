@@ -290,7 +290,7 @@ export default function MonkzRedesign() {
           </section>
 
           {/* FOOTER */}
-          <section className="bg-gradient-to-b from-black to-white text-black text-center py-12 lg:py-24 px-6 sm:px-8 lg:px-12">
+          <section className="bg-gradient-to-b from-black to-white text-white text-center py-12 lg:py-24 px-6 sm:px-8 lg:px-12">
               <div className="flex justify-center space-x-4 mb-8 lg:mb-16">
 
               </div>
