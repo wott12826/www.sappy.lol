@@ -89,10 +89,9 @@ export default function MonkzRedesign() {
                   <a href="#flywheel" className="w-min relative mt-[0.5vw] hover:text-gray-300">FLYWHEEL</a>
                 </nav>
 
-                <a className="flex w-min items-center justify-start rounded-[18px] bg-white px-1 py-2.5 shadow-lg hover:bg-gray-300 text-[1.2vw]" 
+                <a className="flex items-center justify-center rounded-[18px] bg-white px-4 py-2 shadow-lg hover:bg-gray-300 text-[1.2vw] font-bold text-[#3566DF] whitespace-nowrap" 
                    href="/seals/staking">
-<svg xmlns="http://www.w3.org/2000/svg" width="220" height="29" fill="none" viewBox="0 0 220 29"><text x="40" y="21" fill="#3566DF" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Buy Monkz</text><defs><radialGradient id="paint0_radial_1090_625" cx="0" cy="0" r="1" gradientTransform="matrix(28.50004 -16.50003 22.00001 38 4.181 23)" gradientUnits="userSpaceOnUse"><stop stop-color="#0A264F"></stop><stop offset="1" stop-color="#3563DD"></stop></radialGradient></defs></svg>
-
+                  Buy Monkz
                 </a>
               </div>
               <div className="relative z-50 mt-[5vh] flex grow flex-row items-center lg:hidden">
@@ -138,7 +137,7 @@ export default function MonkzRedesign() {
             
             <div className="absolute inset-0">
               <img alt="placeholder" loading="lazy" width="3840" height="2160" decoding="async" data-nimg="1" 
-                   className="h-full w-full object-cover mix-blend-soft-light" 
+                   className="h-full w-full object-cover blur-lg object-[center_20%]" 
                    src="/images/seals/seals_bg.png" />
 
             </div>
