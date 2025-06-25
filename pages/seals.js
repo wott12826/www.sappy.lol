@@ -138,7 +138,7 @@ export default function MonkzRedesign() {
             
             <div className="absolute inset-0">
               <img alt="placeholder" loading="lazy" width="3840" height="2160" decoding="async" data-nimg="1" 
-                   className="h-full w-full mix-blend-soft-light object-cover" 
+                   className="h-full w-full object-cover" 
                    src="/images/seals/seals_bg.png" />
 
             </div>
