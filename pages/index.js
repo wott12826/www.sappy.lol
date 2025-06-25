@@ -277,7 +277,7 @@ export default function Home() {
           <div className="border-t border-black w-full"></div>
           <div className="max-w-screen-xl mx-auto flex justify-between items-center pt-3">
             <div className="text-center">
-              <div className="text-xl font-bold text-black">MOKZ</div>
+              <div className="text-xl font-bold text-black">MONKZ</div>
               <div className="text-xs text-black">ART STUDIO</div>
             </div>
             <nav>
