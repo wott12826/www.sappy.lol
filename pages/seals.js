@@ -195,7 +195,7 @@ export default function MonkzRedesign() {
                 ) : (
                   <img src={previews[activeIdx].media} alt="Gameplay" className="object-cover w-full h-full" />
                 )}
-                <button className="play-btn absolute bottom-3 left-3 bg-black text-white px-4 py-2 font-bold rounded-md text-base shadow">{activeIdx === 0 ? 'VISUAL' : 'GAMEPLAY'}</button>
+                <button className="play-btn absolute bottom-3 left-3 bg-black text-white px-4 py-2 font-bold rounded-md text-base shadow">{activeIdx === 0 ? 'VISUAL' : 'VISUAL'}</button>
               </div>
               {/* Info-card polygon */}
               <div className="info-card relative bg-[#0d1d3c] text-white max-w-md p-6 lg:p-8 order-3" style={{clipPath: 'polygon(0 0, 100% 0, 95% 100%, 5% 100%)'}}>
