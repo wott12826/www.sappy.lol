@@ -145,7 +145,7 @@ export default function MonkzRedesign() {
             <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-[#111]/80 from-35% via-[#111]/80 via-70% to-[#0e29fb00] sm:from-25% sm:via-55%"></div>
             
             <div className="absolute top-[13vh] left-1/2 -translate-x-1/2 z-10 flex flex-col items-center justify-center aspect-[21/9] h-[50vh] max-w-[90vw] @container">
-              <h1 className="text-5xl md:text-7xl font-black uppercase text-center mb-4 text-black">COOLEST THING ON THE INTERNET</h1>
+              <h1 className="text-5xl md:text-7xl font-extrabold uppercase text-center mb-4 text-black drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)] tracking-wider bg-white/60 px-4 py-2 rounded-lg inline-block">COOLEST THING ON THE INTERNET</h1>
               <p className="text-2xl md:text-3xl text-center mb-1 font-semibold text-black">Where chaos meets character.</p>
               <p className="text-2xl md:text-3xl text-center font-semibold text-black">Monkz are here.</p>
             </div>
@@ -156,13 +156,13 @@ export default function MonkzRedesign() {
             {/* Заголовок с SVG-подчёркиванием */}
             <div className="relative w-full max-w-6xl mx-auto mb-8 lg:mb-12">
               <h2 className="section-title font-black uppercase text-black text-left leading-none text-2xl sm:text-3xl lg:text-4xl xl:text-5xl" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>THE MONKZ ARE INNOVATING GAMING.</h2>
-              <svg className="absolute left-0 bottom-[-12px] lg:bottom-[-18px] w-full h-4 lg:h-6" viewBox="0 0 600 32" fill="none"><path d="M10 22C60 10 200 10 300 22C400 34 540 34 590 22" stroke="#00C2FF" strokeWidth="8" strokeLinecap="round"/></svg>
+              <svg className="absolute left-0 bottom-[-12px] lg:bottom-[-18px] w-full h-4 lg:h-6" viewBox="0 0 600 32" fill="none"><path d="M10 22C60 10 200 10 300 22C400 34 540 34 590 22" stroke="#111" strokeWidth="8" strokeLinecap="round"/></svg>
             </div>
             <div className="relative z-20 flex flex-col lg:flex-row items-start w-full max-w-6xl mx-auto gap-6 lg:gap-12">
               {/* Левая панель с превью */}
               <div className="thumbs flex flex-row lg:flex-col items-center gap-4 pt-4 order-2 lg:order-1">
                 {previews.map((item, idx) => (
-                  <div key={idx} className={`thumb cursor-pointer w-12 h-12 lg:w-16 lg:h-16 mb-2 ${activeIdx === idx ? 'outline outline-2 outline-[#00d0ff]' : 'outline outline-2 outline-transparent'} flex items-center justify-center bg-white shadow-md`} onClick={() => setActiveIdx(idx)}>
+                  <div key={idx} className={`thumb cursor-pointer w-12 h-12 lg:w-16 lg:h-16 mb-2 ${activeIdx === idx ? 'outline outline-2 outline-[#111]' : 'outline outline-2 outline-transparent'} flex items-center justify-center bg-white shadow-md`} onClick={() => setActiveIdx(idx)}>
                     {item.type === 'video' ? (
                       <video src={item.media} className="object-cover w-full h-full" muted loop={false} autoPlay playsInline preload="metadata" onEnded={handleVideoEnd} />
                     ) : (
@@ -182,8 +182,8 @@ export default function MonkzRedesign() {
               </div>
               {/* Info-card polygon */}
               <div className="info-card relative bg-[#111]/80 text-white max-w-md p-6 lg:p-8 order-3" style={{clipPath: 'polygon(0 0, 100% 0, 95% 100%, 5% 100%)'}}>
-                <p className="mb-4 text-sm lg:text-base">We're bringing <span className="highlight bg-[#00d0ff] text-black px-1 rounded">fresh ideas</span> and daring features into long-loved genres, creating thousand hour experiences that are too fun to put down.</p>
-                <p className="mb-4 text-sm lg:text-base">Our mission is to bring spirit back into gaming and power back into the hands of players by breaking free from the traditional player ⇔ publisher ⇔ developer relationship. In the process, we'll be <span className="highlight bg-[#00d0ff] text-black px-1 rounded">creating beloved and memorable</span> IPs that last a lifetime.</p>
+                <p className="mb-4 text-sm lg:text-base">We're bringing <span className="highlight bg-[#111] text-black px-1 rounded">fresh ideas</span> and daring features into long-loved genres, creating thousand hour experiences that are too fun to put down.</p>
+                <p className="mb-4 text-sm lg:text-base">Our mission is to bring spirit back into gaming and power back into the hands of players by breaking free from the traditional player ⇔ publisher ⇔ developer relationship. In the process, we'll be <span className="highlight bg-[#111] text-black px-1 rounded">creating beloved and memorable</span> IPs that last a lifetime.</p>
               </div>
             </div>
           </section>
@@ -193,7 +193,7 @@ export default function MonkzRedesign() {
             {/* Фоновый номер */}
 
             {/* Заголовок */}
-            <h2 className="relative z-10 text-center text-4xl sm:text-5xl lg:text-6xl xl:text-8xl font-extrabold uppercase tracking-tight mb-12 lg:mb-24 text-white drop-shadow-[0_0_32px_#fff,0_0_8px_#00c2ff]">
+            <h2 className="relative z-10 text-center text-4xl sm:text-5xl lg:text-6xl xl:text-8xl font-extrabold uppercase tracking-tight mb-12 lg:mb-24 text-white drop-shadow-[0_0_32px_#fff,0_0_8px_#111]">
               INNOVATIONS?
             </h2>
             {/* Контентные блоки */}
@@ -205,11 +205,11 @@ export default function MonkzRedesign() {
                 <div className="flex flex-col lg:flex-row-reverse items-center gap-6 lg:gap-12">
                   {/* Hex image */}
                   <div className="relative w-32 h-32 lg:w-48 lg:h-48 flex-shrink-0 drop-shadow-2xl">
-                    <div className="absolute inset-0 z-0" style={{clipPath:'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0 50%)',background:'linear-gradient(135deg,#00c2ff33 60%,#fff0 100%)'}}></div>
+                    <div className="absolute inset-0 z-0" style={{clipPath:'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0 50%)',background:'linear-gradient(135deg,#11133 60%,#fff0 100%)'}}></div>
                     <div className="absolute inset-0 z-10 flex items-center justify-center">
                       <img src="/images/seals/1.png" alt="Game Thumbnail 1" className="w-20 h-20 lg:w-32 lg:h-32 object-contain" />
                     </div>
-                    <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full z-20" fill="none"><polygon points="25,7 75,7 100,50 75,93 25,93 0,50" stroke="#00C2FF" strokeWidth="4" fill="none"/></svg>
+                    <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full z-20" fill="none"><polygon points="25,7 75,7 100,50 75,93 25,93 0,50" stroke="#111" strokeWidth="4" fill="none"/></svg>
                   </div>
                   <div className="bg-[#222]/80 rounded-2xl p-6 lg:p-10 shadow-2xl max-w-xl relative text-center lg:text-left">
                     <h3 className="text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-4">WE WANTED TO INNOVATE MEMES.</h3>
@@ -226,11 +226,11 @@ export default function MonkzRedesign() {
                 <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-12">
                   {/* Hex image */}
                   <div className="relative w-32 h-32 lg:w-48 lg:h-48 flex-shrink-0 drop-shadow-2xl">
-                    <div className="absolute inset-0 z-0" style={{clipPath:'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0 50%)',background:'linear-gradient(135deg,#00c2ff33 60%,#fff0 100%)'}}></div>
+                    <div className="absolute inset-0 z-0" style={{clipPath:'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0 50%)',background:'linear-gradient(135deg,#11133 60%,#fff0 100%)'}}></div>
                     <div className="absolute inset-0 z-10 flex items-center justify-center">
                       <img src="/images/seals/2.png" alt="Game Thumbnail 2" className="w-20 h-20 lg:w-32 lg:h-32 object-contain" />
                     </div>
-                    <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full z-20" fill="none"><polygon points="25,7 75,7 100,50 75,93 25,93 0,50" stroke="#00C2FF" strokeWidth="4" fill="none"/></svg>
+                    <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full z-20" fill="none"><polygon points="25,7 75,7 100,50 75,93 25,93 0,50" stroke="#111" strokeWidth="4" fill="none"/></svg>
                   </div>
                   <div className="bg-[#222]/80 rounded-2xl p-6 lg:p-10 shadow-2xl max-w-xl relative text-center lg:text-left">
                     <h3 className="text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-4">WE WANTED TO CREATE THE NEXT GENERATION OF ENTERTAINMENT</h3>
@@ -242,11 +242,11 @@ export default function MonkzRedesign() {
                 <div className="flex flex-col lg:flex-row-reverse items-center gap-6 lg:gap-12">
                   {/* Hex image */}
                   <div className="relative w-32 h-32 lg:w-48 lg:h-48 flex-shrink-0 drop-shadow-2xl">
-                    <div className="absolute inset-0 z-0" style={{clipPath:'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0 50%)',background:'linear-gradient(135deg,#00c2ff33 60%,#fff0 100%)'}}></div>
+                    <div className="absolute inset-0 z-0" style={{clipPath:'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0 50%)',background:'linear-gradient(135deg,#11133 60%,#fff0 100%)'}}></div>
                     <div className="absolute inset-0 z-10 flex items-center justify-center">
                       <img src="/images/seals/3.png" alt="Game Poster" className="w-20 h-20 lg:w-32 lg:h-32 object-contain" />
                     </div>
-                    <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full z-20" fill="none"><polygon points="25,7 75,7 100,50 75,93 25,93 0,50" stroke="#00C2FF" strokeWidth="4" fill="none"/></svg>
+                    <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full z-20" fill="none"><polygon points="25,7 75,7 100,50 75,93 25,93 0,50" stroke="#111" strokeWidth="4" fill="none"/></svg>
                   </div>
                   <div className="bg-[#222]/80 rounded-2xl p-6 lg:p-10 shadow-2xl max-w-xl relative text-center lg:text-left">
                     <h3 className="text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-4">WE WANTED TO TRAILBLAZE ONCHAIN</h3>
@@ -262,7 +262,7 @@ export default function MonkzRedesign() {
               <div className="flex flex-col items-center mt-20">
                 <div className="flex flex-col lg:flex-row items-center gap-4">
                   <img src="/images/seals/seal_stamp.png" alt="Seal Stamp" className="w-12 h-12 lg:w-16 lg:h-16 object-contain" />
-                  <span className="text-2xl lg:text-3xl xl:text-4xl font-extrabold text-white tracking-wide drop-shadow-[0_0_16px_#00c2ff] text-center">AND MORE TO COME!</span>
+                  <span className="text-2xl lg:text-3xl xl:text-4xl font-extrabold text-white tracking-wide drop-shadow-[0_0_16px_#111] text-center">AND MORE TO COME!</span>
                 </div>
               </div>
             </div>
