@@ -3,101 +3,9 @@ import Link from 'next/link'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, useGLTF } from '@react-three/drei'
+import MouseTrail from '../components/MouseTrail'
 
 const lerp = (a, b, t) => a + (b - a) * t;
-
-const CursorTrail = () => {
-  const canvasRef = useRef(null);
-  const mouse = useRef({ x: 0, y: 0 });
-  const trail = useRef([]);
-  const animationFrameId = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    
-    // Set canvas size
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    const handleMouseMove = (e) => {
-      mouse.current.x = e.clientX;
-      mouse.current.y = e.clientY;
-    };
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Add current mouse position to trail
-      trail.current.push({ 
-        x: mouse.current.x, 
-        y: mouse.current.y,
-        angle: Math.random() * Math.PI * 2 // Random rotation for brush strokes
-      });
-
-      // Limit trail length
-      if (trail.current.length > 25) {
-        trail.current.shift();
-      }
-
-      // Draw brush strokes
-      for (let i = 0; i < trail.current.length; i++) {
-        const point = trail.current[i];
-        const alpha = i / trail.current.length;
-        const size = 15 + (alpha * 10); // Vary brush size
-
-        ctx.save();
-        ctx.globalAlpha = alpha * 0.6;
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
-        
-        // Create brush stroke effect
-        ctx.translate(point.x, point.y);
-        ctx.rotate(point.angle);
-        
-        // Draw elliptical brush stroke
-        ctx.beginPath();
-        ctx.ellipse(0, 0, size, size * 0.4, 0, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Add some texture variation
-        ctx.globalAlpha = alpha * 0.3;
-        ctx.beginPath();
-        ctx.ellipse(0, 0, size * 0.7, size * 0.3, 0, 0, Math.PI * 2);
-        ctx.fill();
-        
-        ctx.restore();
-      }
-
-      animationFrameId.current = requestAnimationFrame(animate);
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    animate();
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('resize', resizeCanvas);
-      if (animationFrameId.current) {
-        cancelAnimationFrame(animationFrameId.current);
-      }
-    };
-  }, []);
-
-  return (
-    <canvas 
-      ref={canvasRef}
-      className="fixed inset-0 w-full h-full pointer-events-none"
-      style={{ zIndex: 999 }}
-    />
-  );
-};
 
 // Компонент для загрузки и отображения glb-модели
 function Model({ rotation = [0, 0, 0], ...props }) {
@@ -242,7 +150,7 @@ export default function Home() {
       </Head>
       
       <div className="min-h-screen bg-[#f5f5f5] text-black overflow-hidden">
-        <CursorTrail />
+        <MouseTrail />
         
         {/* Мобильная навигация */}
         <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-[#f5f5f5]/95 backdrop-blur-sm">
