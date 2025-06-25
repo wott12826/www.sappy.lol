@@ -7,54 +7,95 @@ import { OrbitControls, useGLTF } from '@react-three/drei'
 const lerp = (a, b, t) => a + (b - a) * t;
 
 const CursorTrail = () => {
-  const points = useRef(Array(20).fill({ x: 0, y: 0 }));
-  const svgRef = useRef(null);
+  const canvasRef = useRef(null);
+  const mouse = useRef({ x: 0, y: 0 });
+  const trail = useRef([]);
+  const animationFrameId = useRef(null);
 
   useEffect(() => {
-    let animationFrameId;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    const update = () => {
-      const mousePos = points.current[0];
-      for (let i = 1; i < points.current.length; i++) {
-        points.current[i] = {
-          x: lerp(points.current[i].x, points.current[i-1].x, 0.25),
-          y: lerp(points.current[i].y, points.current[i-1].y, 0.25)
-        };
-      }
-      
-      if (svgRef.current) {
-        const path = svgRef.current.querySelector('path');
-        if (path) {
-          let d = `M ${points.current[0].x},${points.current[0].y}`;
-          for (let i = 1; i < points.current.length - 1; i++) {
-            const p1 = points.current[i];
-            const p2 = points.current[i + 1];
-            d += ` Q ${p1.x},${p1.y} ${(p1.x + p2.x) / 2},${(p1.y + p2.y) / 2}`;
-          }
-          path.setAttribute('d', d);
-        }
-      }
-      
-      animationFrameId = requestAnimationFrame(update);
+    const ctx = canvas.getContext('2d');
+    
+    // Set canvas size
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     };
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
     const handleMouseMove = (e) => {
-      points.current[0] = { x: e.clientX, y: e.clientY };
+      mouse.current.x = e.clientX;
+      mouse.current.y = e.clientY;
+    };
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Add current mouse position to trail
+      trail.current.push({ 
+        x: mouse.current.x, 
+        y: mouse.current.y,
+        angle: Math.random() * Math.PI * 2 // Random rotation for brush strokes
+      });
+
+      // Limit trail length
+      if (trail.current.length > 25) {
+        trail.current.shift();
+      }
+
+      // Draw brush strokes
+      for (let i = 0; i < trail.current.length; i++) {
+        const point = trail.current[i];
+        const alpha = i / trail.current.length;
+        const size = 15 + (alpha * 10); // Vary brush size
+
+        ctx.save();
+        ctx.globalAlpha = alpha * 0.6;
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+        
+        // Create brush stroke effect
+        ctx.translate(point.x, point.y);
+        ctx.rotate(point.angle);
+        
+        // Draw elliptical brush stroke
+        ctx.beginPath();
+        ctx.ellipse(0, 0, size, size * 0.4, 0, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Add some texture variation
+        ctx.globalAlpha = alpha * 0.3;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, size * 0.7, size * 0.3, 0, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.restore();
+      }
+
+      animationFrameId.current = requestAnimationFrame(animate);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    animationFrameId = requestAnimationFrame(update);
+    animate();
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('resize', resizeCanvas);
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
     };
   }, []);
 
   return (
-    <svg ref={svgRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{zIndex: 1}}>
-      <path d="" stroke="black" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+    <canvas 
+      ref={canvasRef}
+      className="fixed inset-0 w-full h-full pointer-events-none"
+      style={{ zIndex: 999 }}
+    />
   );
 };
 
