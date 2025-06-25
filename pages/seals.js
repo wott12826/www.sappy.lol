@@ -91,21 +91,7 @@ export default function MonkzRedesign() {
 
                 <a className="flex w-min items-center justify-start rounded-[18px] bg-white px-1 py-2.5 shadow-lg hover:bg-gray-300 text-[1.2vw]" 
                    href="/seals/staking">
-<svg xmlns="http://www.w3.org/2000/svg" width="220" height="29" fill="none" viewBox="0 0 220 29">
-
-  <path stroke="#000" d="m18.778 20.5 7.11-6m0 0-7.11-6m7.11 6H1m8.889 6V22c0 1.194.562 2.338 1.562 3.182 1 .844 2.357 1.318 3.771 1.318h12.445c1.414 0 2.77-.474 3.77-1.318C32.439 24.338 33 23.194 33 22V7c0-1.193-.562-2.338-1.562-3.182-1-.844-2.357-1.318-3.771-1.318H15.222c-1.414 0-2.77.474-3.771 1.318-1 .844-1.562 1.989-1.562 3.182v1.5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-  <path stroke="url(#paint0_radial_1090_625)" d="m18.778 20.5 7.11-6m0 0-7.11-6m7.11 6H1m8.889 6V22c0 1.194.562 2.338 1.562 3.182 1 .844 2.357 1.318 3.771 1.318h12.445c1.414 0 2.77-.474 3.77-1.318C32.439 24.338 33 23.194 33 22V7c0-1.193-.562-2.338-1.562-3.182-1-.844-2.357-1.318-3.771-1.318H15.222c-1.414 0-2.77.474-3.771 1.318-1 .844-1.562 1.989-1.562 3.182v1.5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-  
-
-  <text x="40" y="21" fill="#3566DF" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Buy Monkz</text>
-
-  <defs>
-    <radialGradient id="paint0_radial_1090_625" cx="0" cy="0" r="1" gradientTransform="matrix(28.50004 -16.50003 22.00001 38 4.181 23)" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#0A264F"/>
-      <stop offset="1" stop-color="#3563DD"/>
-    </radialGradient>
-  </defs>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="29" fill="none" viewBox="0 0 220 29"><text x="40" y="21" fill="#3566DF" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Buy Monkz</text><defs><radialGradient id="paint0_radial_1090_625" cx="0" cy="0" r="1" gradientTransform="matrix(28.50004 -16.50003 22.00001 38 4.181 23)" gradientUnits="userSpaceOnUse"><stop stop-color="#0A264F"></stop><stop offset="1" stop-color="#3563DD"></stop></radialGradient></defs></svg>
 
                 </a>
               </div>
