@@ -311,9 +311,7 @@ export default function MonkzRedesign() {
           {/* FOOTER */}
           <section className="bg-gradient-to-b from-blue-500 to-black text-white text-center py-12 lg:py-24 px-6 sm:px-8 lg:px-12">
               <div className="flex justify-center space-x-4 mb-8 lg:mb-16">
-                  <div className="w-3 h-3 lg:w-4 lg:h-4 border-2 border-white rounded-full"></div>
-                  <div className="w-3 h-3 lg:w-4 lg:h-4 border-2 border-white rounded-full"></div>
-                  <div className="w-3 h-3 lg:w-4 lg:h-4 border-2 border-white rounded-full"></div>
+
               </div>
               <h2 className="text-4xl lg:text-6xl font-black uppercase tracking-tighter mb-6 lg:mb-8">
                   wow we didn't expect you<br/>here...
