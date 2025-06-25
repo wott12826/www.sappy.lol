@@ -202,7 +202,6 @@ export default function MonkzRedesign() {
               {/* 1. Meme Machine */}
               <div className="relative flex flex-col items-end w-full max-w-3xl mx-auto">
                 {/* Кавычка сверху слева */}
-                <svg className="absolute -top-8 -left-8 w-8 h-8 lg:w-12 lg:h-12 text-cyan-300 opacity-60" viewBox="0 0 48 48" fill="none"><path d="M20 8C12 8 8 16 8 24c0 8 4 16 12 16v-8c-4 0-4-8-4-8s0-8 4-8V8z" fill="currentColor"/></svg>
                 <div className="flex flex-col lg:flex-row-reverse items-center gap-6 lg:gap-12">
                   {/* Hex image */}
                   <div className="relative w-32 h-32 lg:w-48 lg:h-48 flex-shrink-0 drop-shadow-2xl">
@@ -220,7 +219,6 @@ export default function MonkzRedesign() {
                   </div>
                 </div>
                 {/* Кавычка снизу справа */}
-                <svg className="absolute -bottom-8 right-0 w-8 h-8 lg:w-12 lg:h-12 text-cyan-300 opacity-60" viewBox="0 0 48 48" fill="none"><path d="M28 40c8 0 12-8 12-16 0-8-4-16-12-16v8c4 0 4 8 4 8s0 8-4 8v8z" fill="currentColor"/></svg>
               </div>
               {/* 2. PIXL PETS */}
               <div className="relative flex flex-col items-start w-full max-w-3xl mx-auto">
