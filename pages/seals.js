@@ -136,7 +136,7 @@ export default function MonkzRedesign() {
             
             <div className="absolute inset-0">
               <img alt="placeholder" loading="lazy" width="3840" height="2160" decoding="async" data-nimg="1" 
-                   className="h-full w-full object-cover blur-lg " 
+                   className="h-full w-full object-cover" 
                    src="/images/seals/seals_bg.png" />
 
             </div>
@@ -150,9 +150,9 @@ export default function MonkzRedesign() {
 
           {/* Градиентный текстовый блок */}
           <section className="w-full flex flex-col items-center justify-center py-12 bg-white">
-            <h1 className="gradient-text-horizontal text-5xl md:text-7xl font-extrabold uppercase text-center mb-4">
+            <h1 className=" text-5xl md:text-7xl font-extrabold uppercase text-center mb-4">
               COOLEST THING ON THE INTERNET<br/>
-              <span className="block text-2xl md:text-3xl font-semibold normal-case mt-2 gradient-text-horizontal">Where chaos meets character.<br/>Monkz are here.</span>
+              <span className="block text-2xl md:text-3xl font-semibold normal-case mt-2 ">Where chaos meets character.<br/>Monkz are here.</span>
             </h1>
           </section>
 
