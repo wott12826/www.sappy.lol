@@ -207,7 +207,7 @@ export default function Home() {
         <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-[#f5f5f5]/95 backdrop-blur-sm">
           <div className="flex items-center justify-between px-4 py-3">
             <div className="text-center">
-              <div className="text-2xl font-bold text-black">MOKZ</div>
+              <div className="text-2xl font-bold text-black">MONKZ</div>
               <div className="text-sm text-black">ART STUDIO</div>
             </div>
             <button 
