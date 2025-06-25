@@ -189,7 +189,7 @@ const StakingWidget = () => {
             )}
             <h3 className="text-xl lg:text-2xl font-bold mb-1 lg:mb-2 text-black">Staking Calculator</h3>
             <div className="w-full flex flex-col gap-2 lg:gap-3">
-                <label className="text-xs lg:text-sm text-gray-700">Amount</label>
+                <label className="text-xs lg:text-sm text-gray-700">Amount $MONKZ</label>
                 <input
                     type="number"
                     min="0"
