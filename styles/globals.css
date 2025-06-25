@@ -274,4 +274,12 @@ input:focus {
 
 .blur-lg {
   --tw-blur: blur(5px);
+}
+
+.gradient-text-horizontal {
+  background: linear-gradient(90deg, #111 0%, #888 50%, #eee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 } 
