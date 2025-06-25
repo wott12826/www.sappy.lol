@@ -79,7 +79,7 @@ export default function MonkzRedesign() {
       <div className="bg-white text-black">
         <main>
           {/* LANDING SECTION */}
-          <section id="landing" className="relative overflow-hidden px-[5vw] md:px-[7.5vw] 2xl:px-[10vw] h-[max(100svh,100vw/3840*1771)] bg-[#374CFF]/90 @container">
+          <section id="landing" className="relative overflow-hidden px-[5vw] md:px-[7.5vw] 2xl:px-[10vw] h-[max(100svh,100vw/3840*1771)] bg-[#111]/90 @container">
             <header className="mb-12 flex h-[10vh] w-full lg:mb-4">
               <div className="absolute inset-x-0 top-[5vh] z-50 hidden w-full items-center justify-between px-[5vw] text-[1vw] font-semibold tracking-[0.1vw] text-white lg:flex">
                 <nav className="flex w-[40%] justify-between">
@@ -89,7 +89,7 @@ export default function MonkzRedesign() {
                   <a href="#flywheel" className="w-min relative mt-[0.5vw] hover:text-gray-300">FLYWHEEL</a>
                 </nav>
 
-                <a className="flex items-center justify-center rounded-[12px] bg-white px-2 py-1 shadow-lg hover:bg-gray-300 text-[1vw] font-bold text-[#3566DF] whitespace-nowrap" 
+                <a className="flex items-center justify-center rounded-[12px] bg-white px-2 py-1 shadow-lg hover:bg-gray-300 text-[1vw] font-bold text-[#111] whitespace-nowrap" 
                    href="/seals/staking">
                   Buy Monkz
                 </a>

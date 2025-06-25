@@ -270,4 +270,8 @@ input:focus {
 
 .underline-animation:hover::after {
   width: 100%;
+}
+
+.blur-lg {
+  --tw-blur: blur(8px);
 } 
