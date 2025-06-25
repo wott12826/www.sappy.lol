@@ -142,7 +142,7 @@ export default function MonkzRedesign() {
 
             </div>
             
-            <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-[#031534] from-35% via-[#08277bcc] via-70% to-[#0e29fb00] sm:from-25% sm:via-55%"></div>
+            <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-[#111]/80 from-35% via-[#111]/80 via-70% to-[#0e29fb00] sm:from-25% sm:via-55%"></div>
             
             <div className="absolute top-[13vh] left-1/2 -translate-x-1/2 z-10 flex flex-col items-center justify-center aspect-[21/9] h-[50vh] max-w-[90vw] @container">
               <h1 className="text-5xl md:text-7xl font-black uppercase text-center mb-4 text-black">COOLEST THING ON THE INTERNET</h1>
@@ -181,7 +181,7 @@ export default function MonkzRedesign() {
                 <button className="play-btn absolute bottom-3 left-3 bg-black text-white px-4 py-2 font-bold rounded-md text-base shadow">{activeIdx === 0 ? 'VISUAL' : 'VISUAL'}</button>
               </div>
               {/* Info-card polygon */}
-              <div className="info-card relative bg-[#0d1d3c] text-white max-w-md p-6 lg:p-8 order-3" style={{clipPath: 'polygon(0 0, 100% 0, 95% 100%, 5% 100%)'}}>
+              <div className="info-card relative bg-[#111]/80 text-white max-w-md p-6 lg:p-8 order-3" style={{clipPath: 'polygon(0 0, 100% 0, 95% 100%, 5% 100%)'}}>
                 <p className="mb-4 text-sm lg:text-base">We're bringing <span className="highlight bg-[#00d0ff] text-black px-1 rounded">fresh ideas</span> and daring features into long-loved genres, creating thousand hour experiences that are too fun to put down.</p>
                 <p className="mb-4 text-sm lg:text-base">Our mission is to bring spirit back into gaming and power back into the hands of players by breaking free from the traditional player ⇔ publisher ⇔ developer relationship. In the process, we'll be <span className="highlight bg-[#00d0ff] text-black px-1 rounded">creating beloved and memorable</span> IPs that last a lifetime.</p>
               </div>
@@ -189,7 +189,7 @@ export default function MonkzRedesign() {
           </section>
 
           {/* INNOVATIONS */}
-          <section id="innovations" className="relative bg-gradient-to-br from-[#162447] via-[#1a2b4b] to-[#0c1b2e] py-16 lg:py-32 px-4 sm:px-8 lg:px-16 overflow-hidden">
+          <section id="innovations" className="relative bg-gradient-to-br from-[#111] via-[#222] to-[#222] py-16 lg:py-32 px-4 sm:px-8 lg:px-16 overflow-hidden">
             {/* Фоновый номер */}
 
             {/* Заголовок */}
@@ -211,7 +211,7 @@ export default function MonkzRedesign() {
                     </div>
                     <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full z-20" fill="none"><polygon points="25,7 75,7 100,50 75,93 25,93 0,50" stroke="#00C2FF" strokeWidth="4" fill="none"/></svg>
                   </div>
-                  <div className="bg-[#1a2b4b]/80 rounded-2xl p-6 lg:p-10 shadow-2xl max-w-xl relative text-center lg:text-left">
+                  <div className="bg-[#222]/80 rounded-2xl p-6 lg:p-10 shadow-2xl max-w-xl relative text-center lg:text-left">
                     <h3 className="text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-4">WE WANTED TO INNOVATE MEMES.</h3>
                     <div className="flex flex-col lg:flex-row items-center gap-2 mb-2">
                       <span className="text-gray-300">So we made</span>
@@ -232,7 +232,7 @@ export default function MonkzRedesign() {
                     </div>
                     <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full z-20" fill="none"><polygon points="25,7 75,7 100,50 75,93 25,93 0,50" stroke="#00C2FF" strokeWidth="4" fill="none"/></svg>
                   </div>
-                  <div className="bg-[#1a2b4b]/80 rounded-2xl p-6 lg:p-10 shadow-2xl max-w-xl relative text-center lg:text-left">
+                  <div className="bg-[#222]/80 rounded-2xl p-6 lg:p-10 shadow-2xl max-w-xl relative text-center lg:text-left">
                     <h3 className="text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-4">WE WANTED TO CREATE THE NEXT GENERATION OF ENTERTAINMENT</h3>
                   </div>
                 </div>
@@ -248,7 +248,7 @@ export default function MonkzRedesign() {
                     </div>
                     <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full z-20" fill="none"><polygon points="25,7 75,7 100,50 75,93 25,93 0,50" stroke="#00C2FF" strokeWidth="4" fill="none"/></svg>
                   </div>
-                  <div className="bg-[#1a2b4b]/80 rounded-2xl p-6 lg:p-10 shadow-2xl max-w-xl relative text-center lg:text-left">
+                  <div className="bg-[#222]/80 rounded-2xl p-6 lg:p-10 shadow-2xl max-w-xl relative text-center lg:text-left">
                     <h3 className="text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-4">WE WANTED TO TRAILBLAZE ONCHAIN</h3>
                     <ul className="list-disc list-inside text-cyan-100 space-y-1 mb-2 text-sm lg:text-base">
                       <li>Rarity-Based Staking</li>
