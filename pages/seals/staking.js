@@ -113,30 +113,7 @@ const StatsBar = () => (
 
 const Filters = () => (
     <div className="flex w-full flex-col lg:flex-row flex-wrap items-start lg:items-center gap-3 lg:gap-6">
-        <div className="flex flex-row gap-2 lg:gap-[min(1.5vw,14px)] text-xs lg:text-sm font-medium w-full lg:w-auto">
-            <button type="button" className="flex items-center gap-1 lg:gap-[0.7em] rounded-full px-3 lg:px-[1.2em] py-2 lg:py-[0.5em] font-poppins bg-white text-black text-xs lg:text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="12" fill="none" viewBox="0 0 19 12" className="h-3 w-3 lg:h-[1em] lg:w-[1em]">
-                    <path fill="currentColor" stroke="currentColor" strokeWidth="0.031" d="M6.645 5.782c-1.61-.45-4.071-4.264-4.324-3.401-.08.59.821 1.817.528 1.75S1 3.731 1 4.106s.325.537 1.801 1.45c4.14 5.9 8.191 6.228 10.4 4.602 2.21-1.625 3.384-5.622 3.508-6.052.123-.43.672-.35 1.2-.95.529-.6-1.369-2.576-2.81-2.076-1.44.5-3.819 4.027-4.948 4.527s-1.897.625-3.506.175Z"></path>
-                </svg>
-                ALL
-            </button>
-            <button type="button" className="flex items-center gap-1 lg:gap-[0.7em] rounded-full px-3 lg:px-[1.2em] py-2 lg:py-[0.5em] font-poppins bg-[#3f3f3f] text-white text-xs lg:text-sm">STAKED</button>
-            <button type="button" className="flex items-center gap-1 lg:gap-[0.7em] rounded-full px-3 lg:px-[1.2em] py-2 lg:py-[0.5em] font-poppins bg-[#3f3f3f] text-white text-xs lg:text-sm">UNSTAKED</button>
-        </div>
-        <div className="flex h-8 lg:h-6 items-center justify-end gap-2 text-gray-500 w-full lg:w-auto lg:ml-auto">
-            <select className="h-full cursor-pointer rounded-lg border-r-4 border-transparent bg-gray-800 pl-2 font-inter text-xs text-white">
-                <option value="default">DEFAULT</option>
-                <option value="id">ID</option>
-                <option value="unclaimedPixl">EARNED</option>
-                <option value="dailyRate">RATE</option>
-            </select>
-            <button type="button" className="flex aspect-square h-full items-stretch justify-stretch active:text-gray-400 disabled:text-gray-600" disabled>
-                <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 16 16" className="h-full w-full" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"></path></svg>
-            </button>
-            <button type="button" className="flex aspect-square h-full items-stretch justify-stretch active:text-gray-400 disabled:text-gray-600">
-                <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 16 16" className="h-full w-full" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M4 2v2H2V2zm1 12v-2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m5 10v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1M9 2v2H7V2zm5 0v2h-2V2zM4 7v2H2V7zm5 0v2H7V7zm5 0h-2v2h2zM4 12v2H2v-2zm5 0v2H7v-2zm5 0v2h-2v-2zM12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm-1 6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z"></path></svg>
-            </button>
-        </div>
+        
     </div>
 );
 
