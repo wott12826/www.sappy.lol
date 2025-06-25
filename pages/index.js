@@ -3,60 +3,9 @@ import Link from 'next/link'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, useGLTF } from '@react-three/drei'
+import CursorTrail from '../components/CursorTrail'
 
 const lerp = (a, b, t) => a + (b - a) * t;
-
-const CursorTrail = () => {
-  const points = useRef(Array(20).fill({ x: 0, y: 0 }));
-  const svgRef = useRef(null);
-
-  useEffect(() => {
-    let animationFrameId;
-
-    const update = () => {
-      const mousePos = points.current[0];
-      for (let i = 1; i < points.current.length; i++) {
-        points.current[i] = {
-          x: lerp(points.current[i].x, points.current[i-1].x, 0.25),
-          y: lerp(points.current[i].y, points.current[i-1].y, 0.25)
-        };
-      }
-      
-      if (svgRef.current) {
-        const path = svgRef.current.querySelector('path');
-        if (path) {
-          let d = `M ${points.current[0].x},${points.current[0].y}`;
-          for (let i = 1; i < points.current.length - 1; i++) {
-            const p1 = points.current[i];
-            const p2 = points.current[i + 1];
-            d += ` Q ${p1.x},${p1.y} ${(p1.x + p2.x) / 2},${(p1.y + p2.y) / 2}`;
-          }
-          path.setAttribute('d', d);
-        }
-      }
-      
-      animationFrameId = requestAnimationFrame(update);
-    };
-
-    const handleMouseMove = (e) => {
-      points.current[0] = { x: e.clientX, y: e.clientY };
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    animationFrameId = requestAnimationFrame(update);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
-
-  return (
-    <svg ref={svgRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{zIndex: 1}}>
-      <path d="" stroke="black" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-};
 
 // Компонент для загрузки и отображения glb-модели
 function Model({ rotation = [0, 0, 0], ...props }) {

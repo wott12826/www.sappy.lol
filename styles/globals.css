@@ -291,4 +291,17 @@ input:focus {
 .text-stroke {
   -webkit-text-stroke: 2px #111;
   text-stroke: 2px #111;
+}
+
+.cursor-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.1;
+  pointer-events: none;
+  transition: background 0.2s;
+  will-change: transform;
+  z-index: 9999;
 } 
