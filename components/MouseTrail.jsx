@@ -86,17 +86,34 @@ export default function MouseTrail() {
       const now = Date.now();
       idleTime = now - lastMouseMove;
 
-      // Хаотичное движение при бездействии
+      // Хаотичное движение при бездействии по всему экрану
       if (idleTime > 1000) { // После 1 секунды бездействия
-        const chaos = Math.sin(now * 0.003) * 50 + Math.cos(now * 0.002) * 30;
-        const chaos2 = Math.sin(now * 0.004) * 40 + Math.cos(now * 0.001) * 25;
+        // Создаем более активное движение по всему экрану
+        const time = now * 0.001;
         
-        mouse.x += chaos * 0.01;
-        mouse.y += chaos2 * 0.01;
+        // Комбинируем несколько синусоид для более сложного движения
+        const chaosX = Math.sin(time * 0.5) * width * 0.4 + 
+                      Math.cos(time * 0.3) * width * 0.2 + 
+                      Math.sin(time * 0.7) * width * 0.1;
+        const chaosY = Math.cos(time * 0.4) * height * 0.4 + 
+                      Math.sin(time * 0.6) * height * 0.2 + 
+                      Math.cos(time * 0.2) * height * 0.1;
         
-        // Ограничиваем движение в пределах экрана
-        mouse.x = Math.max(0, Math.min(width, mouse.x));
-        mouse.y = Math.max(0, Math.min(height, mouse.y));
+        // Плавно перемещаем к целевой точке
+        const targetX = width * 0.5 + chaosX;
+        const targetY = height * 0.5 + chaosY;
+        
+        mouse.x = lerp(mouse.x, targetX, 0.02);
+        mouse.y = lerp(mouse.y, targetY, 0.02);
+        
+        // Добавляем небольшую случайность для более естественного движения
+        mouse.x += (Math.random() - 0.5) * 2;
+        mouse.y += (Math.random() - 0.5) * 2;
+        
+        // Ограничиваем движение в пределах экрана с небольшим отступом
+        const margin = 50;
+        mouse.x = Math.max(margin, Math.min(width - margin, mouse.x));
+        mouse.y = Math.max(margin, Math.min(height - margin, mouse.y));
       }
 
       last.x = lerp(last.x, mouse.x, 0.08); // Более плавное движение
