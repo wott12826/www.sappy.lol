@@ -67,8 +67,8 @@ export default function MonkzRedesign() {
 
       {/* Боковые социальные иконки - только для десктопа */}
       <div className="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col space-y-4">
-        <a href="https://twitter.com/mokz" target="_blank" rel="noopener noreferrer" className="text-white p-2 rounded-full bg-black/50 hover:bg-white hover:text-black transition-colors"><FaXTwitter /></a>
-        <a href="https://t.me/mokz" target="_blank" rel="noopener noreferrer" className="text-white p-2 rounded-full bg-black/50 hover:bg-white hover:text-black transition-colors"><FaTelegram /></a>
+        <a href="https://twitter.com/mokz" target="_blank" rel="noopener noreferrer" className="text-white p-2 rounded-full bg-black/50 hover:bg-white hover:text-black transition-colors"></a>
+        <a href="https://t.me/mokz" target="_blank" rel="noopener noreferrer" className="text-white p-2 rounded-full bg-black/50 hover:bg-white hover:text-black transition-colors"></a>
         <a href="https://dexscreener.com/solana/0x1234567890abcdef" target="_blank" rel="noopener noreferrer" className="text-white p-2 rounded-full bg-black/50 hover:bg-white hover:text-black transition-colors">
           <img src="/images/seals/dexscreener_logo_white.png" alt="Dexscreener" className="w-5 h-5" />
         </a>
@@ -201,7 +201,6 @@ export default function MonkzRedesign() {
               <div className="info-card relative bg-[#0d1d3c] text-white max-w-md p-6 lg:p-8 order-3" style={{clipPath: 'polygon(0 0, 100% 0, 95% 100%, 5% 100%)'}}>
                 <p className="mb-4 text-sm lg:text-base">We're bringing <span className="highlight bg-[#00d0ff] text-black px-1 rounded">fresh ideas</span> and daring features into long-loved genres, creating thousand hour experiences that are too fun to put down.</p>
                 <p className="mb-4 text-sm lg:text-base">Our mission is to bring spirit back into gaming and power back into the hands of players by breaking free from the traditional player ⇔ publisher ⇔ developer relationship. In the process, we'll be <span className="highlight bg-[#00d0ff] text-black px-1 rounded">creating beloved and memorable</span> IPs that last a lifetime.</p>
-                <a href="#" className="learn-more bg-white text-black px-6 py-3 rounded-full font-semibold inline-block mt-4 transition hover:bg-[#00cfff] text-sm lg:text-base">Learn More →</a>
               </div>
             </div>
           </section>
@@ -209,9 +208,7 @@ export default function MonkzRedesign() {
           {/* INNOVATIONS */}
           <section id="innovations" className="relative bg-gradient-to-br from-[#162447] via-[#1a2b4b] to-[#0c1b2e] py-16 lg:py-32 px-4 sm:px-8 lg:px-16 overflow-hidden">
             {/* Фоновый номер */}
-            <div className="absolute left-1/2 top-0 -translate-x-1/2 select-none pointer-events-none z-0">
-              <span className="text-white/10 font-black text-[16vw] leading-none">03</span>
-            </div>
+
             {/* Заголовок */}
             <h2 className="relative z-10 text-center text-4xl sm:text-5xl lg:text-6xl xl:text-8xl font-extrabold uppercase tracking-tight mb-12 lg:mb-24 text-white drop-shadow-[0_0_32px_#fff,0_0_8px_#00c2ff]">
               INNOVATIONS?
