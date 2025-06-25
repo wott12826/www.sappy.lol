@@ -273,5 +273,5 @@ input:focus {
 }
 
 .blur-lg {
-  --tw-blur: blur(8px);
+  --tw-blur: blur(5px);
 } 
