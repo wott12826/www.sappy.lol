@@ -33,8 +33,7 @@ const innovationsItems = [
         title: 'WE WANTED TO TRAILBLAZE ONCHAIN',
         list: [
             'Rarity-Based Staking',
-            'Onchain ERC20 Marketplace',
-            'First-ever Bitcoin ordinals ARG experience'
+            'Onchain SOL Marketplace'
         ],
         image: '/images/seals/3.png'
     }
@@ -251,8 +250,7 @@ export default function MonkzRedesign() {
                     <h3 className="text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-4">WE WANTED TO TRAILBLAZE ONCHAIN</h3>
                     <ul className="list-disc list-inside text-cyan-100 space-y-1 mb-2 text-sm lg:text-base">
                       <li>Rarity-Based Staking</li>
-                      <li>Onchain ERC20 Marketplace</li>
-                      <li>First-ever Bitcoin ordinals ARG experience</li>
+                      <li>Onchain SOL Marketplace</li>
                     </ul>
                   </div>
                 </div>
