@@ -68,9 +68,9 @@ export default function MonkzRedesign() {
       {/* Боковые социальные иконки - только для десктопа */}
       <div className="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col space-y-4">
         <a href="https://twitter.com/mokz" target="_blank" rel="noopener noreferrer" className="text-white p-2 rounded-full bg-black/50 hover:bg-white hover:text-black transition-colors">
-        <img src="/images/seals/dexscreener_logo_white.png" alt="Twitter" className="w-5 h-5" /></a>
+        <img src="/images/seals/x_logo.png" alt="Twitter" className="w-5 h-5" /></a>
         <a href="https://t.me/mokz" target="_blank" rel="noopener noreferrer" className="text-white p-2 rounded-full bg-black/50 hover:bg-white hover:text-black transition-colors">
-        <img src="/images/seals/dexscreener_logo_white.png" alt="Telegram" className="w-5 h-5" /></a>
+        <img src="/images/seals/telegram_icon.png" alt="Telegram" className="w-5 h-5" /></a>
         <a href="https://dexscreener.com/solana/0x1234567890abcdef" target="_blank" rel="noopener noreferrer" className="text-white p-2 rounded-full bg-black/50 hover:bg-white hover:text-black transition-colors">
           <img src="/images/seals/dexscreener_logo_white.png" alt="Dexscreener" className="w-5 h-5" />
         </a>
