@@ -146,9 +146,9 @@ export default function MonkzRedesign() {
             <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-[#031534] from-35% via-[#08277bcc] via-70% to-[#0e29fb00] sm:from-25% sm:via-55%"></div>
             
             <div className="absolute top-[13vh] left-1/2 -translate-x-1/2 z-10 flex flex-col items-center justify-center aspect-[21/9] h-[50vh] max-w-[90vw] @container">
-              <h1 className="text-5xl md:text-7xl font-black uppercase text-center mb-4 text-white">COOLEST THING ON THE INTERNET</h1>
-              <p className="text-2xl md:text-3xl text-center mb-1 font-semibold text-white">Where chaos meets character.</p>
-              <p className="text-2xl md:text-3xl text-center font-semibold text-white">Monkz are here.</p>
+              <h1 className="text-5xl md:text-7xl font-black uppercase text-center mb-4 text-black">COOLEST THING ON THE INTERNET</h1>
+              <p className="text-2xl md:text-3xl text-center mb-1 font-semibold text-black">Where chaos meets character.</p>
+              <p className="text-2xl md:text-3xl text-center font-semibold text-black">Monkz are here.</p>
             </div>
           </section>
 
