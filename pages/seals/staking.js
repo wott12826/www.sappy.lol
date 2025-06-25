@@ -62,52 +62,7 @@ const StakingHeader = () => {
 
 const StatsBar = () => (
     <div className="mx-auto w-[95%] lg:w-[90%] max-w-md rounded-full bg-white font-mono text-black @container/stats">
-        <div className="flex w-full items-center justify-between px-[6cqw] lg:px-[8cqw] py-[2cqw] lg:py-[3cqw]">
-            <div className="flex flex-col items-center gap-[0.5cqw] lg:gap-[1cqw]">
-                <p className="whitespace-nowrap text-[2cqw]/[2cqw] lg:text-[2.5cqw]/[2.5cqw] uppercase text-gray-500">total bits</p>
-                <span className="flex items-center gap-[0.5cqw] lg:gap-[1cqw]">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 51 59" className="h-[0.6em] lg:h-[0.8em] flex-none">
-                        <path fill="#E6E6E6" d="m25.398 0 25.358 14.64-25.358 14.641L.038 14.641z"></path>
-                        <path fill="silver" d="m.04 14.64 25.358 14.641v29.281L.04 43.922z"></path>
-                        <path fill="#9A9A9A" d="m25.398 29.281 25.358-14.64v29.28L25.398 58.563z"></path>
-                        <path fill="#4D4D4D" d="m25.502 13.644 13.494 7.79L25.5 29.227l-13.494-7.791z"></path>
-                        <path fill="#262626" d="m12.006 21.435 13.495 7.791v15.582l-13.495-7.791z"></path>
-                        <path fill="#000" d="m25.502 29.226 13.494-7.791v15.582L25.5 44.808z"></path>
-                    </svg>
-                    <div className="text-[3cqw]/[3cqw] lg:text-[4cqw]/[4cqw]">36,626.7</div>
-                </span>
-            </div>
-            <div className="h-[4cqw] lg:h-[6cqw] w-px bg-black"></div>
-            <div className="flex flex-col items-center gap-[0.5cqw] lg:gap-[1cqw]">
-                <p className="whitespace-nowrap text-[1.5cqw]/[1.5cqw] lg:text-[2.5cqw]/[2.5cqw] uppercase text-gray-500">LOYALTY MULTIPLIER</p>
-                <span className="flex items-center gap-[0.5cqw] lg:gap-[1cqw]">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 51 59" className="h-[0.6em] lg:h-[0.8em] flex-none">
-                        <path fill="#E6E6E6" d="m25.398 0 25.358 14.64-25.358 14.641L.038 14.641z"></path>
-                        <path fill="silver" d="m.04 14.64 25.358 14.641v29.281L.04 43.922z"></path>
-                        <path fill="#9A9A9A" d="m25.398 29.281 25.358-14.64v29.28L25.398 58.563z"></path>
-                        <path fill="#4D4D4D" d="m25.502 13.644 13.494 7.79L25.5 29.227l-13.494-7.791z"></path>
-                        <path fill="#262626" d="m12.006 21.435 13.495 7.791v15.582l-13.495-7.791z"></path>
-                        <path fill="#000" d="m25.502 29.226 13.494-7.791v15.582L25.5 44.808z"></path>
-                    </svg>
-                    <div className="text-[3cqw]/[3cqw] lg:text-[4cqw]/[4cqw]">TBA</div>
-                </span>
-            </div>
-            <div className="h-[4cqw] lg:h-[6cqw] w-px bg-black"></div>
-            <div className="flex flex-col items-center gap-[0.5cqw] lg:gap-[1cqw]">
-                <p className="whitespace-nowrap text-[1.5cqw]/[1.5cqw] lg:text-[2.5cqw]/[2.5cqw] uppercase text-gray-500">current rate</p>
-                <span className="flex items-center gap-[0.5cqw] lg:gap-[1cqw]">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 51 59" className="h-[0.6em] lg:h-[0.8em] flex-none">
-                        <path fill="#E6E6E6" d="m25.398 0 25.358 14.64-25.358 14.641L.038 14.641z"></path>
-                        <path fill="silver" d="m.04 14.64 25.358 14.641v29.281L.04 43.922z"></path>
-                        <path fill="#9A9A9A" d="m25.398 29.281 25.358-14.64v29.28L25.398 58.563z"></path>
-                        <path fill="#4D4D4D" d="m25.502 13.644 13.494 7.79L25.5 29.227l-13.494-7.791z"></path>
-                        <path fill="#262626" d="m12.006 21.435 13.495 7.791v15.582l-13.495-7.791z"></path>
-                        <path fill="#000" d="m25.502 29.226 13.494-7.791v15.582L25.5 44.808z"></path>
-                    </svg>
-                    <div className="text-[3cqw]/[3cqw] lg:text-[4cqw]/[4cqw]">TBA</div>
-                </span>
-            </div>
-        </div>
+       
     </div>
 );
 
