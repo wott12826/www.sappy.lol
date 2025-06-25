@@ -89,7 +89,7 @@ export default function MonkzRedesign() {
                   <a href="#flywheel" className="w-min relative mt-[0.5vw] hover:text-gray-300">FLYWHEEL</a>
                 </nav>
 
-                <a className="flex items-center justify-center rounded-[18px] bg-white px-4 py-2 shadow-lg hover:bg-gray-300 text-[1.2vw] font-bold text-[#3566DF] whitespace-nowrap" 
+                <a className="flex items-center justify-center rounded-[12px] bg-white px-2 py-1 shadow-lg hover:bg-gray-300 text-[1vw] font-bold text-[#3566DF] whitespace-nowrap" 
                    href="/seals/staking">
                   Buy Monkz
                 </a>
