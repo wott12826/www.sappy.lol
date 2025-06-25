@@ -213,9 +213,9 @@ export default function MonkzRedesign() {
                     <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full z-20" fill="none"><polygon points="25,7 75,7 100,50 75,93 25,93 0,50" stroke="#111" strokeWidth="4" fill="none"/></svg>
                   </div>
                   <div className="bg-[#222]/80 rounded-2xl p-6 lg:p-10 shadow-2xl max-w-xl relative text-center lg:text-left">
-                    <h3 className="text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-4">WE WANTED TO INNOVATE MEMES.</h3>
+                    <h3 className="text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-4">WE DON'T CHASE HYPE.</h3>
                     <div className="flex flex-col lg:flex-row items-center gap-2 mb-2">
-                      <span className="text-gray-300">So we made</span>
+                      <span className="text-gray-300">We build conviction. We are MONKZ.</span>
                     </div>
                   </div>
                 </div>
