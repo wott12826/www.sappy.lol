@@ -150,9 +150,9 @@ export default function MonkzRedesign() {
 
           {/* Градиентный текстовый блок */}
           <section className="w-full flex flex-col items-center justify-center py-12 bg-white">
-            <h1 className="gradient-text-horizontal drop-shadow-dark-glow text-stroke text-5xl md:text-7xl font-extrabold uppercase text-center mb-4">
+            <h1 className="gradient-text-horizontal text-5xl md:text-7xl font-extrabold uppercase text-center mb-4">
               COOLEST THING ON THE INTERNET<br/>
-              <span className="block text-2xl md:text-3xl font-semibold normal-case mt-2 gradient-text-horizontal drop-shadow-dark-glow text-stroke">Where chaos meets character.<br/>Monkz are here.</span>
+              <span className="block text-2xl md:text-3xl font-semibold normal-case mt-2 gradient-text-horizontal">Where chaos meets character.<br/>Monkz are here.</span>
             </h1>
           </section>
 
