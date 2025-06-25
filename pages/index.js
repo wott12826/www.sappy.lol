@@ -191,6 +191,13 @@ export default function Home() {
         <title>Sappy</title>
         <meta name="description" content="Shaping the future of the internet." />
         <link rel="icon" href="/images/seals/Monkz_logo.png" />
+        <meta property="og:image" content="/images/seals/Monkz_logo.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="824" />
+        <meta property="og:image:height" content="609" />
+        <meta property="og:image:alt" content="Monkz logo" />
+        <meta name="twitter:image" content="/images/seals/Monkz_logo.png" />
+        <meta name="twitter:image:alt" content="Monkz logo" />
       </Head>
       
       <div className="min-h-screen bg-[#f5f5f5] text-black overflow-hidden">

@@ -176,7 +176,7 @@ const StakingWidget = () => {
     };
 
     return (
-        <div className="mx-auto mt-4 lg:mt-8 w-full max-w-md rounded-2xl bg-[#181818] p-4 lg:p-8 shadow-2xl flex flex-col items-center gap-3 lg:gap-4 border border-[#232323] relative">
+        <div className="mx-auto mt-4 lg:mt-8 w-full max-w-md rounded-2xl bg-white p-4 lg:p-8 shadow-2xl flex flex-col items-center gap-3 lg:gap-4 border border-[#232323] relative">
             {isBlurred && (
                 <div className="absolute inset-0 bg-black/80 backdrop-blur-sm rounded-2xl z-10 flex items-center justify-center">
                     <div className="text-center text-white p-6">
@@ -187,9 +187,9 @@ const StakingWidget = () => {
                     </div>
                 </div>
             )}
-            <h3 className="text-xl lg:text-2xl font-bold mb-1 lg:mb-2">Staking Calculator</h3>
+            <h3 className="text-xl lg:text-2xl font-bold mb-1 lg:mb-2 text-black">Staking Calculator</h3>
             <div className="w-full flex flex-col gap-2 lg:gap-3">
-                <label className="text-xs lg:text-sm text-gray-300">Amount</label>
+                <label className="text-xs lg:text-sm text-gray-700">Amount</label>
                 <input
                     type="number"
                     min="0"
@@ -197,13 +197,13 @@ const StakingWidget = () => {
                     value={amount}
                     onChange={e => setAmount(e.target.value)}
                     placeholder="Enter amount"
-                    className="w-full rounded-lg bg-[#222] px-3 lg:px-4 py-2 lg:py-3 text-base lg:text-lg text-white border border-[#333] focus:outline-none focus:border-blue-400 transition"
+                    className="w-full rounded-lg bg-gray-100 px-3 lg:px-4 py-2 lg:py-3 text-base lg:text-lg text-black border border-gray-300 focus:outline-none focus:border-black transition"
                 />
-                <label className="text-xs lg:text-sm text-gray-300 mt-1 lg:mt-2">Staking Period</label>
+                <label className="text-xs lg:text-sm text-gray-700 mt-1 lg:mt-2">Staking Period</label>
                 <select
                     value={period}
                     onChange={e => setPeriod(Number(e.target.value))}
-                    className="w-full rounded-lg bg-[#222] px-3 lg:px-4 py-2 text-white border border-[#333] focus:outline-none focus:border-blue-400 transition text-sm lg:text-base"
+                    className="w-full rounded-lg bg-gray-100 px-3 lg:px-4 py-2 text-black border border-gray-300 focus:outline-none focus:border-black transition text-sm lg:text-base"
                 >
                     <option value={7}>7 days</option>
                     <option value={30}>30 days</option>
@@ -211,17 +211,17 @@ const StakingWidget = () => {
                     <option value={180}>180 days</option>
                     <option value={365}>365 days</option>
                 </select>
-                <label className="text-xs lg:text-sm text-gray-300 mt-1 lg:mt-2">APY (Annual % Yield)</label>
+                <label className="text-xs lg:text-sm text-gray-700 mt-1 lg:mt-2">APY (Annual % Yield)</label>
                 <input
                     type="number"
                     min="0"
                     step="0.1"
                     value={apy}
                     onChange={e => setApy(Number(e.target.value))}
-                    className="w-full rounded-lg bg-[#222] px-3 lg:px-4 py-2 text-white border border-[#333] focus:outline-none focus:border-blue-400 transition text-sm lg:text-base"
+                    className="w-full rounded-lg bg-gray-100 px-3 lg:px-4 py-2 text-black border border-gray-300 focus:outline-none focus:border-black transition text-sm lg:text-base"
                 />
             </div>
-            <div className="w-full mt-3 lg:mt-4 bg-[#222] rounded-lg p-3 lg:p-4 text-white text-xs lg:text-sm flex flex-col gap-1">
+            <div className="w-full mt-3 lg:mt-4 bg-gray-100 rounded-lg p-3 lg:p-4 text-black text-xs lg:text-sm flex flex-col gap-1">
                 <div className="flex justify-between"><span>Yearly income:</span> <span>{yearIncome.toFixed(2)}</span></div>
                 <div className="flex justify-between"><span>Monthly income:</span> <span>{monthIncome.toFixed(2)}</span></div>
                 <div className="flex justify-between"><span>Daily income:</span> <span>{dayIncome.toFixed(4)}</span></div>
@@ -229,11 +229,11 @@ const StakingWidget = () => {
             </div>
             <button
                 onClick={handleStake}
-                className="w-full rounded-lg bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 lg:py-3 mt-2 transition text-sm lg:text-base"
+                className="w-full rounded-lg bg-black hover:bg-gray-900 text-white font-semibold py-2 lg:py-3 mt-2 transition text-sm lg:text-base"
             >
                 Stake
             </button>
-            {status && !isBlurred && <div className="mt-2 text-xs lg:text-sm text-blue-300">{status}</div>}
+            {status && !isBlurred && <div className="mt-2 text-xs lg:text-sm text-blue-600">{status}</div>}
         </div>
     );
 };
