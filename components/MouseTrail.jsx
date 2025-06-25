@@ -47,19 +47,19 @@ export default function MouseTrail() {
       
       ctx.fillStyle = gradient;
       
-      // Рисуем эллиптический мазок
+      // Рисуем эллиптический мазок - делаем шире и длиннее
       ctx.beginPath();
-      ctx.ellipse(0, 0, size * 1.5, size * 0.4, 0, 0, Math.PI * 2);
+      ctx.ellipse(0, 0, size * 2.2, size * 0.6, 0, 0, Math.PI * 2);
       ctx.fill();
       
       // Добавляем текстуру кисти (несколько маленьких мазков)
-      for (let i = 0; i < 3; i++) {
-        const offsetX = (Math.random() - 0.5) * size * 0.8;
-        const offsetY = (Math.random() - 0.5) * size * 0.3;
-        const smallSize = size * (0.3 + Math.random() * 0.4);
+      for (let i = 0; i < 4; i++) {
+        const offsetX = (Math.random() - 0.5) * size * 1.2;
+        const offsetY = (Math.random() - 0.5) * size * 0.4;
+        const smallSize = size * (0.4 + Math.random() * 0.6);
         
         ctx.beginPath();
-        ctx.ellipse(offsetX, offsetY, smallSize, smallSize * 0.3, 0, 0, Math.PI * 2);
+        ctx.ellipse(offsetX, offsetY, smallSize, smallSize * 0.4, 0, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(0, 0, 0, ${opacity * 0.4})`;
         ctx.fill();
       }
@@ -82,7 +82,7 @@ export default function MouseTrail() {
         x: last.x, 
         y: last.y, 
         angle: angle,
-        size: 15 + Math.random() * 10 // Случайный размер
+        size: 25 + Math.random() * 15 // Увеличиваем размер кисти
       });
 
       if (trail.length > MAX_TRAIL) trail.shift();
@@ -93,7 +93,7 @@ export default function MouseTrail() {
       for (let i = 0; i < trail.length; i++) {
         const p = trail[i];
         const opacity = (i / trail.length) * 0.7; // Максимальная прозрачность 70%
-        const size = p.size * (1 - i / trail.length * 0.5); // Размер уменьшается медленнее
+        const size = p.size * (1 - i / trail.length * 0.4); // Размер уменьшается еще медленнее
         
         if (opacity > 0.01) { // Рисуем только видимые мазки
           drawBrushStroke(p.x, p.y, size, opacity, p.angle);
