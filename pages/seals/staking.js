@@ -166,7 +166,7 @@ const StakingWidget = () => {
                     <option value={180}>180 days</option>
                     <option value={365}>365 days</option>
                 </select>
-                <label className="text-xs lg:text-sm text-gray-700 mt-1 lg:mt-2">APY (Annual % Yield)</label>
+                <label className="text-xs lg:text-sm text-gray-700 mt-1 lg:mt-2">APY</label>
                 <input
                     type="number"
                     min="0"
