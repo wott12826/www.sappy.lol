@@ -13,7 +13,7 @@ const StakingHeader = () => {
             <div className="hidden grow flex-row items-center justify-between font-semibold lg:flex">
                 <div className="flex flex-row items-center gap-[5vw]">
                     <Link href="/seals" legacyBehavior>
-                        <a><img alt="Logo" loading="lazy" width="824" height="609" decoding="async" className="aspect-[824/609] w-min object-contain h-[8vh]" style={{color: "transparent"}} src="/images/seals/mokz_logo.png" /></a>
+                        <a><img alt="Logo" loading="lazy" width="824" height="609" decoding="async" className="aspect-[824/609] w-min object-contain h-[8vh] filter invert brightness-200" style={{color: "transparent"}} src="/images/seals/mokz_logo.png" /></a>
                     </Link>
                     <Link href="/" legacyBehavior>
                         <a className="text-white hover:text-gray-300 transition-colors font-semibold uppercase lg:text-[1.5vw]/[1.5vw] FHD:text-[1vw]/[1vw]">HOME</a>
@@ -31,7 +31,7 @@ const StakingHeader = () => {
             <div className="flex lg:hidden w-full items-center justify-between">
                 <div className="flex items-center gap-4">
                     <Link href="/seals" legacyBehavior>
-                        <a><img alt="Logo" loading="lazy" width="824" height="609" decoding="async" className="aspect-[824/609] w-min object-contain h-[6vh]" style={{color: "transparent"}} src="/images/seals/mokz_logo.png" /></a>
+                        <a><img alt="Logo" loading="lazy" width="824" height="609" decoding="async" className="aspect-[824/609] w-min object-contain h-[6vh] filter invert brightness-200" style={{color: "transparent"}} src="/images/seals/mokz_logo.png" /></a>
                     </Link>
                     <Link href="/" legacyBehavior>
                         <a className="text-white hover:text-gray-300 transition-colors font-semibold text-lg">HOME</a>
