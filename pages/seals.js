@@ -230,7 +230,6 @@ export default function MonkzRedesign() {
                     <h3 className="text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-4">WE WANTED TO INNOVATE MEMES.</h3>
                     <div className="flex flex-col lg:flex-row items-center gap-2 mb-2">
                       <span className="text-gray-300">So we made</span>
-                      <a href="#" className="ml-0 lg:ml-2 px-4 py-2 rounded-full bg-[#00C2FF] text-black font-bold text-sm shadow hover:bg-cyan-300 transition">✎ Meme Machine</a>
                     </div>
                   </div>
                 </div>
@@ -250,7 +249,6 @@ export default function MonkzRedesign() {
                   </div>
                   <div className="bg-[#1a2b4b]/80 rounded-2xl p-6 lg:p-10 shadow-2xl max-w-xl relative text-center lg:text-left">
                     <h3 className="text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-4">WE WANTED TO CREATE THE NEXT GENERATION OF ENTERTAINMENT</h3>
-                    <a href="#" className="px-4 py-2 rounded-full bg-[#00C2FF] text-black font-bold text-sm shadow hover:bg-cyan-300 transition">✎ PIXL PETS</a>
                   </div>
                 </div>
               </div>
