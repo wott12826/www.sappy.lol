@@ -61,16 +61,8 @@ export default function MouseTrail() {
         ctx.lineTo(trail[trail.length - 1].x, trail[trail.length - 1].y);
       }
       
-      // Создаем градиент для полосы
-      const gradient = ctx.createLinearGradient(
-        trail[0].x, trail[0].y, 
-        trail[trail.length - 1].x, trail[trail.length - 1].y
-      );
-      gradient.addColorStop(0, 'rgba(0, 0, 0, 0.8)');
-      gradient.addColorStop(0.5, 'rgba(0, 0, 0, 0.6)');
-      gradient.addColorStop(1, 'rgba(0, 0, 0, 0.1)');
-      
-      ctx.strokeStyle = gradient;
+      // Убираем градиент, используем сплошной цвет
+      ctx.strokeStyle = 'rgba(0, 0, 0, 0.6)';
       ctx.lineWidth = 8;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
@@ -168,7 +160,7 @@ export default function MouseTrail() {
     <canvas
       id="cursor-trail"
       ref={canvasRef}
-      className="pointer-events-none fixed top-0 left-0 z-[9999]"
+      className="pointer-events-none fixed top-0 left-0 z-[1]"
     />
   );
 } 
