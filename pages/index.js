@@ -137,7 +137,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Sappy</title>
+        <title>Monkz</title>
         <meta name="description" content="Shaping the future of the internet." />
         <link rel="icon" href="/images/seals/Monkz_logo.png" />
         <meta property="og:image" content="/images/seals/Monkz_logo.png" />
