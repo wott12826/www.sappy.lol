@@ -20,7 +20,7 @@ export default function MouseTrail() {
     });
 
     let trail = [];
-    const MAX_TRAIL = 80; // Очень длинный след
+    const MAX_TRAIL = 100; // Увеличиваем для более длинной полосы
     let mouse = { x: width / 2, y: height / 2 };
     let lastMouseMove = Date.now();
     let idleTime = 0;
@@ -36,44 +36,66 @@ export default function MouseTrail() {
       return (1 - n) * a + n * b;
     }
 
-    // Функция для создания кистевого мазка с заостренным концом
-    function drawBrushStroke(x, y, size, opacity, angle, isEnd = false) {
+    // Функция для рисования непрерывной полосы
+    function drawContinuousStripe() {
+      if (trail.length < 2) return;
+
       ctx.save();
-      ctx.translate(x, y);
-      ctx.rotate(angle);
       
-      // Основной мазок кисти
-      const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, size);
-      gradient.addColorStop(0, `rgba(0, 0, 0, ${opacity * 0.8})`);
-      gradient.addColorStop(0.3, `rgba(0, 0, 0, ${opacity * 0.6})`);
-      gradient.addColorStop(0.7, `rgba(0, 0, 0, ${opacity * 0.3})`);
-      gradient.addColorStop(1, `rgba(0, 0, 0, 0)`);
-      
-      ctx.fillStyle = gradient;
-      
-      // Рисуем эллиптический мазок - делаем заостренным к концу
+      // Рисуем основную полосу
       ctx.beginPath();
-      if (isEnd) {
-        // Заостренный конец следа
-        ctx.ellipse(0, 0, size * 0.8, size * 0.2, 0, 0, Math.PI * 2);
-      } else {
-        // Обычный мазок
-        ctx.ellipse(0, 0, size * 2.2, size * 0.6, 0, 0, Math.PI * 2);
-      }
-      ctx.fill();
+      ctx.moveTo(trail[0].x, trail[0].y);
       
-      // Добавляем текстуру кисти (несколько маленьких мазков)
-      const textureCount = isEnd ? 2 : 4;
-      for (let i = 0; i < textureCount; i++) {
-        const offsetX = (Math.random() - 0.5) * size * (isEnd ? 0.6 : 1.2);
-        const offsetY = (Math.random() - 0.5) * size * (isEnd ? 0.2 : 0.4);
-        const smallSize = size * (isEnd ? 0.2 + Math.random() * 0.3 : 0.4 + Math.random() * 0.6);
+      // Используем кривую Безье для плавности
+      for (let i = 1; i < trail.length - 1; i++) {
+        const current = trail[i];
+        const next = trail[i + 1];
+        const midX = (current.x + next.x) / 2;
+        const midY = (current.y + next.y) / 2;
         
-        ctx.beginPath();
-        ctx.ellipse(offsetX, offsetY, smallSize, smallSize * 0.4, 0, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 0, 0, ${opacity * 0.4})`;
-        ctx.fill();
+        ctx.quadraticCurveTo(current.x, current.y, midX, midY);
       }
+      
+      // Завершаем путь
+      if (trail.length > 1) {
+        ctx.lineTo(trail[trail.length - 1].x, trail[trail.length - 1].y);
+      }
+      
+      // Создаем градиент для полосы
+      const gradient = ctx.createLinearGradient(
+        trail[0].x, trail[0].y, 
+        trail[trail.length - 1].x, trail[trail.length - 1].y
+      );
+      gradient.addColorStop(0, 'rgba(0, 0, 0, 0.8)');
+      gradient.addColorStop(0.5, 'rgba(0, 0, 0, 0.6)');
+      gradient.addColorStop(1, 'rgba(0, 0, 0, 0.1)');
+      
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = 8;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.stroke();
+      
+      // Добавляем внутреннюю полосу для объема
+      ctx.beginPath();
+      ctx.moveTo(trail[0].x, trail[0].y);
+      
+      for (let i = 1; i < trail.length - 1; i++) {
+        const current = trail[i];
+        const next = trail[i + 1];
+        const midX = (current.x + next.x) / 2;
+        const midY = (current.y + next.y) / 2;
+        
+        ctx.quadraticCurveTo(current.x, current.y, midX, midY);
+      }
+      
+      if (trail.length > 1) {
+        ctx.lineTo(trail[trail.length - 1].x, trail[trail.length - 1].y);
+      }
+      
+      ctx.strokeStyle = 'rgba(0, 0, 0, 0.3)';
+      ctx.lineWidth = 4;
+      ctx.stroke();
       
       ctx.restore();
     }
@@ -116,17 +138,12 @@ export default function MouseTrail() {
         mouse.y = Math.max(margin, Math.min(height - margin, mouse.y));
       }
 
-      last.x = lerp(last.x, mouse.x, 0.08); // Более плавное движение
-      last.y = lerp(last.y, mouse.y, 0.08);
-
-      // Добавляем случайный угол для каждого мазка
-      const angle = Math.atan2(mouse.y - last.y, mouse.x - last.x) + (Math.random() - 0.5) * 0.8;
+      last.x = lerp(last.x, mouse.x, 0.1); // Более плавное движение
+      last.y = lerp(last.y, mouse.y, 0.1);
       
       trail.push({ 
         x: last.x, 
-        y: last.y, 
-        angle: angle,
-        size: 25 + Math.random() * 15,
+        y: last.y,
         time: now
       });
 
@@ -134,23 +151,8 @@ export default function MouseTrail() {
 
       ctx.clearRect(0, 0, width, height);
 
-      // Рисуем след кисти с заостренным концом
-      for (let i = 0; i < trail.length; i++) {
-        const p = trail[i];
-        const progress = i / trail.length;
-        const opacity = progress * 0.8; // Максимальная прозрачность 80%
-        
-        // Размер уменьшается к концу следа
-        const sizeMultiplier = 1 - progress * 0.7; // Сохраняем 30% размера в конце
-        const size = p.size * sizeMultiplier;
-        
-        // Определяем, является ли это концом следа
-        const isEnd = i === trail.length - 1;
-        
-        if (opacity > 0.01 && size > 1) { // Рисуем только видимые мазки
-          drawBrushStroke(p.x, p.y, size, opacity, p.angle, isEnd);
-        }
-      }
+      // Рисуем непрерывную полосу
+      drawContinuousStripe();
     }
 
     document.addEventListener("mousemove", handleMouseMove);
