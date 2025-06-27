@@ -136,7 +136,7 @@ const StakingWidget = () => {
                 <div className="absolute inset-0 bg-black/80 backdrop-blur-sm rounded-2xl z-10 flex items-center justify-center">
                     <div className="text-center text-white p-6">
                         <div className="text-2xl lg:text-3xl font-bold mb-2">Coming Soon</div>
-                        <div className="text-lg lg:text-xl text-blue-400 mb-2">25.06.2025 UTC</div>
+                        <div className="text-lg lg:text-xl text-blue-400 mb-2">28.06.2025 UTC</div>
                         <div className="text-sm lg:text-base text-gray-300">Time remaining:</div>
                         <div className="text-lg lg:text-xl font-mono text-yellow-400">{timeLeft}</div>
                     </div>
