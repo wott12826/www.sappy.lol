@@ -119,13 +119,13 @@ export default function MonkzRedesign() {
                       <a href="#flywheel" className="text-lg font-semibold hover:text-gray-300 transition-colors">FLYWHEEL</a>
                     </nav>
                     <div className="flex space-x-4">
-                    <a href="https://twitter.com/mokz" target="_blank" rel="noopener noreferrer" className="text-white p-2 rounded-full bg-white/20 hover:bg-white hover:text-black transition-colors">
+                    <a href="https://x.com/MonkzArtStudio" target="_blank" rel="noopener noreferrer" className="text-white p-2 rounded-full bg-white/20 hover:bg-white hover:text-black transition-colors">
                         <img src="/images/seals/x_logo.png" alt="Twitter" className="w-5 h-5" />
                       </a>
-                      <a href="https://t.me/mokz" target="_blank" rel="noopener noreferrer" className="text-white p-2 rounded-full bg-white/20 hover:bg-white hover:text-black transition-colors">
+                      <a href="https://t.me/MonkzArtStudio" target="_blank" rel="noopener noreferrer" className="text-white p-2 rounded-full bg-white/20 hover:bg-white hover:text-black transition-colors">
                         <img src="/images/seals/telegram_icon.png" alt="Telegram" className="w-5 h-5" />
                       </a>
-                      <a href="https://dexscreener.com/solana/0x1234567890abcdef" target="_blank" rel="noopener noreferrer" className="text-white p-2 rounded-full bg-white/20 hover:bg-white hover:text-black transition-colors">
+                      <a href="https://dexscreener.com/solana/FfnrQUfo8hH4HG53pi2jTs68eSGMEYtq2TxLP25Lpump" target="_blank" rel="noopener noreferrer" className="text-white p-2 rounded-full bg-white/20 hover:bg-white hover:text-black transition-colors">
                         <img src="/images/seals/dexscreener_logo_white.png" alt="Dexscreener" className="w-5 h-5" />
                       </a>
                     </div>
