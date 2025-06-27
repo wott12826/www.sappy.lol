@@ -81,7 +81,7 @@ const StakingWidget = () => {
     const [timeLeft, setTimeLeft] = useState('');
 
     // Целевая дата: 28.06.2025 UTC
-    const targetDate = new Date('2025-06-25T00:00:00.000Z');
+    const targetDate = new Date('2025-06-28T00:00:00.000Z');
 
     // Функция для расчета оставшегося времени
     const calculateTimeLeft = () => {
@@ -96,7 +96,7 @@ const StakingWidget = () => {
 
             return `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
-        return '24d 5h 30m 15s';
+        return '0d 0h 00m 00s';
     };
 
     // Обновление времени каждую секунду
