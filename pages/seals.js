@@ -89,7 +89,7 @@ export default function MonkzRedesign() {
                 </nav>
 
                 <a className="flex items-center justify-center rounded-[12px] bg-white px-2 py-1 shadow-lg hover:bg-gray-300 text-[1vw] font-bold text-[#111] whitespace-nowrap" 
-                   href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=C46wBrKJ5idsy8evj3mNp37BFjKkKWtXAsx6GSDmpump">
+                   href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=FfnrQUfo8hH4HG53pi2jTs68eSGMEYtq2TxLP25Lpump">
                   Buy Monkz
                 </a>
               </div>
