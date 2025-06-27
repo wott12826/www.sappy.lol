@@ -188,7 +188,7 @@ export default function MonkzRedesign() {
               {/* Info-card polygon */}
               <div className="info-card relative bg-[#111]/80 text-white max-w-md p-6 lg:p-8 order-3" style={{clipPath: 'polygon(0 0, 100% 0, 95% 100%, 5% 100%)'}}>
                 <p className="mb-4 text-sm lg:text-base">We spent years perfecting the craft. Now we <span className="highlight bg-[#111] text-white px-1 rounded">claim the vision</span>.</p>
-                <p className="mb-4 text-sm lg:text-base">MONKZ is our leap forward — a self-powered studio creating games with soul, freedom, and staying power.<br/>We’re not entering the industry. <span className="highlight bg-[#111] text-white px-1 rounded">We’re remaking it</span></p>
+                <p className="mb-4 text-sm lg:text-base">MONKZ is our leap forward — a self-powered studio shaping the visual identity of games with soul, freedom, and staying power.<br/>We’re not just part of the industry. <span className="highlight bg-[#111] text-white px-1 rounded">We’re redefining how it looks.</span></p>
               </div>
             </div>
           </section>
