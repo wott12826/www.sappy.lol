@@ -105,7 +105,7 @@ export default function MonkzRedesign() {
                 </button>
                 <a href="/seals" className="absolute left-1/2 -translate-x-1/2">
                   <img alt="Logo" loading="lazy" width="824" height="609" decoding="async" data-nimg="1" 
-                       className="aspect-[824/609] w-min object-contain h-[8.5vh]" 
+                       className="aspect-[824/609] w-min object-contain h-[8.5vh] filter invert brightness-200" style="color:transparent" 
                        src="/images/seals/mokz_logo.png" />
                 </a>
                 
