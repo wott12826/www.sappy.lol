@@ -80,7 +80,7 @@ const StakingWidget = () => {
     const [isBlurred, setIsBlurred] = useState(false);
     const [timeLeft, setTimeLeft] = useState('');
 
-    // Целевая дата: 25.06.2025 UTC
+    // Целевая дата: 28.06.2025 UTC
     const targetDate = new Date('2025-06-25T00:00:00.000Z');
 
     // Функция для расчета оставшегося времени
