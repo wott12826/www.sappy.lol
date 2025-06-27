@@ -70,7 +70,7 @@ export default function MonkzRedesign() {
         <img src="/images/seals/x_logo.png" alt="Twitter" className="w-5 h-5" /></a>
         <a href="https://t.me/MonkzArtStudio" target="_blank" rel="noopener noreferrer" className="text-white p-2 rounded-full bg-black/50 hover:bg-white hover:text-black transition-colors">
         <img src="/images/seals/telegram_icon.png" alt="Telegram" className="w-5 h-5" /></a>
-        <a href="https://dexscreener.com/solana/FfnrQUfo8hH4HG53pi2jTs68eSGMEYtq2TxLP25Lpump" target="_blank" rel="noopener noreferrer" className="text-white p-2 rounded-full bg-black/50 hover:bg-white hover:text-black transition-colors">
+        <a href="https://dexscreener.com/solana/776ahe4epw2y1h5gbtfjxdajvbsbdn2oifsyrwkhdyp5" target="_blank" rel="noopener noreferrer" className="text-white p-2 rounded-full bg-black/50 hover:bg-white hover:text-black transition-colors">
           <img src="/images/seals/dexscreener_logo_white.png" alt="Dexscreener" className="w-5 h-5" />
         </a>
       </div>
