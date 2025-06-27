@@ -96,7 +96,7 @@ const StakingWidget = () => {
 
             return `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
-        return '0d 0h 0m 0s';
+        return '24d 5h 30m 15s';
     };
 
     // Обновление времени каждую секунду
